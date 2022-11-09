@@ -3766,6 +3766,22 @@ static const union AnimCmd sAnim_Gardevoir_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_RaltsD_1[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(1, 25),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_KirliaD_1[] =
+{
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 39),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END,
+};
+
 #if P_MEGA_EVOLUTIONS
 PLACEHOLDER_ANIM_SINGLE_FRAME(GardevoirMega);
 #endif //P_MEGA_EVOLUTIONS
@@ -11077,6 +11093,8 @@ SINGLE_ANIMATION(Pelipper);
 SINGLE_ANIMATION(Ralts);
 SINGLE_ANIMATION(Kirlia);
 SINGLE_ANIMATION(Gardevoir);
+SINGLE_ANIMATION(RaltsD);
+SINGLE_ANIMATION(KirliaD);
 #if P_MEGA_EVOLUTIONS
 SINGLE_ANIMATION(GardevoirMega);
 #endif //P_MEGA_EVOLUTIONS
