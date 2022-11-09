@@ -1515,6 +1515,14 @@ Cry_Gardevoir::
 	.incbin "sound/direct_sound_samples/cries/gardevoir.bin"
 
 	.align 2
+Cry_RaltsD::
+	.incbin "sound/direct_sound_samples/cries/raltsD.bin"
+
+	.align 2
+Cry_KirliaD::
+	.incbin "sound/direct_sound_samples/cries/kirliaD.bin"
+
+	.align 2
 Cry_Surskit::
 	.incbin "sound/direct_sound_samples/cries/surskit.bin"
 

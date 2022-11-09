@@ -2218,6 +2218,17 @@ const u8 gGardevoirPokedexText[] = _(
     "psychic power. It will give its life to\n"
     "protect its Trainer.");
 
+const u8 gRaltsDPokedexText[] = _(
+    "This very unique Ralts does not have\n"
+    "horns. Despite this, it is as sensitive\n"
+    "to emotions as other Ralts, It looks at\n"
+    "people with unease.");
+
+const u8 gKirliaDPokedexText[] = _(
+    "Dark Kirlia is getting used to its trainer.\n"
+    "Its physical power seems to be developing\n"
+    "more than that of other Kirlia.");
+
 const u8 gBagonPokedexText[] = _(
     "Although it is small, this Pokémon is very\n"
     "powerful because its body is a bundle of\n"

@@ -4320,6 +4320,22 @@ static const union AnimCmd sAnim_GARDEVOIR_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_RALTSD_1[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(1, 25),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_KIRLIAD_1[] =
+{
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 39),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sAnim_BAGON_1[] =
 {
     ANIMCMD_FRAME(0, 15),
@@ -11782,6 +11798,18 @@ static const union AnimCmd *const sAnims_GARDEVOIR[] =
     sAnim_GARDEVOIR_1,
 };
 
+static const union AnimCmd *const sAnims_RALTSD[] =
+{
+    sAnim_GeneralFrame0,
+    sAnim_RALTSD_1,
+};
+
+static const union AnimCmd *const sAnims_KIRLIAD[] =
+{
+    sAnim_GeneralFrame0,
+    sAnim_KIRLIAD_1,
+};
+
 static const union AnimCmd *const sAnims_BAGON[] =
 {
     sAnim_GeneralFrame0,
@@ -16479,6 +16507,8 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     ANIM_CMD(RALTS),
     ANIM_CMD(KIRLIA),
     ANIM_CMD(GARDEVOIR),
+    ANIM_CMD(RALTSD),
+    ANIM_CMD(KIRLIAD),
     ANIM_CMD(BAGON),
     ANIM_CMD(SHELGON),
     ANIM_CMD(SALAMENCE),

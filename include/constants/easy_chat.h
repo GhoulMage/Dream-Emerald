@@ -1112,13 +1112,13 @@
 #define EC_MASK_GROUP 0x7F
 #define EC_MASK_INDEX 0x1FF
 
-#define EC_POKEMON(mon) ((EC_GROUP_POKEMON << 9) | SPECIES_##mon)
-#define EC_POKEMON_NATIONAL(mon) ((EC_GROUP_POKEMON_NATIONAL << 9) | SPECIES_##mon)
-#define EC_MOVE(move) ((EC_GROUP_MOVE_1 << 9) | MOVE_##move)
-#define EC_MOVE2(move) ((EC_GROUP_MOVE_2 << 9) | MOVE_##move)
+#define EC_POKEMON(mon) ((EC_GROUP_POKEMON << 9) | (SPECIES_##mon))
+#define EC_POKEMON_NATIONAL(mon) ((EC_GROUP_POKEMON_NATIONAL << 9) | (SPECIES_##mon))
+#define EC_MOVE(move) ((EC_GROUP_MOVE_1 << 9) | (MOVE_##move))
+#define EC_MOVE2(move) ((EC_GROUP_MOVE_2 << 9) | (MOVE_##move))
 
 #define EC_GROUP(word) ((word) >> 9)
-#define EC_INDEX(word) ((word) & EC_MASK_INDEX)
+#define EC_INDEX(word) ((word) & (EC_MASK_INDEX))
 #define EC_WORD(group, index) ((((group) & EC_MASK_GROUP) << 9) | ((index) & EC_MASK_INDEX))
 
 #define EC_EMPTY_WORD 0xFFFF

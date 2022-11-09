@@ -282,6 +282,8 @@ gCryTable::
 	cry Cry_Ralts
 	cry Cry_Kirlia
 	cry Cry_Gardevoir
+	cry Cry_RaltsD
+	cry Cry_KirliaD
 	cry Cry_Surskit
 	cry Cry_Masquerain
 	cry Cry_Shroomish
@@ -2403,6 +2405,8 @@ gCryTable_Reverse::
 	cry_reverse Cry_Ralts
 	cry_reverse Cry_Kirlia
 	cry_reverse Cry_Gardevoir
+	cry_reverse Cry_RaltsD
+	cry_reverse Cry_KirliaD
 	cry_reverse Cry_Surskit
 	cry_reverse Cry_Masquerain
 	cry_reverse Cry_Shroomish

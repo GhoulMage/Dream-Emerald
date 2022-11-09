@@ -5453,6 +5453,16 @@ void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk)
     {
         gBattleStruct->dynamicMoveType = ateType | F_DYNAMIC_TYPE_2;
         gBattleStruct->ateBoost[battlerAtk] = 1;
+    } else if (gBattleMoves[move].type == TYPE_NORMAL
+            && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
+            && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
+            && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+            && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
+            && attackerAbility == ABILITY_DARK_POWER
+            )
+    {
+        gBattleStruct->dynamicMoveType = TYPE_DARK | F_DYNAMIC_TYPE_2;
+        gBattleStruct->ateBoost[battlerAtk] = 1;
     }
     else if (gBattleMoves[move].type != TYPE_NORMAL
              && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER

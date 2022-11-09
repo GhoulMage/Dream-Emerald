@@ -3396,6 +3396,31 @@ const struct PokedexEntry gPokedexEntries[] =
         .trainerOffset = 0,
     },
 
+    [NATIONAL_DEX_RALTSD] =
+    {
+        .categoryName = _("Rebel"),
+        .height = 4,
+        .weight = 66,
+        .description = gRaltsDPokedexText,
+        .pokemonScale = 457,
+        .pokemonOffset = -3,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+    },
+
+    [NATIONAL_DEX_KIRLIAD] =
+    {
+        .categoryName = _("Growing"),
+        .height = 9,
+        .weight = 226,
+        .description = gKirliaDPokedexText,
+        .pokemonScale = 317,
+        .pokemonOffset = 1,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+    },
+
+
     [NATIONAL_DEX_SURSKIT] =
     {
         .categoryName = _("Pond Skater"),
