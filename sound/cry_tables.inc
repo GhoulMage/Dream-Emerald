@@ -783,6 +783,8 @@ gCryTable::
 	cry Cry_GalladeMega
 .endif @ P_MEGA_EVOLUTIONS
 .endif @ P_GEN_4_CROSS_EVOS
+	cry Cry_RaltsD
+	cry Cry_KirliaD
 .endif @ P_FAMILY_RALTS
 .if P_FAMILY_SURSKIT == TRUE
 	cry Cry_Surskit
@@ -3211,6 +3213,8 @@ gCryTable_Reverse::
 	cry_reverse Cry_GalladeMega
 .endif @ P_MEGA_EVOLUTIONS
 .endif @ P_GEN_4_CROSS_EVOS
+	cry_reverse Cry_RaltsD
+	cry_reverse Cry_KirliaD
 .endif @ P_FAMILY_RALTS
 .if P_FAMILY_SURSKIT == TRUE
 	cry_reverse Cry_Surskit
