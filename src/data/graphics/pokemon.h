@@ -4264,6 +4264,21 @@ const u8 gMonFootprint_QuestionMark[] = INCBIN_U8("graphics/pokemon/question_mar
     const u8 gMonFootprint_Gardevoir[] = INCBIN_U8("graphics/pokemon/gardevoir/footprint.1bpp");
 #endif //P_FOOTPRINTS
 
+
+    const u32 gMonFrontPic_RaltsD[] = INCBIN_U32("graphics/pokemon/raltsD/anim_front.4bpp.lz");
+    const u32 gMonPalette_RaltsD[] = INCBIN_U32("graphics/pokemon/raltsD/normal.gbapal.lz");
+    const u32 gMonBackPic_RaltsD[] = INCBIN_U32("graphics/pokemon/raltsD/back.4bpp.lz");
+    const u32 gMonShinyPalette_RaltsD[] = INCBIN_U32("graphics/pokemon/raltsD/shiny.gbapal.lz");
+    const u8 gMonIcon_RaltsD[] = INCBIN_U8("graphics/pokemon/raltsD/icon.4bpp");
+    const u8 gMonFootprint_RaltsD[] = INCBIN_U8("graphics/pokemon/raltsD/footprint.1bpp");
+
+    const u32 gMonFrontPic_KirliaD[] = INCBIN_U32("graphics/pokemon/kirliaD/anim_front.4bpp.lz");
+    const u32 gMonPalette_KirliaD[] = INCBIN_U32("graphics/pokemon/kirliaD/normal.gbapal.lz");
+    const u32 gMonBackPic_KirliaD[] = INCBIN_U32("graphics/pokemon/kirliaD/back.4bpp.lz");
+    const u32 gMonShinyPalette_KirliaD[] = INCBIN_U32("graphics/pokemon/kirliaD/shiny.gbapal.lz");
+    const u8 gMonIcon_KirliaD[] = INCBIN_U8("graphics/pokemon/kirliaD/icon.4bpp");
+    const u8 gMonFootprint_KirliaD[] = INCBIN_U8("graphics/pokemon/kirliaD/footprint.1bpp");
+
 #if P_MEGA_EVOLUTIONS
     const u32 gMonFrontPic_GardevoirMega[] = INCBIN_U32("graphics/pokemon/gardevoir/mega/front.4bpp.lz");
     const u32 gMonPalette_GardevoirMega[] = INCBIN_U32("graphics/pokemon/gardevoir/mega/normal.gbapal.lz");

@@ -6029,6 +6029,7 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
                  || (attackerAbility == ABILITY_REFRIGERATE && (ateType = TYPE_ICE))
                  || (attackerAbility == ABILITY_AERILATE && (ateType = TYPE_FLYING))
                  || ((attackerAbility == ABILITY_GALVANIZE) && (ateType = TYPE_ELECTRIC))
+                 || ((attackerAbility == ABILITY_DARK_POWER) && (ateType = TYPE_DARK))
                 )
              )
     {
