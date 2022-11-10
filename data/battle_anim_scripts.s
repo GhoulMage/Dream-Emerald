@@ -21583,6 +21583,37 @@ Move_EXTRASENSORY::
 	call UnsetPsychicBg
 	end
 
+Move_PSYCHIC_INVERSION::
+	call SetPsychicBackground
+	monbg ANIM_DEF_PARTNER
+	setalpha 12, 8
+	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(27, 27, 0), 12, 1, 1
+	createvisualtask AnimTask_ExtrasensoryDistortion, 1, 0
+	playsewithpan SE_M_BIND, SOUND_PAN_TARGET
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(27, 27, 0), 12, 1, 1
+	createvisualtask AnimTask_ExtrasensoryDistortion, 1, 1
+	playsewithpan SE_M_BIND, SOUND_PAN_TARGET
+	waitforvisualfinish
+	
+	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(27, 27, 0), 12, 1, 1
+	createvisualtask AnimTask_ExtrasensoryDistortion, 1, 0
+	playsewithpan SE_M_BIND, SOUND_PAN_TARGET
+	delay 8
+	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(27, 27, 0), 12, 1, 1
+	createvisualtask AnimTask_ExtrasensoryDistortion, 1, 1
+	playsewithpan SE_M_BIND, SOUND_PAN_TARGET
+	delay 11
+
+	createvisualtask AnimTask_TransparentCloneGrowAndShrink, 5, ANIM_ATTACKER
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 18, 1
+	playsewithpan SE_M_LEER, SOUND_PAN_ATTACKER
+	waitforvisualfinish
+	blendoff
+	clearmonbg ANIM_DEF_PARTNER
+	call UnsetPsychicBg
+	end
+
 Move_AERIAL_ACE::
 	loadspritegfx ANIM_TAG_CUT
 	monbg ANIM_TARGET

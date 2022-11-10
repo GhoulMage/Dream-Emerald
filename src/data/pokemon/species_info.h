@@ -166,6 +166,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconPalIndex = 1,
     },
 
+    #include "species_info/dream_emerald.h"
+
     /* You may add any custom species below this point based on the following structure: */
 
     /*

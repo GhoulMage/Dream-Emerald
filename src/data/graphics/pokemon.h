@@ -7160,6 +7160,13 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gMonShinyPalette_KirliaD[] = INCBIN_U32("graphics/pokemon/kirliaD/shiny.gbapal.lz");
     const u8 gMonIcon_KirliaD[] = INCBIN_U8("graphics/pokemon/kirliaD/icon.4bpp");
     const u8 gMonFootprint_KirliaD[] = INCBIN_U8("graphics/pokemon/kirliaD/footprint.1bpp");
+    
+    const u32 gMonFrontPic_GardevoirD[] = INCBIN_U32("graphics/pokemon/gardevoirD/anim_front.4bpp.lz");
+    const u32 gMonPalette_GardevoirD[] = INCBIN_U32("graphics/pokemon/gardevoirD/normal.gbapal.lz");
+    const u32 gMonBackPic_GardevoirD[] = INCBIN_U32("graphics/pokemon/gardevoirD/back.4bpp.lz");
+    const u32 gMonShinyPalette_GardevoirD[] = INCBIN_U32("graphics/pokemon/gardevoirD/shiny.gbapal.lz");
+    const u8 gMonIcon_GardevoirD[] = INCBIN_U8("graphics/pokemon/gardevoirD/icon.4bpp");
+    const u8 gMonFootprint_GardevoirD[] = INCBIN_U8("graphics/pokemon/gardevoirD/footprint.1bpp");
 
 #if P_MEGA_EVOLUTIONS
     const u32 gMonFrontPic_GardevoirMega[] = INCBIN_U32("graphics/pokemon/gardevoir/mega/front.4bpp.lz");
