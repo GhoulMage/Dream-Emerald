@@ -785,6 +785,7 @@ gCryTable::
 .endif @ P_GEN_4_CROSS_EVOS
 	cry Cry_RaltsD
 	cry Cry_KirliaD
+	cry Cry_GardevoirD
 .endif @ P_FAMILY_RALTS
 .if P_FAMILY_SURSKIT == TRUE
 	cry Cry_Surskit
