@@ -372,6 +372,7 @@ const u16 *const gTeachableLearnsets[NUM_SPECIES] =
     [SPECIES_GARDEVOIR] = sGardevoirTeachableLearnset,
     [SPECIES_RALTSD] = sRaltsDTeachableLearnset,
     [SPECIES_KIRLIAD] = sKirliaDTeachableLearnset,
+    [SPECIES_GARDEVOIRD] = sGardevoirDTeachableLearnset,
     [SPECIES_BAGON] = sBagonTeachableLearnset,
     [SPECIES_SHELGON] = sShelgonTeachableLearnset,
     [SPECIES_SALAMENCE] = sSalamenceTeachableLearnset,

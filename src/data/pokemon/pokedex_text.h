@@ -2229,6 +2229,12 @@ const u8 gKirliaDPokedexText[] = _(
     "Its physical power seems to be developing\n"
     "more than that of other Kirlia.");
 
+const u8 gGardevoirDPokedexText[] = _(
+    "An unique breed of Gardevoir, strong Dark\n"
+    "and psychic power emanates from it. Its\n"
+    "love for its trainer is unrivaled, but\n"
+    "despises everyone else.");
+
 const u8 gBagonPokedexText[] = _(
     "Although it is small, this Pokémon is very\n"
     "powerful because its body is a bundle of\n"

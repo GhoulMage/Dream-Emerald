@@ -3398,7 +3398,7 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_RALTSD] =
     {
-        .categoryName = _("Rebel"),
+        .categoryName = _("Rare"),
         .height = 4,
         .weight = 66,
         .description = gRaltsDPokedexText,
@@ -3410,11 +3410,23 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_KIRLIAD] =
     {
-        .categoryName = _("Growing"),
+        .categoryName = _("Rebel"),
         .height = 9,
         .weight = 226,
         .description = gKirliaDPokedexText,
         .pokemonScale = 317,
+        .pokemonOffset = 1,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+    },
+
+    [NATIONAL_DEX_GARDEVOIRD] =
+    {
+        .categoryName = _("Rejection"),
+        .height = 18,
+        .weight = 526,
+        .description = gGardevoirDPokedexText,
+        .pokemonScale = 278,
         .pokemonOffset = 1,
         .trainerScale = 256,
         .trainerOffset = 0,

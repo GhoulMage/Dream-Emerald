@@ -284,6 +284,7 @@ gCryTable::
 	cry Cry_Gardevoir
 	cry Cry_RaltsD
 	cry Cry_KirliaD
+	cry Cry_GardevoirD
 	cry Cry_Surskit
 	cry Cry_Masquerain
 	cry Cry_Shroomish

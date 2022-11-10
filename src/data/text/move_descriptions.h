@@ -2232,6 +2232,10 @@ static const u8 sFreezeDryDescription[] = _(
     "Super effective on Water-\n"
     "types. May cause freezing.");
 
+static const u8 sPsychicInversionDescription[] = _(
+    "Super effective on Dark-\n"
+    "types. May cause flinching.");
+
 static const u8 sDisarmingVoiceDescription[] = _(
     "Lets out a charming cry\n"
     "that cannot be evaded.");
@@ -3631,6 +3635,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_FORESTS_CURSE - 1] = sForestsCurseDescription,
     [MOVE_PETAL_BLIZZARD - 1] = sPetalBlizzardDescription,
     [MOVE_FREEZE_DRY - 1] = sFreezeDryDescription,
+    [MOVE_PSYCHIC_INVERSION - 1] = sPsychicInversionDescription,
     [MOVE_DISARMING_VOICE - 1] = sDisarmingVoiceDescription,
     [MOVE_PARTING_SHOT - 1] = sPartingShotDescription,
     [MOVE_TOPSY_TURVY - 1] = sTopsyTurvyDescription,

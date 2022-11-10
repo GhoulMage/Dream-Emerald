@@ -8067,6 +8067,31 @@ const struct BaseStats gBaseStats[] =
         .noFlip = FALSE,
     },
 
+    [SPECIES_GARDEVOIRD] =
+    {
+        .baseHP        = 72,
+        .baseAttack    = 113,
+        .baseDefense   = 74,
+        .baseSpeed     = 96,
+        .baseSpAttack  = 113,
+        .baseSpDefense = 75,
+        .type1 = TYPE_PSYCHIC,
+        .type2 = TYPE_DARK,
+        .catchRate = 20,
+        .expYield = 240,
+        .evYield_Attack = 3,
+        .evYield_SpAttack = 3,
+        .genderRatio = PERCENT_FEMALE(75.5),
+        .eggCycles = 20,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroup1 = EGG_GROUP_HUMAN_LIKE,
+        .eggGroup2 = EGG_GROUP_AMORPHOUS,
+        .abilities = {ABILITY_INTIMIDATE, ABILITY_DARK_POWER, ABILITY_TELEPATHY},
+        .bodyColor = BODY_COLOR_WHITE,
+        .noFlip = FALSE,
+    },
+
     [SPECIES_SURSKIT] =
     {
         .baseHP        = 40,
