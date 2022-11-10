@@ -2229,6 +2229,10 @@ Cry_GalladeMega::
 .if P_FAMILY_SURSKIT == TRUE
 
 	.align 2
+Cry_GardevoirD::
+	.incbin "sound/direct_sound_samples/cries/gardevoirD.bin"
+
+	.align 2
 Cry_Surskit::
 	.incbin "sound/direct_sound_samples/cries/surskit.bin"
 
