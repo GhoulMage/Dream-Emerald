@@ -7684,16 +7684,17 @@ const struct CompressedSpritePalette *GetMonSpritePalStructFromOtIdPersonality(u
     }
 }
 
-bool32 IsHMMove2(u16 move)
-{
-    int i = 0;
-    while (sHMMoves[i] != HM_MOVES_END)
-    {
-        if (sHMMoves[i++] == move)
-            return TRUE;
-    }
-    return FALSE;
-}
+//Useless func
+//bool32 IsHMMove2(u16 move)
+//{
+//    int i = 0;
+//    while (sHMMoves[i] != HM_MOVES_END)
+//    {
+//        if (sHMMoves[i++] == move)
+//            return TRUE;
+//    }
+//    return FALSE;
+//}
 
 bool8 IsMonSpriteNotFlipped(u16 species)
 {
