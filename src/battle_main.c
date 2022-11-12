@@ -590,6 +590,22 @@ const struct TypeInfo gTypesInfo[NUMBER_OF_MON_TYPES] =
         //.teraShard = ITEM_FAIRY_TERA_SHARD,
         //.arceusForm = SPECIES_ARCEUS_FAIRY,
     },
+    [TYPE_SOUND] =
+    {
+        .name = _("Sound"),
+        .generic = _("a SOUND move"),
+        .palette = 11,
+        .zMove = MOVE_TWINKLE_TACKLE,
+        .maxMove = MOVE_MAX_STARFALL,
+        //.enhanceItem = ITEM_FAIRY_FEATHER,
+        //.berry = ITEM_ROSELI_BERRY,
+        //.gem = ITEM_FAIRY_GEM,
+        //.zCrystal = ITEM_FAIRIUM_Z,
+        //.plate= ITEM_PIXIE_PLATE,
+        //.memory = ITEM_FAIRY_MEMORY,
+        //.teraShard = ITEM_FAIRY_TERA_SHARD,
+        //.arceusForm = SPECIES_ARCEUS_FAIRY,
+    },
     /*
     [TYPE_STELLAR] =
     {

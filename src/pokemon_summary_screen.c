@@ -891,6 +891,10 @@ static const union AnimCmd sSpriteAnim_TypeFairy[] = {
     ANIMCMD_FRAME(TYPE_FAIRY * 8, 0, FALSE, FALSE),
     ANIMCMD_END
 };
+static const union AnimCmd sSpriteAnim_TypeSound[] = {
+    ANIMCMD_FRAME(TYPE_SOUND * 8, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
 static const union AnimCmd sSpriteAnim_CategoryCool[] = {
     ANIMCMD_FRAME((CONTEST_CATEGORY_COOL + NUMBER_OF_MON_TYPES) * 8, 0, FALSE, FALSE),
     ANIMCMD_END
@@ -931,6 +935,7 @@ static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES
     sSpriteAnim_TypeDragon,
     sSpriteAnim_TypeDark,
     sSpriteAnim_TypeFairy,
+    sSpriteAnim_TypeSound,
     sSpriteAnim_CategoryCool,
     sSpriteAnim_CategoryBeauty,
     sSpriteAnim_CategoryCute,
@@ -941,7 +946,7 @@ static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES
 const struct CompressedSpriteSheet gSpriteSheet_MoveTypes =
 {
     .data = gMoveTypes_Gfx,
-    .size = (NUMBER_OF_MON_TYPES + CONTEST_CATEGORIES_COUNT) * 0x100,
+    .size = (NUMBER_OF_MON_TYPES + CONTEST_CATEGORIES_COUNT) * 0x100, //Rest 1 for MOVE_SOUND and so on
     .tag = TAG_MOVE_TYPES
 };
 const struct SpriteTemplate gSpriteTemplate_MoveTypes =
@@ -1431,9 +1436,12 @@ static bool8 DecompressGraphics(void)
         sMonSummaryScreen->switchCounter++;
         break;
     case 12:
-        LoadCompressedPalette(gMoveTypes_Pal, OBJ_PLTT_ID(13), 3 * PLTT_SIZE_4BPP);
+        LoadCompressedPalette(gMoveTypes_Pal0, OBJ_PLTT_ID(13), 3 * PLTT_SIZE_4BPP);
+        LoadCompressedPalette(gMoveTypes_Pal1, 0x1B0, 0x20);
         LoadCompressedSpriteSheet(&sSpriteSheet_CategoryIcons);
         LoadSpritePalette(&sSpritePal_CategoryIcons);
+        LoadCompressedSpriteSheet(&sSpriteSheet_SplitIcons);
+        LoadSpritePalette(&sSpritePal_SplitIcons);
         sMonSummaryScreen->switchCounter = 0;
         return TRUE;
     }
@@ -2153,6 +2161,9 @@ static void Task_HandleInput_MovePositionSwitch(u8 taskId)
 static void ExitMovePositionSwitchMode(u8 taskId, bool8 swapMoves)
 {
     u16 move;
+    
+    u8 firstMoveIndex = sMonSummaryScreen->firstMoveIndex;
+    u8 secondMoveIndex = sMonSummaryScreen->secondMoveIndex;
 
     PlaySE(SE_SELECT);
     SetMainMoveSelectorColor(0);
@@ -2172,7 +2183,8 @@ static void ExitMovePositionSwitchMode(u8 taskId, bool8 swapMoves)
         }
         CopyMonToSummaryStruct(&sMonSummaryScreen->currentMon);
         SwapMovesNamesPP(sMonSummaryScreen->firstMoveIndex, sMonSummaryScreen->secondMoveIndex);
-        SwapMovesTypeSprites(sMonSummaryScreen->firstMoveIndex, sMonSummaryScreen->secondMoveIndex);
+
+        SwapMovesTypeSprites(firstMoveIndex, secondMoveIndex);
         sMonSummaryScreen->firstMoveIndex = sMonSummaryScreen->secondMoveIndex;
     }
 
@@ -3913,10 +3925,12 @@ void SetTypeSpritePosAndPal(u8 typeId, u8 x, u8 y, u8 spriteArrayId)
 static void SetMonTypeIcons(void)
 {
     struct PokeSummary *summary = &sMonSummaryScreen->summary;
+    
+    SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, TRUE); //This ensures that at least one is always invisible if unused
+
     if (summary->isEgg)
     {
         SetTypeSpritePosAndPal(TYPE_MYSTERY, 120, 48, SPRITE_ARR_ID_TYPE);
-        SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, TRUE);
     }
     else
     {
@@ -3924,7 +3938,7 @@ static void SetMonTypeIcons(void)
         if (gSpeciesInfo[summary->species].types[0] != gSpeciesInfo[summary->species].types[1])
         {
             SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[1], 160, 48, SPRITE_ARR_ID_TYPE + 1);
-            SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, FALSE);
+            //SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, FALSE); //idk why this was there when SetTypeSpritePosAndPal already makes it visible
         }
         else
         {
@@ -3949,6 +3963,7 @@ static void SetMoveTypeIcons(void)
         }
         else
             SetSpriteInvisibility(i + SPRITE_ARR_ID_TYPE, TRUE);
+        }
     }
 }
 
