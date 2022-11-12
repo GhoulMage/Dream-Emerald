@@ -1611,7 +1611,8 @@ const u32 gStatusGfx_Icons[] = INCBIN_U32("graphics/interface/status_icons.4bpp.
 const u32 gStatusPal_Icons[] = INCBIN_U32("graphics/interface/status_icons.gbapal.lz");
 
 const u32 gMoveTypes_Gfx[] = INCBIN_U32("graphics/types/move_types.4bpp.lz");
-const u32 gMoveTypes_Pal[] = INCBIN_U32("graphics/types/move_types.gbapal.lz");
+const u32 gMoveTypes_Pal0[] = INCBIN_U32("graphics/types/move_types0.gbapal.lz");
+const u32 gMoveTypes_Pal1[] = INCBIN_U32("graphics/types/move_types1.gbapal.lz");
 
 const u32 gSummaryMoveSelect_Gfx[] = INCBIN_U32("graphics/summary_screen/move_select.4bpp.lz");
 const u32 gSummaryMoveSelect_Pal[] = INCBIN_U32("graphics/summary_screen/move_select.gbapal.lz");
