@@ -575,6 +575,7 @@
 #define EC_WORD_THAN           ((EC_GROUP_ENDINGS << EC_MASK_BITS) | 66)
 #define EC_WORD_ONCE           ((EC_GROUP_ENDINGS << EC_MASK_BITS) | 67)
 #define EC_WORD_ANYWHERE       ((EC_GROUP_ENDINGS << EC_MASK_BITS) | 68)
+#define EC_WORD_SOUND          ((EC_GROUP_ENDINGS << EC_MASK_BITS) | 69)
 
 // FEELINGS
 #define EC_WORD_MEET          ((EC_GROUP_FEELINGS << EC_MASK_BITS) | 0)
