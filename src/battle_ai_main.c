@@ -1076,7 +1076,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 // the following checks apply to any target (including user)
 
     // throat chop check
-    if (gDisableStructs[battlerAtk].throatChopTimer && MoveHasSound(move))
+    if (gDisableStructs[battlerAtk].throatChopTimer && MoveIsSonic(move))
         return 0; // Can't even select move at all
     if (gDisableStructs[battlerAtk].throatChopTimer && MoveIsDance(move))
             RETURN_SCORE_MINUS(5);
