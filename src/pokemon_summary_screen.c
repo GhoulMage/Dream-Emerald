@@ -1204,7 +1204,7 @@ void ShowPokemonSummaryScreen(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, 
     SummaryScreen_SetAnimDelayTaskId(TASK_NONE);
 
     if (gMonSpritesGfxPtr == NULL)
-        CreateMonSpritesGfxManager(MON_SPR_GFX_MANAGER_A, MON_SPR_GFX_MODE_NORMAL);
+        CreateMonSpritesGfxManager();
 
     SetMainCallback2(CB2_InitSummaryScreen);
 }
@@ -1600,7 +1600,7 @@ static void CloseSummaryScreen(u8 taskId)
         StopCryAndClearCrySongs();
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
         if (gMonSpritesGfxPtr == NULL)
-            DestroyMonSpritesGfxManager(MON_SPR_GFX_MANAGER_A);
+            DestroyMonSpritesGfxManager();
         FreeSummaryScreen();
         DestroyTask(taskId);
     }
@@ -1646,7 +1646,7 @@ static void Task_HandleInput(u8 taskId)
                 if(++sMonSummaryScreen->ivOrEvMode > 2){
                     sMonSummaryScreen->ivOrEvMode = 0;
                 }
-                PlaySE(SE_SELECT);
+                PlaySE(SE_WIN_OPEN);
             }
         }
         else if (JOY_NEW(B_BUTTON))
@@ -1711,6 +1711,8 @@ static void ChangeSummaryPokemon(u8 taskId, s8 delta)
                 HandleStatusTilemap(0, 2);
             }
             sMonSummaryScreen->curMonIndex = monId;
+            sMonSummaryScreen->ivOrEvMode = 0;
+            
             gTasks[taskId].data[0] = 0;
             gTasks[taskId].func = Task_ChangeSummaryMon;
         }
@@ -1792,9 +1794,9 @@ static s8 AdvanceMonIndex(s8 delta)
     if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
     {
         if (delta == -1 && sMonSummaryScreen->curMonIndex == 0)
-            return -1;
+            return sMonSummaryScreen->maxMonIndex;
         else if (delta == 1 && sMonSummaryScreen->curMonIndex >= sMonSummaryScreen->maxMonIndex)
-            return -1;
+            return 0;
         else
             return sMonSummaryScreen->curMonIndex + delta;
     }
@@ -1805,8 +1807,15 @@ static s8 AdvanceMonIndex(s8 delta)
         do
         {
             index += delta;
-            if (index < 0 || index > sMonSummaryScreen->maxMonIndex)
-                return -1;
+
+            if(index < 0){
+                return sMonSummaryScreen->maxMonIndex;
+            }
+            if(index > sMonSummaryScreen->maxMonIndex){
+                return 0;
+            }
+            //if (index < 0 || index > sMonSummaryScreen->maxMonIndex)
+            //    return -1;
         } while (GetMonData(&mon[index], MON_DATA_IS_EGG));
         return index;
     }
@@ -1832,8 +1841,15 @@ static s8 AdvanceMultiBattleMonIndex(s8 delta)
         const s8 *order = sMultiBattleOrder;
 
         arrId += delta;
-        if (arrId < 0 || arrId >= PARTY_SIZE)
-            return -1;
+
+        if(arrId < 0){
+            arrId = PARTY_SIZE-1;
+        }
+        if(arrId >= PARTY_SIZE){
+            arrId = 0;
+        }
+        //if (arrId < 0 || arrId >= PARTY_SIZE)
+        //    return -1;
         index = order[arrId];
         if (IsValidToViewInMulti(&mons[index]) == TRUE)
             return index;
@@ -4068,7 +4084,7 @@ static u8 LoadMonGfxAndSprite(struct Pokemon *mon, s16 *state)
             else
             {
                 HandleLoadSpecialPokePic(TRUE,
-                                         MonSpritesGfxManager_GetSpritePtr(MON_SPR_GFX_MANAGER_A, B_POSITION_OPPONENT_LEFT),
+                                         MonSpritesGfxManager_GetSpritePtr(B_POSITION_OPPONENT_LEFT),
                                          summary->species2,
                                          summary->pid);
             }

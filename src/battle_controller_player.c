@@ -382,6 +382,7 @@ static void HandleInputChooseAction(u32 battler)
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
+        
         if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
          && GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT
          && !(gAbsentBattlerFlags & gBitTable[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)])
