@@ -708,7 +708,10 @@
 #define STRINGID_BIZARREAREACREATED                   706
 #define STRINGID_TIDYINGUPCOMPLETE                    707
 
-#define BATTLESTRINGS_COUNT                           708
+#define STRINGID_PKMNDROPPEDITEM                      708
+#define STRINGID_BAGISFULL                            709
+
+#define BATTLESTRINGS_COUNT                           710
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -983,6 +986,9 @@
 #define B_MSG_SET_TAILWIND_OPPONENT 8
 #define B_MSG_STARTING_STATUS_COUNT 9
 
+// gItemDroppedStringIds
+#define B_MSG_ITEM_DROPPED   0
+#define B_MSG_BAG_IS_FULL    1
 
 // gWrappedStringIds
 #define B_MSG_WRAPPED_BIND         0
