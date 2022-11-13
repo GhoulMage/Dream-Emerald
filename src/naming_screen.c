@@ -1610,7 +1610,7 @@ static void Input_Enabled(struct Task *task)
         task->tKeyboardEvent = INPUT_B_BUTTON;
     else if (JOY_NEW(SELECT_BUTTON))
         task->tKeyboardEvent = INPUT_SELECT;
-    else if (JOY_NEW(SELECT_BUTTON))
+    else if (JOY_NEW(R_BUTTON))
         task->tKeyboardEvent = INPUT_R_BUTTON;
     else if (JOY_NEW(START_BUTTON))
         task->tKeyboardEvent = INPUT_START;
@@ -2107,15 +2107,19 @@ static void UNUSED Debug_NamingScreenNickname(void)
 static void SwapCharacterCase(void) {
     u8 index = GetPreviousTextCaretPosition();
 
+    u8 soundEffect = SE_FAILURE;
     if(sNamingScreen->textBuffer[index] >= CHAR_A && sNamingScreen->textBuffer[index] <= CHAR_Z) {
         sNamingScreen->textBuffer[index] = sNamingScreen->textBuffer[index] + 0x1A;
+        soundEffect= SE_SELECT;
     } else if(sNamingScreen->textBuffer[index] >= CHAR_a && sNamingScreen->textBuffer[index] <= CHAR_z){
         sNamingScreen->textBuffer[index] = sNamingScreen->textBuffer[index] - 0x1A;
+        soundEffect= SE_SELECT;
     }
+
+    PlaySE(soundEffect);
 
     DrawTextEntry();
     CopyBgTilemapBufferToVram(3);
-    PlaySE(SE_SELECT);
 }
 
 //--------------------------------------------------
