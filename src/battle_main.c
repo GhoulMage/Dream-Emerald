@@ -5930,7 +5930,7 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
         if (GetActiveGimmick(battlerAtk) != GIMMICK_DYNAMAX)
             gBattleStruct->ateBoost[battlerAtk] = 1;
     }
-    else if (gMovesInfo[move].soundMove && attackerAbility == ABILITY_LIQUID_VOICE)
+    else if (MoveHasSound(move) && attackerAbility == ABILITY_LIQUID_VOICE)
     {
         gBattleStruct->dynamicMoveType = TYPE_WATER | F_DYNAMIC_TYPE_SET;
     }

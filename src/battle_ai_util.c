@@ -438,7 +438,7 @@ bool32 IsDamageMoveUnusable(u32 move, u32 battlerAtk, u32 battlerDef)
             return TRUE;
         break;
     case ABILITY_SOUNDPROOF:
-        if (gMovesInfo[move].soundMove)
+        if (MoveHasSound(move))
             return TRUE;
         break;
     case ABILITY_BULLETPROOF:
@@ -2843,6 +2843,7 @@ bool32 AI_CanPutToSleep(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move
 {
     if (!CanBeSlept(battlerDef, defAbility)
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
+      || !(IS_BATTLER_OF_TYPE(battlerDef, TYPE_SOUND))
       || PartnerMoveEffectIsStatusSameTarget(BATTLE_PARTNER(battlerAtk), battlerDef, partnerMove))   // shouldn't try to sleep mon that partner is trying to make sleep
         return FALSE;
     return TRUE;
