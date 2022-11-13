@@ -713,7 +713,10 @@
 #define STRINGID_PKMNMADESHELLGLEAM                   711
 #define STRINGID_FICKLEBEAMDOUBLED                    712
 
-#define BATTLESTRINGS_COUNT                           713
+#define STRINGID_PKMNDROPPEDITEM                      713
+#define STRINGID_BAGISFULL                            714
+
+#define BATTLESTRINGS_COUNT                           715
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -999,6 +1002,9 @@
 #define B_MSG_SET_TAILWIND_OPPONENT 8
 #define B_MSG_STARTING_STATUS_COUNT 9
 
+// gItemDroppedStringIds
+#define B_MSG_ITEM_DROPPED   0
+#define B_MSG_BAG_IS_FULL    1
 
 // gWrappedStringIds
 #define B_MSG_WRAPPED_BIND         0
