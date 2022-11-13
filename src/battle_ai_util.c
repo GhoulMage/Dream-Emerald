@@ -2592,6 +2592,7 @@ bool32 AI_CanSleep(u32 battler, u32 ability)
     if (ability == ABILITY_INSOMNIA
       || ability == ABILITY_VITAL_SPIRIT
       || ability == ABILITY_COMATOSE
+      || IS_BATTLER_OF_TYPE(battler, TYPE_SOUND)
       || gBattleMons[battler].status1 & STATUS1_ANY
       || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD
       || (gFieldStatuses & (STATUS_FIELD_MISTY_TERRAIN | STATUS_FIELD_ELECTRIC_TERRAIN))
@@ -2604,6 +2605,7 @@ bool32 AI_CanPutToSleep(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move
 {
     if (!AI_CanSleep(battlerDef, defAbility)
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
+      || !(IS_BATTLER_OF_TYPE(battlerDef, TYPE_SOUND))
       || PartnerMoveEffectIsStatusSameTarget(BATTLE_PARTNER(battlerAtk), battlerDef, partnerMove))   // shouldn't try to sleep mon that partner is trying to make sleep
         return FALSE;
     return TRUE;

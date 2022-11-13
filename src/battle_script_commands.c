@@ -2865,6 +2865,8 @@ void SetMoveEffect(bool32 primary, bool32 certain)
 
             if (i != gBattlersCount)
                 break;
+            if(!CanBePutToSleep(gEffectBattler))
+                break;
             if (!CanSleep(gEffectBattler))
                 break;
 
@@ -14677,6 +14679,8 @@ static void Cmd_settypebasedhalvers(void)
 bool32 DoesSubstituteBlockMove(u32 battlerAtk, u32 battlerDef, u32 move)
 {
     if (!(gBattleMons[battlerDef].status2 & STATUS2_SUBSTITUTE))
+        return FALSE;
+    else if (MoveHasSound(move))
         return FALSE;
     else if (gMovesInfo[move].ignoresSubstitute)
         return FALSE;
