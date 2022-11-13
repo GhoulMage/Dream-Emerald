@@ -245,6 +245,7 @@
 #define VARIOUS_TRY_SYMBIOSIS                       154
 #define VARIOUS_CAN_TELEPORT                        155
 #define VARIOUS_GET_BATTLER_SIDE                    156
+#define VARIOUS_GIVE_DROPPED_ITEMS                  157
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

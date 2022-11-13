@@ -2145,3 +2145,7 @@
 	.macro trysymbiosis
 	various BS_ATTACKER, VARIOUS_TRY_SYMBIOSIS
 	.endm
+
+	.macro givedroppeditems
+	various BS_FAINTED, VARIOUS_GIVE_DROPPED_ITEMS
+	.endm
