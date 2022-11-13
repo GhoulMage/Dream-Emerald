@@ -2212,6 +2212,18 @@ bool32 TestMoveFlagsInMoveset(u8 battler, u32 flags)
     return FALSE;
 }
 
+bool32 TestMovesetForSound(u8 battler){
+    s32 i;
+    u16 *moves = GetMovesArray(battler);
+
+    for(i = 0; i < MAX_MON_MOVES; i++){
+        if(moves[i] != MOVE_NONE && moves[i] != 0xFFFF && MoveHasSound(moves[i])){
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 static u32 GetLeechSeedDamage(u8 battlerId)
 {
     u32 damage = 0;
@@ -2672,6 +2684,7 @@ bool32 AI_CanSleep(u8 battler, u16 ability)
 {
     if (ability == ABILITY_INSOMNIA
       || ability == ABILITY_VITAL_SPIRIT
+      || IS_BATTLER_OF_TYPE(battler, TYPE_SOUND)
       || gBattleMons[battler].status1 & STATUS1_ANY
       || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD
       || (gFieldStatuses & (STATUS_FIELD_MISTY_TERRAIN | STATUS_FIELD_ELECTRIC_TERRAIN))
@@ -2684,6 +2697,7 @@ bool32 AI_CanPutToSleep(u8 battlerAtk, u8 battlerDef, u16 defAbility, u16 move, 
 {
     if (!AI_CanSleep(battlerDef, defAbility)
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
+      || !(IS_BATTLER_OF_TYPE(battlerDef, TYPE_SOUND))
       || PartnerMoveEffectIsStatusSameTarget(BATTLE_PARTNER(battlerAtk), battlerDef, partnerMove))   // shouldn't try to sleep mon that partner is trying to make sleep
         return FALSE;
     return TRUE;

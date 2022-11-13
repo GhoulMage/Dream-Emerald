@@ -1537,6 +1537,7 @@ const u16 gEasyChatWordsByLetter_S[] = {
     EC_MOVE(SONIC_BOOM),
     EC_WORD_SOON,
     EC_WORD_SORRY,
+    EC_WORD_SOUND,
     EC_WORD_SOUNDPROOF,
     EC_WORD_SP_ABILITY,
     EC_MOVE(SPARK),

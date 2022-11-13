@@ -1210,25 +1210,25 @@ static const u16 sTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_MON_TYPE
 {
 //   normal  fight   flying  poison  ground  rock    bug     ghost   steel   mystery fire    water   grass  electric psychic ice     dragon  dark    fairy   sound
     {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // normal
-    {X(2.0), X(1.0), X(0.5), X(0.5), X(1.0), X(2.0), X(0.5), X(0.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(0.5), X(1.0)}, // fight
-    {X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // flying
-    {X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(0.5), X(0.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0)}, // poison
-    {X(1.0), X(1.0), X(0.0), X(2.0), X(1.0), X(2.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // ground
+    {X(2.0), X(1.0), X(0.5), X(0.5), X(1.0), X(2.0), X(1.0), X(0.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(0.5), X(0.5)}, // fight
+    {X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0)}, // flying
+    {X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(0.5), X(0.5), X(0.5), X(0.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5)}, // poison
+    {X(1.0), X(1.0), X(0.0), X(2.0), X(1.0), X(2.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0)}, // ground
     {X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // rock
-    {X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0)}, // bug
+    {X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0)}, // bug
     #if B_STEEL_RESISTANCES >= GEN_6
     {X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // ghost
     #else
     {X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // ghost
     #endif
-    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0), X(1.0)}, // steel
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0)}, // steel
     {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // mystery
-    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0)}, // fire
-    {X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0)}, // water
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0)}, // fire
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0), X(1.0), X(2.0)}, // water
     {X(1.0), X(1.0), X(0.5), X(0.5), X(2.0), X(2.0), X(0.5), X(1.0), X(0.5), X(1.0), X(0.5), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0)}, // grass
     {X(1.0), X(1.0), X(2.0), X(1.0), X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0)}, // electric
     {X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.0), X(1.0), X(0.5)}, // psychic
-    {X(1.0), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(2.0)}, // ice
+    {X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(2.0)}, // ice
     {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(0.0), X(1.0)}, // dragon
     #if B_STEEL_RESISTANCES >= GEN_6
     {X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0)}, // dark
@@ -1236,32 +1236,32 @@ static const u16 sTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_MON_TYPE
     {X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0)}, // dark
     #endif
     {X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0)}, // fairy
-    {X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5)}, // sound
+    {X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5)}, // sound
 };
 
 static const u16 sInverseTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_MON_TYPES] =
 {
 //   normal  fight   flying  poison  ground  rock    bug     ghost   steel   mystery fire    water   grass  electric psychic ice     dragon  dark    fairy
     {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // normal
-    {X(0.5), X(1.0), X(2.0), X(2.0), X(1.0), X(0.5), X(2.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(0.5), X(2.0), X(1.0)}, // fight
-    {X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // flying
-    {X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(2.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0)}, // poison
-    {X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // ground
+    {X(0.5), X(1.0), X(2.0), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(0.5), X(2.0), X(2.0)}, // fight
+    {X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // flying
+    {X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(2.0), X(2.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0)}, // poison
+    {X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5)}, // ground
     {X(1.0), X(2.0), X(0.5), X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0)}, // rock
-    {X(1.0), X(2.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0)}, // bug
+    {X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0)}, // bug
     #if B_STEEL_RESISTANCES >= GEN_6
     {X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0)}, // ghost
     #else
     {X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0)}, // ghost
     #endif
-    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(2.0), X(1.0), X(2.0), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.5), X(1.0)}, // steel
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(2.0), X(1.0), X(2.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0)}, // steel
     {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // mystery
-    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(2.0), X(0.5), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0)}, // fire
-    {X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0)}, // water
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0)}, // fire
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(2.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(0.5)}, // water
     {X(1.0), X(1.0), X(2.0), X(2.0), X(0.5), X(0.5), X(2.0), X(1.0), X(2.0), X(1.0), X(2.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0)}, // grass
     {X(1.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(2.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0)}, // electric
     {X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0), X(1.0), X(2.0)}, // psychic
-    {X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(2.0), X(2.0), X(0.5), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(0.5)}, // ice
+    {X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(0.5)}, // ice
     {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0)}, // dragon
     #if B_STEEL_RESISTANCES >= GEN_6
     {X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0)}, // dark
@@ -1269,7 +1269,7 @@ static const u16 sInverseTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_M
     {X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0)}, // dark
     #endif
     {X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0), X(1.0)}, // fairy
-    {X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(2.0)}, // sound
+    {X(1.0), X(0.5), X(1.0), X(2.0), X(2.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(2.0)}, // sound
 };
 
 #undef X
@@ -1784,7 +1784,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
         }
     }
 
-    if (!gBattleStruct->zmove.active && gDisableStructs[gActiveBattler].throatChopTimer != 0 && gBattleMoves[move].flags & FLAG_SOUND)
+    if (!gBattleStruct->zmove.active && gDisableStructs[gActiveBattler].throatChopTimer != 0 && MoveHasSound(move))
     {
         gCurrentMove = move;
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
@@ -2002,7 +2002,7 @@ u8 CheckMoveLimitations(u8 battlerId, u8 unusableMoves, u16 check)
         else if (check & MOVE_LIMITATION_BELCH && IsBelchPreventingMove(battlerId, gBattleMons[battlerId].moves[i]))
             unusableMoves |= gBitTable[i];
         // Throat Chop
-        else if (check & MOVE_LIMITATION_THROAT_CHOP && gDisableStructs[battlerId].throatChopTimer && gBattleMoves[gBattleMons[battlerId].moves[i]].flags & FLAG_SOUND)
+        else if (check & MOVE_LIMITATION_THROAT_CHOP && gDisableStructs[battlerId].throatChopTimer && MoveHasSound(gBattleMons[battlerId].moves[i]))
             unusableMoves |= gBitTable[i];
         // Stuff Cheeks
         else if (check & MOVE_LIMITATION_STUFF_CHEEKS && gBattleMons[battlerId].moves[i] == MOVE_STUFF_CHEEKS && ItemId_GetPocket(gBattleMons[gActiveBattler].item) != POCKET_BERRIES)
@@ -3797,7 +3797,7 @@ u8 AtkCanceller_UnableToUseMove(void)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_THROAT_CHOP:
-            if (gDisableStructs[gBattlerAttacker].throatChopTimer && gBattleMoves[gCurrentMove].flags & FLAG_SOUND)
+            if (gDisableStructs[gBattlerAttacker].throatChopTimer && MoveHasSound(gCurrentMove))
             {
                 gProtectStructs[gBattlerAttacker].usedThroatChopPreventedMove = TRUE;
                 CancelMultiTurnMoves(gBattlerAttacker);
@@ -5009,13 +5009,15 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
     {
         u16 moveTarget = GetBattlerMoveTargetType(battler, move);
 
-        if ((gLastUsedAbility == ABILITY_SOUNDPROOF && gBattleMoves[move].flags & FLAG_SOUND && !(moveTarget & MOVE_TARGET_USER))
+        if ((gLastUsedAbility == ABILITY_SOUNDPROOF && MoveHasSound(move) && !(moveTarget & MOVE_TARGET_USER))
             || (gLastUsedAbility == ABILITY_BULLETPROOF && gBattleMoves[move].flags & FLAG_BALLISTIC))
         {
-            if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
-                gHitMarker |= HITMARKER_NO_PPDEDUCT;
-            gBattlescriptCurrInstr = BattleScript_SoundproofProtected;
-            effect = 1;
+            if(CanBePutToSleep(moveTarget)){
+                if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
+                    gHitMarker |= HITMARKER_NO_PPDEDUCT;
+                gBattlescriptCurrInstr = BattleScript_SoundproofProtected;
+                effect = 1;
+            }
         }
         else if ((((gLastUsedAbility == ABILITY_DAZZLING || gLastUsedAbility == ABILITY_QUEENLY_MAJESTY
                    || (IsBattlerAlive(battler ^= BIT_FLANK)
@@ -5449,12 +5451,14 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                  && IsMoveMakingContact(move, gBattlerAttacker)
                  && (Random() % 3) == 0)
                 {
-                    gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_SLEEP;
-                    PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
-                    gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
-                    effect++;
+                    if(CanBePutToSleep(gBattlerAttacker)){
+                        gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_SLEEP;
+                        PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
+                        gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                        effect++;
+                    }
                 }
             }
             break;
@@ -6190,11 +6194,20 @@ bool32 CanSleep(u8 battlerId)
       || ability == ABILITY_VITAL_SPIRIT
       || ability == ABILITY_COMATOSE
       || gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_SAFEGUARD
+      //|| gBaseStats[gBattleMons[battlerId].species].type1 == TYPE_SOUND
+      //|| gBaseStats[gBattleMons[battlerId].species].type2 == TYPE_SOUND
       || gBattleMons[battlerId].status1 & STATUS1_ANY
       || IsAbilityOnSide(battlerId, ABILITY_SWEET_VEIL)
       || IsAbilityStatusProtected(battlerId)
       || IsBattlerTerrainAffected(battlerId, STATUS_FIELD_ELECTRIC_TERRAIN | STATUS_FIELD_MISTY_TERRAIN))
         return FALSE;
+    return TRUE;
+}
+
+bool32 CanBePutToSleep(u8 battlerId){
+    if(gBaseStats[gBattleMons[battlerId].species].type1 == TYPE_SOUND || gBaseStats[gBattleMons[battlerId].species].type2 == TYPE_SOUND)
+        return FALSE;
+
     return TRUE;
 }
 
@@ -7385,7 +7398,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
         case HOLD_EFFECT_THROAT_SPRAY:  // Does NOT need to be a damaging move
             if (gProtectStructs[gBattlerAttacker].targetAffected
              && gBattleMons[gBattlerAttacker].hp != 0
-             && gBattleMoves[gCurrentMove].flags & FLAG_SOUND
+             && MoveHasSound(gCurrentMove)
              && CompareStat(gBattlerAttacker, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN)
              && !NoAliveMonsForEitherParty())   // Don't activate if battle will end
             {
@@ -8524,7 +8537,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_PUNK_ROCK:
-        if (gBattleMoves[move].flags & FLAG_SOUND)
+        if (MoveHasSound(move))
             MulModifier(&modifier, UQ_4_12(1.3));
         break;
     case ABILITY_STEELY_SPIRIT:
@@ -9054,7 +9067,7 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_PUNK_ROCK:
-        if (gBattleMoves[move].flags & FLAG_SOUND)
+        if (MoveHasSound(move))
             MulModifier(&modifier, UQ_4_12(2.0));
         break;
     }
@@ -9954,6 +9967,10 @@ bool32 TestMoveFlags(u16 move, u32 flag)
     if (gBattleMoves[move].flags & flag)
         return TRUE;
     return FALSE;
+}
+
+bool32 MoveHasSound(u16 move){
+    return gBattleMoves[move].type == TYPE_SOUND || gBattleMoves[move].flags & FLAG_SOUND;
 }
 
 struct Pokemon *GetBattlerPartyData(u8 battlerId)

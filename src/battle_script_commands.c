@@ -2772,6 +2772,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
 
             if (gActiveBattler != gBattlersCount)
                 break;
+            if(!CanBePutToSleep(gEffectBattler))
+                break;
             if (!CanSleep(gEffectBattler))
                 break;
 
@@ -13699,7 +13701,7 @@ bool32 DoesSubstituteBlockMove(u8 battlerAtk, u8 battlerDef, u32 move)
     if (!(gBattleMons[battlerDef].status2 & STATUS2_SUBSTITUTE))
         return FALSE;
 #if B_SOUND_SUBSTITUTE >= GEN_6
-    else if (gBattleMoves[move].flags & FLAG_SOUND)
+    else if (MoveHasSound(move))
         return FALSE;
 #endif
     else if (gBattleMoves[move].flags & FLAG_HIT_IN_SUBSTITUTE)
