@@ -308,6 +308,7 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
+        
         if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
          && GetBattlerPosition(gActiveBattler) == B_POSITION_PLAYER_RIGHT
          && !(gAbsentBattlerFlags & gBitTable[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)])
@@ -326,10 +327,18 @@ static void HandleInputChooseAction(void)
             PlayerBufferExecCompleted();
         }else {
             if(!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)){
-                PlaySE(SE_SELECT);
-                ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
-                gActionSelectionCursor[gActiveBattler] = 3;
-                ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+                if(gActionSelectionCursor[gActiveBattler] == 3){
+                    PlaySE(SE_SELECT);
+                    TryHideLastUsedBall();
+
+                    BtlController_EmitTwoReturnValues(BUFFER_B, B_ACTION_RUN, 0);
+                    PlayerBufferExecCompleted();
+                } else {
+                    PlaySE(SE_SELECT);
+                    ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
+                    gActionSelectionCursor[gActiveBattler] = 3;
+                    ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+                }
             }
         }
     }

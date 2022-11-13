@@ -38,7 +38,8 @@ enum {
     INPUT_DPAD_RIGHT,
     INPUT_A_BUTTON,
     INPUT_B_BUTTON,
-    INPUT_LR_BUTTON,
+    INPUT_L_BUTTON,
+    INPUT_R_BUTTON,
     INPUT_SELECT,
     INPUT_START,
 };
@@ -390,6 +391,7 @@ static void ResetVHBlank(void);
 static void SetVBlank(void);
 static void VBlankCB_NamingScreen(void);
 static void NamingScreen_ShowBgs(void);
+static void SwapCharacterCase(void);
 static bool8 IsWideLetter(u8);
 
 void DoNamingScreen(u8 templateNum, u8 *destBuffer, u16 monSpecies, u16 monGender, u32 monPersonality, MainCallback returnCallback)
@@ -1462,6 +1464,9 @@ static bool8 HandleKeyboardEvent(void)
         DeleteTextCharacter();
         return FALSE;
     }
+    else if (input == INPUT_R_BUTTON){
+        SwapCharacterCase();
+    }
     else if (input == INPUT_START)
     {
         MoveCursorToOKButton();
@@ -1479,6 +1484,10 @@ static bool8 KeyboardKeyHandler_Character(u8 input)
     if (input == INPUT_A_BUTTON)
     {
         bool8 textFull = AddTextCharacter();
+
+        if(sNamingScreen->currentPage == KBPAGE_LETTERS_UPPER && GetTextEntryPosition() == 1){
+            MainState_StartPageSwap();
+        }
 
         SquishCursor();
         if (textFull)
@@ -1588,6 +1597,8 @@ static void Input_Enabled(struct Task *task)
         task->tKeyboardEvent = INPUT_B_BUTTON;
     else if (JOY_NEW(SELECT_BUTTON))
         task->tKeyboardEvent = INPUT_SELECT;
+    else if (JOY_NEW(SELECT_BUTTON))
+        task->tKeyboardEvent = INPUT_R_BUTTON;
     else if (JOY_NEW(START_BUTTON))
         task->tKeyboardEvent = INPUT_START;
     else
@@ -2077,6 +2088,20 @@ static void Debug_NamingScreenCaughtMon(void)
 static void Debug_NamingScreenNickname(void)
 {
     DoNamingScreen(NAMING_SCREEN_NICKNAME, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnToFieldWithOpenMenu);
+}
+
+static void SwapCharacterCase(void) {
+    u8 index = GetPreviousTextCaretPosition();
+
+    if(sNamingScreen->textBuffer[index] >= CHAR_A && sNamingScreen->textBuffer[index] <= CHAR_Z) {
+        sNamingScreen->textBuffer[index] = sNamingScreen->textBuffer[index] + 0x1A;
+    } else if(sNamingScreen->textBuffer[index] >= CHAR_a && sNamingScreen->textBuffer[index] <= CHAR_z){
+        sNamingScreen->textBuffer[index] = sNamingScreen->textBuffer[index] - 0x1A;
+    }
+
+    DrawTextEntry();
+    CopyBgTilemapBufferToVram(3);
+    PlaySE(SE_SELECT);
 }
 
 //--------------------------------------------------
@@ -2584,5 +2609,3 @@ static const struct SpritePalette sSpritePalettes[] =
     {gNamingScreenMenu_Pal[4], PALTAG_OK_BUTTON},
     {}
 };
-
-
