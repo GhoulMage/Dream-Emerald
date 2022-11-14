@@ -66,8 +66,8 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Toxel
 
 #### Rock/Sound
-*Boldore
-*Gigalith
+* Boldore
+* Gigalith
 
 #### Pure Sound
 * Whismur
