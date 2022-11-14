@@ -4,11 +4,79 @@
 
 I have been wanting to make my own hack of Pokémon Emerald for years and I decided to why not begin to work on it. For the time being it's just a lame git copy of pokeemerald Expansion with some added features.
 
+### Changed Pokémon
+
+#### Normal/Sound
+Audino
+Meloetta
+    Pirouette Form is **Sound/Fighting**
+
+#### Fairy/Sound
+Jigglypuff
+Wigglytuff
+Igglybuff
+
+#### Water/Sound
+Politoed
+Wailmer
+Wailord
+Brionne
+Primarina
+Tympole
+Palpitoad
+
+#### Ground/Sound
+Seismitoad
+
+#### Grass/Sound
+Maractus
+Rillaboom (Sound/Grass)
+
+#### Bug/Sound
+Yanma
+Yanmega
+Kricketot
+Kricketune
+
+#### Psychic/Sound
+Chimecho
+Chingling
+
+#### Ghost/Sound
+Mismagius
+
+#### Steel/Sound
+Bronzong
+
+#### Flying/Sound
+Chatot
+Woobat (Sound/Flying)
+Swoobat (Sound/Flying)
+
+#### Dragon/Sound
+Noibat (Sound/Dragon)
+Noivern (Sound/Dragon)
+
+#### Electric/Sound
+Voltorb
+Electrode
+Toxel
+
+#### Rock/Sound
+Boldore
+Gigalith
+
+#### Pure Sound
+Whismur
+Loudred
+Exploud
+
 ### Fakemon
 * **Dark Ralts** line
 
 #### Abilities
 * **Dark Power**: Normal attacks become Dark
+* **Ultrasonic**: Sound Attacks are stronger but harsher. (Deal and Receive +50% Sound Damage)
 
 #### Moves
 * **Psychic Inversion**: Super-effective on Dark Pokémon. Might cause flinch.
