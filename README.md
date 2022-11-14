@@ -4,72 +4,76 @@
 
 I have been wanting to make my own hack of Pokémon Emerald for years and I decided to why not begin to work on it. For the time being it's just a lame git copy of pokeemerald Expansion with some added features.
 
+
 ### Changed Pokémon
 
 #### Normal/Sound
-Audino
-Meloetta
-    Pirouette Form is **Sound/Fighting**
+* Audino
+* Meloetta
+
+#### Fighting/Sound
+* Meloetta Pirouette (Sound/Fighting)
 
 #### Fairy/Sound
-Jigglypuff
-Wigglytuff
-Igglybuff
+* Jigglypuff
+* Wigglytuff
+* Igglybuff
 
 #### Water/Sound
-Politoed
-Wailmer
-Wailord
-Brionne
-Primarina
-Tympole
-Palpitoad
+* Politoed
+* Wailmer
+* Wailord
+* Brionne
+* Primarina
+* Tympole
+* Palpitoad
 
 #### Ground/Sound
-Seismitoad
+* Seismitoad
 
 #### Grass/Sound
-Maractus
-Rillaboom (Sound/Grass)
+* Maractus
+* Rillaboom (Sound/Grass)
 
 #### Bug/Sound
-Yanma
-Yanmega
-Kricketot
-Kricketune
+* Yanma
+* Yanmega
+* Kricketot
+* Kricketune
 
 #### Psychic/Sound
-Chimecho
-Chingling
+* Chimecho
+* Chingling
 
 #### Ghost/Sound
-Mismagius
+* Mismagius
 
 #### Steel/Sound
-Bronzong
+* Bronzong
 
 #### Flying/Sound
-Chatot
-Woobat (Sound/Flying)
-Swoobat (Sound/Flying)
+* Chatot
+* Woobat (Sound/Flying)
+* Swoobat (Sound/Flying)
 
 #### Dragon/Sound
-Noibat (Sound/Dragon)
-Noivern (Sound/Dragon)
+* Noibat (Sound/Dragon)
+* Noivern (Sound/Dragon)
 
 #### Electric/Sound
-Voltorb
-Electrode
-Toxel
+* Voltorb
+* Electrode
+* Toxel
 
 #### Rock/Sound
-Boldore
-Gigalith
+*Boldore
+*Gigalith
 
 #### Pure Sound
-Whismur
-Loudred
-Exploud
+* Whismur
+* Loudred
+* Exploud
+
 
 ### Fakemon
 * **Dark Ralts** line
@@ -80,6 +84,7 @@ Exploud
 
 #### Moves
 * **Psychic Inversion**: Super-effective on Dark Pokémon. Might cause flinch.
+
 
 ### Quality Of Life Changes
 * Run indoors
@@ -92,6 +97,7 @@ Exploud
 * Switches to lowercase after inputting the first character
 * Expiring a Repel will prompt the use of another one
 
+
 ### Features/Changes
 * **Bug Type** rebalanced
 * **Ice Type** rebalanced
@@ -100,6 +106,7 @@ Exploud
 * Default Sound to Stereo
 * Wild Pokémon will drop their items after fainting
 * 15% Chance to find a double wild Pokémon encounter
+
 
 #### Planned for sure
 * Rebalancing Pokémon that need it
@@ -112,8 +119,10 @@ Exploud
 * Fakémon, original
 * Fakémon(?), type variations (like Psychic/Dark Ralts line, Grass/Sound Oddish line, etc.)
 
+
 ### Schedule
 * I'm just working on this **for fun**, I'm not gonna promise anything at anytime
+
 
 ### Known Bugs
 **Visual**
@@ -125,6 +134,7 @@ Exploud
 * Sound Pokémon should never fall asleep
 * Extrasensory effect is weird
 * Leveling a mon in a double battle sometimes freezes the game if you didn't read its pokédex prior to that?
+
 
 ### Credits
 * [pokeemerald decomp project (base rom)](https://github.com/pret/pokeemerald)
