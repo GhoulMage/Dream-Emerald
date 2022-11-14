@@ -28,6 +28,7 @@ static void Task_HandleMultichoiceInput(u8 taskId);
 static void Task_HandleYesNoInput(u8 taskId);
 static void Task_HandleMultichoiceGridInput(u8 taskId);
 static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 cursorPos);
+static void DrawMultichoiceMenuCustom(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 cursorPos, const struct MenuAction *actions, int count);
 static void InitMultichoiceCheckWrap(bool8 ignoreBPress, u8 count, u8 windowId, u8 multichoiceId);
 static void DrawLinkServicesMultichoiceMenu(u8 multichoiceId);
 static void CreatePCMultichoice(void);
@@ -90,13 +91,14 @@ static u16 GetLengthWithExpandedPlayerName(const u8 *str)
     return length;
 }
 
-static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 cursorPos)
+static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, u8 ignoreBPress, u8 cursorPos)
 {
-    int i;
-    u8 windowId;
-    u8 count = sMultichoiceLists[multichoiceId].count;
-    const struct MenuAction *actions = sMultichoiceLists[multichoiceId].list;
-    int width = 0;
+    DrawMultichoiceMenuCustom(left, top, multichoiceId, ignoreBPress, cursorPos, sMultichoiceLists[multichoiceId].list, sMultichoiceLists[multichoiceId].count);
+}
+
+static void DrawMultichoiceMenuCustom(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 cursorPos, const struct MenuAction *actions, int count)
+{
+    int i, windowId, width = 0;
     u8 newWidth;
 
     for (i = 0; i < count; i++)
@@ -112,6 +114,33 @@ static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, bool8 ignoreB
     InitMenuInUpperLeftCornerNormal(windowId, count, cursorPos);
     ScheduleBgCopyTilemapToVram(0);
     InitMultichoiceCheckWrap(ignoreBPress, count, windowId, multichoiceId);
+}
+const void TryDrawRepelMenu(void)
+{
+    static const u16 repelItems[] = {ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL};
+    struct MenuAction menuItems[4] = {NULL};
+    int i, count = 0;
+
+    for (i = 0; i < ARRAY_COUNT(repelItems); i++)
+    {
+        if (CheckBagHasItem(repelItems[i], 1))
+        {
+            VarSet(VAR_0x8004 + count, repelItems[i]);
+            menuItems[count].text = ItemId_GetName(repelItems[i]);
+            count++;
+        }
+    }
+
+    if (count > 1)
+        DrawMultichoiceMenuCustom(0, 0, 0, FALSE, 0, menuItems, count);
+
+    gSpecialVar_Result = (count > 1);
+}
+
+const void HandleRepelMenuChoice(void)
+{
+    gSpecialVar_0x8004 = VarGet(VAR_0x8004 + gSpecialVar_Result); // Get item Id;
+    VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_0x8004));
 }
 
 #define tLeft           data[0]
