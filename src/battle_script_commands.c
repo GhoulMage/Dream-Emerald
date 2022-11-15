@@ -2024,11 +2024,6 @@ static void Cmd_adjustdamage(void)
 
     GET_MOVE_TYPE(gCurrentMove, moveType);
 
-    if(gBattleMoves[gCurrentMove].effect == EFFECT_SONICBOOM
-        && (gBattleMons[gBattlerTarget].type1 == TYPE_SOUND || gBattleMons[gBattlerTarget].type2 == TYPE_SOUND)) {
-        gBattleMoveDamage *= 2;
-    }
-
     if (DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove))
         goto END;
     if (DoesDisguiseBlockMove(gBattlerTarget, gCurrentMove))
