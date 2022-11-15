@@ -76,7 +76,9 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 
 
 ### Fakemon
-* **Dark Ralts** line
+* Dark Ralts
+* Dark Kirlia
+* Dark Gardevoir
 
 #### Abilities
 * **Dark Power**: Normal attacks become Dark

@@ -1328,22 +1328,26 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     {
         .name = COMPOUND_STRING("Sonic Boom"),
         .description = COMPOUND_STRING(
-            "Launches shock waves that\n"
-            "always inflict 20 HP damage."),
+            "Launches shock waves that inflict\n"
+            "40 HP damage, twice to Sound."),
         .effect = EFFECT_FIXED_DAMAGE_ARG,
         .power = 1,
-        .type = TYPE_NORMAL,
+        .type = TYPE_SOUND,
         .accuracy = 90,
         .pp = 20,
         .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
+        .priority = 1,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .argument = 20,
+        .argument = 40,
         .contestEffect = CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = Move_SONIC_BOOM,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = EFFECT_SONIC_BOOM,
+            .chance = 100
+        }),
     },
 
     [MOVE_DISABLE] =
@@ -22035,6 +22039,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
+        .battleAnimScript = Move_PSYCHIC_INVERSION,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
             .chance = 30,
