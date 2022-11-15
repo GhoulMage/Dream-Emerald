@@ -96,6 +96,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_GRASS_PELT] = 2,
     [ABILITY_GRASSY_SURGE] = 8,
     [ABILITY_GUTS] = 6,
+    [ABILITY_DRAGON_SCALE] = 7,
     [ABILITY_HARVEST] = 5,
     [ABILITY_HEALER] = 0,
     [ABILITY_HEATPROOF] = 5,
@@ -2735,10 +2736,11 @@ bool32 ShouldPoisonSelf(u8 battler, u16 ability)
       || ability == ABILITY_POISON_HEAL
       || ability == ABILITY_QUICK_FEET
       || ability == ABILITY_MAGIC_GUARD
+      || ability == ABILITY_DRAGON_SCALE
       || (ability == ABILITY_TOXIC_BOOST && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
-      || (ability == ABILITY_GUTS && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
+      || (ability == ABILITY_GUTS && HasMoveWithSplit(battler, SPLIT_PHYSICAL)
       || HasMoveEffect(battler, EFFECT_FACADE)
-      || HasMoveEffect(battler, EFFECT_PSYCHO_SHIFT)))
+      || HasMoveEffect(battler, EFFECT_PSYCHO_SHIFT))))
         return TRUE;    // battler can be poisoned and has move/ability that synergizes with being poisoned
     return FALSE;
 }
@@ -2820,6 +2822,7 @@ bool32 ShouldBurnSelf(u8 battler, u16 ability)
      ability == ABILITY_QUICK_FEET
       || ability == ABILITY_HEATPROOF
       || ability == ABILITY_MAGIC_GUARD
+      || ability == ABILITY_DRAGON_SCALE
       || (ability == ABILITY_FLARE_BOOST && HasMoveWithSplit(battler, SPLIT_SPECIAL))
       || (ability == ABILITY_GUTS && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
       || HasMoveEffect(battler, EFFECT_FACADE)
