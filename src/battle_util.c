@@ -9776,6 +9776,12 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
                 RecordAbilityBattle(battlerDef, ABILITY_FUR_COAT);
         }
         break;
+    case ABILITY_DRAGON_SCALE:
+        if(!usesDefStat)
+            MulModifier(&modifier, UQ_4_12(1.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_DRAGON_SCALE);
+        break;
     case ABILITY_GRASS_PELT:
         if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && usesDefStat)
         {
