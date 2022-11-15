@@ -146,7 +146,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
 #if P_GEN_4_POKEMON == TRUE
     [SPECIES_TOGETIC]               = {{EVO_ITEM, ITEM_SHINY_STONE, SPECIES_TOGEKISS}},
 #endif
-    [SPECIES_NATU]                  = {{EVO_LEVEL, 25, SPECIES_XATU}},
+    [SPECIES_NATU]                  = {{EVO_LEVEL, 27, SPECIES_XATU}},
     [SPECIES_MAREEP]                = {{EVO_LEVEL, 15, SPECIES_FLAAFFY}},
     [SPECIES_FLAAFFY]               = {{EVO_LEVEL, 30, SPECIES_AMPHAROS}},
     [SPECIES_AMPHAROS]              = {{EVO_MEGA_EVOLUTION, ITEM_AMPHAROSITE, SPECIES_AMPHAROS_MEGA}},

@@ -8414,7 +8414,7 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
         break;
     case EFFECT_EXPANDING_FORCE:
         if (IsBattlerTerrainAffected(gBattlerAttacker, STATUS_FIELD_PSYCHIC_TERRAIN))
-            MulModifier(&basePower, UQ_4_12(1.5));
+            MulModifier(&basePower, UQ_4_12(1.3)); //Nerf
         break;
     case EFFECT_RISING_VOLTAGE:
         if (IsBattlerTerrainAffected(gBattlerTarget, STATUS_FIELD_ELECTRIC_TERRAIN))
@@ -8861,7 +8861,7 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
         if (moveType == TYPE_WATER && gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 3))
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
-    case ABILITY_ULTRASOUND:
+    case ABILITY_ULTRASONIC:
         if(moveType == TYPE_SOUND)
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
@@ -8926,7 +8926,7 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
         if (IS_MOVE_SPECIAL(move))
             MulModifier(&modifier, UQ_4_12(0.5));
         break;
-    case ABILITY_ULTRASOUND:
+    case ABILITY_ULTRASONIC:
         if(moveType == TYPE_SOUND){
             MulModifier(&modifier, UQ_4_12(1.5));
         }
