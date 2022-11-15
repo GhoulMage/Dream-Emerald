@@ -1356,7 +1356,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         FOOTPRINT(Natu)
         .levelUpLearnset = sNatuLevelUpLearnset,
         .teachableLearnset = sNatuTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_XATU}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_XATU}),
     },
 
     [SPECIES_XATU] =
