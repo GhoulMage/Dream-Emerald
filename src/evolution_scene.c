@@ -167,7 +167,7 @@ static void CB2_BeginEvolutionScene(void)
 #define tPartyId            data[10]
 
 #define TASK_BIT_CAN_STOP       (1 << 0)
-#define TASK_BIT_LEARN_MOVE     (1 << 7)
+#define TASK_BIT_PLAYING_MUSIC  (1 << 7)
 
 static void Task_BeginEvolutionScene(u8 taskId)
 {
@@ -610,6 +610,7 @@ enum {
     EVOSTATE_RESTORE_SCREEN,
     EVOSTATE_EVO_MON_ANIM,
     EVOSTATE_SET_MON_EVOLVED,
+    EVOSTATE_RENAME_MON,
     EVOSTATE_TRY_LEARN_MOVE,
     EVOSTATE_END,
     EVOSTATE_CANCEL,
@@ -771,7 +772,7 @@ static void Task_EvolutionScene(u8 taskId)
             StringExpandPlaceholders(gStringVar4, gText_CongratsPkmnEvolved);
             BattlePutTextOnWindow(gStringVar4, B_WIN_MSG);
             PlayBGM(MUS_EVOLVED);
-            gTasks[taskId].tState++;
+            gTasks[taskId].tState = EVOSTATE_RENAME_MON;
             SetMonData(mon, MON_DATA_SPECIES, (void *)(&gTasks[taskId].tPostEvoSpecies));
             CalculateMonStats(mon);
             EvolutionRenameMon(mon, gTasks[taskId].tPreEvoSpecies, gTasks[taskId].tPostEvoSpecies);
@@ -780,21 +781,36 @@ static void Task_EvolutionScene(u8 taskId)
             IncrementGameStat(GAME_STAT_EVOLVED_POKEMON);
         }
         break;
+    case EVOSTATE_RENAME_MON:
+        if(!IsTextPrinterActive(0)) {
+            if(!gTasks[taskId].tEvoWasStopped){
+                sEvoGraphicsTaskId = DisplayCaughtMonDexPage(GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonData(mon, MON_DATA_OT_ID, NULL), GetMonData(mon, MON_DATA_PERSONALITY, NULL));
+                
+                if (!(gTasks[taskId].tBits & TASK_BIT_PLAYING_MUSIC))
+                {
+                    StopMapMusic();
+                    Overworld_PlaySpecialMapMusic();
+                    gTasks[taskId].tBits |= TASK_BIT_PLAYING_MUSIC;
+                }
+            }
+            gTasks[taskId].tState++;
+        }
+        break;
     case EVOSTATE_TRY_LEARN_MOVE:
-        if (!IsTextPrinterActive(0))
+        if (!gTasks[sEvoGraphicsTaskId].isActive && !IsTextPrinterActive(0))
         {
             var = MonTryLearningNewMoveEvolution(mon, gTasks[taskId].tLearnsFirstMove);
             if (var != MOVE_NONE && !gTasks[taskId].tEvoWasStopped)
             {
                 u8 text[20];
 
-                if (!(gTasks[taskId].tBits & TASK_BIT_LEARN_MOVE))
+                if (!(gTasks[taskId].tBits & TASK_BIT_PLAYING_MUSIC))
                 {
                     StopMapMusic();
                     Overworld_PlaySpecialMapMusic();
+                    gTasks[taskId].tBits |= TASK_BIT_PLAYING_MUSIC;
                 }
 
-                gTasks[taskId].tBits |= TASK_BIT_LEARN_MOVE;
                 gTasks[taskId].tLearnsFirstMove = FALSE;
                 gTasks[taskId].tLearnMoveState = MVSTATE_INTRO_MSG_1;
                 GetMonData(mon, MON_DATA_NICKNAME, text);
@@ -817,10 +833,11 @@ static void Task_EvolutionScene(u8 taskId)
     case EVOSTATE_END:
         if (!gPaletteFade.active)
         {
-            if (!(gTasks[taskId].tBits & TASK_BIT_LEARN_MOVE))
+            if (!(gTasks[taskId].tBits & TASK_BIT_PLAYING_MUSIC))
             {
                 StopMapMusic();
                 Overworld_PlaySpecialMapMusic();
+                gTasks[taskId].tBits |= TASK_BIT_PLAYING_MUSIC;
             }
             if (!gTasks[taskId].tEvoWasStopped)
                 CreateShedinja(gTasks[taskId].tPreEvoSpecies, mon);
@@ -1067,6 +1084,7 @@ enum {
     T_EVOSTATE_EVO_SOUND,
     T_EVOSTATE_EVO_MON_ANIM,
     T_EVOSTATE_SET_MON_EVOLVED,
+    T_EVOSTATE_RENAME_MON,
     T_EVOSTATE_TRY_LEARN_MOVE,
     T_EVOSTATE_END,
     T_EVOSTATE_CANCEL,
@@ -1196,7 +1214,7 @@ static void Task_TradeEvolutionScene(u8 taskId)
             StringExpandPlaceholders(gStringVar4, gText_CongratsPkmnEvolved);
             DrawTextOnTradeWindow(0, gStringVar4, 1);
             PlayFanfare(MUS_EVOLVED);
-            gTasks[taskId].tState++;
+            gTasks[taskId].tState = T_EVOSTATE_RENAME_MON;
             SetMonData(mon, MON_DATA_SPECIES, (&gTasks[taskId].tPostEvoSpecies));
             CalculateMonStats(mon);
             EvolutionRenameMon(mon, gTasks[taskId].tPreEvoSpecies, gTasks[taskId].tPostEvoSpecies);
@@ -1205,15 +1223,23 @@ static void Task_TradeEvolutionScene(u8 taskId)
             IncrementGameStat(GAME_STAT_EVOLVED_POKEMON);
         }
         break;
+    case T_EVOSTATE_RENAME_MON:
+        if(!IsTextPrinterActive(0)) {
+            if(!gTasks[taskId].tEvoWasStopped){
+                sEvoGraphicsTaskId = DisplayCaughtMonDexPage(GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonData(mon, MON_DATA_OT_ID, NULL), GetMonData(mon, MON_DATA_PERSONALITY, NULL));
+            }
+            gTasks[taskId].tState++;
+        }
+        break;
     case T_EVOSTATE_TRY_LEARN_MOVE:
-        if (!IsTextPrinterActive(0) && IsFanfareTaskInactive() == TRUE)
+        if (!gTasks[sEvoGraphicsTaskId].isActive)
         {
             var = MonTryLearningNewMoveEvolution(mon, gTasks[taskId].tLearnsFirstMove);
             if (var != MOVE_NONE && !gTasks[taskId].tEvoWasStopped)
             {
                 u8 text[20];
 
-                gTasks[taskId].tBits |= TASK_BIT_LEARN_MOVE;
+                gTasks[taskId].tBits |= TASK_BIT_PLAYING_MUSIC;
                 gTasks[taskId].tLearnsFirstMove = FALSE;
                 gTasks[taskId].tLearnMoveState = 0;
                 GetMonData(mon, MON_DATA_NICKNAME, text);
