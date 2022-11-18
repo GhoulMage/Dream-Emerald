@@ -583,6 +583,7 @@ static void Cmd_handleballthrow(void);
 static void Cmd_givecaughtmon(void);
 static void Cmd_trysetcaughtmondexflags(void);
 static void Cmd_displaydexinfo(void);
+static void Cmd_DisplayMonDexInfo(u8 mon);
 static void Cmd_trygivecaughtmonnick(void);
 static void Cmd_subattackerhpbydmg(void);
 static void Cmd_removeattackerstatus1(void);
@@ -15551,6 +15552,51 @@ static void Cmd_trysetcaughtmondexflags(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
+
+//void DisplayMonDexInfo(u16 species, u32 otId, u32 personality)
+//{
+//    //u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+//
+//    switch (gBattleCommunication[0])
+//    {
+//    case 0:
+//        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+//        gBattleCommunication[0]++;
+//        break;
+//    case 1:
+//        if (!gPaletteFade.active)
+//        {
+//            FreeAllWindowBuffers();
+//            gBattleCommunication[TASK_ID] = DisplayCaughtMonDexPage(SpeciesToNationalPokedexNum(species), otId, personality);
+//            gBattleCommunication[0]++;
+//        }
+//        break;
+//    case 2:
+//        if (!gPaletteFade.active
+//            && gMain.callback2 == BattleMainCB2
+//            && !gTasks[gBattleCommunication[TASK_ID]].isActive)
+//        {
+//            SetVBlankCallback(VBlankCB_Battle);
+//            gBattleCommunication[0]++;
+//        }
+//        break;
+//    case 3:
+//        InitBattleBgsVideo();
+//        LoadBattleTextboxAndBackground();
+//        gBattle_BG3_X = 256;
+//        gBattleCommunication[0]++;
+//        break;
+//    case 4:
+//        if (!IsDma3ManagerBusyWithBgCopy())
+//        {
+//            BeginNormalPaletteFade(PALETTES_BG, 0, 16, 0, RGB_BLACK);
+//            ShowBg(0);
+//            ShowBg(3);
+//            gBattleCommunication[0]++;
+//        }
+//        break;
+//    }
+//}
 
 static void Cmd_displaydexinfo(void)
 {
