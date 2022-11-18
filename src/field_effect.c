@@ -1019,7 +1019,7 @@ bool8 FldEff_PokecenterHeal(void)
     u32 nPokemon;
     struct Task *task;
 
-    nPokemon = (OW_IGNORE_EGGS_ON_HEAL <= GEN_3) ? CalculatePlayerPartyCount() : CountPartyNonEggMons();
+    nPokemon = CountPartyNonEggMons();
     task = &gTasks[CreateTask(Task_PokecenterHeal, 0xff)];
     task->tNumMons = nPokemon;
     task->tFirstBallX = 93;

@@ -7722,6 +7722,7 @@ static const struct LevelUpMove sKirliaDLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sGardevoirDLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 0, MOVE_PSYCHIC_INVERSION),
     LEVEL_UP_MOVE( 1, MOVE_SCRATCH),
     LEVEL_UP_MOVE( 1, MOVE_GROWL),
     LEVEL_UP_MOVE( 1, MOVE_FRUSTRATION),
@@ -7743,7 +7744,6 @@ static const struct LevelUpMove sGardevoirDLevelUpLearnset[] = {
     LEVEL_UP_MOVE(45, MOVE_HEADBUTT),
     LEVEL_UP_MOVE(45, MOVE_ZEN_HEADBUTT),
     LEVEL_UP_MOVE(49, MOVE_BADDY_BAD),
-    LEVEL_UP_MOVE(52, MOVE_PSYCHIC_INVERSION),
     LEVEL_UP_MOVE(57, MOVE_JAW_LOCK),
     LEVEL_UP_END
 };
