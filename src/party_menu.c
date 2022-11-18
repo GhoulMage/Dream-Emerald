@@ -83,6 +83,7 @@ enum {
     MENU_ITEM,
     MENU_GIVE,
     MENU_TAKE_ITEM,
+    MENU_MOVE_ITEM,
     MENU_MAIL,
     MENU_TAKE_MAIL,
     MENU_READ,
@@ -327,9 +328,11 @@ static void TryTutorSelectedMon(u8);
 static void TryGiveMailToSelectedMon(u8);
 static void TryGiveItemOrMailToSelectedMon(u8);
 static void SwitchSelectedMons(u8);
+static void SwitchSelectedMonsItems(u8);
 static void TryEnterMonForMinigame(u8, u8);
 static void Task_TryCreateSelectionWindow(u8);
 static void FinishTwoMonAction(u8);
+static void FinishItemSwapAction(u8);
 static void CancelParticipationPrompt(u8);
 static bool8 DisplayCancelChooseMonYesNo(u8);
 static const u8 *GetFacilityCancelString(void);
@@ -478,6 +481,7 @@ static void CursorCb_Cancel1(u8);
 static void CursorCb_Item(u8);
 static void CursorCb_Give(u8);
 static void CursorCb_TakeItem(u8);
+static void CursorCb_MoveItem(u8);
 static void CursorCb_Mail(u8);
 static void CursorCb_Read(u8);
 static void CursorCb_TakeMail(u8);
@@ -1322,7 +1326,7 @@ static u8 GetPartyBoxPaletteFlags(u8 slot, u8 animNum)
         palFlags |= PARTY_PAL_MULTI_ALT;
     if (gPartyMenu.action == PARTY_ACTION_SWITCHING)
         palFlags |= PARTY_PAL_SWITCHING;
-    if (gPartyMenu.action == PARTY_ACTION_SWITCH)
+    if (gPartyMenu.action == PARTY_ACTION_SWITCH || gPartyMenu.action == PARTY_ACTION_SWITCH_ITEM)
     {
         if (slot == gPartyMenu.slotId || slot == gPartyMenu.slotId2)
             palFlags |= PARTY_PAL_TO_SWITCH;
@@ -1431,7 +1435,7 @@ void Task_HandleChooseMonInput(u8 taskId)
 
 static s8 *GetCurrentPartySlotPtr(void)
 {
-    if (gPartyMenu.action == PARTY_ACTION_SWITCH || gPartyMenu.action == PARTY_ACTION_SOFTBOILED)
+    if (gPartyMenu.action == PARTY_ACTION_SWITCH || gPartyMenu.action == PARTY_ACTION_SOFTBOILED || gPartyMenu.action == PARTY_ACTION_SWITCH_ITEM)
         return &gPartyMenu.slotId2;
     else
         return &gPartyMenu.slotId;
@@ -1487,6 +1491,13 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
                 PlaySE(SE_SELECT);
                 PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
                 TryGiveItemOrMailToSelectedMon(taskId);
+            }
+            break;
+        case PARTY_ACTION_SWITCH_ITEM:
+            if(IsSelectedMonNotEgg((u8 *)slotPtr)){
+                PlaySE(SE_SELECT);
+                PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+                SwitchSelectedMonsItems(taskId);
             }
             break;
         case PARTY_ACTION_SWITCH:
@@ -1553,6 +1564,9 @@ static void HandleChooseMonCancel(u8 taskId, s8 *slotPtr)
     case PARTY_ACTION_SOFTBOILED:
         PlaySE(SE_SELECT);
         FinishTwoMonAction(taskId);
+        break;
+    case PARTY_ACTION_SWITCH_ITEM:
+        FinishItemSwapAction(taskId);
         break;
     case PARTY_ACTION_MINIGAME:
         PlaySE(SE_SELECT);
@@ -3000,6 +3014,16 @@ static void CursorCb_Switch(u8 taskId)
     gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 
+static void CursorCb_SwitchItem(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+    gPartyMenu.action = PARTY_ACTION_SWITCH_ITEM;
+    DisplayPartyMenuStdMessage(PARTY_MSG_MOVE_TO_WHERE);
+    AnimatePartySlot(gPartyMenu.slotId, 1);
+    gPartyMenu.slotId2 = gPartyMenu.slotId;
+    gTasks[taskId].func = Task_HandleChooseMonInput;
+}
+
 #define tSlot1Left     data[0]
 #define tSlot1Top      data[1]
 #define tSlot1Width    data[2]
@@ -3012,6 +3036,28 @@ static void CursorCb_Switch(u8 taskId)
 #define tSlot2Offset   data[9]
 #define tSlot1SlideDir data[10]
 #define tSlot2SlideDir data[11]
+
+static void SwitchSelectedMonsItems(u8 taskId){
+    if (gPartyMenu.slotId2 != gPartyMenu.slotId)
+    {
+        u16 item1 = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HELD_ITEM);
+        u16 item2 = GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_HELD_ITEM);
+
+        GiveItemToMon(&gPlayerParty[gPartyMenu.slotId], item2);
+        GiveItemToMon(&gPlayerParty[gPartyMenu.slotId2], item1);
+
+        if(item2 == ITEM_NONE) {
+            DisplayGaveHeldItemMessage(&gPlayerParty[gPartyMenu.slotId2], item1, TRUE, 1);
+        } else {
+            DisplaySwitchedHeldItemMessage(item1, item2, TRUE);
+        }
+        
+        UpdatePartyMonHeldItemSprite(&gPlayerParty[gPartyMenu.slotId], &sPartyMenuBoxes[gPartyMenu.slotId]);
+        UpdatePartyMonHeldItemSprite(&gPlayerParty[gPartyMenu.slotId2], &sPartyMenuBoxes[gPartyMenu.slotId2]);
+        
+        FinishItemSwapAction(taskId);
+    }
+}
 
 static void SwitchSelectedMons(u8 taskId)
 {
@@ -3228,7 +3274,7 @@ static void SwitchPartyMon(void)
     SwitchMenuBoxSprites(&menuBoxes[0]->statusSpriteId, &menuBoxes[1]->statusSpriteId);
 }
 
-// Finish switching mons or using Softboiled
+// Finish switching mons, items or using Softboiled
 static void FinishTwoMonAction(u8 taskId)
 {
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
@@ -3238,6 +3284,16 @@ static void FinishTwoMonAction(u8 taskId)
     AnimatePartySlot(gPartyMenu.slotId2, 1);
     DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     gTasks[taskId].func = Task_HandleChooseMonInput;
+}
+
+static void FinishItemSwapAction(u8 taskId){
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+    gPartyMenu.action = PARTY_ACTION_CHOOSE_MON;
+    AnimatePartySlot(gPartyMenu.slotId, 0);
+    gPartyMenu.slotId = gPartyMenu.slotId2;
+    AnimatePartySlot(gPartyMenu.slotId2, 1);
+
+    gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
 }
 
 #undef tSlot1Left
@@ -3291,6 +3347,7 @@ static void CB2_SelectBagItemToGive(void)
     else
         GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_PARTY, CB2_GiveHoldItem);
 }
+
 
 static void CB2_GiveHoldItem(void)
 {
@@ -3461,6 +3518,28 @@ static void Task_UpdateHeldItemSprite(u8 taskId)
                 DisplayPartyPokemonDescriptionText(PARTYBOX_DESC_DONT_HAVE, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
         }
         Task_ReturnToChooseMonAfterText(taskId);
+    }
+}
+
+static void CursorCb_MoveItem(u8 taskId)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
+
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+    
+    if(item == ITEM_NONE){
+        PlaySE(SE_FAILURE);
+        GetMonNickname(mon, gStringVar1);
+        StringExpandPlaceholders(gStringVar4, gText_PkmnNotHolding);
+        DisplayPartyMenuMessage(gStringVar4, TRUE);
+
+        ScheduleBgCopyTilemapToVram(2);
+        gTasks[taskId].func = Task_UpdateHeldItemSprite;
+    } else {
+        PlaySE(SE_SELECT);
+        CursorCb_SwitchItem(taskId);
     }
 }
 
