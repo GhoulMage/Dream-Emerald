@@ -8,6 +8,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 ### Features/Changes
 * **Bug Type** rebalanced
 * **Ice Type** rebalanced
+* **Poison** is super-effective against fairy, and also resists it.
 * **Sound Type**
 * Default Text Speed to Fast
 * Default Sound to Stereo
@@ -15,6 +16,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * 15% Chance to find a double wild Pokémon encounter
 * Mostly updated to Gen 8
 * Mega Evolution
+* Hail weather boosts Ice Types' Defense by 50%
 
 
 ### Quality Of Life Changes

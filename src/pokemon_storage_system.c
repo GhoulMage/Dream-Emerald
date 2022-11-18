@@ -10162,3 +10162,5 @@ void UpdateSpeciesSpritePSS(struct BoxPokemon *boxMon)
     }
     sJustOpenedBag = FALSE;
 }
+
+
