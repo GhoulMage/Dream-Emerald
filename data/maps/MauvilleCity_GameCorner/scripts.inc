@@ -357,8 +357,8 @@ MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM::
 	goto MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
 	end
 
-MauvilleCity_GameCorner_EventScript_NoRoomForTM::
-	call Common_EventScript_BagIsFull
+MauvilleCity_GameCorner_EventScript_YouAlreadyHaveThis::
+	msgbox gText_YouAlreadyHaveThis, MSGBOX_DEFAULT
 	goto MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
 	end
 
