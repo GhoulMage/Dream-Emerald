@@ -2141,6 +2141,7 @@ extern const u8 gText_Learned[];
 extern const u8 gText_Have[];
 extern const u8 gText_DontHave[];
 extern const u8 gText_Take[];
+extern const u8 gText_Move[];
 extern const u8 gText_Mail[];
 extern const u8 gText_Take2[];
 extern const u8 gText_Read2[];
