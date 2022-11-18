@@ -142,7 +142,7 @@ s32 DoPoisonFieldEffect(void)
                 if(hp == GetMonData(pokemon, MON_DATA_MAX_HP) || ++hp == GetMonData(pokemon, MON_DATA_MAX_HP))
                     hp = GetMonData(pokemon, MON_DATA_MAX_HP);
 
-                SetMonData(pokmon, MON_DATA_HP, &hp);
+                SetMonData(pokemon, MON_DATA_HP, &hp);
             }
         }
         pokemon++;
