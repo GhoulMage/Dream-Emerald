@@ -18,6 +18,7 @@
 #include "constants/field_poison.h"
 #include "constants/form_change_types.h"
 #include "constants/party_menu.h"
+#include "constants/abilities.h"
 
 static bool32 IsMonValidSpecies(struct Pokemon *pokemon)
 {
@@ -134,13 +135,21 @@ s32 DoPoisonFieldEffect(void)
     {
         if (GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN)
         {
-            // Apply poison damage
-            hp = GetMonData(pokemon, MON_DATA_HP);
-            if (hp == 1 || --hp == 1)
-                numFainted++;
+            if(GetMonAbility(&gPlayerParty[i]) != ABILITY_POISON_HEAL){
+                // Apply poison damage
+                hp = GetMonData(pokemon, MON_DATA_HP);
+                if (hp == 1 || --hp == 1)
+                    numFainted++;
 
-            SetMonData(pokemon, MON_DATA_HP, &hp);
-            numPoisoned++;
+                SetMonData(pokemon, MON_DATA_HP, &hp);
+                numPoisoned++;
+            } else {
+                hp = GetMonData(pokemon, MON_DATA_HP);
+                if(hp == GetMonData(pokemon, MON_DATA_MAX_HP) || ++hp == GetMonData(pokemon, MON_DATA_MAX_HP))
+                    hp = GetMonData(pokemon, MON_DATA_MAX_HP);
+
+                SetMonData(pokmon, MON_DATA_HP, &hp);
+            }
         }
         pokemon++;
     }
