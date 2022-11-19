@@ -241,7 +241,7 @@
 #define STRINGID_SUNLIGHTGOTBRIGHT                    240
 #define STRINGID_SUNLIGHTSTRONG                       241
 #define STRINGID_SUNLIGHTFADED                        242
-#define STRINGID_STARTEDHAIL                          243
+#define STRINGID_HAILFALLS                            243
 #define STRINGID_HAILCONTINUES                        244
 #define STRINGID_HAILSTOPPED                          245
 #define STRINGID_FAILEDTOSPITUP                       246
