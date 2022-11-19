@@ -311,22 +311,31 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIn
     u8 max;
     u8 range;
     u8 rand;
+    u8 curvedLevel;
+    u8 curveAmount;
 
-    if (LURE_STEP_COUNT == 0)
-    {
-        // Make sure minimum level is less than maximum level
-        if (wildPokemon[wildMonIndex].maxLevel >= wildPokemon[wildMonIndex].minLevel)
+    if (LURE_STEP_COUNT == 0) {
+    // Make sure minimum level is less than maximum level
+    if (wildPokemon[wildMonIndex].maxLevel >= wildPokemon[wildMonIndex].minLevel)
         {
             min = wildPokemon[wildMonIndex].minLevel;
             max = wildPokemon[wildMonIndex].maxLevel;
         }
         else
         {
-            min = wildPokemon[wildMonIndex].maxLevel;
+            min = wildPokemon[wildMonIndex].minLevel; //If minimum level is greater, set both as equal
             max = wildPokemon[wildMonIndex].minLevel;
         }
-        range = max - min + 1;
-        rand = Random() % range;
+
+        curvedLevel = GetPartyMonCurvedLevel();
+        if(max < curvedLevel)
+            curveAmount = (((3 * curvedLevel) + max) / 4) - max;
+
+    range = max - min + 1;
+    if ((range < (curveAmount * 4) && (range != 0)))
+        range = curveAmount / 4;
+
+    rand = Random() % range;
 
         // check ability for max level mon
         if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
@@ -335,13 +344,13 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIn
             if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
             {
                 if (Random() % 2 == 0)
-                    return max;
+                    return max + curveAmount;
 
                 if (rand != 0)
                     rand--;
             }
         }
-        return min + rand;
+        return min + rand + curveAmount;
     }
     else
     {
