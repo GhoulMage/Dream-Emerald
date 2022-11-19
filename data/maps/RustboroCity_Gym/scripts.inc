@@ -214,7 +214,7 @@ RustboroCity_Gym_Text_ExplainRockTomb:
 	.string "rocks, it also lowers SPEED.\p"
 	.string "If you use a TM, it instantly teaches\n"
 	.string "the move to a POKéMON.\p"
- 	.string "And don't worry, a TM can be used as\n
+ 	.string "And don't worry, a TM can be used as\n"
 	.string "many times as you want.$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
