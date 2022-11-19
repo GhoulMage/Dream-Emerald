@@ -8,7 +8,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 ### Features/Changes
 * **Bug Type** rebalanced
 * **Ice Type** rebalanced
-* **Poison** is super-effective against fairy, and also resists it.
+* **Poison** is super-effective against fairy, and also resists it
 * **Sound Type**
 * Default Text Speed to Fast
 * Default Sound to Stereo
@@ -16,7 +16,9 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * 15% Chance to find a double wild Pokémon encounter
 * Mostly updated to Gen 8
 * Mega Evolution
-* Wild Pokémon Levels are curved to your Party average level, there's a 5% chance you will find their evolved form
+* Fixed Overworld Snow
+* Overworld Snow starts Hail weather in battle
+
 
 ### Quality Of Life Changes
 * Run indoors
@@ -25,9 +27,10 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * No need for Move Deleter for HMs
 * Summary Screen Nature stats are coloured, IVs and EVs appear by pressing A Button
 * Summary Screen wraps to first/last pokémon (hate this wasn't a default)
-* Easily swap between lower and upper case with R Button in the Naming screen.
+* Easily swap between lower and upper case with R Button in the Naming screen
 * Switches to lowercase after inputting the first character
 * Expiring a Repel will prompt the use of another one
+* Eggs hatch at level 1
 
 
 ### Pokémon Sound Type Added
@@ -115,6 +118,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 
 #### Mechanics
 * **Hail** weather boosts Ice Types' Defense by 50%
+* Wild Pokémon Levels are curved to your Party average level, there's a 5% chance you will find their evolved form
 
 
 #### Planned for sure
