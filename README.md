@@ -16,8 +16,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * 15% Chance to find a double wild Pokémon encounter
 * Mostly updated to Gen 8
 * Mega Evolution
-* Hail weather boosts Ice Types' Defense by 50%
-
+* Wild Pokémon Levels are curved to your Party average level, there's a 5% chance you will find their evolved form
 
 ### Quality Of Life Changes
 * Run indoors
@@ -113,6 +112,9 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 
 #### Moves
 * **Psychic Inversion**: Super-effective on Dark Pokémon. Might cause flinch.
+
+#### Mechanics
+* **Hail** weather boosts Ice Types' Defense by 50%
 
 
 #### Planned for sure
