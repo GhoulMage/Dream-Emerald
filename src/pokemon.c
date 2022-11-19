@@ -58,7 +58,7 @@
 #include "constants/weather.h"
 #include "constants/party_menu.h"
 
-#define FRIENDSHIP_EVO_THRESHOLD ((P_FRIENDSHIP_EVO_THRESHOLD >= GEN_9) ? 160 : 220)
+#define FRIENDSHIP_EVO_THRESHOLD 220
 
 struct SpeciesItem
 {
