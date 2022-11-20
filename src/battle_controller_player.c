@@ -1755,12 +1755,16 @@ static void MoveSelectionDisplayMoveType(u32 battler)
         else
             type = gMovesInfo[MOVE_IVY_CUDGEL].type;
     }
-    else
+    else if(moveInfo->moves[gMoveSelectionCursor[gActiveBattler]] == MOVE_HIDDEN_POWER){
+        type = GetMonHiddenPowerType(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]]) & 0x3F;
+    } else {
         type = gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
+    }
 
     StringCopy(txtPtr, gTypesInfo[type].name);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
 
+    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
     MoveSelectionDisplaySplitIcon();
 }
 
