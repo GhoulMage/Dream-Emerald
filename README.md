@@ -31,6 +31,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Switches to lowercase after inputting the first character
 * Expiring a Repel will prompt the use of another one
 * Eggs hatch at level 1
+* Use Pokéball out of battle to change Pokéballs of your Pokémon
 
 
 ### Pokémon Sound Type Added
