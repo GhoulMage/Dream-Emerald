@@ -511,6 +511,9 @@ void TryItemHoldFormChange(struct Pokemon *mon);
 static void ShowMoveSelectWindow(u8 slot);
 static void Task_HandleWhichMoveInput(u8 taskId);
 
+//static bool8 BothAreItemOrMail(u16 item1, u16 item2);
+//static bool8 IsMail(u16 item);
+
 // static const data
 #include "data/party_menu.h"
 
@@ -1977,6 +1980,13 @@ static void DisplaySwitchedHeldItemMessage(u16 item, u16 item2, bool8 keepOpen)
     ScheduleBgCopyTilemapToVram(2);
 }
 
+static void DisplayCantSwitchItemWithMailMessage(bool8 keepOpen)
+{
+    StringExpandPlaceholders(gStringVar4, gText_CantSwitchItemMail);
+    DisplayPartyMenuMessage(gStringVar4, keepOpen);
+    ScheduleBgCopyTilemapToVram(2);
+}
+
 static void GiveItemToMon(struct Pokemon *mon, u16 item)
 {
     u8 itemBytes[2];
@@ -3037,25 +3047,44 @@ static void CursorCb_SwitchItem(u8 taskId)
 #define tSlot1SlideDir data[10]
 #define tSlot2SlideDir data[11]
 
+static bool8 IsMail(u16 item){
+    return item >= ITEM_ORANGE_MAIL && item <= ITEM_RETRO_MAIL;
+}
+static bool8 BothAreItemOrMail(u16 item1, u16 item2){
+    if(IsMail(item1) && IsMail(item2)){
+        return TRUE;
+    }
+    if(!IsMail(item1) && !IsMail(item2)){
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 static void SwitchSelectedMonsItems(u8 taskId){
-    if (gPartyMenu.slotId2 != gPartyMenu.slotId)
-    {
+    if (gPartyMenu.slotId2 != gPartyMenu.slotId) {
         u16 item1 = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HELD_ITEM);
         u16 item2 = GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_HELD_ITEM);
 
-        GiveItemToMon(&gPlayerParty[gPartyMenu.slotId], item2);
-        GiveItemToMon(&gPlayerParty[gPartyMenu.slotId2], item1);
+        if(BothAreItemOrMail(item1, item2)) {
+            GiveItemToMon(&gPlayerParty[gPartyMenu.slotId], item2);
+            GiveItemToMon(&gPlayerParty[gPartyMenu.slotId2], item1);
 
-        if(item2 == ITEM_NONE) {
-            DisplayGaveHeldItemMessage(&gPlayerParty[gPartyMenu.slotId2], item1, TRUE, 1);
-        } else {
-            DisplaySwitchedHeldItemMessage(item1, item2, TRUE);
+            if(item2 == ITEM_NONE) {
+                DisplayGaveHeldItemMessage(&gPlayerParty[gPartyMenu.slotId2], item1, TRUE, 1);
+            } else {
+                DisplaySwitchedHeldItemMessage(item1, item2, TRUE);
+            }
+        
+            UpdatePartyMonHeldItemSprite(&gPlayerParty[gPartyMenu.slotId], &sPartyMenuBoxes[gPartyMenu.slotId]);
+            UpdatePartyMonHeldItemSprite(&gPlayerParty[gPartyMenu.slotId2], &sPartyMenuBoxes[gPartyMenu.slotId2]);
+            
+            FinishItemSwapAction(taskId);
+        } else{
+            DisplayCantSwitchItemWithMailMessage(FALSE);
+            
+            FinishItemSwapAction(taskId);
         }
-        
-        UpdatePartyMonHeldItemSprite(&gPlayerParty[gPartyMenu.slotId], &sPartyMenuBoxes[gPartyMenu.slotId]);
-        UpdatePartyMonHeldItemSprite(&gPlayerParty[gPartyMenu.slotId2], &sPartyMenuBoxes[gPartyMenu.slotId2]);
-        
-        FinishItemSwapAction(taskId);
     }
 }
 
