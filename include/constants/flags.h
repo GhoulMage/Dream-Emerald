@@ -1234,8 +1234,8 @@
 #define FLAG_ITEM_DREAM_OLDALE_SHARPEDONITE                         0x494
 
 #define FLAG_ITEM_DREAM_PETALBURG_ROOST                             0x4A0
-#define FLAG_ITEM_DREAM_PETALBURG_DAWN_STONE                        0x4A1 // Unused Flag
-#define FLAG_ITEM_DREAM_PETALBURG_TM72                              0x4A2 // Unused Flag
+#define FLAG_ITEM_DREAM_PETALBURG_DAWN_STONE                        0x4A1
+#define FLAG_ITEM_DREAM_PETALBURG_TM72                              0x4A2
 #define FLAG_UNUSED_0x4A3                                           0x4A3 // Unused Flag
 #define FLAG_UNUSED_0x4A4                                           0x4A4 // Unused Flag
 #define FLAG_UNUSED_0x4A5                                           0x4A5 // Unused Flag
