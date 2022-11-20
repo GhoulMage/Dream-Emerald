@@ -3100,7 +3100,6 @@ static void SwitchSelectedMonsItems(u8 taskId){
             FinishItemSwapAction(taskId);
         } else{
             DisplayCantSwitchItemWithMailMessage(FALSE);
-
             FinishItemSwapAction(taskId);
         }
     }
