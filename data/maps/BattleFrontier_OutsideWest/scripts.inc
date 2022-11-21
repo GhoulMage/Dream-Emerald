@@ -17,7 +17,7 @@ BattleFrontier_OutsideWest_OnTransition:
 	end
 
 BattleFrontier_OutsideWest_EventScript_FerryAttendant::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_OutsideWest_Text_MayISeeYourTicket, MSGBOX_DEFAULT
 	checkitem ITEM_SS_TICKET
@@ -109,7 +109,7 @@ BattleFrontier_OutsideWest_EventScript_Boy1::
 	end
 
 BattleFrontier_OutsideWest_EventScript_Fisherman2::
-	lock
+	locktarget
 	faceplayer
 	message BattleFrontier_OutsideWest_Text_GotSeasickOnWayHere
 	waitmessage
@@ -124,12 +124,12 @@ BattleFrontier_OutsideWest_EventScript_Man1::
 	end
 
 BattleFrontier_OutsideWest_EventScript_Maniac1::
-	lock
+	locktarget
 	goto BattleFrontier_OutsideWest_EventScript_FactoryChallengersTalk
 	end
 
 BattleFrontier_OutsideWest_EventScript_Maniac2::
-	lock
+	locktarget
 	goto BattleFrontier_OutsideWest_EventScript_FactoryChallengersTalk
 	end
 
@@ -149,7 +149,7 @@ BattleFrontier_OutsideWest_EventScript_FactoryChallengersTalk::
 	end
 
 BattleFrontier_OutsideWest_EventScript_Camper::
-	lock
+	locktarget
 	faceplayer
 	delay 20
 	call_if_eq VAR_FACING, DIR_NORTH, BattleFrontier_OutsideWest_EventScript_CamperFaceFactory
@@ -169,7 +169,7 @@ BattleFrontier_OutsideWest_EventScript_CamperAlreadyFacingFactory::
 	return
 
 BattleFrontier_OutsideWest_EventScript_Girl::
-	lock
+	locktarget
 	faceplayer
 	message BattleFrontier_OutsideWest_Text_ScaredOfPikeBecauseSeviper
 	waitmessage
@@ -222,7 +222,7 @@ BattleFrontier_OutsideWest_Movement_GirlShudderEast:
 	step_end
 
 BattleFrontier_OutsideWest_EventScript_Woman2::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_OutsideWest_Text_LetsPlayRockPaperScissors, MSGBOX_DEFAULT
 	random 2
@@ -278,13 +278,13 @@ BattleFrontier_OutsideWest_EventScript_FatMan2::
 	end
 
 BattleFrontier_OutsideWest_EventScript_Woman3::
-	lock
+	locktarget
 	msgbox BattleFrontier_OutsideWest_Text_LastTimeOurEyesMet, MSGBOX_DEFAULT
 	release
 	end
 
 BattleFrontier_OutsideWest_EventScript_Boy2::
-	lock
+	locktarget
 	msgbox BattleFrontier_OutsideWest_Text_DomeAceLookedBecauseOfMyCheering, MSGBOX_DEFAULT
 	release
 	end
@@ -294,7 +294,7 @@ BattleFrontier_OutsideWest_EventScript_OldMan::
 	end
 
 BattleFrontier_OutsideWest_EventScript_Man4::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_OutsideWest_Text_FansOverThereUsedToBeTrainers, MSGBOX_DEFAULT
 	closemessage

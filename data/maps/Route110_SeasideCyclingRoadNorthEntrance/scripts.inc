@@ -12,7 +12,7 @@ Route110_SeasideCyclingRoadNorthEntrance_EventScript_RestartChallenge::
 	return
 
 Route110_SeasideCyclingRoadNorthEntrance_EventScript_Clerk::
-	lock
+	locktarget
 	faceplayer
 	msgbox Route110_SeasideCyclingRoadNorthEntrance_Text_GoAllOutOnCyclingRoad, MSGBOX_DEFAULT
 	release

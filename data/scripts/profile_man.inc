@@ -1,5 +1,5 @@
 ProfileMan_EventScript_Man::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_SYS_CHAT_USED, ProfileMan_EventScript_GivenProfileBefore
 	msgbox ProfileMan_Text_CollectTrainerProfiles, MSGBOX_DEFAULT
@@ -26,7 +26,7 @@ ProfileMan_EventScript_CreateProfile::
 	closemessage
 	setvar VAR_0x8004, EASY_CHAT_TYPE_PROFILE
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_RESULT, 0, ProfileMan_EventScript_CancelShowProfile
 	goto_if_eq VAR_RESULT, 1, ProfileMan_EventScript_ShowProfile
@@ -76,7 +76,7 @@ ProfileMan_EventScript_CreateNewProfile::
 	closemessage
 	setvar VAR_0x8004, EASY_CHAT_TYPE_PROFILE
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_RESULT, 0, ProfileMan_EventScript_CancelShowProfile
 	goto_if_eq VAR_RESULT, 1, ProfileMan_EventScript_ShowProfile

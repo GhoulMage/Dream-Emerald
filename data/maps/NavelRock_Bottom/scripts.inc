@@ -30,7 +30,7 @@ NavelRock_Bottom_EventScript_TryRemoveLugia::
 	return
 
 NavelRock_Bottom_EventScript_Lugia::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	delay 20

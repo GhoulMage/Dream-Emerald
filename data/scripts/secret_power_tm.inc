@@ -34,7 +34,7 @@ Route111_Text_DontHaveAnyRoom:
 	.string "another time, okay?$"
 
 Route111_EventScript_SecretPowerMan::
-	lock
+	locktarget
 	faceplayer
 	msgbox Route111_Text_MakingRoomUseTMToMakeYourOwn, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route111_EventScript_GiveSecretPower

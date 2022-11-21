@@ -503,7 +503,7 @@ BerryBlender_EventScript_Blender1ExpertM::
 	end
 
 BerryBlender_EventScript_ExpertMCheckGiveBerry:
-	lock
+	locktarget
 	faceplayer
 	msgbox BerryBlender_Text_LoveMakingPokeblocks, MSGBOX_DEFAULT
 	specialvar VAR_RESULT, PlayerHasBerries

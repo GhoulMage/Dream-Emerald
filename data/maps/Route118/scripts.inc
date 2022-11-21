@@ -23,7 +23,7 @@ Route118_OnFrame:
 	.2byte 0
 
 Route118_EventScript_GoodRodFisherman::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_GOOD_ROD, Route118_EventScript_ReceivedGoodRod
 	msgbox Route118_Text_YouAgreeGoodRodIsGood, MSGBOX_YESNO

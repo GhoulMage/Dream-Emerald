@@ -304,7 +304,7 @@ PlayersHouse_1F_Movement_MomReturnToSeatFemale:
 	step_end
 
 PlayersHouse_1F_EventScript_Mom::
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_LITTLEROOT_HOUSES_STATE_MAY, 4, PlayersHouse_1F_EventScript_DontPushYourselfTooHard
 	goto_if_eq VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 4, PlayersHouse_1F_EventScript_DontPushYourselfTooHard
@@ -373,7 +373,7 @@ PlayersHouse_1F_EventScript_DidYouMeetProfBirch::
 	end
 
 PlayersHouse_1F_EventScript_Vigoroth1::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_VIGOROTH, CRY_MODE_NORMAL
@@ -383,7 +383,7 @@ PlayersHouse_1F_EventScript_Vigoroth1::
 	end
 
 PlayersHouse_1F_EventScript_Vigoroth2::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_VIGOROTH, CRY_MODE_NORMAL

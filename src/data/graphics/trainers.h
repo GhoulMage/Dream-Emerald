@@ -109,6 +109,9 @@ const u32 gTrainerPalette_PsychicF[] = INCBIN_U32("graphics/trainers/front_pics/
 const u32 gTrainerFrontPic_Gentleman[] = INCBIN_U32("graphics/trainers/front_pics/gentleman.4bpp.lz");
 const u32 gTrainerPalette_Gentleman[] = INCBIN_U32("graphics/trainers/front_pics/gentleman.gbapal.lz");
 
+const u32 gTrainerFrontPic_Socialite[] = INCBIN_U32("graphics/trainers/front_pics/socialite.4bpp.lz");
+const u32 gTrainerPalette_Socialite[] = INCBIN_U32("graphics/trainers/palettes/socialite.gbapal.lz");
+
 const u32 gTrainerFrontPic_EliteFourSidney[] = INCBIN_U32("graphics/trainers/front_pics/elite_four_sidney.4bpp.lz");
 const u32 gTrainerPalette_EliteFourSidney[] = INCBIN_U32("graphics/trainers/front_pics/elite_four_sidney.gbapal.lz");
 

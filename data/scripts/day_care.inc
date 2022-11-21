@@ -1,7 +1,7 @@
 .set LOCALID_DAYCARE_LADY, 1
 
 Route117_EventScript_DaycareMan::
-	lock
+	locktarget
 	faceplayer
 	special GetDaycareMonNicknames
 	specialvar VAR_RESULT, GetDaycareState
@@ -73,7 +73,7 @@ Route117_EventScript_CheckOnTwoMons::
 	end
 
 Route117_PokemonDayCare_EventScript_DaycareWoman::
-	lock
+	locktarget
 	faceplayer
 	specialvar VAR_RESULT, GetDaycareState
 	goto_if_eq VAR_RESULT, DAYCARE_EGG_WAITING, Route117_PokemonDayCare_EventScript_EggWaiting

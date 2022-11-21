@@ -131,7 +131,7 @@ MtPyre_Summit_Movement_ArchieFacePlayer2:
 	step_end
 
 MtPyre_Summit_EventScript_OldMan::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, MtPyre_Summit_EventScript_OldManAfterRayquaza
 	msgbox MtPyre_Summit_Text_WillYouHearOutMyTale, MSGBOX_YESNO
@@ -160,7 +160,7 @@ MtPyre_Summit_EventScript_OldManNewTale::
 	return
 
 MtPyre_Summit_EventScript_OldLady::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RETURNED_RED_OR_BLUE_ORB, MtPyre_Summit_EventScript_OldLadyAfterOrbsReturned
 	call_if_ge VAR_MT_PYRE_STATE, 3, MtPyre_Summit_EventScript_OldLadyOrbsReturned

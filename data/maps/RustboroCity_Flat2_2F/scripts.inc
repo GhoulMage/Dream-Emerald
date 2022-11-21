@@ -6,7 +6,7 @@ RustboroCity_Flat2_2F_EventScript_OldMan::
 	end
 
 RustboroCity_Flat2_2F_EventScript_NinjaBoy::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_PREMIER_BALL_RUSTBORO, RustboroCity_Flat2_2F_EventScript_GavePremierBall
 	msgbox RustboroCity_Flat2_2F_Text_MyDaddyMadeThisYouCanHaveIt, MSGBOX_DEFAULT

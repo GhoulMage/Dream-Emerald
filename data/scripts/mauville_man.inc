@@ -10,7 +10,7 @@ MauvilleCity_PokemonCenter_1F_EventScript_MauvilleOldMan::
 
 @ Bard
 MauvilleCity_PokemonCenter_1F_EventScript_Bard::
-	lock
+	locktarget
 	faceplayer
 	msgbox MauvilleCity_PokemonCenter_1F_Text_WouldYouLikeToHearMySong, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, MauvilleCity_PokemonCenter_1F_EventScript_PlaySong
@@ -41,7 +41,7 @@ MauvilleCity_PokemonCenter_1F_EventScript_AskToWriteLyrics::
 MauvilleCity_PokemonCenter_1F_EventScript_WriteLyrics::
 	setvar VAR_0x8004, EASY_CHAT_TYPE_BARD_SONG
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_RESULT, 0, MauvilleCity_PokemonCenter_1F_EventScript_DeclineWritingLyrics
 	msgbox MauvilleCity_PokemonCenter_1F_Text_LetMeSingItForYou, MSGBOX_DEFAULT
@@ -62,7 +62,7 @@ MauvilleCity_PokemonCenter_1F_EventScript_DeclineWritingLyrics::
 
 @ Hipster
 MauvilleCity_PokemonCenter_1F_EventScript_Hipster::
-	lock
+	locktarget
 	faceplayer
 	setflag FLAG_UNLOCKED_TRENDY_SAYINGS
 	msgbox MauvilleCity_PokemonCenter_1F_Text_TeachWhatsHipAndHappening, MSGBOX_DEFAULT
@@ -146,7 +146,7 @@ MauvilleCity_PokemonCenter_1F_Text_CantTradeThatOne:
 	.string "Can I interest you in something else?$"
 
 MauvilleCity_PokemonCenter_1F_EventScript_Trader::
-	lock
+	locktarget
 	faceplayer
 	msgbox MauvilleCity_PokemonCenter_1F_Text_WantToTradeDecor, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_PokemonCenter_1F_EventScript_DeclineTrade
@@ -790,7 +790,7 @@ MauvilleCity_PokemonCenter_1F_Text_HotSpringsStory::
 
 
 MauvilleCity_PokemonCenter_1F_EventScript_Storyteller::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8008, 0
 	setvar VAR_0x8009, 0
@@ -873,7 +873,7 @@ MauvilleCity_PokemonCenter_1F_Text_WeShouldChatAgain:
 	.string "Bye-bye!$"
 
 MauvilleCity_PokemonCenter_1F_EventScript_Giddy::
-	lock
+	locktarget
 	faceplayer
 	msgbox MauvilleCity_PokemonCenter_1F_Text_HearMyStory, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, MauvilleCity_PokemonCenter_1F_EventScript_TryTellTale

@@ -154,7 +154,7 @@ Route111_Movement_PlayerFall::
 	step_end
 
 Route111_EventScript_Girl::
-	lock
+	locktarget
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_ROUTE_111_RECEIVED_BERRY, Route111_EventScript_ReceivedBerry
@@ -265,7 +265,7 @@ Route111_EventScript_SandstormTrigger::
 	end
 
 Route111_EventScript_Victor::
-	lock
+	locktarget
 	faceplayer
 	setflag FLAG_LANDMARK_WINSTRATE_FAMILY
 	msgbox Route111_Text_BattleOurFamily, MSGBOX_YESNO
@@ -401,7 +401,7 @@ Route111_EventScript_Man2::
 	end
 
 Route111_EventScript_Hiker::
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_MIRAGE_TOWER_STATE, 3, Route111_EventScript_HikerMirageTowerGone
 	goto_if_eq VAR_MIRAGE_TOWER_STATE, 2, Route111_EventScript_HikerMirageTowerDisintegrated

@@ -1,6 +1,6 @@
 MysteryGiftScript_AuroraTicket::
 	setvaddress MysteryGiftScript_AuroraTicket
-	lock
+	locktarget
 	faceplayer
 	vgoto_if_set FLAG_RECEIVED_AURORA_TICKET, AuroraTicket_Obtained
 	vgoto_if_set FLAG_BATTLED_DEOXYS, AuroraTicket_Obtained

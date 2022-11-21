@@ -16,7 +16,7 @@
 
 @ Either ends or returns to EventScript_ContestReceptionist after submitting a contest entry
 LilycoveCity_ContestLobby_EventScript_SpeakToContestReceptionist::
-	lock
+	locktarget
 	faceplayer
 	goto_if_ne VAR_CONTEST_PRIZE_PICKUP, 0, LilycoveCity_ContestLobby_EventScript_PickUpPrize
 	call_if_set FLAG_RECEIVED_POKEBLOCK_CASE, LilycoveCity_ContestLobby_EventScript_ReceptionWelcome

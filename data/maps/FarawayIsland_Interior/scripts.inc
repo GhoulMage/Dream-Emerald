@@ -113,7 +113,7 @@ FarawayIsland_Interior_Movement_MewFloatUpEast:
 	step_end
 
 FarawayIsland_Interior_EventScript_Mew::
-	lock
+	locktarget
 	faceplayer
 	applymovement LOCALID_FARAWAY_ISLAND_MEW, FarawayIsland_Interior_Movement_MewAppear
 	waitmovement 0

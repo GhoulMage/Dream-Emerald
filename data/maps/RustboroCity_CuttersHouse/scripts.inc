@@ -2,7 +2,7 @@ RustboroCity_CuttersHouse_MapScripts::
 	.byte 0
 
 RustboroCity_CuttersHouse_EventScript_Cutter::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_CUT, RustboroCity_CuttersHouse_EventScript_ExplainCut
 	msgbox RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse, MSGBOX_DEFAULT

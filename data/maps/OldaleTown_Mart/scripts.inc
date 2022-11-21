@@ -2,7 +2,7 @@ OldaleTown_Mart_MapScripts::
 	.byte 0
 
 OldaleTown_Mart_EventScript_Clerk::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -40,7 +40,7 @@ OldaleTown_Mart_Pokemart_Expanded:
 	end
 
 OldaleTown_Mart_EventScript_Woman::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_Mart_EventScript_PokeBallsInStock
 	msgbox OldaleTown_Mart_Text_PokeBallsAreSoldOut, MSGBOX_DEFAULT

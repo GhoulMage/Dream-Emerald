@@ -28,7 +28,7 @@ Route116_OnFrame:
 	.2byte 0
 
 Route116_EventScript_WandasBoyfriend::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECOVERED_DEVON_GOODS, Route116_EventScript_BoyfriendGruntLeftTunnel
 	goto_if_set FLAG_DEVON_GOODS_STOLEN, Route116_EventScript_BoyfriendGruntInTunnel
@@ -47,7 +47,7 @@ Route116_EventScript_BoyfriendGruntInTunnel::
 	end
 
 Route116_EventScript_DevonEmployee::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_MET_DEVON_EMPLOYEE, Route116_EventScript_TryGiveRepeatBallAgain
 	msgbox Route116_Text_ThankYouTokenOfAppreciation, MSGBOX_DEFAULT
@@ -135,7 +135,7 @@ Route116_EventScript_TrainerTipsBagHasPockets::
 	end
 
 Route116_EventScript_Briney::
-	lock
+	locktarget
 	faceplayer
 	msgbox Route116_Text_ScoundrelMadeOffWithPeeko, MSGBOX_DEFAULT
 	setvar VAR_ROUTE116_STATE, 2
@@ -153,7 +153,7 @@ Route116_EventScript_BrineyTrigger::
 	end
 
 Route116_EventScript_GlassesMan::
-	lock
+	locktarget
 	faceplayer
 	checkitem ITEM_BLACK_GLASSES
 	goto_if_eq VAR_RESULT, TRUE, Route116_EventScript_PlayerHasGlasses

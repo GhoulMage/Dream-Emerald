@@ -7,7 +7,7 @@ DewfordTown_Hall_MapScripts::
 	.byte 0
 
 DewfordTown_Hall_EventScript_Girl::
-	lock
+	locktarget
 	faceplayer
 	call Common_EventScript_BufferTrendyPhrase
 	special IsTrendyPhraseBoring
@@ -22,7 +22,7 @@ DewfordTown_Hall_EventScript_GirlBoredOfTrend::
 	end
 
 DewfordTown_Hall_EventScript_Woman::
-	lock
+	locktarget
 	faceplayer
 	call Common_EventScript_BufferTrendyPhrase
 	msgbox DewfordTown_Hall_Text_TeachingMonAboutTrend, MSGBOX_DEFAULT
@@ -30,7 +30,7 @@ DewfordTown_Hall_EventScript_Woman::
 	end
 
 DewfordTown_Hall_EventScript_Man::
-	lock
+	locktarget
 	faceplayer
 	call Common_EventScript_BufferTrendyPhrase
 	special BufferDeepLinkPhrase
@@ -50,7 +50,7 @@ DewfordTown_Hall_EventScript_RejectTrendLink::
 	end
 
 DewfordTown_Hall_EventScript_ExpertM::
-	lock
+	locktarget
 	faceplayer
 	call Common_EventScript_BufferTrendyPhrase
 	msgbox DewfordTown_Hall_Text_TVShowAboutTrend, MSGBOX_DEFAULT
@@ -61,7 +61,7 @@ DewfordTown_Hall_EventScript_ExpertM::
 	end
 
 DewfordTown_Hall_EventScript_Twin::
-	lock
+	locktarget
 	faceplayer
 	call Common_EventScript_BufferTrendyPhrase
 	msgbox DewfordTown_Hall_Text_IsTrendMorePopularAcrossSea, MSGBOX_DEFAULT
@@ -72,7 +72,7 @@ DewfordTown_Hall_EventScript_Twin::
 	end
 
 DewfordTown_Hall_EventScript_LittleBoy::
-	lock
+	locktarget
 	faceplayer
 	call Common_EventScript_BufferTrendyPhrase
 	msgbox DewfordTown_Hall_Text_CollectTrendMerchandise, MSGBOX_DEFAULT
@@ -243,7 +243,7 @@ DewfordTown_Hall_Movement_SchoolKidWalkInPlaceRight:
 	step_end
 
 DewfordTown_Hall_EventScript_SludgeBombMan::
-	lock
+	locktarget
 	faceplayer
 	call Common_EventScript_BufferTrendyPhrase
 	goto_if_set FLAG_RECEIVED_TM_SLUDGE_BOMB, DewfordTown_Hall_EventScript_ReceivedSludgeBomb

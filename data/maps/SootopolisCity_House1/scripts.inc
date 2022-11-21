@@ -2,7 +2,7 @@ SootopolisCity_House1_MapScripts::
 	.byte 0
 
 SootopolisCity_House1_EventScript_BrickBreakBlackBelt::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_BRICK_BREAK, SootopolisCity_House1_EventScript_ReceivedBrickBreak
 	msgbox SootopolisCity_House1_Text_DevelopedThisTM, MSGBOX_DEFAULT
@@ -19,7 +19,7 @@ SootopolisCity_House1_EventScript_ReceivedBrickBreak::
 	end
 
 SootopolisCity_House1_EventScript_Kecleon::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL

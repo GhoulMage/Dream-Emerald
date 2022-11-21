@@ -2,7 +2,7 @@ MossdeepCity_House4_MapScripts::
 	.byte 0
 
 MossdeepCity_House4_EventScript_Woman::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, MossdeepCity_House4_EventScript_CanBattleAtSecretBases
 	msgbox MossdeepCity_House4_Text_BrotherLikesToFindBases, MSGBOX_DEFAULT
@@ -15,7 +15,7 @@ MossdeepCity_House4_EventScript_CanBattleAtSecretBases::
 	end
 
 MossdeepCity_House4_EventScript_NinjaBoy::
-	lock
+	locktarget
 	faceplayer
 	special CheckPlayerHasSecretBase
 	goto_if_eq VAR_RESULT, FALSE, MossdeepCity_House4_EventScript_NoSecretBase
@@ -30,7 +30,7 @@ MossdeepCity_House4_EventScript_NoSecretBase::
 	end
 
 MossdeepCity_House4_EventScript_Skitty::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL
