@@ -87,7 +87,7 @@ SSTidalCorridor_EventScript_Briney::
 	end
 
 SSTidalCorridor_EventScript_Peeko::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
@@ -113,7 +113,7 @@ SSTidalCorridor_EventScript_Cabin4Sign::
 	end
 
 SSTidalCorridor_EventScript_ExitSailor::
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_SS_TIDAL_STATE, SS_TIDAL_LAND_LILYCOVE, SSTidalCorridor_EventScript_ExitLilycove
 	goto_if_eq VAR_SS_TIDAL_STATE, SS_TIDAL_LAND_SLATEPORT, SSTidalCorridor_EventScript_ExitSlateport
@@ -157,7 +157,7 @@ SSTidalCorridor_EventScript_LookThroughPorthole::
 	end
 
 SSTidalCorridor_EventScript_Sailor::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_DEFEATED_SS_TIDAL_TRAINERS, SSTidalCorridor_EventScript_EnjoyYourCruise
 	call SSTidalCorridor_EventScript_CheckIfTrainersDefeated

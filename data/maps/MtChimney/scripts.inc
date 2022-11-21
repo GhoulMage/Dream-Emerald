@@ -19,7 +19,7 @@ MtChimney_OnResume:
 	end
 
 MtChimney_EventScript_Archie::
-	lock
+	locktarget
 	faceplayer
 	call_if_unset FLAG_EVIL_LEADER_PLEASE_STOP, MtChimney_EventScript_ArchieGoStopTeamMagma
 	call_if_set FLAG_EVIL_LEADER_PLEASE_STOP, MtChimney_EventScript_ArchieBusyFighting
@@ -101,7 +101,7 @@ MtChimney_EventScript_ArchieExitNorth::
 	return
 
 MtChimney_EventScript_LavaCookieLady::
-	lock
+	locktarget
 	faceplayer
 	showmoneybox 0, 0
 	msgbox MtChimney_Text_LavaCookiesJust200, MSGBOX_YESNO

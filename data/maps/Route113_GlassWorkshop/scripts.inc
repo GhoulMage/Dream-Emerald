@@ -21,7 +21,7 @@ Route113_GlassWorkshop_EventScript_ReenterWorkshopAfterSootSack::
 	return
 
 Route113_GlassWorkshop_EventScript_GlassWorker::
-	lock
+	locktarget
 	faceplayer
 	goto_if_ge VAR_GLASS_WORKSHOP_STATE, 10, Route113_GlassWorkshop_EventScript_GiveItemAfterNoRoom
 	goto_if_eq VAR_GLASS_WORKSHOP_STATE, 2, Route113_GlassWorkshop_EventScript_CheckCollectedAsh

@@ -12,7 +12,7 @@ LilycoveCity_Harbor_OnTransition:
 	end
 
 LilycoveCity_Harbor_EventScript_FerryAttendant::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, LilycoveCity_Harbor_EventScript_FerryUnavailable
 	call LilycoveCity_Harbor_EventScript_GetEonTicketState
@@ -432,7 +432,7 @@ LilycoveCity_Harbor_Movement_UnusedBoardFerry:
 	step_end
 
 LilycoveCity_Harbor_EventScript_Sailor::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, LilycoveCity_Harbor_EventScript_SailorFerryAvailable
 	msgbox LilycoveCity_Harbor_Text_SailorFerryUnavailable, MSGBOX_DEFAULT

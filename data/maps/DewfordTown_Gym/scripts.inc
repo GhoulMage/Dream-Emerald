@@ -248,7 +248,7 @@ DewfordTown_Gym_EventScript_LilithBrightenRoom::
 	end
 
 DewfordTown_Gym_EventScript_GymGuide::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_DEFEATED_DEWFORD_GYM, DewfordTown_Gym_EventScript_GymGuidePostVictory
 	msgbox DewfordTown_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT

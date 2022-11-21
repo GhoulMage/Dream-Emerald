@@ -7,7 +7,7 @@ Route111_WinstrateFamilysHouse_MapScripts::
 	.byte 0
 
 Route111_WinstrateFamilysHouse_EventScript_Victor::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8008, LOCALID_VICTOR
 	msgbox Route111_WinstrateFamilysHouse_Text_MySonIsStrongerThanYou, MSGBOX_DEFAULT
@@ -15,7 +15,7 @@ Route111_WinstrateFamilysHouse_EventScript_Victor::
 	end
 
 Route111_WinstrateFamilysHouse_EventScript_Victoria::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8008, LOCALID_VICTORIA
 	goto_if_set FLAG_RECEIVED_MACHO_BRACE, Route111_WinstrateFamilysHouse_EventScript_ReceivedMachoBrace
@@ -32,7 +32,7 @@ Route111_WinstrateFamilysHouse_EventScript_ReceivedMachoBrace::
 	end
 
 Route111_WinstrateFamilysHouse_EventScript_Vivi::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8008, LOCALID_VIVI
 	msgbox Route111_WinstrateFamilysHouse_Text_StrongerFamilyMembers, MSGBOX_DEFAULT
@@ -40,7 +40,7 @@ Route111_WinstrateFamilysHouse_EventScript_Vivi::
 	end
 
 Route111_WinstrateFamilysHouse_EventScript_Vicky::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8008, LOCALID_VICKY
 	goto_if_set FLAG_TEMP_4, Route111_WinstrateFamilysHouse_EventScript_AlreadySpokenTo

@@ -6,7 +6,7 @@ BattleFrontier_Lounge3_MapScripts::
 	.set BET_AMOUNT_15, 15
 
 BattleFrontier_Lounge3_EventScript_Gambler::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_MET_BATTLE_FRONTIER_GAMBLER, BattleFrontier_Lounge3_EventScript_AlreadyMetGambler
 	call BattleFrontier_Lounge3_EventScript_CountSilverSymbols
@@ -170,21 +170,21 @@ BattleFrontier_Lounge3_EventScript_Man::
 	end
 
 BattleFrontier_Lounge3_EventScript_Woman::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_Lounge3_Text_BackedWrongTrainer, MSGBOX_DEFAULT
 	goto BattleFrontier_Lounge3_EventScript_FaceOriginalDirection
 	end
 
 BattleFrontier_Lounge3_EventScript_PokefanF::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_Lounge3_Text_KnowWinnerWhenISeeOne, MSGBOX_DEFAULT
 	goto BattleFrontier_Lounge3_EventScript_FaceOriginalDirection
 	end
 
 BattleFrontier_Lounge3_EventScript_FatMan::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_Lounge3_Text_TrainerGoodButRattled, MSGBOX_DEFAULT
 	goto BattleFrontier_Lounge3_EventScript_FaceOriginalDirection

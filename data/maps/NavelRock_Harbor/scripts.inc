@@ -5,7 +5,7 @@ NavelRock_Harbor_MapScripts::
 	.byte 0
 
 NavelRock_Harbor_EventScript_Sailor::
-	lock
+	locktarget
 	faceplayer
 	msgbox NavelRock_Harbor_Text_SailorReturn, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, NavelRock_Harbor_EventScript_AsYouLike

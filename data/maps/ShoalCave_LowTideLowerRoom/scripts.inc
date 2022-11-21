@@ -31,7 +31,7 @@ ShoalCave_LowTideLowerRoom_EventScript_ReceivedShoalSalt::
 	end
 
 ShoalCave_LowTideLowerRoom_EventScript_BlackBelt::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_FOCUS_BAND, ShoalCave_LowTideLowerRoom_EventScript_ReceivedFocusBand
 	msgbox ShoalCave_LowTideLowerRoom_Text_CanOvercomeColdWithFocus, MSGBOX_DEFAULT

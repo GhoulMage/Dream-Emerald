@@ -2,7 +2,7 @@ DewfordTown_House2_MapScripts::
 	.byte 0
 
 DewfordTown_House2_EventScript_Man::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_SILK_SCARF, DewfordTown_House2_EventScript_ExplainSilkScarf
 	msgbox DewfordTown_House2_Text_WantYouToHaveSilkScarf, MSGBOX_DEFAULT

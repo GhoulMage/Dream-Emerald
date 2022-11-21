@@ -38,7 +38,7 @@ EverGrandeCity_DrakesRoom_EventScript_CloseDoor::
 	return
 
 EverGrandeCity_DrakesRoom_EventScript_Drake::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_DRAKE, EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE

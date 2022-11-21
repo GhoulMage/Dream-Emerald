@@ -2,7 +2,7 @@ FortreeCity_Mart_MapScripts::
 	.byte 0
 
 FortreeCity_Mart_EventScript_Clerk::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage

@@ -104,7 +104,7 @@ VerdanturfTown_BattleTentLobby_EventScript_ResumeChallenge::
 	goto VerdanturfTown_BattleTentLobby_EventScript_EnterChallenge
 
 VerdanturfTown_BattleTentLobby_EventScript_Attendant::
-	lock
+	locktarget
 	faceplayer
 	verdanturftent_getprize
 	goto_if_ne VAR_RESULT, ITEM_NONE, VerdanturfTown_BattleTentLobby_EventScript_PrizeWaiting
@@ -223,7 +223,7 @@ VerdanturfTown_BattleTentLobby_Movement_PlayerEnterDoor:
 	step_end
 
 VerdanturfTown_BattleTentLobby_EventScript_AttractGiver::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_ATTRACT, VerdanturfTown_BattleTentLobby_EventScript_ReceivedAttract
 	msgbox VerdanturfTown_BattleTentLobby_Text_AttractionRunsDeep, MSGBOX_DEFAULT
@@ -244,13 +244,13 @@ VerdanturfTown_BattleTentLobby_EventScript_Boy1::
 	end
 
 VerdanturfTown_BattleTentLobby_EventScript_Boy2::
-	lock
+	locktarget
 	msgbox VerdanturfTown_BattleTentLobby_Text_MonsReluctantToUseDislikedMoves, MSGBOX_DEFAULT
 	release
 	end
 
 VerdanturfTown_BattleTentLobby_EventScript_Scott::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_MET_SCOTT_IN_VERDANTURF, VerdanturfTown_BattleTentLobby_EventScript_ScottAlreadySpokenTo
 	msgbox VerdanturfTown_BattleTentLobby_Text_ScottCanMeetToughTrainers, MSGBOX_DEFAULT
@@ -265,7 +265,7 @@ VerdanturfTown_BattleTentLobby_EventScript_ScottAlreadySpokenTo::
 	end
 
 VerdanturfTown_BattleTentLobby_EventScript_LittleBoy::
-	lock
+	locktarget
 	msgbox VerdanturfTown_BattleTentLobby_Text_GentleMonsScaryIfAngry, MSGBOX_DEFAULT
 	release
 	end
