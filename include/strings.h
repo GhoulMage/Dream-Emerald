@@ -452,6 +452,7 @@ extern const u8 gText_PkmnWasGivenItem[];
 extern const u8 gText_ReceivedItemFromPkmn[];
 extern const u8 gText_PkmnAlreadyHoldingItemSwitch[];
 extern const u8 gText_SwitchedPkmnItem[];
+extern const u8 gText_CantSwitchItemMail[];
 extern const u8 gText_BagFullCouldNotRemoveItem[];
 extern const u8 gText_PkmnCantParticipate[];
 extern const u8 gText_PkmnNotHolding[];

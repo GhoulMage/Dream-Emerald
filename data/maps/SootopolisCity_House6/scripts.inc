@@ -2,7 +2,7 @@ SootopolisCity_House6_MapScripts::
 	.byte 0
 
 SootopolisCity_House6_EventScript_Woman::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_WAILMER_DOLL, SootopolisCity_House6_EventScript_ReceivedWailmerDoll
 	msgbox SootopolisCity_House6_Text_FirstGuestInWhileTakeDoll, MSGBOX_YESNO

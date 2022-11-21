@@ -2,7 +2,7 @@ LilycoveCity_DepartmentStoreElevator_MapScripts::
 	.byte 0
 
 LilycoveCity_DepartmentStoreElevator_EventScript_Attendant::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8004, 0
 	call_if_unset FLAG_TEMP_2, LilycoveCity_DepartmentStoreElevator_EventScript_SetFloor

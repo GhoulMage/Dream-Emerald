@@ -67,7 +67,7 @@ BattleFrontier_BattlePyramidTop_EventScript_ReadyChallenge::
 	end
 
 BattleFrontier_BattlePyramidTop_EventScript_Attendant::
-	lock
+	locktarget
 	faceplayer
 	goto_if_ne VAR_TEMP_D, 0, BattleFrontier_BattlePyramidTop_EventScript_StepForwardWhenReady
 	goto_if_ne VAR_TEMP_C, FRONTIER_BRAIN_NOT_READY, BattleFrontier_BattlePyramidTop_EventScript_BrandonHereMoveAside

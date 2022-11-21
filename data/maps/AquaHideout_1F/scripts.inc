@@ -3,7 +3,7 @@ AquaHideout_1F_MapScripts::
 
 @ The below two entrance guards give hints about what to do to progress the story
 AquaHideout_1F_EventScript_HideoutEntranceGrunt1::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, AquaHideout_1F_EventScript_SlateportHint1
 	goto_if_set FLAG_RECEIVED_RED_OR_BLUE_ORB, AquaHideout_1F_EventScript_MagmaHideoutHint1
@@ -22,7 +22,7 @@ AquaHideout_1F_EventScript_SlateportHint1::
 	end
 
 AquaHideout_1F_EventScript_HideoutEntranceGrunt2::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, AquaHideout_1F_EventScript_SlateportHint2
 	goto_if_set FLAG_RECEIVED_RED_OR_BLUE_ORB, AquaHideout_1F_EventScript_MagmaHideoutHint2

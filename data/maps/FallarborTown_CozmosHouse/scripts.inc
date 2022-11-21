@@ -2,7 +2,7 @@ FallarborTown_CozmosHouse_MapScripts::
 	.byte 0
 
 FallarborTown_CozmosHouse_EventScript_ProfCozmo::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_RETURN, FallarborTown_CozmosHouse_EventScript_GaveMeteorite
 	checkitem ITEM_METEORITE
@@ -46,7 +46,7 @@ FallarborTown_CozmosHouse_EventScript_GaveMeteorite::
 	end
 
 FallarborTown_CozmosHouse_EventScript_CozmosWife::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_RETURN, FallarborTown_CozmosHouse_EventScript_CozmoIsHappy
 	goto_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, FallarborTown_CozmosHouse_EventScript_CozmoIsSad

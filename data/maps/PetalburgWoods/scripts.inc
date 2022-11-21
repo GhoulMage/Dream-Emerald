@@ -249,7 +249,7 @@ PetalburgWoods_EventScript_Boy2::
 	end
 
 PetalburgWoods_EventScript_Girl::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_MIRACLE_SEED, PetalburgWoods_EventScript_ExplainMiracleSeed
 	msgbox PetalburgWoods_Text_TryUsingThisItem, MSGBOX_DEFAULT

@@ -2,7 +2,7 @@ RustboroCity_House1_MapScripts::
 	.byte 0
 
 RustboroCity_House1_EventScript_Trader::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RUSTBORO_NPC_TRADE_COMPLETED, RustboroCity_House1_EventScript_TradeCompleted
 	setvar VAR_0x8008, INGAME_TRADE_SEEDOT

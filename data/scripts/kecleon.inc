@@ -1,47 +1,47 @@
 Route120_EventScript_Kecleon1::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8009, 1
 	goto EventScript_Kecleon
 	end
 
 Route120_EventScript_Kecleon2::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8009, 2
 	goto EventScript_Kecleon
 	end
 
 Route120_EventScript_Kecleon3::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8009, 3
 	goto EventScript_Kecleon
 	end
 
 Route120_EventScript_Kecleon4::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8009, 4
 	goto EventScript_Kecleon
 	end
 
 Route120_EventScript_Kecleon5::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8009, 5
 	goto EventScript_Kecleon
 	end
 
 Route119_EventScript_Kecleon1::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8009, 6
 	goto EventScript_Kecleon
 	end
 
 Route119_EventScript_Kecleon2::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8009, 7
 	goto EventScript_Kecleon

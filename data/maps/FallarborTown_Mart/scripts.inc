@@ -2,7 +2,7 @@ FallarborTown_Mart_MapScripts::
 	.byte 0
 
 FallarborTown_Mart_EventScript_Clerk::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -38,7 +38,7 @@ FallarborTown_Mart_EventScript_PokefanM::
 	end
 
 FallarborTown_Mart_EventScript_Skitty::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL

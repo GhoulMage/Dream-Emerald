@@ -273,7 +273,7 @@ Route109_Movement_BrineyExitBoat:
 	step_end
 
 Route109_EventScript_MrBriney::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_DELIVERED_DEVON_GOODS, Route109_EventScript_HaveNotDeliveredDevonGood
 	goto Route109_EventScript_DeliveredDevonGoods
@@ -317,7 +317,7 @@ Route109_EventScript_SeashoreHouseGirl::
 	end
 
 Route109_EventScript_SandCastleBoy::
-	lock
+	locktarget
 	faceplayer
 	msgbox Route109_Text_SandCastleTakingLongTime, MSGBOX_DEFAULT
 	closemessage
@@ -327,7 +327,7 @@ Route109_EventScript_SandCastleBoy::
 	end
 
 Route109_EventScript_SoftSandGirl::
-	lock
+	locktarget
 	faceplayer
 	special GetPlayerBigGuyGirlString
 	goto_if_set FLAG_RECEIVED_SOFT_SAND, Route109_EventScript_AlreadyReceivedSoftSand
@@ -357,7 +357,7 @@ Route109_EventScript_OldMan::
 	end
 
 Route109_EventScript_Zigzagoon::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL

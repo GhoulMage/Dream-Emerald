@@ -43,7 +43,7 @@ BirthIsland_Exterior_EventScript_TryRemoveDeoxys::
 	return
 
 BirthIsland_Exterior_EventScript_Triangle::
-	lock
+	locktarget
 	faceplayer
 	special DoDeoxysRockInteraction
 	waitstate

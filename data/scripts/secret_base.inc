@@ -298,7 +298,7 @@ SecretBase_EventScript_RecordMixTrainer::
 
 @ VAR_RESULT is initially set by GetSecretBaseOwnerAndState
 SecretBase_EventScript_Trainer0::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SecretBase_EventScript_Trainer0PreChampion
 	goto_if_eq VAR_RESULT, 1, SecretBase_EventScript_Trainer0PostBattle
@@ -332,7 +332,7 @@ SecretBase_EventScript_Trainer0PostBattle::
 
 @ VAR_RESULT is initially set by GetSecretBaseOwnerAndState
 SecretBase_EventScript_Trainer1::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SecretBase_EventScript_Trainer1PreChampion
 	goto_if_eq VAR_RESULT, 1, SecretBase_EventScript_Trainer1PostBattle
@@ -366,7 +366,7 @@ SecretBase_EventScript_Trainer1PostBattle::
 
 @ VAR_RESULT is initially set by GetSecretBaseOwnerAndState
 SecretBase_EventScript_Trainer2::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SecretBase_EventScript_Trainer2PreChampion
 	goto_if_eq VAR_RESULT, 1, SecretBase_EventScript_Trainer2PostBattle
@@ -400,7 +400,7 @@ SecretBase_EventScript_Trainer2PostBattle::
 
 @ VAR_RESULT is initially set by GetSecretBaseOwnerAndState
 SecretBase_EventScript_Trainer3::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SecretBase_EventScript_Trainer3PreChampion
 	goto_if_eq VAR_RESULT, 1, SecretBase_EventScript_Trainer3PostBattle
@@ -434,7 +434,7 @@ SecretBase_EventScript_Trainer3PostBattle::
 
 @ VAR_RESULT is initially set by GetSecretBaseOwnerAndState
 SecretBase_EventScript_Trainer4::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SecretBase_EventScript_Trainer4PreChampion
 	goto_if_eq VAR_RESULT, 1, SecretBase_EventScript_Trainer4PostBattle
@@ -468,7 +468,7 @@ SecretBase_EventScript_Trainer4PostBattle::
 
 @ VAR_RESULT is initially set by GetSecretBaseOwnerAndState
 SecretBase_EventScript_Trainer5::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SecretBase_EventScript_Trainer5PreChampion
 	goto_if_eq VAR_RESULT, 1, SecretBase_EventScript_Trainer5PostBattle
@@ -502,7 +502,7 @@ SecretBase_EventScript_Trainer5PostBattle::
 
 @ VAR_RESULT is initially set by GetSecretBaseOwnerAndState
 SecretBase_EventScript_Trainer6::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SecretBase_EventScript_Trainer6PreChampion
 	goto_if_eq VAR_RESULT, 1, SecretBase_EventScript_Trainer6PostBattle
@@ -536,7 +536,7 @@ SecretBase_EventScript_Trainer6PostBattle::
 
 @ VAR_RESULT is initially set by GetSecretBaseOwnerAndState
 SecretBase_EventScript_Trainer7::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SecretBase_EventScript_Trainer7PreChampion
 	goto_if_eq VAR_RESULT, 1, SecretBase_EventScript_Trainer7PostBattle
@@ -570,7 +570,7 @@ SecretBase_EventScript_Trainer7PostBattle::
 
 @ VAR_RESULT is initially set by GetSecretBaseOwnerAndState
 SecretBase_EventScript_Trainer8::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SecretBase_EventScript_Trainer8PreChampion
 	goto_if_eq VAR_RESULT, 1, SecretBase_EventScript_Trainer8PostBattle
@@ -604,7 +604,7 @@ SecretBase_EventScript_Trainer8PostBattle::
 
 @ VAR_RESULT is initially set by GetSecretBaseOwnerAndState
 SecretBase_EventScript_Trainer9::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SecretBase_EventScript_Trainer9PreChampion
 	goto_if_eq VAR_RESULT, 1, SecretBase_EventScript_Trainer9PostBattle

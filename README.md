@@ -32,6 +32,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Expiring a Repel will prompt the use of another one
 * Eggs hatch at level 1
 * Use Pokéball out of battle to change Pokéballs of your Pokémon
+* Low Health Beep does not longer loop
 
 
 ### Pokémon Sound Type Added

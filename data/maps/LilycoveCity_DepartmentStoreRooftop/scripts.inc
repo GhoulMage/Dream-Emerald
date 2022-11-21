@@ -17,7 +17,7 @@ LilycoveCity_DepartmentStoreRooftop_EventScript_HideSaleWoman::
 	return
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_SaleWoman::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -47,7 +47,7 @@ LilycoveCity_DepartmentStoreRooftop_PokemartDecor_ClearOutSale:
 	end
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_Man::
-	lock
+	locktarget
 	faceplayer
 	getpokenewsactive POKENEWS_LILYCOVE
 	call_if_eq VAR_RESULT, TRUE, LilycoveCity_DepartmentStoreRooftop_EventScript_ManClearOutSale

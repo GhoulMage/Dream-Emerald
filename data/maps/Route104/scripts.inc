@@ -258,7 +258,7 @@ Route104_Movement_RivalExitBrineysCottage:
 	step_end
 
 Route104_EventScript_ExpertF::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_CHESTO_BERRY_ROUTE_104, Route104_EventScript_ReceivedBerry
 	msgbox Route104_Text_PlantBerriesInSoilTakeThis, MSGBOX_DEFAULT
@@ -275,7 +275,7 @@ Route104_EventScript_ReceivedBerry::
 	end
 
 Route104_EventScript_WhiteHerbFlorist::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_WHITE_HERB, Route104_EventScript_ReceivedWhiteHerb
 	msgbox Route104_Text_DontNeedThisTakeIt, MSGBOX_DEFAULT
@@ -327,7 +327,7 @@ Route104_EventScript_Woman::
 	end
 
 Route104_EventScript_Boy2::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_BULLET_SEED, Route104_EventScript_ReceivedBulletSeed
 	msgbox Route104_Text_LikeFillingMouthWithSeedsTakeThis, MSGBOX_DEFAULT
@@ -1023,7 +1023,7 @@ Route104_Text_OnlyThrowBallAtWildPokemon:
 
 Route104_Text_ImNotATrainer:
 	.string "Oh, no, I'm not a TRAINER.\p"
-	.string "But that's right, if TRAINERS lock eyes,\n"
+	.string "But that's right, if TRAINERS locktarget eyes,\n"
 	.string "it's a challenge to battle.\p"
 	.string "If you don't want to battle, stay out\n"
 	.string "of their sight.$"
