@@ -6975,6 +6975,12 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
                 lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
             }
             break;
+        case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_RANDOM:
+            {
+                const struct TrainerMonDouble *party = gTrainers[trainerId].party.DoubleMon;
+                lastMonLevel = ((party[gTrainers[trainerId].partySize - 1].mon1.lvl + party[gTrainers[trainerId].partySize - 1].mon2.lvl) / 2);
+            }
+            break;
         }
 
         for (; gTrainerMoneyTable[i].classId != 0xFF; i++)

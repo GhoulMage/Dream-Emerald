@@ -1967,6 +1967,82 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 }
                 break;
             }
+            case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_RANDOM:
+            {
+                const struct TrainerMonDouble *partyData = gTrainers[trainerNum].party.DoubleMon;
+
+                u8 selectedMonIndex = Random() % 2;
+                
+                switch (selectedMonIndex)
+                {
+                case 1:
+                    for (j = 0; gSpeciesNames[partyData[i].mon1.species][j] != EOS; j++)
+                        nameHash += gSpeciesNames[partyData[i].mon1.species][j];
+
+                    personalityValue += nameHash << 8;
+                    fixedIV = partyData[i].mon1.iv * MAX_PER_STAT_IVS / 255;
+
+                    if(partyData[i].mon1.shiny == TRUE)
+                        CreateMon(&party[i], partyData[i].mon1.species, partyData[i].mon1.lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_SHINY, 0);
+                    else
+                        CreateMon(&party[i], partyData[i].mon1.species, partyData[i].mon1.lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+
+                    SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].mon1.heldItem);
+                    if(&partyData[i].mon1.ability != ABILITY_NONE){
+                        u32 value;
+                        if(GetAbilityBySpecies(partyData[i].mon1.species, 0) == partyData[i].mon1.ability){
+                            value = personalityValue & 0;
+                        }else if(GetAbilityBySpecies(partyData[i].mon1.species, 1) == partyData[i].mon1.ability) {
+                            value = personalityValue & 1;
+                        } else if(GetAbilityBySpecies(partyData[i].mon1.species, 2) == partyData[i].mon1.ability){
+                            value = personalityValue & 2;
+                        }
+
+                        SetMonData(&party[i], MON_DATA_ABILITY_NUM, &value);
+                    }
+
+                    for (j = 0; j < MAX_MON_MOVES; j++)
+                    {
+                        SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].mon1.moves[j]);
+                        SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].mon1.moves[j]].pp);
+                    }
+                    break;
+                
+                default:
+                    for (j = 0; gSpeciesNames[partyData[i].mon2.species][j] != EOS; j++)
+                        nameHash += gSpeciesNames[partyData[i].mon2.species][j];
+
+                    personalityValue += nameHash << 8;
+                    fixedIV = partyData[i].mon2.iv * MAX_PER_STAT_IVS / 255;
+
+                    if(partyData[i].mon2.shiny == TRUE)
+                        CreateMon(&party[i], partyData[i].mon2.species, partyData[i].mon2.lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_SHINY, 0);
+                    else
+                        CreateMon(&party[i], partyData[i].mon2.species, partyData[i].mon2.lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+
+                    SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].mon2.heldItem);
+                    if(&partyData[i].mon2.ability != ABILITY_NONE){
+                        u32 value;
+                        if(GetAbilityBySpecies(partyData[i].mon2.species, 0) == partyData[i].mon2.ability){
+                            value = personalityValue & 0;
+                        }else if(GetAbilityBySpecies(partyData[i].mon2.species, 1) == partyData[i].mon2.ability) {
+                            value = personalityValue & 1;
+                        } else if(GetAbilityBySpecies(partyData[i].mon2.species, 2) == partyData[i].mon2.ability){
+                            value = personalityValue & 2;
+                        }
+
+                        SetMonData(&party[i], MON_DATA_ABILITY_NUM, &value);
+                    }
+
+                    for (j = 0; j < MAX_MON_MOVES; j++)
+                    {
+                        SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].mon2.moves[j]);
+                        SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].mon2.moves[j]].pp);
+                    }
+                    break;
+                    }
+                break;
+            }
             }
         }
 

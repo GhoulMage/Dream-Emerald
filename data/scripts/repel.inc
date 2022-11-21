@@ -1,5 +1,5 @@
 EventScript_RepelWoreOff::
-	msgbox Text_RepelWoreOff, MSGBOX_SIGN
+	msgbox Text_RepelWoreOff, MSGBOX_DEFAULT
 	checkitem ITEM_REPEL, 1
 	compare VAR_RESULT, TRUE
 	goto_if_eq EventScript_RepelWoreOff_AskAnother
@@ -25,7 +25,7 @@ EventScript_RepelWoreOff_Chose:
 	bufferitemname 1, VAR_0x8004
 	removeitem VAR_0x8004, 1
 	playse SE_SELECT
-	msgbox gText_PlayerUsedVar2, MSGBOX_SIGN
+	msgbox gText_PlayerUsedVar2, MSGBOX_DEFAULT
 EventScript_RepelWoreOff_End:
 	end
 
