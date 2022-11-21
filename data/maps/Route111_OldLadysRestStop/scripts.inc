@@ -36,6 +36,7 @@ Route111_OldLadysRestStop_EventScript_DeclineRest2::
 	end
 
 Route111_OldLadysRestStop_EventScript_SoBeIt::
+	goto_if_set FLAG_DAILY_OLD_LADY, Route111_OldLadysRestStop_EventScript_DeclineRest2
 	cleartrainerflag TRAINER_OLD_LADY_1
 	cleartrainerflag TRAINER_OLD_LADY_2
 	msgbox Route111_OldLadysRestStop_Text_CanBattleMeNow, MSGBOX_DEFAULT
@@ -49,6 +50,7 @@ Route111_OldLadysRestStop_EventScript_Battle2::
 	end
 
 AfterBattle::
+	setflag FLAG_DAILY_OLD_LADY
 	msgbox Route111_OldLadysRestStop_Text_OldLady_Defeated2, MSGBOX_DEFAULT
 	msgbox Route111_OldLadysRestStop_Text_RestAfterDefeat, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route111_OldLadysRestStop_EventScript_Rest
@@ -78,7 +80,7 @@ Route111_OldLadysRestStop_Text_DontNeedToBeShy:
 
 Route111_OldLadysRestStop_Text_CanBattleMeNow:
 	.string "Oh dear, dear,\n"
-	.string "if your POKéMON are so rested...$"
+	.string "if your POKéMON are so rested…$"
 
 Route111_OldLadysRestStop_Text_OldLady_Intro:
 	.string "That means you can battle me now.$"
@@ -88,7 +90,7 @@ Route111_OldLadysRestStop_Text_OhDearDear:
 
 Route111_OldLadysRestStop_Text_OldLady_Defeated1:
 	.string "Your POKéMON are so strong.\n"
-	.string "But now they must be exhausted...$"
+	.string "But now they must be exhausted…$"
 
 Route111_OldLadysRestStop_Text_OldLady_NotDoneYet:
 	.string "For sure.$"
