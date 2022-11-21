@@ -27,6 +27,7 @@ EventScript_RepelWoreOff_Chose:
 	playse SE_SELECT
 	msgbox gText_PlayerUsedVar2, MSGBOX_DEFAULT
 EventScript_RepelWoreOff_End:
+	closemessage
 	end
 
 Text_RepelWoreOff: @ 82A4B33
