@@ -4,7 +4,7 @@ RustboroCity_Flat1_2F_MapScripts::
 	.byte 0
 
 RustboroCity_Flat1_2F_EventScript_WaldasDad::
-	lock
+	locktarget
 	faceplayer
 	specialvar VAR_RESULT, TryBufferWaldaPhrase
 	goto_if_eq VAR_RESULT, FALSE, RustboroCity_Flat1_2F_EventScript_WaldasDadFirstPhrase

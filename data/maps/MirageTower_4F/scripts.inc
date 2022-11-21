@@ -5,7 +5,7 @@ MirageTower_4F_MapScripts::
 	.byte 0
 
 MirageTower_4F_EventScript_RootFossil::
-	lock
+	locktarget
 	faceplayer
 	msgbox MirageTower_4F_Text_TakeRootFossil, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, MirageTower_4F_EventScript_LeaveRootFossil
@@ -26,7 +26,7 @@ MirageTower_4F_EventScript_LeaveRootFossil::
 	end
 
 MirageTower_4F_EventScript_ClawFossil::
-	lock
+	locktarget
 	faceplayer
 	msgbox MirageTower_4F_Text_TakeClawFossil, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, MirageTower_4F_EventScript_LeaveClawFossil

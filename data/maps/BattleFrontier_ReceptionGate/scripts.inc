@@ -124,7 +124,7 @@ BattleFrontier_ReceptionGate_Movement_FacilityGuideFaceScott:
 	step_end
 
 BattleFrontier_ReceptionGate_EventScript_Greeter::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_ReceptionGate_Text_WelcomeToBattleFrontier, MSGBOX_DEFAULT
 	msgbox BattleFrontier_ReceptionGate_Text_EnjoyBattleFrontier, MSGBOX_DEFAULT
@@ -132,7 +132,7 @@ BattleFrontier_ReceptionGate_EventScript_Greeter::
 	end
 
 BattleFrontier_ReceptionGate_EventScript_FacilityGuide::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_ReceptionGate_Text_YourGuideToFacilities, MSGBOX_DEFAULT
 	goto BattleFrontier_ReceptionGate_EventScript_ChooseFacilityToLearnAbout
@@ -209,7 +209,7 @@ BattleFrontier_ReceptionGate_EventScript_ExitFacilityGuide::
 	end
 
 BattleFrontier_ReceptionGate_EventScript_RulesGuide::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_ReceptionGate_Text_YourGuideToRules, MSGBOX_DEFAULT
 	goto BattleFrontier_ReceptionGate_EventScript_ChooseRuleToLearnAbout
@@ -260,7 +260,7 @@ BattleFrontier_ReceptionGate_EventScript_ExitRulesGuide::
 	end
 
 BattleFrontier_ReceptionGate_EventScript_FrontierPassGuide::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_ReceptionGate_Text_YourGuideToFrontierPass, MSGBOX_DEFAULT
 	goto BattleFrontier_ReceptionGate_EventScript_ChooseFrontierPassInfoToLearnAbout

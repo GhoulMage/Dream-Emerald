@@ -2,7 +2,7 @@ VerdanturfTown_FriendshipRatersHouse_MapScripts::
 	.byte 0
 
 VerdanturfTown_FriendshipRatersHouse_EventScript_FriendshipRater::
-	lock
+	locktarget
 	faceplayer
 	msgbox VerdanturfTown_FriendshipRatersHouse_Text_SeeHowMuchPokemonLikesYou, MSGBOX_DEFAULT
 	specialvar VAR_RESULT, GetLeadMonFriendshipScore
@@ -53,7 +53,7 @@ VerdanturfTown_FriendshipRatersHouse_EventScript_AdoresYou::
 	end
 
 VerdanturfTown_FriendshipRatersHouse_EventScript_Pikachu::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_PIKACHU, CRY_MODE_NORMAL

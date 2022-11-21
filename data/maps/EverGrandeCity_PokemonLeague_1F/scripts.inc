@@ -27,7 +27,7 @@ EverGrandeCity_PokemonLeague_1F_EventScript_Nurse::
 	end
 
 EverGrandeCity_PokemonLeague_1F_EventScript_Clerk::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage

@@ -42,7 +42,7 @@ Route110_TrickHouseEnd_EventScript_SetDoorClosedMetatile::
 	return
 
 Route110_TrickHouseEnd_EventScript_TrickMaster::
-	lock
+	locktarget
 	faceplayer
 	msgbox Route110_TrickHouseEnd_Text_YouveMadeItToMe, MSGBOX_DEFAULT
 	setvar VAR_TEMP_2, 1

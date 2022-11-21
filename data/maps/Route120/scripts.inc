@@ -87,7 +87,7 @@ Route120_EventScript_SetRainyWeather::
 	return
 
 Route120_EventScript_BerryBeauty::
-	lock
+	locktarget
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_ROUTE_120_RECEIVED_BERRY, Route120_EventScript_ReceivedBerry
@@ -155,7 +155,7 @@ Route120_EventScript_BerryNotLove::
 	return
 
 Route120_EventScript_Steven::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_NOT_READY_FOR_BATTLE_ROUTE_120, Route120_EventScript_StevenAskReadyForBattle
 	msgbox Route120_Text_StevenGreeting, MSGBOX_YESNO

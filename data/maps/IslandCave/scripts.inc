@@ -88,7 +88,7 @@ IslandCave_EventScript_ClearSteps::
 	return
 
 IslandCave_EventScript_Regice::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_REGICE, CRY_MODE_ENCOUNTER

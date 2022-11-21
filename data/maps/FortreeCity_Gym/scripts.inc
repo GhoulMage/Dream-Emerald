@@ -100,7 +100,7 @@ FortreeCity_Gym_EventScript_Darius::
 	end
 
 FortreeCity_Gym_EventScript_GymGuide::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_DEFEATED_FORTREE_GYM, FortreeCity_Gym_EventScript_GymGuidePostVictory
 	msgbox FortreeCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT

@@ -2,7 +2,7 @@ MauvilleCity_Mart_MapScripts::
 	.byte 0
 
 MauvilleCity_Mart_EventScript_Clerk::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage

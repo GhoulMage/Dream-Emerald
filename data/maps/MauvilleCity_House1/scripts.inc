@@ -2,7 +2,7 @@ MauvilleCity_House1_MapScripts::
 	.byte 0
 
 MauvilleCity_House1_EventScript_RockSmashDude::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_ROCK_SMASH, MauvilleCity_House1_EventScript_ReceivedRockSmash
 	msgbox MauvilleCity_House1_Text_ImRockSmashDudeTakeThis, MSGBOX_DEFAULT
