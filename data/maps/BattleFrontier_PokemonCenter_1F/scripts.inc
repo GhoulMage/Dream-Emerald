@@ -30,7 +30,7 @@ BattleFrontier_PokemonCenter_1F_EventScript_Picnicker::
 	end
 
 BattleFrontier_PokemonCenter_1F_EventScript_Skitty::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL

@@ -18,7 +18,7 @@ LilycoveCity_DepartmentStore_5F_EventScript_BlockRoofStairs::
 	end
 
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarLeft::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -46,7 +46,7 @@ LilycoveCity_DepartmentStore_5F_Pokemart_Dolls:
 	end
 
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidLeft::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -71,7 +71,7 @@ LilycoveCity_DepartmentStore_5F_Pokemart_Cushions:
 	end
 
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidRight::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -96,7 +96,7 @@ LilycoveCity_DepartmentStore_5F_Pokemart_Posters:
 	end
 
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarRight::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage

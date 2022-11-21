@@ -2,7 +2,7 @@ FortreeCity_House1_MapScripts::
 	.byte 0
 
 FortreeCity_House1_EventScript_Trader::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_FORTREE_NPC_TRADE_COMPLETED, FortreeCity_House1_EventScript_TradeCompleted
 	setvar VAR_0x8008, INGAME_TRADE_PLUSLE
@@ -51,7 +51,7 @@ FortreeCity_House1_EventScript_ExpertF::
 	end
 
 FortreeCity_House1_EventScript_Zigzagoon::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL

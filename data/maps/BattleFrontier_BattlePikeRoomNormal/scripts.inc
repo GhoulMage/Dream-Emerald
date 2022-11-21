@@ -80,7 +80,7 @@ BattleFrontier_BattlePikeRoomNormal_EventScript_WonHardBattle::
 	waitmovement 0
 	applymovement LOCALID_OBJ_1, BattleFrontier_BattlePikeRoomNormal_Movement_HealNPCApproachPlayer
 	waitmovement 0
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_BattlePikeRoomNormal_Text_RestoreToFullHealth, MSGBOX_DEFAULT
 	playfanfare MUS_HEAL
@@ -536,7 +536,7 @@ BattleFrontier_BattlePikeRoomNormal_EventScript_NPC::
 	case PIKE_ROOM_STATUS, BattleFrontier_BattlePikeRoomNormal_EventScript_StatusNPC
 	case PIKE_ROOM_HEAL_PART, BattleFrontier_BattlePikeRoomNormal_EventScript_HealNPC
 BattleFrontier_BattlePikeRoomNormal_EventScript_NormalNPC::
-	lock
+	locktarget
 	faceplayer
 	pike_getnpcmsg
 	msgbox gStringVar4, MSGBOX_DEFAULT
@@ -546,7 +546,7 @@ BattleFrontier_BattlePikeRoomNormal_EventScript_NormalNPC::
 	end
 
 BattleFrontier_BattlePikeRoomNormal_EventScript_StatusNPC::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_BattlePikeRoomNormal_Text_ApologizeHopeMonsAreFine, MSGBOX_DEFAULT
 	closemessage
@@ -567,14 +567,14 @@ BattleFrontier_BattlePikeRoomNormal_EventScript_HealNPC::
 	end
 
 BattleFrontier_BattlePikeRoomNormal_EventScript_WillRestoreOneMon::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_BattlePikeRoomNormal_Text_WillRestoreOneMon, MSGBOX_DEFAULT
 	closemessage
 	return
 
 BattleFrontier_BattlePikeRoomNormal_EventScript_WillRestoreTwoMons::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_BattlePikeRoomNormal_Text_WillRestoreTwoMons, MSGBOX_DEFAULT
 	closemessage
@@ -582,7 +582,7 @@ BattleFrontier_BattlePikeRoomNormal_EventScript_WillRestoreTwoMons::
 
 @ Dusclops or Kirlia
 BattleFrontier_BattlePikeRoomNormal_EventScript_StatusMon::
-	lock
+	locktarget
 	faceplayer
 	msgbox BattleFrontier_BattlePikeRoomNormal_Text_Silence, MSGBOX_DEFAULT
 	closemessage

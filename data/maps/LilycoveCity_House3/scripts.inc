@@ -8,7 +8,7 @@ LilycoveCity_House3_OnTransition:
 	end
 
 LilycoveCity_House3_EventScript_PokefanF::
-	lock
+	locktarget
 	faceplayer
 	msgbox LilycoveCity_House3_Text_LearnFromMasterOfPokeblocks, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, LilycoveCity_House3_EventScript_DeclinePokeblockLearn
@@ -28,7 +28,7 @@ LilycoveCity_House3_EventScript_DeclinePokeblockLearn::
 	end
 
 LilycoveCity_House3_EventScript_Man::
-	lock
+	locktarget
 	faceplayer
 	msgbox LilycoveCity_House3_Text_HappyToHaveQuadruplets, MSGBOX_DEFAULT
 	closemessage
@@ -38,7 +38,7 @@ LilycoveCity_House3_EventScript_Man::
 	end
 
 LilycoveCity_House3_EventScript_GameBoyKid1::
-	lock
+	locktarget
 	faceplayer
 	switch VAR_TEMP_1
 	case 0, LilycoveCity_House3_EventScript_WereDoingMultiBattle
@@ -48,7 +48,7 @@ LilycoveCity_House3_EventScript_GameBoyKid1::
 	end
 
 LilycoveCity_House3_EventScript_GameBoyKid2::
-	lock
+	locktarget
 	faceplayer
 	switch VAR_TEMP_1
 	case 0, LilycoveCity_House3_EventScript_WereDoingMultiBattle
@@ -58,7 +58,7 @@ LilycoveCity_House3_EventScript_GameBoyKid2::
 	end
 
 LilycoveCity_House3_EventScript_GameBoyKid3::
-	lock
+	locktarget
 	faceplayer
 	switch VAR_TEMP_1
 	case 0, LilycoveCity_House3_EventScript_WereDoingMultiBattle
@@ -68,7 +68,7 @@ LilycoveCity_House3_EventScript_GameBoyKid3::
 	end
 
 LilycoveCity_House3_EventScript_GameBoyKid4::
-	lock
+	locktarget
 	faceplayer
 	switch VAR_TEMP_1
 	case 0, LilycoveCity_House3_EventScript_WereDoingMultiBattle

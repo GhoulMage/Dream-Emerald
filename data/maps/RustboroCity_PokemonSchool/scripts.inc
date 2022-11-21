@@ -75,7 +75,7 @@ RustboroCity_PokemonSchool_EventScript_StudentNotebook::
 	end
 
 RustboroCity_PokemonSchool_EventScript_Teacher::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_QUICK_CLAW, RustboroCity_PokemonSchool_EventScript_GaveQuickClaw
 	call_if_eq VAR_FACING, DIR_EAST, RustboroCity_PokemonSchool_EventScript_TeacherCheckOnStudentsEast
@@ -161,7 +161,7 @@ RustboroCity_PokemonSchool_Movement_TeacherCheckOnStudentsEast:
 	step_end
 
 RustboroCity_PokemonSchool_EventScript_Scott::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_MET_SCOTT_AFTER_OBTAINING_STONE_BADGE, RustboroCity_PokemonSchool_EventScript_ScottWatchStudents
 	goto_if_set FLAG_MET_SCOTT_RUSTBORO, RustboroCity_PokemonSchool_EventScript_ScottSpokeAlready

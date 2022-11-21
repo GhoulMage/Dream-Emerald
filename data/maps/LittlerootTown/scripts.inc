@@ -255,7 +255,7 @@ LittlerootTown_EventScript_Boy::
 	end
 
 LittlerootTown_EventScript_Twin::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_ADVENTURE_STARTED, LittlerootTown_EventScript_GoodLuck
 	goto_if_set FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_YouSavedBirch
@@ -872,7 +872,7 @@ LittlerootTown_Movement_MomExitThroughDoor:
 	step_end
 
 LittlerootTown_EventScript_Mom::
-	lock
+	locktarget
 	faceplayer
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_SetHomeDoorCoordsMale

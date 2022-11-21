@@ -18,7 +18,7 @@ SootopolisCity_PokemonCenter_1F_EventScript_Nurse::
 	end
 
 SootopolisCity_PokemonCenter_1F_EventScript_Gentleman::
-	lock
+	locktarget
 	faceplayer
 	goto_if_ge VAR_SKY_PILLAR_STATE, 2, SootopolisCity_PokemonCenter_1F_EventScript_GentlemanNoLegendaries
 	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_PokemonCenter_1F_EventScript_GentlemanNoLegendaries
@@ -32,7 +32,7 @@ SootopolisCity_PokemonCenter_1F_EventScript_GentlemanNoLegendaries::
 	end
 
 SootopolisCity_PokemonCenter_1F_EventScript_Woman::
-	lock
+	locktarget
 	faceplayer
 	goto_if_ge VAR_SKY_PILLAR_STATE, 2, SootopolisCity_PokemonCenter_1F_EventScript_WomanNoLegendaries
 	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_PokemonCenter_1F_EventScript_WomanNoLegendaries

@@ -161,7 +161,7 @@ SlateportCity_Harbor_Movement_PlayerWalkUp:
 	step_end
 
 SlateportCity_Harbor_EventScript_FerryAttendant::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, SlateportCity_Harbor_EventScript_AskForTicket
 	msgbox SlateportCity_Harbor_Text_FerryServiceUnavailable, MSGBOX_DEFAULT
@@ -264,7 +264,7 @@ SlateportCity_Harbor_Movement_BoardFerryNorth:
 	step_end
 
 SlateportCity_Harbor_EventScript_Sailor::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, SlateportCity_Harbor_EventScript_SailorNoAbnormalWeather
 	setvar VAR_0x8004, 0
@@ -289,7 +289,7 @@ SlateportCity_Harbor_EventScript_FatMan::
 	end
 
 SlateportCity_Harbor_EventScript_CaptStern::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_BADGE07_GET, SlateportCity_Harbor_EventScript_CaptSternFerryOrScannerComment
 	goto_if_set FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE, SlateportCity_Harbor_EventScript_NeedDive

@@ -2,7 +2,7 @@ GraniteCave_1F_MapScripts::
 	.byte 0
 
 GraniteCave_1F_EventScript_Hiker::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_FLASH, GraniteCave_1F_EventScript_ReceivedFlash
 	msgbox GraniteCave_1F_Text_GetsDarkAheadHereYouGo, MSGBOX_DEFAULT

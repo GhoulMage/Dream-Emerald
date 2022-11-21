@@ -2,7 +2,7 @@ FortreeCity_House2_MapScripts::
 	.byte 0
 
 FortreeCity_House2_EventScript_HiddenPowerGiver::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_HIDDEN_POWER, FortreeCity_House2_EventScript_ExplainHiddenPower
 	call_if_unset FLAG_MET_HIDDEN_POWER_GIVER, FortreeCity_House2_EventScript_Greeting
