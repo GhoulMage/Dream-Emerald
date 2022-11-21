@@ -4,7 +4,7 @@ BattleFrontier_ScottsHouse_MapScripts::
 	.byte 0
 
 BattleFrontier_ScottsHouse_EventScript_Scott::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_TEMP_4, BattleFrontier_ScottsHouse_EventScript_GivenBerry
 	goto_if_set FLAG_TEMP_3, BattleFrontier_ScottsHouse_EventScript_GivenShield

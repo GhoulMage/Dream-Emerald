@@ -14,7 +14,7 @@ RustboroCity_DevonCorp_1F_EventScript_BlockStairs::
 	return
 
 RustboroCity_DevonCorp_1F_EventScript_Employee::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RETURNED_DEVON_GOODS, RustboroCity_DevonCorp_1F_EventScript_GoodsRecovered
 	goto_if_set FLAG_DEVON_GOODS_STOLEN, RustboroCity_DevonCorp_1F_EventScript_RobberWasntBright
@@ -33,7 +33,7 @@ RustboroCity_DevonCorp_1F_EventScript_GoodsRecovered::
 	end
 
 RustboroCity_DevonCorp_1F_EventScript_StairGuard::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RETURNED_DEVON_GOODS, RustboroCity_DevonCorp_1F_EventScript_AlwaysWelcome
 	goto_if_set FLAG_RECOVERED_DEVON_GOODS, RustboroCity_DevonCorp_1F_EventScript_GotRobbed
@@ -53,7 +53,7 @@ RustboroCity_DevonCorp_1F_EventScript_GotRobbed::
 	end
 
 RustboroCity_DevonCorp_1F_EventScript_Greeter::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RETURNED_DEVON_GOODS, RustboroCity_DevonCorp_1F_EventScript_WelcomeToDevonCorp
 	goto_if_set FLAG_RECOVERED_DEVON_GOODS, RustboroCity_DevonCorp_1F_EventScript_StaffGotRobbed

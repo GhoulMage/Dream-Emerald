@@ -851,7 +851,7 @@ EventScript_DoLinkRoomExit::
 	end
 
 CableClub_EventScript_UnionRoomAttendant::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FACILITY_UNION_ROOM
 	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
@@ -937,7 +937,7 @@ CableClub_EventScript_UnionRoomAdapterNotConnected::
 	return
 
 CableClub_EventScript_WirelessClubAttendant::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
 	msgbox CableClub_Text_AskAboutLinking, MSGBOX_YESNO
@@ -952,7 +952,7 @@ CableClub_EventScript_DontAskAboutLinking::
 	return
 
 CableClub_EventScript_DirectCornerAttendant::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER  @ Set preemptively for multi battles, ignored otherwise
 	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
@@ -1261,7 +1261,7 @@ CableClub_OnResume:
 	end
 
 MossdeepCity_GameCorner_1F_EventScript_InfoMan2::
-	lock
+	locktarget
 	faceplayer
 	message MossdeepCity_GameCorner_1F_Text_DescribeWhichGame
 	waitmessage
@@ -1289,7 +1289,7 @@ MossdeepCity_GameCorner_1F_EventScript_MinigameInfoExit::
 	end
 
 MossdeepCity_GameCorner_1F_EventScript_OldMan2::
-	lock
+	locktarget
 	faceplayer
 	message MossdeepCity_GameCorner_1F_Text_WelcomeCanYouWait
 	waitmessage

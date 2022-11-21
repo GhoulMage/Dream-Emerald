@@ -4,7 +4,7 @@ MeteorFalls_StevensCave_MapScripts::
 	.byte 0
 
 MeteorFalls_StevensCave_EventScript_Steven::
-	lock
+	locktarget
 	goto_if_set FLAG_DEFEATED_METEOR_FALLS_STEVEN, MeteorFalls_StevensCave_EventScript_Defeated
 	waitse
 	playse SE_PIN

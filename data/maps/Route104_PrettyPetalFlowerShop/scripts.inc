@@ -16,7 +16,7 @@ Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner::
 	end
 
 Route104_PrettyPetalFlowerShop_EventScript_ShopOwner::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_TEMP_1, Route104_PrettyPetalFlowerShop_EventScript_SellDecorations
 	msgbox Route104_PrettyPetalFlowerShop_Text_ThisIsPrettyPetalFlowerShop, MSGBOX_DEFAULT
@@ -64,7 +64,7 @@ Route104_PrettyPetalFlowerShop_Pokemart_Plants:
 	end
 
 Route104_PrettyPetalFlowerShop_EventScript_WailmerPailGirl::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_RECEIVED_WAILMER_PAIL, Route104_PrettyPetalFlowerShop_EventScript_GiveWailmerPail
 	msgbox Route104_PrettyPetalFlowerShop_Text_WailmerPailExplanation, MSGBOX_DEFAULT
@@ -81,7 +81,7 @@ Route104_PrettyPetalFlowerShop_EventScript_GiveWailmerPail::
 	end
 
 Route104_PrettyPetalFlowerShop_EventScript_RandomBerryGirl::
-	lock
+	locktarget
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY, Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry

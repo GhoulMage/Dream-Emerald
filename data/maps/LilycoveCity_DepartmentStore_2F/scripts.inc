@@ -14,7 +14,7 @@ LilycoveCity_DepartmentStore_2F_EventScript_Sailor::
 	end
 
 LilycoveCity_DepartmentStore_2F_EventScript_ClerkLeft::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -41,7 +41,7 @@ LilycoveCity_DepartmentStore_2F_Pokemart1:
 	end
 
 LilycoveCity_DepartmentStore_2F_EventScript_ClerkRight::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage

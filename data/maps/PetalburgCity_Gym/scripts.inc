@@ -104,7 +104,7 @@ PetalburgCity_Gym_Movement_WallyExitGym:
 	step_end
 
 PetalburgCity_Gym_EventScript_Norman::
-	lock
+	locktarget
 	faceplayer
 	switch VAR_PETALBURG_GYM_STATE
 	case 2, PetalburgCity_Gym_EventScript_NormanNoBadges
@@ -1107,7 +1107,7 @@ PetalburgCity_Gym_EventScript_UnlockRoomDoors::
 	return
 
 PetalburgCity_Gym_EventScript_GymGuide::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, PetalburgCity_Gym_EventScript_GymGuidePostVictory
 	msgbox PetalburgCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT

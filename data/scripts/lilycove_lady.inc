@@ -10,7 +10,7 @@ LilycoveCity_PokemonCenter_1F_EventScript_LilycoveLady::
 	end
 
 LilycoveCity_PokemonCenter_1F_EventScript_FavorLady::
-	lock
+	locktarget
 	faceplayer
 	msgbox LilycoveCity_PokemonCenter_1F_Text_ImTheFavorLady, MSGBOX_DEFAULT
 	specialvar VAR_RESULT, GetFavorLadyState
@@ -131,7 +131,7 @@ LilycoveCity_PokemonCenter_1F_EventScript_ReceivedFavorPrize::
 	end
 
 LilycoveCity_PokemonCenter_1F_EventScript_QuizLady::
-	lock
+	locktarget
 	faceplayer
 	msgbox LilycoveCity_PokemonCenter_1F_Text_ImTheQuizLady, MSGBOX_DEFAULT
 	specialvar VAR_RESULT, GetQuizLadyState
@@ -329,7 +329,7 @@ LilycoveCity_PokemonCenter_1F_EventScript_FinishMakingQuiz::
 	end
 
 LilycoveCity_PokemonCenter_1F_EventScript_ContestLady::
-	lock
+	locktarget
 	faceplayer
 	msgbox LilycoveCity_PokemonCenter_1F_Text_ImTheContestLady, MSGBOX_DEFAULT
 	specialvar VAR_RESULT, HasPlayerGivenContestLadyPokeblock
@@ -480,7 +480,7 @@ LilycoveCity_PokemonCenter_1F_EventScript_ContestLadyMon::
 	end
 
 LilycoveCity_PokemonCenter_1F_EventScript_Zigzagoon::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry VAR_0x8005, CRY_MODE_NORMAL
@@ -490,7 +490,7 @@ LilycoveCity_PokemonCenter_1F_EventScript_Zigzagoon::
 	end
 
 LilycoveCity_PokemonCenter_1F_EventScript_Skitty::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry VAR_0x8005, CRY_MODE_NORMAL
@@ -500,7 +500,7 @@ LilycoveCity_PokemonCenter_1F_EventScript_Skitty::
 	end
 
 LilycoveCity_PokemonCenter_1F_EventScript_Poochyena::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry VAR_0x8005, CRY_MODE_NORMAL
@@ -510,7 +510,7 @@ LilycoveCity_PokemonCenter_1F_EventScript_Poochyena::
 	end
 
 LilycoveCity_PokemonCenter_1F_EventScript_Kecleon::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry VAR_0x8005, CRY_MODE_NORMAL
@@ -520,7 +520,7 @@ LilycoveCity_PokemonCenter_1F_EventScript_Kecleon::
 	end
 
 LilycoveCity_PokemonCenter_1F_EventScript_Pikachu::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry VAR_0x8005, CRY_MODE_NORMAL

@@ -30,7 +30,7 @@ Route121_SafariZoneEntrance_EventScript_WelcomeAttendant::
 	end
 
 Route121_SafariZoneEntrance_EventScript_InfoAttendant::
-	lock
+	locktarget
 	faceplayer
 	msgbox Route121_SafariZoneEntrance_Text_WelcomeFirstTime, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route121_SafariZoneEntrance_EventScript_FirstTimeInfo

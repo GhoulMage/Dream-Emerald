@@ -2138,7 +2138,31 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 925
+
+    [TRAINER_OLD_LADY_1] =
+    {
+        .trainerClass = TRAINER_CLASS_SOCIALITE,
+        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_RICH,
+        .trainerPic = TRAINER_PIC_SOCIALITE,
+        .trainerName = _("OLD LADY"),
+        .items = {ITEM_FULL_RESTORE, ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_NONE},
+        .doubleBattle = TRUE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
+        .party = ITEM_CUSTOM_MOVES(sParty_OldLady1),
+    },
+
+    [TRAINER_OLD_LADY_2] =
+    {
+        .trainerClass = TRAINER_CLASS_SOCIALITE,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerPic = TRAINER_PIC_SOCIALITE,
+        .trainerName = _("OLD LADY"),
+        .items = {ITEM_HYPER_POTION, ITEM_SUPER_POTION, ITEM_NONE, ITEM_NONE},
+        .doubleBattle = TRUE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
+        .party = ITEM_CUSTOM_MOVES(sParty_OldLady2),
+    },
+
     [TRAINER_GABBY_AND_TY_1] =
     {
 #line 926

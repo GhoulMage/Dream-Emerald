@@ -37,7 +37,7 @@ EverGrandeCity_GlaciasRoom_EventScript_CloseDoor::
 	return
 
 EverGrandeCity_GlaciasRoom_EventScript_Glacia::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_GLACIA, EverGrandeCity_GlaciasRoom_EventScript_PostBattleSpeech
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE

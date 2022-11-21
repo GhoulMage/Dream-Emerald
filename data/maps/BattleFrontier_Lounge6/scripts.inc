@@ -2,7 +2,7 @@ BattleFrontier_Lounge6_MapScripts::
 	.byte 0
 
 BattleFrontier_Lounge6_EventScript_Trader::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_BATTLE_FRONTIER_TRADE_DONE, BattleFrontier_Lounge6_EventScript_TradeCompleted
 	setvar VAR_0x8008, INGAME_TRADE_MEOWTH

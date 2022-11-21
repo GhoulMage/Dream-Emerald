@@ -21,7 +21,7 @@ SlateportCity_PokemonFanClub_EventScript_AcceptInterview2::
 	copyvar VAR_0x8005, VAR_0x8009
 	setvar VAR_0x8006, EASY_CHAT_PERSON_REPORTER_FEMALE
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_RESULT, 1, SlateportCity_PokemonFanClub_EventScript_SubmitResponse2
 	goto_if_eq VAR_RESULT, 0, SlateportCity_PokemonFanClub_EventScript_DeclineInterview2
@@ -44,7 +44,7 @@ SlateportCity_PokemonFanClub_EventScript_AlreadyInterviewed2::
 	end
 
 SlateportCity_OceanicMuseum_1F_EventScript_Reporter::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8005, TVSHOW_RECENT_HAPPENINGS
 	special InterviewBefore
@@ -69,7 +69,7 @@ SlateportCity_OceanicMuseum_1F_EventScript_AcceptInterview::
 	copyvar VAR_0x8005, VAR_0x8009
 	setvar VAR_0x8006, EASY_CHAT_PERSON_REPORTER_MALE
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_RESULT, 1, SlateportCity_OceanicMuseum_1F_EventScript_SubmitResponse
 	goto_if_eq VAR_RESULT, 0, SlateportCity_OceanicMuseum_1F_EventScript_DeclineInterview
@@ -92,7 +92,7 @@ SlateportCity_OceanicMuseum_1F_EventScript_AlreadyInterviewed::
 	end
 
 SlateportCity_PokemonFanClub_EventScript_Reporter::
-	lock
+	locktarget
 	faceplayer
 	specialvar VAR_RESULT, IsLeadMonNicknamedOrNotEnglish
 	goto_if_eq VAR_RESULT, FALSE, SlateportCity_PokemonFanClub_EventScript_ReporterNoNickname
@@ -135,13 +135,13 @@ SlateportCity_PokemonFanClub_EventScript_ContinueInterview::
 	copyvar VAR_0x8005, VAR_0x8009
 	setvar VAR_0x8006, 0
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_RESULT, 0, SlateportCity_PokemonFanClub_EventScript_DeclineInterview
 	msgbox SlateportCity_PokemonFanClub_Text_WhatDoPokemonMeanToYou, MSGBOX_DEFAULT
 	setvar VAR_0x8006, 1
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_RESULT, 0, SlateportCity_PokemonFanClub_EventScript_DeclineInterview
 	msgbox SlateportCity_PokemonFanClub_Text_ThatsAllForInterview, MSGBOX_DEFAULT
@@ -161,7 +161,7 @@ SlateportCity_PokemonFanClub_EventScript_AlreadyInterviewed::
 	end
 
 LilycoveCity_ContestLobby_EventScript_Reporter::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_TEMP_2, LilycoveCity_ContestLobby_EventScript_AlreadyInterviewed
 	setvar VAR_0x8005, TVSHOW_BRAVO_TRAINER_POKEMON_PROFILE
@@ -179,7 +179,7 @@ LilycoveCity_ContestLobby_EventScript_AcceptInterview::
 	copyvar VAR_0x8005, VAR_0x8009
 	setvar VAR_0x8006, 0
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_RESULT, 1, LilycoveCity_ContestLobby_EventScript_SubmitResponse
 	goto_if_eq VAR_RESULT, 0, LilycoveCity_ContestLobby_EventScript_DeclineInterview
@@ -198,7 +198,7 @@ LilycoveCity_ContestLobby_EventScript_SubmitResponse::
 	copyvar VAR_0x8005, VAR_0x8009
 	setvar VAR_0x8006, 1
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_RESULT, 0, LilycoveCity_ContestLobby_EventScript_DeclineInterview
 	msgbox LilycoveCity_ContestLobby_Text_ThatsAllForInterview, MSGBOX_DEFAULT
@@ -234,7 +234,7 @@ LilycoveCity_ContestLobby_EventScript_DontShowContestReporter::
 	return
 
 BattleFrontier_BattleTowerLobby_EventScript_Reporter::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_TEMP_2, BattleFrontier_BattleTowerLobby_EventScript_AlreadyInterviewed
 	setvar VAR_0x8005, TVSHOW_BRAVO_TRAINER_BATTLE_TOWER_PROFILE
@@ -257,7 +257,7 @@ BattleFrontier_BattleTowerLobby_EventScript_AcceptInterview::
 	setvar VAR_0x8004, EASY_CHAT_TYPE_BATTLE_TOWER_INTERVIEW
 	copyvar VAR_0x8005, VAR_0x8009
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	goto_if_eq VAR_RESULT, 1, BattleFrontier_BattleTowerLobby_EventScript_SubmitResponse
 	goto_if_eq VAR_RESULT, 0, BattleFrontier_BattleTowerLobby_EventScript_CancelInterview

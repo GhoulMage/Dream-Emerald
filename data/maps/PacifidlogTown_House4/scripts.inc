@@ -10,7 +10,7 @@ PacifidlogTown_House4_EventScript_Woman::
 	end
 
 PacifidlogTown_House4_EventScript_Boy::
-	lock
+	locktarget
 	faceplayer
 	msgbox PacifidlogTown_House4_Text_WhereDidYouComeFrom, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, PacifidlogTown_House4_EventScript_Yes

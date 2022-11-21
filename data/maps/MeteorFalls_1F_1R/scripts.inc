@@ -224,7 +224,7 @@ MeteorFalls_1F_1R_Movement_PushPlayerOutOfWay:
 	step_end
 
 MeteorFalls_1F_1R_EventScript_ProfCozmo::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_MET_PROF_COZMO, MeteorFalls_1F_1R_EventScript_MetCozmo
 	setflag FLAG_MET_PROF_COZMO

@@ -8,7 +8,7 @@ SurfPichu_GiveIfPossible:
 	vgoto_if_eq VAR_GIFT_PICHU_SLOT, PARTY_SIZE, SurfPichu_FullParty
 	setflag FLAG_MYSTERY_GIFT_DONE
 	vcall SurfPichu_GiveEgg
-	lock
+	locktarget
 	faceplayer
 	vmessage sText_MysteryGiftEgg
 	waitmessage
@@ -19,7 +19,7 @@ SurfPichu_GiveIfPossible:
 	end
 
 SurfPichu_FullParty:
-	lock
+	locktarget
 	faceplayer
 	vmessage sText_FullParty
 	waitmessage

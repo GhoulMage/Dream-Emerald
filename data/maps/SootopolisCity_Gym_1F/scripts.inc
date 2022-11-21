@@ -141,7 +141,7 @@ SootopolisCity_Gym_1F_EventScript_JuanRematch::
 	end
 
 SootopolisCity_Gym_1F_EventScript_GymGuide::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_DEFEATED_SOOTOPOLIS_GYM, SootopolisCity_Gym_1F_EventScript_GymGuidePostVictory
 	msgbox SootopolisCity_Gym_1F_Text_GymGuideAdvice, MSGBOX_DEFAULT

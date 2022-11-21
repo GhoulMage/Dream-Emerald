@@ -1,7 +1,7 @@
 .set LOCALID_APPRENTICE, 6
 
 BattleFrontier_BattleTowerLobby_EventScript_Apprentice::
-	lock
+	locktarget
 	faceplayer
 	apprentice_gavelvlmode
 	goto_if_eq VAR_RESULT, FALSE, Apprentice_EventScript_FirstMeeting
@@ -187,7 +187,7 @@ Apprentice_EventScript_PickWinSpeech:
 	apprentice_shiftsaved
 	setvar VAR_0x8004, EASY_CHAT_TYPE_APPRENTICE
 	call Common_ShowEasyChatScreen
-	lock
+	locktarget
 	faceplayer
 	apprentice_save
 	apprentice_buff STR_VAR_1, APPRENTICE_BUFF_WIN_SPEECH

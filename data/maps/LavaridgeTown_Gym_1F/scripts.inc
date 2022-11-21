@@ -151,7 +151,7 @@ LavaridgeTown_Gym_B1F_EventScript_Eli::
 	end
 
 LavaridgeTown_Gym_1F_EventScript_GymGuide::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_DEFEATED_LAVARIDGE_GYM, LavaridgeTown_Gym_1F_EventScript_GymGuidePostVictory
 	msgbox LavaridgeTown_Gym_1F_Text_GymGuideAdvice, MSGBOX_DEFAULT

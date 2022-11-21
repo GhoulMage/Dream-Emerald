@@ -2,7 +2,7 @@ MauvilleCity_House2_MapScripts::
 	.byte 0
 
 MauvilleCity_House2_EventScript_Woman::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_COIN_CASE, MauvilleCity_House2_EventScript_ReceivedCoinCase
 	msgbox MauvilleCity_House2_Text_BuyHarborMailAtSlateport, MSGBOX_DEFAULT

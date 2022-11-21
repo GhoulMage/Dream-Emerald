@@ -1,6 +1,6 @@
 MysteryGiftScript_MysticTicket::
 	setvaddress MysteryGiftScript_MysticTicket
-	lock
+	locktarget
 	faceplayer
 	vgoto_if_set FLAG_RECEIVED_MYSTIC_TICKET, MysticTicket_Obtained
 	vgoto_if_set FLAG_CAUGHT_LUGIA, MysticTicket_Obtained

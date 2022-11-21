@@ -2,7 +2,7 @@ LilycoveCity_House2_MapScripts::
 	.byte 0
 
 LilycoveCity_House2_EventScript_FatMan::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_REST, LilycoveCity_House2_EventScript_ReceivedRest
 	msgbox LilycoveCity_House2_Text_NotAwakeYetHaveThis, MSGBOX_DEFAULT

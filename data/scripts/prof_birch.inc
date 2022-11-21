@@ -33,7 +33,7 @@ ProfBirch_EventScript_MoveToRoute103::
 	return
 
 ProfBirch_EventScript_RatePokedexOrRegister::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_HAS_MATCH_CALL, ProfBirch_EventScript_AskRatePokedex
 	goto_if_unset FLAG_ENABLE_PROF_BIRCH_MATCH_CALL, EventScript_RegisterProfBirch

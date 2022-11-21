@@ -31,7 +31,7 @@ Route112_CableCarStation_EventScript_ExitCableCar::
 	end
 
 Route112_CableCarStation_EventScript_Attendant::
-	lock
+	locktarget
 	faceplayer
 	msgbox Route112_CableCarStation_Text_CableCarReadyGetOn, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route112_CableCarStation_EventScript_RideCableCar
