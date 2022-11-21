@@ -5,7 +5,7 @@ TrainerHill_Roof_MapScripts::
 
 TrainerHill_Roof_EventScript_Owner::
 	trainerhill_settrainerflags
-	lock
+	locktarget
 	faceplayer
 	trainerhill_getownerstate
 	switch VAR_RESULT

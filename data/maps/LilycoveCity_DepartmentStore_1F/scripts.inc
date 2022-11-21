@@ -8,7 +8,7 @@ LilycoveCity_DepartmentStore_1F_EventScript_Greeter::
 	end
 
 LilycoveCity_DepartmentStore_1F_EventScript_LotteryClerk::
-	lock
+	locktarget
 	faceplayer
 	dotimebasedevents
 	goto_if_ne VAR_POKELOT_PRIZE_ITEM, ITEM_NONE, LilycoveCity_DepartmentStore_1F_EventScript_GivePrizeFromEarlier
@@ -127,7 +127,7 @@ LilycoveCity_DepartmentStore_1F_EventScript_PokefanM::
 	end
 
 LilycoveCity_DepartmentStore_1F_EventScript_Azumarill::
-	lock
+	locktarget
 	faceplayer
 	waitse
 	playmoncry SPECIES_AZUMARILL, CRY_MODE_NORMAL

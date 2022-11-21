@@ -174,7 +174,7 @@ NewMauville_Inside_EventScript_GeneratorOff::
 	end
 
 NewMauville_Inside_EventScript_Voltorb1::
-	lock
+	locktarget
 	faceplayer
 	setwildbattle SPECIES_VOLTORB, 25
 	waitse
@@ -198,7 +198,7 @@ NewMauville_Inside_EventScript_DefeatedVoltorb1::
 	end
 
 NewMauville_Inside_EventScript_Voltorb2::
-	lock
+	locktarget
 	faceplayer
 	setwildbattle SPECIES_VOLTORB, 25
 	waitse
@@ -222,7 +222,7 @@ NewMauville_Inside_EventScript_DefeatedVoltorb2::
 	end
 
 NewMauville_Inside_EventScript_Voltorb3::
-	lock
+	locktarget
 	faceplayer
 	setwildbattle SPECIES_VOLTORB, 25
 	waitse

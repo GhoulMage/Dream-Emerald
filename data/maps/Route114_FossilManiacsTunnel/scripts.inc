@@ -34,7 +34,7 @@ Route114_FossilManiacsTunnel_EventScript_ManiacMentionCaveIn::
 	end
 
 Route114_FossilManiacsTunnel_EventScript_FossilManiac::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_REVIVED_FOSSIL_MON, Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil
 	checkitem ITEM_ROOT_FOSSIL

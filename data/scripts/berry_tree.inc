@@ -19,7 +19,7 @@ BerryTree_EventScript_Sparkling::
 	end
 
 BerryTree_EventScript_CheckSoil::
-	lock
+	locktarget
 	faceplayer
 	specialvar VAR_RESULT, PlayerHasBerries
 	goto_if_eq VAR_RESULT, TRUE, BerryTree_EventScript_WantToPlant
@@ -100,7 +100,7 @@ BerryTree_EventScript_SetAdverbPoor::
 @ VAR_0x8006 here is the number of berries
 BerryTree_EventScript_CheckBerryFullyGrown::
 	buffernumberstring STR_VAR_2, VAR_0x8006
-	lock
+	locktarget
 	faceplayer
 	special ObjectEventInteractionGetBerryCountString
 	msgbox BerryTree_Text_WantToPick, MSGBOX_YESNO

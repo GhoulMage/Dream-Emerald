@@ -2,7 +2,7 @@ Route110_SeasideCyclingRoadNorthEntrance_MapScripts::
 	.byte 0
 
 Route110_SeasideCyclingRoadNorthEntrance_EventScript_Clerk::
-	lock
+	locktarget
 	faceplayer
 	msgbox Route110_SeasideCyclingRoadNorthEntrance_Text_GoAllOutOnCyclingRoad, MSGBOX_DEFAULT
 	release

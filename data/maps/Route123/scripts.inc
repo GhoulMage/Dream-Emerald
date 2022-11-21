@@ -7,7 +7,7 @@ Route123_OnTransition:
 	end
 
 Route123_EventScript_GigaDrainGirl::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM19, Route123_EventScript_ReceivedGigaDrain
 	msgbox Route123_Text_LoveGrassMonsHaveAny, MSGBOX_DEFAULT

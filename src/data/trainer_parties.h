@@ -1,3 +1,6 @@
+
+#include "constants/abilities.h"
+
 static const struct TrainerMonNoItemDefaultMoves sParty_Sawyer1[] = {
     {
     .iv = 0,
@@ -11567,6 +11570,80 @@ static const struct TrainerMonItemCustomMoves sParty_Juan5[] = {
     .species = SPECIES_KINGDRA,
     .heldItem = ITEM_CHESTO_BERRY,
     .moves = {MOVE_WATER_PULSE, MOVE_DOUBLE_TEAM, MOVE_ICE_BEAM, MOVE_REST}
+    }
+};
+
+static const struct TrainerMonItemCustomMoves sParty_OldLady1[] = {
+    {
+    .iv = 255,
+    .lvl = 36,
+    .species = SPECIES_SEALEO,
+    .heldItem = ITEM_LEFTOVERS,
+    .moves = {MOVE_TOXIC, MOVE_FACADE, MOVE_SURF, MOVE_AQUA_RING},
+    .ability = ABILITY_OBLIVIOUS,
+    .shiny = TRUE,
+    },
+    {
+    .iv = 255,
+    .lvl = 34,
+    .species = SPECIES_CRYOGONAL,
+    .heldItem = ITEM_ICICLE_PLATE,
+    .moves = {MOVE_RECOVER, MOVE_FREEZE_DRY, MOVE_FLASH_CANNON, MOVE_AURORA_VEIL},
+    .ability = ABILITY_LEVITATE,
+    .shiny = FALSE,
+    },
+    {
+    .iv = 255,
+    .lvl = 33,
+    .species = SPECIES_RELICANTH,
+    .heldItem = ITEM_ICY_ROCK,
+    .moves = {MOVE_TAKE_DOWN, MOVE_HEAD_SMASH, MOVE_DIVE, MOVE_HAIL},
+    .ability = ABILITY_ROCK_HEAD,
+    .shiny = FALSE,
+    },
+    {
+    .iv = 255,
+    .lvl = 34,
+    .species = SPECIES_GLAMEOW,
+    .heldItem = ITEM_SILK_SCARF,
+    .moves = {MOVE_FAKE_OUT, MOVE_SUCKER_PUNCH, MOVE_U_TURN, MOVE_HYPER_VOICE},
+    .ability = ABILITY_DEFIANT,
+    .shiny = FALSE,
+    },
+    {
+    .iv = 255,
+    .lvl = 36,
+    .species = SPECIES_CLAYDOL,
+    .heldItem = ITEM_SILK_SCARF,
+    .moves = {MOVE_RAPID_SPIN, MOVE_SUCKER_PUNCH, MOVE_EARTH_POWER, MOVE_COSMIC_POWER},
+    .ability = ABILITY_LEVITATE,
+    .shiny = FALSE,
+    },
+    {
+    .iv = 255,
+    .lvl = 35,
+    .species = SPECIES_LAPRAS,
+    .heldItem = ITEM_QUICK_CLAW,
+    .moves = {MOVE_HYDRO_PUMP, MOVE_PERISH_SONG, MOVE_THUNDERBOLT, MOVE_BRINE},
+    .ability = ABILITY_SHELL_ARMOR,
+    .shiny = FALSE,
+    }
+};
+
+static const struct TrainerMonItemCustomMoves sParty_OldLady2[] = {
+    {
+    .iv = 100,
+    .lvl = 17,
+    .species = SPECIES_ILLUMISE,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_SHOCK_WAVE, MOVE_QUICK_ATTACK, MOVE_CHARM, MOVE_NONE}
+    },
+    {
+    .iv = 100,
+    .lvl = 17,
+    .species = SPECIES_VOLBEAT,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_SHOCK_WAVE, MOVE_QUICK_ATTACK, MOVE_CONFUSE_RAY, MOVE_NONE}
     }
 };
 

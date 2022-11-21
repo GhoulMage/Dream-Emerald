@@ -4,7 +4,7 @@ MysteryGiftScript_BattleCard::
 	setorcopyvar VAR_RESULT, GET_CARD_BATTLES_WON
 	specialvar VAR_0x8008, GetMysteryGiftCardStat
 	vgoto_if_ne VAR_0x8008, REQUIRED_CARD_BATTLES, MysteryGiftScript_BattleCardInfo
-	lock
+	locktarget
 	faceplayer
 	vmessage sText_MysteryGiftBattleCountCard_WonPrize
 	waitmessage
@@ -15,7 +15,7 @@ MysteryGiftScript_BattleCard::
 	end
 
 MysteryGiftScript_BattleCardInfo:
-	lock
+	locktarget
 	faceplayer
 	vmessage sText_MysteryGiftBattleCountCard
 	waitmessage

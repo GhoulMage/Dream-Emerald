@@ -149,7 +149,7 @@ RustboroCity_DevonCorp_3F_Movement_PlayerApproachDesk:
 	step_end
 
 RustboroCity_DevonCorp_3F_EventScript_MrStone::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_EXP_SHARE, RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor
 	goto_if_set FLAG_DELIVERED_STEVEN_LETTER, RustboroCity_DevonCorp_3F_EventScript_GiveExpShare
@@ -181,7 +181,7 @@ RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor::
 	end
 
 RustboroCity_DevonCorp_3F_EventScript_Employee::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_REPEAT_BALL, RustboroCity_DevonCorp_3F_EventScript_EmployeeBalls
 	msgbox RustboroCity_DevonCorp_3F_Text_VisitCaptSternShipyard, MSGBOX_DEFAULT

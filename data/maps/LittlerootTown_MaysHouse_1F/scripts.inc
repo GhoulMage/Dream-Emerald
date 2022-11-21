@@ -114,7 +114,7 @@ LittlerootTown_MaysHouse_1F_Movement_RivalMomApproach:
 	step_end
 
 RivalsHouse_1F_EventScript_RivalMom::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE103, RivalsHouse_1F_EventScript_GoHomeEverySoOften
 	goto_if_set FLAG_SYS_POKEMON_GET, RivalsHouse_1F_EventScript_RivalIsOnRoute103
@@ -140,7 +140,7 @@ RivalsHouse_1F_EventScript_GoHomeEverySoOften::
 	end
 
 RivalsHouse_1F_EventScript_RivalSibling::
-	lock
+	locktarget
 	faceplayer
 	special GetPlayerBigGuyGirlString
 	msgbox RivalsHouse_1F_Text_DoYouHavePokemon, MSGBOX_DEFAULT

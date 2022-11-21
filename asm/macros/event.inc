@@ -1735,6 +1735,11 @@
 	.2byte \quantity
 	.endm
 
+	@ Ceases movement for the event obj. the Player is currently interacting with and that one alone.
+	.macro locktarget
+	.byte 0xe3
+	.endm
+
 
 @ Supplementary
 

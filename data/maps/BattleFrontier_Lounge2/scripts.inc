@@ -8,7 +8,7 @@ BattleFrontier_Lounge2_MapScripts::
 @    The type and description of the 3 pokemon they use in their silver battle
 @    The type and description of the 3 pokemon they use in their gold battle
 BattleFrontier_Lounge2_EventScript_FrontierManiac::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_MET_BATTLE_FRONTIER_MANIAC, BattleFrontier_Lounge2_EventScript_AlreadyMetManiac
 	setflag FLAG_MET_BATTLE_FRONTIER_MANIAC
@@ -91,19 +91,19 @@ BattleFrontier_Lounge2_EventScript_BufferBattlePyramid::
 	return
 
 BattleFrontier_Lounge2_EventScript_Maniac1::
-	lock
+	locktarget
 	msgbox BattleFrontier_Lounge2_Text_NewsGatheringPower, MSGBOX_DEFAULT
 	release
 	end
 
 BattleFrontier_Lounge2_EventScript_Maniac2::
-	lock
+	locktarget
 	msgbox BattleFrontier_Lounge2_Text_AmazingPowersOfObservation, MSGBOX_DEFAULT
 	release
 	end
 
 BattleFrontier_Lounge2_EventScript_Maniac3::
-	lock
+	locktarget
 	msgbox BattleFrontier_Lounge2_Text_AmazingPowerOfPersuasion, MSGBOX_DEFAULT
 	release
 	end

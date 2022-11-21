@@ -2,7 +2,7 @@ RustboroCity_Mart_MapScripts::
 	.byte 0
 
 RustboroCity_Mart_EventScript_Clerk::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage

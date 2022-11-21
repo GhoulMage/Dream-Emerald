@@ -137,7 +137,7 @@ SlateportCity_Movement_ScottExit:
 	step_end
 
 SlateportCity_EventScript_EnergyGuru::
-	lock
+	locktarget
 	faceplayer
 	message SlateportCity_Text_EnergyGuruSellWhatYouNeed
 	waitmessage
@@ -159,7 +159,7 @@ SlateportCity_Pokemart_EnergyGuru:
 	end
 
 SlateportCity_EventScript_EffortRibbonWoman::
-	lock
+	locktarget
 	faceplayer
 	bufferleadmonspeciesname STR_VAR_1
 	msgbox SlateportCity_Text_OhYourPokemon, MSGBOX_DEFAULT
@@ -187,7 +187,7 @@ SlateportCity_EventScript_MonHasEffortRibbon::
 	end
 
 SlateportCity_EventScript_Cook::
-	lock
+	locktarget
 	faceplayer
 	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_CookSternInterview
 	msgbox SlateportCity_Text_SeaweedFullOfLife, MSGBOX_DEFAULT
@@ -200,7 +200,7 @@ SlateportCity_EventScript_CookSternInterview::
 	end
 
 SlateportCity_EventScript_OldWoman::
-	lock
+	locktarget
 	faceplayer
 	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_OldWomanSternInterview
 	msgbox SlateportCity_Text_HowTownIsBornAndGrows, MSGBOX_DEFAULT
@@ -213,7 +213,7 @@ SlateportCity_EventScript_OldWomanSternInterview::
 	end
 
 SlateportCity_EventScript_Girl::
-	lock
+	locktarget
 	faceplayer
 	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_GirlSternInterview
 	goto_if_set FLAG_RECEIVED_SECRET_POWER, SlateportCity_EventScript_GirlSecretBase
@@ -232,7 +232,7 @@ SlateportCity_EventScript_GirlSecretBase::
 	end
 
 SlateportCity_EventScript_RichBoy::
-	lock
+	locktarget
 	faceplayer
 	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_RichBoySternInterview
 	msgbox SlateportCity_Text_GoingToCompeteInBattleTent, MSGBOX_DEFAULT
@@ -254,7 +254,7 @@ SlateportCity_EventScript_FatManSternInterview::
 	end
 
 SlateportCity_EventScript_Man1::
-	lock
+	locktarget
 	faceplayer
 	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_Man1SternInterview
 	msgbox SlateportCity_Text_EveryoneCallsHimCaptStern, MSGBOX_DEFAULT
@@ -267,7 +267,7 @@ SlateportCity_EventScript_Man1SternInterview::
 	end
 
 SlateportCity_EventScript_Woman1::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_DOCK_REJECTED_DEVON_GOODS, SlateportCity_EventScript_Woman1AquaGone
 	msgbox SlateportCity_Text_WhatsLongLineOverThere, MSGBOX_DEFAULT
@@ -334,7 +334,7 @@ SlateportCity_EventScript_NameRatersHouseSign::
 	end
 
 SlateportCity_EventScript_Maniac::
-	lock
+	locktarget
 	faceplayer
 	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_ManiacSternInterview
 	msgbox SlateportCity_Text_GetNameRaterToHelpYou, MSGBOX_DEFAULT
@@ -368,7 +368,7 @@ SlateportCity_EventScript_Man2::
 	end
 
 SlateportCity_EventScript_AquaGrunt1::
-	lock
+	locktarget
 	faceplayer
 	msgbox SlateportCity_Text_QuitPushing, MSGBOX_DEFAULT
 	closemessage
@@ -378,7 +378,7 @@ SlateportCity_EventScript_AquaGrunt1::
 	end
 
 SlateportCity_EventScript_AquaGrunt2::
-	lock
+	locktarget
 	faceplayer
 	msgbox SlateportCity_Text_AquaHasPolicy, MSGBOX_DEFAULT
 	closemessage
@@ -388,7 +388,7 @@ SlateportCity_EventScript_AquaGrunt2::
 	end
 
 SlateportCity_EventScript_AquaGrunt3::
-	lock
+	locktarget
 	faceplayer
 	msgbox SlateportCity_Text_BossIsBrilliant, MSGBOX_DEFAULT
 	closemessage
@@ -398,7 +398,7 @@ SlateportCity_EventScript_AquaGrunt3::
 	end
 
 SlateportCity_EventScript_AquaGrunt4::
-	lock
+	locktarget
 	faceplayer
 	msgbox SlateportCity_Text_WhatsNewSchemeIWonder, MSGBOX_DEFAULT
 	closemessage
@@ -408,7 +408,7 @@ SlateportCity_EventScript_AquaGrunt4::
 	end
 
 SlateportCity_EventScript_AquaGrunt5::
-	lock
+	locktarget
 	faceplayer
 	msgbox SlateportCity_Text_ShouldTakeItAll, MSGBOX_DEFAULT
 	closemessage
@@ -418,7 +418,7 @@ SlateportCity_EventScript_AquaGrunt5::
 	end
 
 SlateportCity_EventScript_AquaGrunt6::
-	lock
+	locktarget
 	faceplayer
 	msgbox SlateportCity_Text_DontButtIn, MSGBOX_DEFAULT
 	closemessage
@@ -428,7 +428,7 @@ SlateportCity_EventScript_AquaGrunt6::
 	end
 
 SlateportCity_EventScript_AquaGrunt7::
-	lock
+	locktarget
 	faceplayer
 	msgbox SlateportCity_Text_RemindsMeOfLongLineForGames, MSGBOX_DEFAULT
 	closemessage
@@ -438,7 +438,7 @@ SlateportCity_EventScript_AquaGrunt7::
 	end
 
 SlateportCity_EventScript_AquaGrunt8::
-	lock
+	locktarget
 	faceplayer
 	msgbox SlateportCity_Text_WhyAreWeLiningUp, MSGBOX_DEFAULT
 	closemessage
@@ -448,7 +448,7 @@ SlateportCity_EventScript_AquaGrunt8::
 	end
 
 SlateportCity_EventScript_AquaGrunt9::
-	lock
+	locktarget
 	faceplayer
 	playse SE_PIN
 	applymovement LOCALID_GRUNT_9, Common_Movement_ExclamationMark
@@ -490,7 +490,7 @@ SlateportCity_EventScript_AquaGrunt10::
 	end
 
 SlateportCity_EventScript_AquaGrunt11::
-	lock
+	locktarget
 	faceplayer
 	msgbox SlateportCity_Text_HotSpringsAfterOperation, MSGBOX_DEFAULT
 	closemessage
@@ -500,7 +500,7 @@ SlateportCity_EventScript_AquaGrunt11::
 	end
 
 SlateportCity_EventScript_DollClerk::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -524,7 +524,7 @@ SlateportCity_EventScript_ComeBackWithSecretPower::
 	end
 
 SlateportCity_EventScript_DecorClerk::
-	lock
+	locktarget
 	faceplayer
 	goto_if_unset FLAG_RECEIVED_SECRET_POWER, SlateportCity_EventScript_ComeBackWithSecretPower
 	message gText_HowMayIServeYou
@@ -555,7 +555,7 @@ SlateportCity_PokemartDecor:
 	end
 
 SlateportCity_EventScript_PowerTMClerk::
-	lock
+	locktarget
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -735,7 +735,7 @@ SlateportCity_EventScript_Man3::
 	end
 
 SlateportCity_EventScript_BerryPowderClerk::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_RECEIVED_POWDER_JAR, SlateportCity_EventScript_ReceivedPowderJar
 	msgbox SlateportCity_Text_ExplainBerries, MSGBOX_DEFAULT

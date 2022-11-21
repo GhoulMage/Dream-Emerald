@@ -1,5 +1,5 @@
 Common_EventScript_PkmnCenterNurse::
-	lock
+	locktarget
 	faceplayer
 	setvar VAR_0x8004, 0
 	specialvar VAR_RESULT, CountPlayerTrainerStars

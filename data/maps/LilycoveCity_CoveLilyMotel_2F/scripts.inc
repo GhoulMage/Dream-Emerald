@@ -2,7 +2,7 @@ LilycoveCity_CoveLilyMotel_2F_MapScripts::
 	.byte 0
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner::
-	lock
+	locktarget
 	faceplayer
 	call_if_unset FLAG_TEMP_2, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex
 	call_if_set FLAG_TEMP_2, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
@@ -52,7 +52,7 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_GameBoyKid::
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_Scott::
-	lock
+	locktarget
 	faceplayer
 	goto_if_set FLAG_MET_SCOTT_IN_LILYCOVE, LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott
 	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles, MSGBOX_DEFAULT

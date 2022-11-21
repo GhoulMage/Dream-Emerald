@@ -27,7 +27,7 @@ PetalburgCity_PokemonCenter_1F_EventScript_Youngster::
 	end
 
 PetalburgCity_PokemonCenter_1F_EventScript_Woman::
-	lock
+	locktarget
 	faceplayer
 	msgbox PetalburgCity_PokemonCenter_1F_Text_ManyTypesOfPokemon, MSGBOX_DEFAULT
 	specialvar VAR_RESULT, IsStarterInParty

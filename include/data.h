@@ -50,11 +50,14 @@ struct TrainerMonNoItemCustomMoves
 
 struct TrainerMonItemCustomMoves
 {
+    
     u16 iv;
     u8 lvl;
     u16 species;
     u16 heldItem;
     u16 moves[MAX_MON_MOVES];
+    u16 ability;
+    bool8 shiny;
 };
 
 #define NO_ITEM_DEFAULT_MOVES(party) { .NoItemDefaultMoves = party }, .partySize = ARRAY_COUNT(party), .partyFlags = 0

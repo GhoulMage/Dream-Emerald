@@ -359,6 +359,7 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_BUG_MANIAC, 15},
     {TRAINER_CLASS_PSYCHIC, 6},
     {TRAINER_CLASS_GENTLEMAN, 20},
+    {TRAINER_CLASS_SOCIALITE, 22},
     {TRAINER_CLASS_ELITE_FOUR, 25},
     {TRAINER_CLASS_LEADER, 25},
     {TRAINER_CLASS_SCHOOL_KID, 5},
@@ -1939,9 +1940,25 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
-                CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+
+                if(partyData[i].shiny == TRUE)
+                    CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_SHINY, 0);
+                else
+                    CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
 
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+                if(&partyData[i].ability != ABILITY_NONE){
+                    u32 value;
+                    if(GetAbilityBySpecies(partyData[i].species, 0) == partyData[i].ability){
+                        value = personalityValue & 0;
+                    }else if(GetAbilityBySpecies(partyData[i].species, 1) == partyData[i].ability) {
+                        value = personalityValue & 1;
+                    } else if(GetAbilityBySpecies(partyData[i].species, 2) == partyData[i].ability){
+                        value = personalityValue & 2;
+                    }
+
+                    SetMonData(&party[i], MON_DATA_ABILITY_NUM, &value);
+                }
 
                 for (j = 0; j < MAX_MON_MOVES; j++)
                 {

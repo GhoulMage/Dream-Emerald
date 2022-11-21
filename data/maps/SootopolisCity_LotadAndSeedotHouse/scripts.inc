@@ -3,7 +3,7 @@ SootopolisCity_LotadAndSeedotHouse_MapScripts::
 
 SootopolisCity_LotadAndSeedotHouse_EventScript_SeedotBrother::
 	special GetSeedotSizeRecordInfo
-	lock
+	locktarget
 	faceplayer
 	msgbox SootopolisCity_LotadAndSeedotHouse_Text_PleaseShowMeBigSeedot, MSGBOX_DEFAULT
 	special ChoosePartyMon
@@ -47,7 +47,7 @@ SootopolisCity_LotadAndSeedotHouse_EventScript_NoRoomForElixir1::
 
 SootopolisCity_LotadAndSeedotHouse_EventScript_LotadBrother::
 	special GetLotadSizeRecordInfo
-	lock
+	locktarget
 	faceplayer
 	msgbox SootopolisCity_LotadAndSeedotHouse_Text_PleaseShowMeBigLotad, MSGBOX_DEFAULT
 	special ChoosePartyMon
