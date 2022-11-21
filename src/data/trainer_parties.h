@@ -10972,7 +10972,7 @@ static const struct TrainerMon sParty_OldLady1[] = {
     .lvl = 33,
     .species = SPECIES_RELICANTH,
     .heldItem = ITEM_ICY_ROCK,
-    .moves = {MOVE_TAKE_DOWN, MOVE_HEAD_SMASH, MOVE_DIVE, MOVE_HAIL},
+    .moves = {MOVE_EARTH_POWER, MOVE_HEAD_SMASH, MOVE_DIVE, MOVE_HAIL},
     .ability = ABILITY_ROCK_HEAD,
     },
     {
@@ -10987,8 +10987,8 @@ static const struct TrainerMon sParty_OldLady1[] = {
     .iv = 255,
     .lvl = 36,
     .species = SPECIES_CLAYDOL,
-    .heldItem = ITEM_SILK_SCARF,
-    .moves = {MOVE_RAPID_SPIN, MOVE_SUCKER_PUNCH, MOVE_EARTH_POWER, MOVE_COSMIC_POWER},
+    .heldItem = ITEM_COLBUR_BERRY,
+    .moves = {MOVE_RAPID_SPIN, MOVE_PSYCHIC, MOVE_EARTH_POWER, MOVE_TOXIC},
     .ability = ABILITY_LEVITATE,
     },
     {
@@ -11003,18 +11003,75 @@ static const struct TrainerMon sParty_OldLady1[] = {
 
 static const struct TrainerMon sParty_OldLady2[] = {
     {
-    .iv = 100,
-    .lvl = 17,
-    .species = SPECIES_ILLUMISE,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_SHOCK_WAVE, MOVE_QUICK_ATTACK, MOVE_CHARM, MOVE_NONE}
+    .iv = 255,
+    .lvl = 32,
+    .species = SPECIES_SLAKING,
+    .heldItem = ITEM_LEFTOVERS,
+    .moves = {MOVE_RETALIATE, MOVE_SUCKER_PUNCH, MOVE_FIRE_BLAST, MOVE_PLAY_ROUGH},
+    .ability = ABILITY_TRUANT,
+    .shiny = FALSE,
     },
     {
-    .iv = 100,
-    .lvl = 17,
-    .species = SPECIES_VOLBEAT,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_SHOCK_WAVE, MOVE_QUICK_ATTACK, MOVE_CONFUSE_RAY, MOVE_NONE}
+    .iv = 255,
+    .lvl = 34,
+    .species = SPECIES_VICTREEBEL,
+    .heldItem = ITEM_SHELL_BELL,
+    .moves = {MOVE_LEAF_STORM, MOVE_SLUDGE_BOMB, MOVE_SUNNY_DAY, MOVE_SOLAR_BEAM},
+    .ability = ABILITY_CHLOROPHYLL,
+    .shiny = FALSE,
+    },
+    {
+    .iv = 255,
+    .lvl = 33,
+    .species = SPECIES_SHUCKLE,
+    .heldItem = ITEM_LAX_INCENSE,
+    .moves = {MOVE_STEALTH_ROCK, MOVE_INFESTATION, MOVE_TOXIC, MOVE_ROLLOUT},
+    .ability = ABILITY_CONTRARY,
+    .shiny = FALSE,
+    },
+};
+
+static const struct TrainerMonDouble sParty_Test1[] = {
+    {
+        .mon1 {
+            .iv = 255,
+            .lvl = 6,
+            .species = SPECIES_POOCHYENA,
+            .heldItem = ITEM_ORAN_BERRY,
+            .moves = {MOVE_POUND, MOVE_GROWL, MOVE_NONE, MOVE_NONE},
+            .ability = ABILITY_TRUANT,
+            .shiny = FALSE,
+        },
+        .mon2 {
+            .iv = 255,
+            .lvl = 6,
+            .species = SPECIES_ZIGZAGOON,
+            .heldItem = ITEM_ORAN_BERRY,
+            .moves = {MOVE_TACKLE, MOVE_TAIL_WHIP, MOVE_NONE, MOVE_NONE},
+            .ability = ABILITY_TRUANT,
+            .shiny = TRUE,
+        }
+    },
+
+    {
+        .mon1 {
+            .iv = 255,
+            .lvl = 7,
+            .species = SPECIES_METAPOD,
+            .heldItem = ITEM_ORAN_BERRY,
+            .moves = {MOVE_TACKLE, MOVE_STRING_SHOT, MOVE_HARDEN, MOVE_NONE},
+            .ability = ABILITY_SHED_SKIN,
+            .shiny = FALSE,
+        },
+        .mon2 {
+            .iv = 255,
+            .lvl = 7,
+            .species = SPECIES_KAKUNA,
+            .heldItem = ITEM_ORAN_BERRY,
+            .moves = {MOVE_POISON_STING, MOVE_STRING_SHOT, MOVE_HARDEN, MOVE_NONE},
+            .ability = ABILITY_SHED_SKIN,
+            .shiny = TRUE,
+        }
     }
 };
 
