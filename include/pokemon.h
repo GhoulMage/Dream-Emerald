@@ -878,5 +878,6 @@ const u8 *GetMoveAnimationScript(u16 moveId);
 void UpdateDaysPassedSinceFormChange(u16 days);
 void TrySetDayLimitToFormChange(struct Pokemon *mon);
 u8 GetPartyMonCurvedLevel(void);
+u16 HasLevelEvolution(u16 species, u8 level);
 
 #endif // GUARD_POKEMON_H
