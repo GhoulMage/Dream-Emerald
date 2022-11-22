@@ -6964,3 +6964,17 @@ u8 GetPartyMonCurvedLevel(void)
 
     return adjustedLevel;
 }
+
+u16 HasLevelEvolution(u16 species, u8 level)
+{
+	if(gEvolutionTable[species][0].param && gEvolutionTable[species][0].param <= level)
+	{
+        u16 lastMon = gEvolutionTable[species][0].targetSpecies;
+        while((species = HasLevelEvolution(lastMon, level)) != 0){
+            lastMon = species;
+        }
+        
+        return lastMon;
+	}
+	return 0;
+}
