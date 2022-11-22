@@ -501,6 +501,12 @@ static void CreateWildMon(u16 species, u8 level)
     //     species = newSpecies;
     // }
 
+    newSpecies = HasLevelEvolution(species, level);
+    //Chance to find evolved mon
+    if(newSpecies != 0 && ((Random() % 100) < MON_CHANCE_TO_FIND_EVOLVED)) {
+        species = newSpecies;
+    }
+
     switch (gSpeciesInfo[species].genderRatio)
     {
     case MON_MALE:
