@@ -18,7 +18,11 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Mega Evolution
 * Fixed Overworld Snow
 * Overworld Snow starts Hail weather in battle
-
+* Berries in rainy routes will always yield max amount of berries without the need to water them
+* Shiny chance is now 1/1024
+* Sort the bag using START Button
+* Hidden Power type is exposed
+* Change your Pokémon Pokéballs by using them in the bag
 
 ### Quality Of Life Changes
 * Run indoors
@@ -26,13 +30,16 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * "Run" in water
 * No need for Move Deleter for HMs
 * Summary Screen Nature stats are coloured, IVs and EVs appear by pressing A Button
-* Summary Screen wraps to first/last pokémon (hate this wasn't a default)
+* Summary Screen wraps to first/last Pokémon (hate this wasn't a default)
 * Easily swap between lower and upper case with R Button in the Naming screen
 * Switches to lowercase after inputting the first character
 * Expiring a Repel will prompt the use of another one
 * Eggs hatch at level 1
 * Use Pokéball out of battle to change Pokéballs of your Pokémon
 * Low Health Beep does not longer loop
+* Berries grow faster, also planting and watering them is faster
+* See the Phyiscal/Special Split of abilities in battle
+* Low Health beep does not loop anymore
 
 
 ### Pokémon Sound Type Added
