@@ -21,6 +21,7 @@ enum
 {
     TD_MENUSELECTION,
     TD_TEXTSPEED,
+    TD_RUNMODE,
     TD_BATTLESCENE,
     TD_BATTLESTYLE,
     TD_SOUND,
@@ -32,6 +33,7 @@ enum
 enum
 {
     MENUITEM_TEXTSPEED,
+    MENUITEM_RUNMODE,
     MENUITEM_BATTLESCENE,
     MENUITEM_BATTLESTYLE,
     MENUITEM_SOUND,
@@ -49,6 +51,7 @@ enum
 };
 
 #define YPOS_TEXTSPEED    (MENUITEM_TEXTSPEED * 16)
+#define YPOS_RUNMODE      (MENUITEM_RUNMODE * 16)
 #define YPOS_BATTLESCENE  (MENUITEM_BATTLESCENE * 16)
 #define YPOS_BATTLESTYLE  (MENUITEM_BATTLESTYLE * 16)
 #define YPOS_SOUND        (MENUITEM_SOUND * 16)
@@ -56,26 +59,28 @@ enum
 #define YPOS_FRAMETYPE    (MENUITEM_FRAMETYPE * 16)
 
 // this file's functions
-static void Task_OptionMenuFadeIn(u8 taskId);
-static void Task_OptionMenuProcessInput(u8 taskId);
-static void Task_OptionMenuSave(u8 taskId);
-static void Task_OptionMenuFadeOut(u8 taskId);
-static void HighlightOptionMenuItem(u8 selection);
-static u8   TextSpeed_ProcessInput(u8 selection);
-static void TextSpeed_DrawChoices(u8 selection);
-static u8   BattleScene_ProcessInput(u8 selection);
-static void BattleScene_DrawChoices(u8 selection);
-static u8   BattleStyle_ProcessInput(u8 selection);
-static void BattleStyle_DrawChoices(u8 selection);
-static u8   Sound_ProcessInput(u8 selection);
-static void Sound_DrawChoices(u8 selection);
-static u8   FrameType_ProcessInput(u8 selection);
-static void FrameType_DrawChoices(u8 selection);
-static u8   ButtonMode_ProcessInput(u8 selection);
-static void ButtonMode_DrawChoices(u8 selection);
-static void DrawTextOption(void);
-static void DrawOptionMenuTexts(void);
-static void DrawBgWindowFrames(void);
+static void  Task_OptionMenuFadeIn(u8 taskId);
+static void  Task_OptionMenuProcessInput(u8 taskId);
+static void  Task_OptionMenuSave(u8 taskId);
+static void  Task_OptionMenuFadeOut(u8 taskId);
+static void  HighlightOptionMenuItem(u8 selection);
+static u8    TextSpeed_ProcessInput(u8 selection);
+static void  TextSpeed_DrawChoices(u8 selection);
+static bool8 RunMode_ProcessInput(u8 selection);
+static void  RunMode_DrawChoices(u8 selection);
+static u8    BattleScene_ProcessInput(u8 selection);
+static void  BattleScene_DrawChoices(u8 selection);
+static u8    BattleStyle_ProcessInput(u8 selection);
+static void  BattleStyle_DrawChoices(u8 selection);
+static u8    Sound_ProcessInput(u8 selection);
+static void  Sound_DrawChoices(u8 selection);
+static u8    FrameType_ProcessInput(u8 selection);
+static void  FrameType_DrawChoices(u8 selection);
+static u8    ButtonMode_ProcessInput(u8 selection);
+static void  ButtonMode_DrawChoices(u8 selection);
+static void  DrawTextOption(void);
+static void  DrawOptionMenuTexts(void);
+static void  DrawBgWindowFrames(void);
 
 EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
@@ -86,6 +91,7 @@ static const u8 sEqualSignGfx[] = INCBIN_U8("graphics/interface/option_menu_equa
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
     [MENUITEM_TEXTSPEED]   = gText_TextSpeed,
+    [MENUITEM_RUNMODE]     = gText_RunMode,
     [MENUITEM_BATTLESCENE] = gText_BattleScene,
     [MENUITEM_BATTLESTYLE] = gText_BattleStyle,
     [MENUITEM_SOUND]       = gText_Sound,
@@ -237,6 +243,7 @@ void CB2_InitOptionMenu(void)
 
         gTasks[taskId].data[TD_MENUSELECTION] = 0;
         gTasks[taskId].data[TD_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
+        gTasks[taskId].data[TD_RUNMODE] = gSaveBlock2Ptr->optionsAutoRun;
         gTasks[taskId].data[TD_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
         gTasks[taskId].data[TD_BATTLESTYLE] = gSaveBlock2Ptr->optionsBattleStyle;
         gTasks[taskId].data[TD_SOUND] = gSaveBlock2Ptr->optionsSound;
@@ -244,6 +251,7 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].data[TD_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
 
         TextSpeed_DrawChoices(gTasks[taskId].data[TD_TEXTSPEED]);
+        RunMode_DrawChoices(gTasks[taskId].data[TD_RUNMODE]);
         BattleScene_DrawChoices(gTasks[taskId].data[TD_BATTLESCENE]);
         BattleStyle_DrawChoices(gTasks[taskId].data[TD_BATTLESTYLE]);
         Sound_DrawChoices(gTasks[taskId].data[TD_SOUND]);
@@ -309,6 +317,13 @@ static void Task_OptionMenuProcessInput(u8 taskId)
             if (previousOption != gTasks[taskId].data[TD_TEXTSPEED])
                 TextSpeed_DrawChoices(gTasks[taskId].data[TD_TEXTSPEED]);
             break;
+        case MENUITEM_RUNMODE:
+            previousOption = gTasks[taskId].data[TD_RUNMODE];
+            gTasks[taskId].data[TD_RUNMODE] = RunMode_ProcessInput(gTasks[taskId].data[TD_RUNMODE]);
+            
+            if (previousOption != gTasks[taskId].data[TD_RUNMODE])
+                RunMode_DrawChoices(gTasks[taskId].data[TD_RUNMODE]);
+            break;
         case MENUITEM_BATTLESCENE:
             previousOption = gTasks[taskId].data[TD_BATTLESCENE];
             gTasks[taskId].data[TD_BATTLESCENE] = BattleScene_ProcessInput(gTasks[taskId].data[TD_BATTLESCENE]);
@@ -359,6 +374,7 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 static void Task_OptionMenuSave(u8 taskId)
 {
     gSaveBlock2Ptr->optionsTextSpeed = gTasks[taskId].data[TD_TEXTSPEED];
+    gSaveBlock2Ptr->optionsAutoRun = gTasks[taskId].data[TD_RUNMODE];
     gSaveBlock2Ptr->optionsBattleSceneOff = gTasks[taskId].data[TD_BATTLESCENE];
     gSaveBlock2Ptr->optionsBattleStyle = gTasks[taskId].data[TD_BATTLESTYLE];
     gSaveBlock2Ptr->optionsSound = gTasks[taskId].data[TD_SOUND];
@@ -447,6 +463,28 @@ static void TextSpeed_DrawChoices(u8 selection)
     DrawOptionMenuChoice(gText_TextSpeedMid, xMid, YPOS_TEXTSPEED, styles[1]);
 
     DrawOptionMenuChoice(gText_TextSpeedFast, GetStringRightAlignXOffset(FONT_NORMAL, gText_TextSpeedFast, 198), YPOS_TEXTSPEED, styles[2]);
+}
+
+static bool8 RunMode_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+
+    return (bool8)selection;
+}
+static void RunMode_DrawChoices(u8 selection)
+{
+    u8 styles[2];
+
+    styles[0] = 0;
+    styles[1] = 0;
+    styles[selection] = 1;
+
+    DrawOptionMenuChoice(gText_RunModeHold, 104, YPOS_RUNMODE, styles[0]);
+    DrawOptionMenuChoice(gText_RunModeAuto, GetStringRightAlignXOffset(FONT_NORMAL, gText_RunModeAuto, 198), YPOS_RUNMODE, styles[1]);
 }
 
 static u8 BattleScene_ProcessInput(u8 selection)
