@@ -801,5 +801,6 @@ void HealPokemon(struct Pokemon *mon);
 void HealBoxPokemon(struct BoxPokemon *boxMon);
 const u8 *GetMoveName(u16 moveId);
 u8 GetPartyMonCurvedLevel(void);
+u16 HasLevelEvolution(u16 species, u8 level);
 
 #endif // GUARD_POKEMON_H

@@ -425,12 +425,21 @@ u8 PickWildMonNature(void)
     return Random() % NUM_NATURES;
 }
 
+#define MON_CHANCE_TO_FIND_EVOLVED 5 // out of every 100
+
 static void CreateWildMon(u16 species, u8 level)
 {
     bool32 checkCuteCharm;
+    u16 newSpecies;
 
     ZeroEnemyPartyMons();
     checkCuteCharm = OW_CUTE_CHARM < GEN_9;
+
+    newSpecies = HasLevelEvolution(species, level);
+    //Chance to find evolved mon
+    if(newSpecies != 0 && ((Random() % 100) < MON_CHANCE_TO_FIND_EVOLVED)) {
+        species = newSpecies;
+    }
 
     switch (gSpeciesInfo[species].genderRatio)
     {
