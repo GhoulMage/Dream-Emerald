@@ -619,6 +619,27 @@ static void PlayerNotOnBikeTurningInPlace(u8 direction, u16 heldKeys)
     PlayerTurnInPlace(direction);
 }
 
+static bool8 TryToRun(u16 heldKeys) {
+    if(heldKeys & B_BUTTON)
+        return !gSaveBlock2Ptr->optionsAutoRun;
+    else
+        return gSaveBlock2Ptr->optionsAutoRun;
+    //return gSaveBlock2Ptr->optionsHoldRun == (heldKeys & B_BUTTON);
+    //if(gSaveBlock2Ptr->optionsHoldRun){
+    //    if(heldKeys & B_BUTTON)
+    //        return TRUE;
+    //    else
+    //        return FALSE;
+    //} else {
+    //    if(heldKeys & B_BUTTON)
+    //        return FALSE;
+    //    else
+    //        return TRUE;
+    //}
+////
+    //return TRUE;
+}
+
 static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
 {
     u8 collision = CheckForPlayerAvatarCollision(direction);
@@ -650,7 +671,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
 
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
     {
-        if(heldKeys & B_BUTTON) {
+        if(TryToRun(heldKeys)) {
             PlayerWalkFaster(direction);
         } else {
             PlayerWalkFast(direction); // same speed as running
@@ -658,7 +679,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         return;
     }
 
-    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
+    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && TryToRun(heldKeys) && FlagGet(FLAG_SYS_B_DASH)
      && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0)
     {
         PlayerRun(direction);
