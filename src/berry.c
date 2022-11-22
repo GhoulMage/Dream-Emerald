@@ -1602,7 +1602,7 @@ void BerryTreeTimeUpdate(s32 minutes)
                     if (!BerryTreeGrow(tree))
                         break;
                     if (tree->stage == BERRY_STAGE_BERRIES)
-                        tree->minutesUntilNextStage *= 4;
+                        tree->minutesUntilNextStage *= 4; //Time to get berries before they drop to the ground
                 }
             }
         }
@@ -1749,7 +1749,8 @@ static u8 GetBerryCountByBerryTreeId(u8 id)
 
 static u16 GetStageDurationByBerryType(u8 berry)
 {
-    return GetBerryInfo(berry)->stageDuration * 60;
+    return GetBerryInfo(berry)->stageDuration; //Quickly testing berries
+    return GetBerryInfo(berry)->stageDuration * 10; //Now 1 means 10 minutes instead of 1 hour
 }
 
 void ObjectEventInteractionGetBerryTreeData(void)
