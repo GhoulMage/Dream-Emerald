@@ -8721,7 +8721,7 @@ static const struct LevelUpMove sBunearyLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sLopunnyLevelUpLearnset[] = {
-    //LEVEL_UP_MOVE( 0, MOVE_RETURN),
+    LEVEL_UP_MOVE( 0, MOVE_RETURN),
     LEVEL_UP_MOVE( 1, MOVE_RETURN),
     LEVEL_UP_MOVE( 1, MOVE_HEALING_WISH),
     LEVEL_UP_MOVE( 1, MOVE_BOUNCE),
