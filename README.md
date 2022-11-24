@@ -21,24 +21,25 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Berries in rainy routes will always yield max amount of berries without the need to water them
 * Shiny chance is now 1/1024
 * Sort the bag using START Button
-* Hidden Power type is exposed
 * Change your Pokémon Pokéballs by using them in the bag
 
 ### Quality Of Life Changes
 * Run indoors
 * Poison Fades at 1HP and Lowers Friendship
-* "Run" in water
+* Move faster by pressing B in water
 * No need for Move Deleter for HMs
 * Summary Screen Nature stats are coloured, IVs and EVs appear by pressing A Button
 * Summary Screen wraps to first/last Pokémon (hate this wasn't a default)
-* Easily swap between lower and upper case with R Button in the Naming screen
-* Switches to lowercase after inputting the first character
+* Easily swap between lower and upper case with R Button in Naming screen
+* Switches to lowercase after inputting the first character in Naming screen
 * Expiring a Repel will prompt the use of another one
 * Eggs hatch at level 1
 * Use Pokéball out of battle to change Pokéballs of your Pokémon
 * Low Health Beep does not longer loop
 * Berries grow faster, also planting and watering them is faster
 * See the Phyiscal/Special Split of abilities in battle
+* Hidden Power type is exposed
+* Return/Frustration power is exposed
 * Low Health beep does not loop anymore
 
 
@@ -118,12 +119,14 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Dark Gardevoir
 
 #### Abilities
-* **Dark Power**: Normal attacks become Dark.
-* **Ultrasonic**: Deal and Receive +50% Damage from Sound attacks.
-* **Dragon Scale**: Boosts Special Defense by 50% while in status condition.
+* **NEW Dark Power**: Normal attacks become Dark.
+* **NEW Ultrasonic**: Deal and Receive +50% Damage from Sound attacks.
+* **NEW Dragon Scale**: Boosts Special Defense by 50% while in status condition.
 
 #### Moves
-* **Psychic Inversion**: Super-effective on Dark Pokémon. Might cause flinch.
+* **Return**: Power at Max Friendship is now 128.
+* **Frustration**: Power at Min Friendship is now 128.
+* **NEW Psychic Inversion**: Super-effective on Dark Pokémon. Might cause flinch.
 
 #### Mechanics
 * **Hail** weather boosts Ice Types' Defense by 50%
@@ -149,8 +152,8 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 
 
 ### Credits
-* [pokeemerald decomp project (base rom)](https://github.com/pret/pokeemerald)
-* [pokeemerald-expansion (extended rom)](https://github.com/rh-hideout/pokeemerald-expansion)
+* [pokeemerald decomp project (base)](https://github.com/pret/pokeemerald)
+* [pokeemerald-expansion (extended)](https://github.com/rh-hideout/pokeemerald-expansion)
 * [PokéCommunity: Tutorials and guides in Decomp & Dissasembly Tutorials](https://www.pokecommunity.com/forumdisplay.php?f=475&order=desc)
 
 
