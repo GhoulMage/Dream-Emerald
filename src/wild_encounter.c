@@ -426,7 +426,7 @@ u8 PickWildMonNature(void)
     return Random() % NUM_NATURES;
 }
 
-#define MON_CHANCE_TO_FIND_EVOLVED 5 // out of every 100
+#define MON_CHANCE_TO_FIND_EVOLVED 10 // out of every 100
 
 static void CreateWildMon(u16 species, u8 level)
 {
