@@ -426,19 +426,34 @@ u8 PickWildMonNature(void)
     return Random() % NUM_NATURES;
 }
 
-#define MON_CHANCE_TO_FIND_EVOLVED 10 // out of every 100
+
+#define MON_CHANCE_TO_FIND_EVOLVED_STAGE1 30  // out of every 100
+#define MON_CHANCE_TO_FIND_EVOLVED_STAGE2 15  // out of every 100
+#define MON_CHANCE_TO_FIND_EVOLVED_STAGE3 5   // out of every 100
 
 static void CreateWildMon(u16 species, u8 level)
 {
     bool32 checkCuteCharm = TRUE;
-    u16 newSpecies;
+    u16 newSpecies = 0;
+    u8 chance;
 
     ZeroEnemyPartyMons();
 
-    newSpecies = HasLevelEvolution(species, level);
-    //Chance to find evolved mon
-    if(newSpecies != 0 && ((Random() % 100) < MON_CHANCE_TO_FIND_EVOLVED)) {
+    chance = (Random() % 100);
+    
+    //Check at the beginning for mons like Shedinja etc
+    if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3) {
+        if((newSpecies = HasSpecialEvolution(species)))
+            species = newSpecies;
+    } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE2 && (newSpecies = HasLevelEvolution(species, level, 2))) {
         species = newSpecies;
+    } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE1 && (newSpecies = HasLevelEvolution(species, level, 1))) {
+        species = newSpecies;
+    }
+    //Check again just in case base evo didn't have special evolution but stage 1 or 2 does
+    if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3) {
+        if((newSpecies = HasSpecialEvolution(species)))
+            species = newSpecies;
     }
 
     switch (gSpeciesInfo[species].genderRatio)

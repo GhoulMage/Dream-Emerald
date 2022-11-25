@@ -113,6 +113,7 @@ struct DisableStruct
     u8 substituteHP;
     u8 encoredMovePos;
     u8 disableTimer:4;
+    u8 isInPanic;
     u8 encoreTimer:4;
     u8 perishSongTimer:4;
     u8 rolloutTimer:4;

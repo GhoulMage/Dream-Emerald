@@ -5930,9 +5930,12 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
         if (GetActiveGimmick(battlerAtk) != GIMMICK_DYNAMAX)
             gBattleStruct->ateBoost[battlerAtk] = 1;
     }
-    else if (MoveHasSound(move) && attackerAbility == ABILITY_LIQUID_VOICE)
+    else if (MoveHasSound(move))
     {
-        gBattleStruct->dynamicMoveType = TYPE_WATER | F_DYNAMIC_TYPE_SET;
+        if(attackerAbility == ABILITY_LIQUID_VOICE)
+            gBattleStruct->dynamicMoveType = TYPE_WATER | F_DYNAMIC_TYPE_SET;
+        else if(attackerAbility == ABILITY_SINGER)
+            gBattleStruct->dynamicMoveType = TYPE_NORMAL | F_DYNAMIC_TYPE_2;
     }
     else if (gMovesInfo[move].effect == EFFECT_AURA_WHEEL && gBattleMons[battlerAtk].species == SPECIES_MORPEKO_HANGRY)
     {

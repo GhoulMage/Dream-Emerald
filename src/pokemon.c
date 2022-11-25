@@ -6965,16 +6965,31 @@ u8 GetPartyMonCurvedLevel(void)
     return adjustedLevel;
 }
 
-u16 HasLevelEvolution(u16 species, u8 level)
+u16 HasLevelEvolutionSingle(u16 species, u8 level)
+{
+	if(gEvolutionTable[species][0].param && gEvolutionTable[species][0].param <= level) {
+        return gEvolutionTable[species][0].targetSpecies;
+	}
+	return 0;
+}
+
+u16 HasLevelEvolution(u16 species, u8 level, u8 maxStage)
 {
 	if(gEvolutionTable[species][0].param && gEvolutionTable[species][0].param <= level)
 	{
         u16 lastMon = gEvolutionTable[species][0].targetSpecies;
-        while((species = HasLevelEvolution(lastMon, level)) != 0){
+        while((species = HasLevelEvolutionSingle(lastMon, level)) != 0 && --maxStage > 0){
             lastMon = species;
         }
         
         return lastMon;
 	}
+	return 0;
+}
+
+u16 HasSpecialEvolution(u16 species) {
+    if(gEvolutionTable[species][0].param == 0 && gEvolutionTable[species][0].method != EVO_MEGA_EVOLUTION){
+        return gEvolutionTable[species][0].targetSpecies;
+    }
 	return 0;
 }
