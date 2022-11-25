@@ -7480,6 +7480,17 @@ BattleScript_YawnMakesAsleep::
 BattleScript_YawnEnd:
 	end2
 
+BattleScript_IsInPanic::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNISINPANIC
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
+BattleScript_CalmedDown::
+	printstring STRINGID_PKMNCALMEDDOWN
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
 BattleScript_EmbargoEndTurn::
 	printstring STRINGID_EMBARGOENDS
 	waitmessage B_WAIT_TIME_LONG

@@ -516,6 +516,8 @@ extern const u8 BattleScript_BoosterEnergyEnd2[];
 extern const u8 BattleScript_TeraShellDistortingTypeMatchups[];
 extern const u8 BattleScript_TeraFormChange[];
 extern const u8 BattleScript_ItemDropped[];
+extern const u8 BattleScript_IsInPanic[];
+extern const u8 BattleScript_CalmedDown[];
 
 // zmoves
 extern const u8 BattleScript_ZMoveActivateDamaging[];
