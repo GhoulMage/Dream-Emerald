@@ -1097,6 +1097,7 @@ static const u8 sHoldEffectToType[][2] =
     {HOLD_EFFECT_DRAGON_POWER, TYPE_DRAGON},
     {HOLD_EFFECT_NORMAL_POWER, TYPE_NORMAL},
     {HOLD_EFFECT_FAIRY_POWER, TYPE_FAIRY}, //ADD TYPE_SOUND
+    {HOLD_EFFECT_SOUND_POWER, TYPE_SOUND}, //TYPE_SOUND
 };
 
 // percent in UQ_4_12 format
@@ -2670,7 +2671,8 @@ enum
     ENDTURN_THROAT_CHOP,
     ENDTURN_SLOW_START,
     ENDTURN_PLASMA_FISTS,
-    ENDTURN_BATTLER_COUNT
+    ENDTURN_PANIC_ATTACK,
+    ENDTURN_BATTLER_COUNT,
 };
 
 // Ingrain, Leech Seed, Strength Sap and Aqua Ring
@@ -3210,6 +3212,16 @@ u8 DoBattlerEndTurnEffects(void)
         case ENDTURN_PLASMA_FISTS:
             for (i = 0; i < gBattlersCount; i++)
                 gStatuses4[i] &= ~STATUS4_PLASMA_FISTS;
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        case ENDTURN_PANIC_ATTACK:
+            if (gDisableStructs[gActiveBattler].isInPanic > 0) {
+                gDisableStructs[gActiveBattler].isInPanic--;
+                if(gDisableStructs[gActiveBattler].isInPanic == 0){
+                    BattleScriptExecute(BattleScript_CalmedDown);
+                    effect++;
+                }
+            }
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BATTLER_COUNT:  // done
@@ -5232,6 +5244,19 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 SET_STATCHANGER(STAT_SPATK, 1, FALSE);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_TargetAbilityStatRaiseOnMoveEnd;
+                effect++;
+            }
+            break;
+        case ABILITY_PANIC_ATTACK:
+            if(!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && BATTLER_DAMAGED(gBattlerTarget)
+            && IsBattlerAlive(gBattlerTarget)
+            && (gIsCriticalHit
+                || gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE
+                || (gBattleStruct->hpBefore[gBattlerTarget] - gBattleMons[gBattlerTarget].hp >= gBattleMons[gBattlerTarget].maxHP/2))) {
+                gDisableStructs[gBattlerTarget].isInPanic = 2;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_IsInPanic;
                 effect++;
             }
             break;
@@ -8543,8 +8568,12 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_ULTRASONIC:
-        if (moveType == TYPE_DARK && gBattleStruct->ateBoost[battlerAtk])
+        if (MoveHasSound(move) && gBattleStruct->ateBoost[battlerAtk])
             MulModifier(&modifier, UQ_4_12(1.5));
+        break;
+    case ABILITY_SINGER:
+        if (MoveHasSound(move) && gBattleStruct->ateBoost[battlerAtk])
+            MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_NORMALIZE:
         if (moveType == TYPE_NORMAL && gBattleStruct->ateBoost[battlerAtk])
@@ -8690,6 +8719,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     case HOLD_EFFECT_DRAGON_POWER:
     case HOLD_EFFECT_NORMAL_POWER:
     case HOLD_EFFECT_FAIRY_POWER:
+    case HOLD_EFFECT_SOUND_POWER:
         for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
         {
             if (holdEffectAtk == sHoldEffectToType[i][0])

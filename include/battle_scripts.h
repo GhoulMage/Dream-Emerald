@@ -430,6 +430,8 @@ extern const u8 BattleScript_AffectionBasedStatusHeal[];
 extern const u8 BattleScript_AffectionBasedEndurance[];
 extern const u8 BattleScript_SymbiosisActivates[];
 extern const u8 BattleScript_ItemDropped[];
+extern const u8 BattleScript_IsInPanic[];
+extern const u8 BattleScript_CalmedDown[];
 
 // zmoves
 extern const u8 BattleScript_ZMoveActivateDamaging[];

@@ -152,6 +152,8 @@
 #define HOLD_EFFECT_HEAVY_DUTY_BOOTS    173
 #define HOLD_EFFECT_THROAT_SPRAY        174
 
+#define HOLD_EFFECT_SOUND_POWER         175
+
 #define HOLD_EFFECT_CHOICE(holdEffect)((holdEffect == HOLD_EFFECT_CHOICE_BAND || holdEffect == HOLD_EFFECT_CHOICE_SCARF || holdEffect == HOLD_EFFECT_CHOICE_SPECS))
 
 // Terrain seed params

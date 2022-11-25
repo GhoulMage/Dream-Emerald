@@ -564,6 +564,7 @@ bool32 ShouldShowFemaleDifferences(u16 species, u32 personality);
 void TryToSetBattleFormChangeMoves(struct Pokemon *mon);
 u32 GetMonFriendshipScore(struct Pokemon *pokemon);
 u8 GetPartyMonCurvedLevel(void);
-u16 HasLevelEvolution(u16 species, u8 level);
+u16 HasLevelEvolution(u16 species, u8 level, u8 maxStage);
+u16 HasSpecialEvolution(u16 species);
 
 #endif // GUARD_POKEMON_H

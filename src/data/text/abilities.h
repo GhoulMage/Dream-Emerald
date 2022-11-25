@@ -256,6 +256,8 @@ static const u8 sAsOneIceRiderDescription[] = _("Unnerve and Chilling Neigh.");
 static const u8 sAsOneShadowRiderDescription[] = _("Unnerve and Grim Neigh.");
 static const u8 sDarkPowerDescription[] = _("Normal moves become Dark.");
 static const u8 sDragonScaleDescription[] = _("Ups Sp. Def if suffering.");
+static const u8 sPanicAttackDescription[] = _("Crits if badly hurt.");
+static const u8 sSingerDescription[] = _("Sound moves become Normal.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -530,6 +532,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_AS_ONE_SHADOW_RIDER] = _("As One"),
     [ABILITY_DARK_POWER] = _("Dark Power"),
     [ABILITY_DRAGON_SCALE] = _("Dragon Scale"),
+    [ABILITY_PANIC_ATTACK] = _("Panic Attack"),
+    [ABILITY_SINGER] = _("Singer"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -804,6 +808,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_AS_ONE_SHADOW_RIDER] = _("As One"),
     [ABILITY_DARK_POWER] = _("Dark Power"),
     [ABILITY_DRAGON_SCALE] = _("Dragon Scale"),
+    [ABILITY_PANIC_ATTACK] = _("Panic Attack"),
+    [ABILITY_SINGER] = _("Singer"),
 };
 #endif
 
@@ -1079,4 +1085,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_AS_ONE_SHADOW_RIDER] = sAsOneShadowRiderDescription,
     [ABILITY_DARK_POWER] = sDarkPowerDescription,
     [ABILITY_DRAGON_SCALE] = sDragonScaleDescription,
+    [ABILITY_PANIC_ATTACK] = sPanicAttackDescription,
+    [ABILITY_SINGER] = sSingerDescription,
 };

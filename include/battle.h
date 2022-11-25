@@ -73,6 +73,7 @@ struct DisableStruct
     u8 disableTimer:4;
     u8 disableTimerStartValue:4;
     u8 encoredMovePos;
+    u8 isInPanic;
     u8 encoreTimer:4;
     u8 encoreTimerStartValue:4;
     u8 perishSongTimer:4;
