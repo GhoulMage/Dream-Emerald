@@ -102,6 +102,8 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Voltorb
 * Electrode
 * Toxel
+* Blitzle
+* Zebstrika
 
 #### Rock/Sound
 * Boldore
@@ -122,6 +124,8 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **NEW Dark Power**: Normal attacks become Dark.
 * **NEW Ultrasonic**: Deal and Receive +50% Damage from Sound attacks.
 * **NEW Dragon Scale**: Boosts Special Defense by 50% while in status condition.
+* **NEW Singer**: Sound attacks become Normal.
+* **NEW Panic Attack**: Next Move will always crit if badly hurt by the foe (by super effective move, critical, < 1/2 Max HP attack).
 
 #### Moves
 * **Return**: Power at Max Friendship is now 128.
@@ -130,7 +134,10 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 
 #### Mechanics
 * **Hail** weather boosts Ice Types' Defense by 50%
-* Wild Pokémon Levels are curved to your Party average level, there's a 5% chance you will find their evolved form
+* Wild Pokémon Levels are curved to your Party average level
+* There's a 30% Chance to find the first stage evolution of a Pokémon in the wild
+* There's a 15% Chance to find the second stage evolution of a Pokémon in the wild
+* There's a 5% Chance to find the special stage evolution of a Pokémon in the wild, think Slowking, Vileplume/Blossom, Lopunny, Mamoswine, etc.
 
 
 #### Planned for sure
