@@ -1375,7 +1375,9 @@
 #define SPECIES_ALCREMIE_RIBBON_CARAMEL_SWIRL           1287
 #define SPECIES_ALCREMIE_RIBBON_RAINBOW_SWIRL           1288
 
-#define GEN9_START                                      SPECIES_ALCREMIE_RIBBON_RAINBOW_SWIRL
+#define SPECIES_ARCEUS_SOUND                            FORMS_START + 384
+
+#define GEN9_START                                      SPECIES_ARCEUS_SOUND
 
 #define SPECIES_SPRIGATITO                              1289
 #define SPECIES_FLORAGATO                               1290

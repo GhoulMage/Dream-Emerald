@@ -288,6 +288,7 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_DREAD_PLATE] = {gItemIcon_DreadPlate, gItemIconPalette_DreadPlate},
     [ITEM_IRON_PLATE] = {gItemIcon_IronPlate, gItemIconPalette_IronPlate},
     [ITEM_PIXIE_PLATE] = {gItemIcon_PixiePlate, gItemIconPalette_PixiePlate},
+    [ITEM_SONIC_PLATE] = {gItemIcon_SonicPlate, gItemIconPalette_SonicPlate},
     // Drives
     [ITEM_DOUSE_DRIVE] = {gItemIcon_DouseDrive, gItemIconPalette_DouseDrive},
     [ITEM_SHOCK_DRIVE] = {gItemIcon_ShockDrive, gItemIconPalette_ShockDrive},
@@ -402,6 +403,7 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_DARKINIUM_Z] = {gItemIcon_DarkiniumZ, gItemIconPalette_DarkiniumZ},
     [ITEM_STEELIUM_Z] = {gItemIcon_SteeliumZ, gItemIconPalette_SteeliumZ},
     [ITEM_FAIRIUM_Z] = {gItemIcon_FairiumZ, gItemIconPalette_FairiumZ},
+    [ITEM_SOUNDIUM_Z] = {gItemIcon_SoundiumZ, gItemIconPalette_SoundiumZ},
     [ITEM_PIKANIUM_Z] = {gItemIcon_PikaniumZ, gItemIconPalette_PikaniumZ},
     [ITEM_EEVIUM_Z] = {gItemIcon_EeviumZ, gItemIconPalette_EeviumZ},
     [ITEM_SNORLIUM_Z] = {gItemIcon_SnorliumZ, gItemIconPalette_SnorliumZ},

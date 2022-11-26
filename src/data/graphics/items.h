@@ -733,6 +733,9 @@ const u32 gItemIconPalette_IronPlate[] = INCBIN_U32("graphics/items/icon_palette
 const u32 gItemIcon_PixiePlate[] = INCBIN_U32("graphics/items/icons/pixie_plate.4bpp.lz");
 const u32 gItemIconPalette_PixiePlate[] = INCBIN_U32("graphics/items/icon_palettes/pixie_plate.gbapal.lz");
 
+const u32 gItemIcon_SonicPlate[] = INCBIN_U32("graphics/items/icons/sonic_plate.4bpp.lz");
+const u32 gItemIconPalette_SonicPlate[] = INCBIN_U32("graphics/items/icon_palettes/sonic_plate.gbapal.lz");
+
 // Drives
 
 const u32 gItemIcon_DouseDrive[] = INCBIN_U32("graphics/items/icons/douse_drive.4bpp.lz");
@@ -1066,6 +1069,9 @@ const u32 gItemIconPalette_SteeliumZ[] = INCBIN_U32("graphics/items/icon_palette
 
 const u32 gItemIcon_FairiumZ[] = INCBIN_U32("graphics/items/icons/fairium_z.4bpp.lz");
 const u32 gItemIconPalette_FairiumZ[] = INCBIN_U32("graphics/items/icon_palettes/fairium_z.gbapal.lz");
+
+const u32 gItemIcon_SoundiumZ[] = INCBIN_U32("graphics/items/icons/soundium_z.4bpp.lz");
+const u32 gItemIconPalette_SoundiumZ[] = INCBIN_U32("graphics/items/icon_palettes/soundium_z.gbapal.lz");
 
 const u32 gItemIcon_PikaniumZ[] = INCBIN_U32("graphics/items/icons/pikanium_z.4bpp.lz");
 const u32 gItemIconPalette_PikaniumZ[] = INCBIN_U32("graphics/items/icon_palettes/pikanium_z.gbapal.lz");

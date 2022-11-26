@@ -4249,6 +4249,21 @@ const struct Item gItemsInfo[] =
         .flingPower = 90,
     },
 
+    [ITEM_SONIC_PLATE] =
+    {
+        .name = _("Sonic Plate"),
+        .itemId = ITEM_SONIC_PLATE,
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_PLATE,
+        .holdEffectParam = 20,
+        .description = sSonicPlateDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = TYPE_SOUND,
+        .flingPower = 90,
+    },
+
 // Drives
 
     [ITEM_DOUSE_DRIVE] =
@@ -5938,6 +5953,19 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = TYPE_FAIRY
+    },
+
+    [ITEM_SOUNDIUM_Z] =
+    {
+        .name = _("Soundium Z"),
+        .itemId = ITEM_SOUNDIUM_Z,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
+        .description = sSoundiumZDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = TYPE_SOUND
     },
 
     [ITEM_PIKANIUM_Z] =
