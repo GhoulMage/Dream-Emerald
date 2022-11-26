@@ -21605,18 +21605,16 @@ Move_PSYCHIC_INVERSION::
 	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(27, 27, 0), 12, 1, 1
 	createvisualtask AnimTask_ExtrasensoryDistortion, 1, 1
 	playsewithpan SE_M_BIND, SOUND_PAN_TARGET
-	delay 11
+	delay 20
+	waitsound
 
-	createvisualtask AnimTask_TransparentCloneGrowAndShrink, 5, ANIM_ATTACKER
+	createvisualtask AnimTask_TransparentCloneGrowAndShrink, 5, ANIM_TARGET
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 18, 1
 	playsewithpan SE_M_LEER, SOUND_PAN_ATTACKER
 	waitforvisualfinish
-	blendoff
 	clearmonbg ANIM_DEF_PARTNER
 	clearmonbg ANIM_TARGET
-	waitforvisualfinish
 	blendoff
-	delay 1
 	restorebg
 	waitbgfadein
 	end
