@@ -831,6 +831,8 @@ extern const u32 gItemIcon_IronPlate[];
 extern const u32 gItemIconPalette_IronPlate[];
 extern const u32 gItemIcon_PixiePlate[];
 extern const u32 gItemIconPalette_PixiePlate[];
+extern const u32 gItemIcon_SonicPlate[];
+extern const u32 gItemIconPalette_SonicPlate[];
 // Drives
 extern const u32 gItemIcon_DouseDrive[];
 extern const u32 gItemIconPalette_DouseDrive[];
@@ -1052,6 +1054,8 @@ extern const u32 gItemIcon_SteeliumZ[];
 extern const u32 gItemIconPalette_SteeliumZ[];
 extern const u32 gItemIcon_FairiumZ[];
 extern const u32 gItemIconPalette_FairiumZ[];
+extern const u32 gItemIcon_SoundiumZ[];
+extern const u32 gItemIconPalette_SoundiumZ[];
 extern const u32 gItemIcon_PikaniumZ[];
 extern const u32 gItemIconPalette_PikaniumZ[];
 extern const u32 gItemIcon_EeviumZ[];

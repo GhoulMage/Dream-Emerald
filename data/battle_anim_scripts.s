@@ -21584,7 +21584,9 @@ Move_EXTRASENSORY::
 	end
 
 Move_PSYCHIC_INVERSION::
-	call SetPsychicBackground
+	monbg ANIM_TARGET
+	fadetobg BG_DARK
+	waitbgfadein
 	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
 	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(27, 27, 0), 12, 1, 1
@@ -21611,7 +21613,12 @@ Move_PSYCHIC_INVERSION::
 	waitforvisualfinish
 	blendoff
 	clearmonbg ANIM_DEF_PARTNER
-	call UnsetPsychicBg
+	clearmonbg ANIM_TARGET
+	waitforvisualfinish
+	blendoff
+	delay 1
+	restorebg
+	waitbgfadein
 	end
 
 Move_AERIAL_ACE::

@@ -4787,6 +4787,23 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_PixiePlate,
     },
 
+    [ITEM_SONIC_PLATE] =
+    {
+        .name = _("Sonic Plate"),
+        .itemId = ITEM_SONIC_PLATE,
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_PLATE,
+        .holdEffectParam = 20,
+        .description = sSonicPlateDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = TYPE_SOUND,
+        .flingPower = 90,
+        .iconPic = gItemIcon_SonicPlate,
+        .iconPalette = gItemIconPalette_SonicPlate,
+    },
+
 // Drives
 
     [ITEM_DOUSE_DRIVE] =
@@ -6692,6 +6709,21 @@ const struct Item gItemsInfo[] =
         .secondaryId = TYPE_FAIRY,
         .iconPic = gItemIcon_FairiumZ,
         .iconPalette = gItemIconPalette_FairiumZ,
+    },
+
+    [ITEM_SOUNDIUM_Z] =
+    {
+        .name = _("Soundium Z"),
+        .itemId = ITEM_SOUNDIUM_Z,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
+        .description = sSoundiumZDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = TYPE_SOUND,
+        .iconPic = gItemIcon_SoundiumZ,
+        .iconPalette = gItemIconPalette_SoundiumZ,
     },
 
     [ITEM_PIKANIUM_Z] =

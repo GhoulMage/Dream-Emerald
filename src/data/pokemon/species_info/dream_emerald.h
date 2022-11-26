@@ -147,6 +147,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         LEARNSETS(GardevoirD),
     },
 
+    [SPECIES_ARCEUS_SOUND]    = ARCEUS_SPECIES_INFO(TYPE_SOUND, Sound),
+
 #ifdef __INTELLISENSE__
 };
 #endif
