@@ -427,9 +427,23 @@ u8 PickWildMonNature(void)
 }
 
 
-#define MON_CHANCE_TO_FIND_EVOLVED_STAGE1 30  // out of every 100
-#define MON_CHANCE_TO_FIND_EVOLVED_STAGE2 15  // out of every 100
-#define MON_CHANCE_TO_FIND_EVOLVED_STAGE3 5   // out of every 100
+#define MON_CHANCE_TO_FIND_EVOLVED_STAGE1 33  // out of every 100
+#define MON_CHANCE_TO_FIND_EVOLVED_STAGE2 13  // out of every 100
+#define MON_CHANCE_TO_FIND_EVOLVED_STAGE3 9   // out of every 100
+
+static const u16 sBannedMonWildEvos[] =
+{
+    0,
+};
+
+static bool8 MonEvolutionIsBanned(u16 species){
+    u32 i;
+    for (i = 0; i < ARRAY_COUNT(sBannedMonWildEvos); i++) {
+        if (species == sBannedMonWildEvos[i])
+            return TRUE;
+    }
+    return FALSE;
+}
 
 static void CreateWildMon(u16 species, u8 level)
 {
@@ -442,18 +456,16 @@ static void CreateWildMon(u16 species, u8 level)
     chance = (Random() % 100);
     
     //Check at the beginning for mons like Shedinja etc
-    if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3) {
-        if((newSpecies = HasSpecialEvolution(species)))
-            species = newSpecies;
-    } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE2 && (newSpecies = HasLevelEvolution(species, level, 2))) {
+    if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3 && !MonEvolutionIsBanned(newSpecies = HasSpecialEvolution(species))) {
         species = newSpecies;
-    } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE1 && (newSpecies = HasLevelEvolution(species, level, 1))) {
+    } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE2 && !MonEvolutionIsBanned(newSpecies = HasLevelEvolution(species, level, 2))) {
+        species = newSpecies;
+    } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE1 && !MonEvolutionIsBanned(newSpecies = HasLevelEvolution(species, level, 1))) {
         species = newSpecies;
     }
     //Check again just in case base evo didn't have special evolution but stage 1 or 2 does
-    if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3) {
-        if((newSpecies = HasSpecialEvolution(species)))
-            species = newSpecies;
+    if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3 && !MonEvolutionIsBanned(newSpecies = HasSpecialEvolution(species))) {
+        species = newSpecies;
     }
 
     switch (gSpeciesInfo[species].genderRatio)

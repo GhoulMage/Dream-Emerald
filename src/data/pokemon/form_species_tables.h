@@ -1138,6 +1138,7 @@ static const u16 sArceusFormSpeciesIdTable[] = {
     SPECIES_ARCEUS_DRAGON,
     SPECIES_ARCEUS_DARK,
     SPECIES_ARCEUS_FAIRY,
+    SPECIES_ARCEUS_SOUND,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_ARCEUS

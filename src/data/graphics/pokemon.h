@@ -11154,6 +11154,7 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u8 gMonIcon_ArceusDragon[] = INCBIN_U8("graphics/pokemon/arceus/dragon/icon.4bpp");
     const u8 gMonIcon_ArceusDark[] = INCBIN_U8("graphics/pokemon/arceus/dark/icon.4bpp");
     const u8 gMonIcon_ArceusFairy[] = INCBIN_U8("graphics/pokemon/arceus/fairy/icon.4bpp");
+    const u8 gMonIcon_ArceusSound[] = INCBIN_U8("graphics/pokemon/arceus/sound/icon.4bpp");
 #endif //P_ARCEUS_UNIQUE_FORM_ICONS
 #if OW_POKEMON_OBJECT_EVENTS
     const u32 gObjectEventPic_ArceusNormal[] = INCBIN_COMP("graphics/pokemon/arceus/overworld.4bpp");
@@ -11174,6 +11175,7 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gObjectEventPic_ArceusDragon[] = INCBIN_COMP("graphics/pokemon/arceus/overworld.4bpp");
     const u32 gObjectEventPic_ArceusDark[] = INCBIN_COMP("graphics/pokemon/arceus/overworld.4bpp");
     const u32 gObjectEventPic_ArceusFairy[] = INCBIN_COMP("graphics/pokemon/arceus/overworld.4bpp");
+    const u32 gObjectEventPic_ArceusSound[] = INCBIN_COMP("graphics/pokemon/arceus/overworld.4bpp");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
     const u32 gOverworldPalette_ArceusNormal[] = INCBIN_U32("graphics/pokemon/arceus/overworld_normal.gbapal.lz");
     const u32 gOverworldPalette_ArceusFighting[] = INCBIN_U32("graphics/pokemon/arceus/fighting/overworld_normal.gbapal.lz");
@@ -11211,6 +11213,7 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gShinyOverworldPalette_ArceusDragon[] = INCBIN_U32("graphics/pokemon/arceus/dragon/overworld_shiny.gbapal.lz");
     const u32 gShinyOverworldPalette_ArceusDark[] = INCBIN_U32("graphics/pokemon/arceus/dark/overworld_shiny.gbapal.lz");
     const u32 gShinyOverworldPalette_ArceusFairy[] = INCBIN_U32("graphics/pokemon/arceus/fairy/overworld_shiny.gbapal.lz");
+    const u32 gShinyOverworldPalette_ArceusSound[] = INCBIN_U32("graphics/pokemon/arceus/sound/overworld_shiny.gbapal.lz");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_ARCEUS
