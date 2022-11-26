@@ -1481,6 +1481,7 @@ static const u16 sSpeciesToNationalPokedexNum[NUM_SPECIES - 1] =
     [SPECIES_ARCEUS_DRAGON - 1] = NATIONAL_DEX_ARCEUS,
     [SPECIES_ARCEUS_DARK - 1] = NATIONAL_DEX_ARCEUS,
     [SPECIES_ARCEUS_FAIRY - 1] = NATIONAL_DEX_ARCEUS,
+    [SPECIES_ARCEUS_SOUND - 1] = NATIONAL_DEX_ARCEUS,
 #endif
 #if P_GEN_5_POKEMON == TRUE
     // Basculin
@@ -2920,6 +2921,7 @@ static const u8 sMonFrontAnimIdsTable[NUM_SPECIES - 1] =
     [SPECIES_ARCEUS_DRAGON - 1]   = ANIM_CIRCULAR_VIBRATE,
     [SPECIES_ARCEUS_DARK - 1]     = ANIM_CIRCULAR_VIBRATE,
     [SPECIES_ARCEUS_FAIRY - 1]    = ANIM_CIRCULAR_VIBRATE,
+    [SPECIES_ARCEUS_SOUND - 1]    = ANIM_CIRCULAR_VIBRATE,
 };
 
 static const u8 sMonAnimationDelayTable[NUM_SPECIES - 1] =
@@ -8563,9 +8565,28 @@ u16 HasLevelEvolution(u16 species, u8 level, u8 maxStage)
 	return 0;
 }
 
+bool8 IsLevelEvolution(u16 species, u32 evo){
+    switch (gEvolutionTable[species][evo].method){
+        case EVO_LEVEL:
+        case EVO_LEVEL_SILCOON:
+        case EVO_LEVEL_NINJASK:
+        case EVO_LEVEL_DARK_TYPE_MON_IN_PARTY:
+        return TRUE;
+        break;
+    }
+    return FALSE;
+}
+
 u16 HasSpecialEvolution(u16 species) {
-    if(gEvolutionTable[species][0].param == 0 && gEvolutionTable[species][0].method != EVO_MEGA_EVOLUTION){
-        return gEvolutionTable[species][0].targetSpecies;
+    u32 i;
+    for(i = 0; i < EVOS_PER_MON; i++){
+        if(gEvolutionTable[species][i].method
+            && !IsLevelEvolution(species, i)
+            && gEvolutionTable[species][i].method != EVO_MEGA_EVOLUTION
+            && gEvolutionTable[species][i].method != EVO_MOVE_MEGA_EVOLUTION
+            && gEvolutionTable[species][i].method != EVO_PRIMAL_REVERSION) {
+            return gEvolutionTable[species][i].targetSpecies;
+        }
     }
 	return 0;
 }

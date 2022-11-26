@@ -23,6 +23,7 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_ARCEUS_DRAGON] = sArceusFormChangeTable,
     [SPECIES_ARCEUS_DARK] = sArceusFormChangeTable,
     [SPECIES_ARCEUS_FAIRY] = sArceusFormChangeTable,
+    [SPECIES_ARCEUS_SOUND] = sArceusFormChangeTable,
 #endif
 #if P_GEN_5_POKEMON == TRUE
     [SPECIES_TORNADUS] = sTornadusFormChangeTable,

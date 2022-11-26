@@ -1403,9 +1403,14 @@ static const u8 sIronPlateDesc[] = _(
     "Steel-type moves.");
 
 static const u8 sPixiePlateDesc[] = _(
-    "A stone tablet that\n"
-    "boosts the power of\n"
+    "A tablet that ups\n"
+    "the power of\n"
     "Fairy-type moves.");
+
+static const u8 sSonicPlateDesc[] = _(
+    "A tablet that ups\n"
+    "the power of\n"
+    "Sound-type moves.");
 
 // Drives
 static const u8 sDouseDriveDesc[] = _(
@@ -1940,6 +1945,11 @@ static const u8 sSteeliumZDesc[] = _(
 
 static const u8 sFairiumZDesc[] = _(
     "Upgrade Fairy-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sSoundiumZDesc[] = _(
+    "Upgrade Sound-\n"
     "type moves into\n"
     "Z-Moves.");
 

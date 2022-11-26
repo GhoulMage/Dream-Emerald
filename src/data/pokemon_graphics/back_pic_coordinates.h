@@ -1161,6 +1161,7 @@ const struct MonCoords gMonBackPicCoords[] =
     [SPECIES_ARCEUS_DRAGON]                = ARCEUS_BACK_PIC_COORDS,
     [SPECIES_ARCEUS_DARK]                  = ARCEUS_BACK_PIC_COORDS,
     [SPECIES_ARCEUS_FAIRY]                 = ARCEUS_BACK_PIC_COORDS,
+    [SPECIES_ARCEUS_SOUND]                 = ARCEUS_BACK_PIC_COORDS,
 #endif
 #if P_GEN_5_POKEMON == TRUE
     // Basculin

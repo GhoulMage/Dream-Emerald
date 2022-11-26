@@ -1142,6 +1142,7 @@ const u8 gSpeciesNames[][POKEMON_NAME_LENGTH + 1] = {
     [SPECIES_ARCEUS_DRAGON] = _("Arceus"),
     [SPECIES_ARCEUS_DARK] = _("Arceus"),
     [SPECIES_ARCEUS_FAIRY] = _("Arceus"),
+    [SPECIES_ARCEUS_SOUND] = _("Arceus"),
 #endif
 #if P_GEN_5_POKEMON == TRUE
     // Basculin

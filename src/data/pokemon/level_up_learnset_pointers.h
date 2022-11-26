@@ -1139,6 +1139,7 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_ARCEUS_DRAGON] = sArceusLevelUpLearnset,
     [SPECIES_ARCEUS_DARK] = sArceusLevelUpLearnset,
     [SPECIES_ARCEUS_FAIRY] = sArceusLevelUpLearnset,
+    [SPECIES_ARCEUS_SOUND] = sArceusLevelUpLearnset,
 #endif
 #if P_GEN_5_POKEMON == TRUE
     // Basculin

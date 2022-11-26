@@ -3531,6 +3531,7 @@ const u32 gMonPalette_ArceusIce[] = INCBIN_U32("graphics/pokemon/arceus/ice/norm
 const u32 gMonPalette_ArceusDragon[] = INCBIN_U32("graphics/pokemon/arceus/dragon/normal.gbapal.lz");
 const u32 gMonPalette_ArceusDark[] = INCBIN_U32("graphics/pokemon/arceus/dark/normal.gbapal.lz");
 const u32 gMonPalette_ArceusFairy[] = INCBIN_U32("graphics/pokemon/arceus/fairy/normal.gbapal.lz");
+const u32 gMonPalette_ArceusSound[] = INCBIN_U32("graphics/pokemon/arceus/sound/normal.gbapal.lz");
 #endif
 #if P_GEN_5_POKEMON == TRUE
 const u32 gMonPalette_BasculinBlueStriped[] = INCBIN_U32("graphics/pokemon/basculin/blue_striped/normal.gbapal.lz");
@@ -4767,6 +4768,7 @@ const u32 gMonShinyPalette_ArceusIce[] = INCBIN_U32("graphics/pokemon/arceus/ice
 const u32 gMonShinyPalette_ArceusDragon[] = INCBIN_U32("graphics/pokemon/arceus/dragon/shiny.gbapal.lz");
 const u32 gMonShinyPalette_ArceusDark[] = INCBIN_U32("graphics/pokemon/arceus/dark/shiny.gbapal.lz");
 const u32 gMonShinyPalette_ArceusFairy[] = INCBIN_U32("graphics/pokemon/arceus/fairy/shiny.gbapal.lz");
+const u32 gMonShinyPalette_ArceusSound[] = INCBIN_U32("graphics/pokemon/arceus/sound/shiny.gbapal.lz");
 #endif
 #if P_GEN_5_POKEMON == TRUE
 const u32 gMonShinyPalette_BasculinBlueStriped[] = INCBIN_U32("graphics/pokemon/basculin/blue_striped/shiny.gbapal.lz");

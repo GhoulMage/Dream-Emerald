@@ -1139,6 +1139,7 @@ const u16 *const gTeachableLearnsets[NUM_SPECIES] =
     [SPECIES_ARCEUS_DRAGON] = sArceusTeachableLearnset,
     [SPECIES_ARCEUS_DARK] = sArceusTeachableLearnset,
     [SPECIES_ARCEUS_FAIRY] = sArceusTeachableLearnset,
+    [SPECIES_ARCEUS_SOUND] = sArceusTeachableLearnset,
 #endif
 #if P_GEN_5_POKEMON == TRUE
     // Basculin

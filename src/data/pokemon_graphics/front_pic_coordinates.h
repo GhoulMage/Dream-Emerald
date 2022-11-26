@@ -1143,6 +1143,7 @@ const struct MonCoords gMonFrontPicCoords[] =
     [SPECIES_ARCEUS_DRAGON]                = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_ARCEUS_DARK]                  = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_ARCEUS_FAIRY]                 = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
+    [SPECIES_ARCEUS_SOUND]                 = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
 #endif
 #if P_GEN_5_POKEMON == TRUE
     // Basculin         

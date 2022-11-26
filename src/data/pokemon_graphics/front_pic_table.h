@@ -1136,6 +1136,7 @@ const struct CompressedSpriteSheet gMonFrontPicTable[] =
     SPECIES_SPRITE(ARCEUS_DRAGON, gMonFrontPic_Arceus),
     SPECIES_SPRITE(ARCEUS_DARK, gMonFrontPic_Arceus),
     SPECIES_SPRITE(ARCEUS_FAIRY, gMonFrontPic_Arceus),
+    SPECIES_SPRITE(ARCEUS_SOUND, gMonFrontPic_Arceus),
 #endif
 
 #if P_GEN_5_POKEMON == TRUE

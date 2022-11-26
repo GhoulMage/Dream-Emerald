@@ -1137,6 +1137,7 @@ const struct CompressedSpritePalette gMonPaletteTable[] =
     SPECIES_PAL(ARCEUS_DRAGON, gMonPalette_ArceusDragon),
     SPECIES_PAL(ARCEUS_DARK, gMonPalette_ArceusDark),
     SPECIES_PAL(ARCEUS_FAIRY, gMonPalette_ArceusFairy),
+    SPECIES_PAL(ARCEUS_SOUND, gMonPalette_ArceusSound),
 #endif
 
 #if P_GEN_5_POKEMON == TRUE

@@ -392,6 +392,7 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_ARCEUS_DRAGON] = sArceusFormSpeciesIdTable,
     [SPECIES_ARCEUS_DARK] = sArceusFormSpeciesIdTable,
     [SPECIES_ARCEUS_FAIRY] = sArceusFormSpeciesIdTable,
+    [SPECIES_ARCEUS_SOUND] = sArceusFormSpeciesIdTable,
 #endif
 #if P_GEN_5_POKEMON == TRUE
     // Basculin
