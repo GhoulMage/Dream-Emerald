@@ -172,4 +172,6 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Does Friendship lower correctly after the Poison Fades?
 * Does Sound type work correctly?
 * Matchups in Bug, Ice and Sound may be incorrect (have to check all of them yet ingame)
-* Can Sound Pokémon fall asleep? (Shouldn't)
+* Sound Pokémon should never fall asleep
+* Extrasensory effect is weird
+* Leveling a mon in a double battle sometimes freezes the game if you didn't read its pokédex prior to that?
