@@ -10,6 +10,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **Ice Type** rebalanced
 * **Poison** is super-effective against fairy, and also resists it
 * **Sound Type**
+* New Map Areas
 * Default Text Speed to Fast
 * Default Sound to Stereo
 * Wild Pokémon will drop their items after fainting
@@ -42,6 +43,9 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Return/Frustration power is exposed
 * Low Health beep does not loop anymore
 
+### Added Areas
+* **Dream Oldale**. An extension of Oldale Town that also wraps to Route 103 by the river.
+* **Underground Tunnels**. A mysterious series of tunnels. Entrances to it are all over the region, but are covered by debris.
 
 ### Pokémon Sound Type Added
 
@@ -144,7 +148,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Rebalancing Pokémon and Moves
 * Starter Pokémon will change
 * Map will have a few new areas
-* New Rival
+* New Rival **LADY CINDY**, yes that one from Route 104. Had a silly little crush on her when I was a kid.
 * Can catch All Pokémon up to Gen 5. Some Up-to-Gen 8 Pokémon will be around too
 * Checking up Steel Type for rebalance
 * Soft EXP Cap
@@ -166,7 +170,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 
 ### Known Bugs
 **Visual**
-* When switching a Pokémon in a Double Wild Encounter, if that Pokémon levels up and can learn a new move, the summary screen will glitch showing one of the Wild Pokémon instead
+* If a Pokémon levels up and can learn a new move, the summary screen will glitch showing either nothing, one of the Wild Pokémon, or the Pokémon with corrupted colors instead.
 
 #### Possible Bugs/Not Intended
 * Does Friendship lower correctly after the Poison Fades?
