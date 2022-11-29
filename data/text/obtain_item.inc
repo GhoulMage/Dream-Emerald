@@ -7,8 +7,8 @@ gText_ObtainedTheItem::
 gText_TheBagIsFull::
 	.string "The BAG is full…$"
 
-gText_PutItemInPocket::
-	.string "{PLAYER} put away the {STR_VAR_2}\n"
+gText_PutItemsInPocket::
+	.string "{PLAYER} put away {STR_VAR_1} {STR_VAR_2}\n"
 	.string "in the {STR_VAR_3} POCKET.$"
 
 gText_PutItemsInPocket::

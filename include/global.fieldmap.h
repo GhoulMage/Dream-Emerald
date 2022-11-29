@@ -110,7 +110,7 @@ struct BgEvent
         const u8 *script;
         struct {
             u16 item;
-            u16 hiddenItemId;
+            u8 hiddenItemId;
         } hiddenItem;
         u32 secretBaseId;
     } bgUnion;
