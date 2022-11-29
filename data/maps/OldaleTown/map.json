@@ -27,6 +27,11 @@
       "map": "MAP_ROUTE102",
       "offset": 0,
       "direction": "left"
+    },
+    {
+      "map": "MAP_DREAM_OLDALE",
+      "offset": -10,
+      "direction": "right"
     }
   ],
   "object_events": [
