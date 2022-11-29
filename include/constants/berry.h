@@ -134,6 +134,9 @@
 #define BERRY_TREE_ROUTE_123_SITRUS   88
 #define BERRY_TREE_ROUTE_123_RAWST    89
 
+#define BERRY_TREE_DREAM_OLDALE_1    90
+#define BERRY_TREE_DREAM_OLDALE_2    91
+
 // Remainder are unused
 
 #define BERRY_TREES_COUNT 128
