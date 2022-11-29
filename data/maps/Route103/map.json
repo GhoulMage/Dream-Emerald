@@ -22,6 +22,11 @@
       "map": "MAP_ROUTE110",
       "offset": -60,
       "direction": "right"
+    },
+    {
+      "map": "MAP_DREAM_OLDALE",
+      "offset": 20,
+      "direction": "down"
     }
   ],
   "object_events": [
@@ -295,7 +300,9 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",

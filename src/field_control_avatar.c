@@ -336,6 +336,26 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
     return script;
 }
 
+#define HIDDEN_ITEM_DEFAULT_QUANTITY 1
+
+const u8 hiddenItemQuantity[HIDDEN_ITEM_COUNT] =
+{
+    [FLAG_HIDDEN_ITEM_DREAM_OLDALE_IRON_BALL - FLAG_HIDDEN_ITEMS_START]       = 2,
+    [FLAG_HIDDEN_ITEM_DREAM_OLDALE_POTION - FLAG_HIDDEN_ITEMS_START]          = 3,
+    [FLAG_HIDDEN_ITEM_DREAM_OLDALE_RARE_CANDY - FLAG_HIDDEN_ITEMS_START]      = 2,
+};
+
+u8 GetQuantityForHiddenItemFlag(u32 flag){
+    u8 flagOffset = flag - FLAG_HIDDEN_ITEMS_START;
+    if(flagOffset >= HIDDEN_ITEM_COUNT)
+        return HIDDEN_ITEM_DEFAULT_QUANTITY;
+    
+    if(hiddenItemQuantity[flagOffset])
+        return hiddenItemQuantity[flagOffset];
+    else
+        return HIDDEN_ITEM_DEFAULT_QUANTITY;
+}
+
 static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position, u8 metatileBehavior, u8 direction)
 {
     const struct BgEvent *bgEvent = GetBackgroundEventAtPosition(&gMapHeader, position->x - MAP_OFFSET, position->y - MAP_OFFSET, position->elevation);
@@ -373,6 +393,7 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
         gSpecialVar_0x8005 = (u32)bgEvent->bgUnion.script;
         if (FlagGet(gSpecialVar_0x8004) == TRUE)
             return NULL;
+        gSpecialVar_0x8001 = (u32)GetQuantityForHiddenItemFlag(gSpecialVar_0x8004);
         return EventScript_HiddenItemScript;
     case BG_EVENT_SECRET_BASE:
         if (direction == DIR_NORTH)
