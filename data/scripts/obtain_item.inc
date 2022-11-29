@@ -50,9 +50,9 @@ EventScript_BufferBerriesPocket::
 	return
 
 EventScript_ObtainedItem::
-	message gText_ObtainedTheItem
+    buffernumberstring 0, AMOUNT
+	message gText_PlayerObtainedItems
 	waitfanfare
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	setvar VAR_RESULT, TRUE
 	return
 
@@ -120,11 +120,10 @@ EventScript_PickUpItem::
 	bufferitemnameplural STR_VAR_2, VAR_0x8004, VAR_0x8005
 	pyramid_inchallenge
 	goto_if_eq VAR_RESULT, TRUE, EventScript_PutBattlePyramidItemInBag
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	return
 
 EventScript_PutBattlePyramidItemInBag::
-	msgbox gText_PlayerPutItemInBag, MSGBOX_DEFAULT
+	msgbox gText_PlayerPutItemsInBag, MSGBOX_DEFAULT
 	return
 
 EventScript_FoundTMHM::
@@ -133,11 +132,13 @@ EventScript_FoundTMHM::
 	return
 
 EventScript_FoundItem::
-	message gText_PlayerFoundOneItem
+    buffernumberstring 0, VAR_0x8005
+	message gText_PlayerFoundItems
 	return
 
 EventScript_NoRoomToPickUpItem::
-	msgbox gText_ObtainedTheItem, MSGBOX_DEFAULT
+    buffernumberstring 0, VAR_0x8005
+	msgbox gText_PlayerObtainedItems, MSGBOX_DEFAULT
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	setvar VAR_RESULT, FALSE
 	return
@@ -145,9 +146,9 @@ EventScript_NoRoomToPickUpItem::
 EventScript_HiddenItemScript::
 	lockall
 	waitse
-	additem VAR_0x8005
+	additem VAR_0x8005, VAR_0x8001
 	copyvar VAR_0x8007, VAR_RESULT
-	bufferitemnameplural STR_VAR_2, VAR_0x8005, 1
+	bufferitemnameplural STR_VAR_2, VAR_0x8005, VAR_0x8001
 	checkitemtype VAR_0x8005
 	call EventScript_BufferPocketNameAndTryFanfare
 	goto_if_eq VAR_0x8007, TRUE, EventScript_PickUpHiddenItem
@@ -169,23 +170,24 @@ EventScript_FoundHiddenTMHM::
 	end
 
 EventScript_FoundHiddenItem::
-	message gText_PlayerFoundOneItem
+    buffernumberstring 0, VAR_0x8001
+	message gText_PlayerFoundItems
 	goto EventScript_PutHiddenItemInPocket
 	end
 
 EventScript_PutHiddenItemInPocket::
 	waitmessage
 	waitfanfare
-	bufferitemnameplural STR_VAR_2, VAR_0x8004, 1
+	@bufferitemnameplural STR_VAR_2, VAR_0x8004, VAR_0x8001
 	copyvar VAR_0x8004, VAR_0x8008
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	@msgbox gText_PutItemsInPocket, MSGBOX_DEFAULT
 	special TryPutTreasureInvestigatorsOnAir
 	special SetHiddenItemFlag
 	releaseall
 	end
 
 EventScript_NoRoomForHiddenItem::
-	msgbox gText_PlayerFoundOneItem, MSGBOX_DEFAULT
+	msgbox gText_PlayerFoundItems, MSGBOX_DEFAULT
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
 	releaseall
