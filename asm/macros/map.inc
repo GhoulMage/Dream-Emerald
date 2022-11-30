@@ -96,7 +96,7 @@
 		.4byte \arg6
 	.else
 		.2byte \arg6
-		.byte \arg7
+		.2byte \arg7
 	.endif
 	inc _num_signs
 	.endm
