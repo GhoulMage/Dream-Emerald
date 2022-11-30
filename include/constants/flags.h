@@ -659,7 +659,7 @@
 #define FLAG_HIDDEN_ITEM_DREAM_OLDALE_IRON_BALL              (FLAG_HIDDEN_ITEMS_START + 0x70)
 #define FLAG_HIDDEN_ITEM_DREAM_OLDALE_POTION                 (FLAG_HIDDEN_ITEMS_START + 0x71)
 #define FLAG_HIDDEN_ITEM_DREAM_OLDALE_RARE_CANDY             (FLAG_HIDDEN_ITEMS_START + 0x72)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x73                         (FLAG_HIDDEN_ITEMS_START + 0x73)
+#define FLAG_HIDDEN_ITEM_DREAM_OLDALE_PECHA                  (FLAG_HIDDEN_ITEMS_START + 0x73)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x74                         (FLAG_HIDDEN_ITEMS_START + 0x74)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x75                         (FLAG_HIDDEN_ITEMS_START + 0x75)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x76                         (FLAG_HIDDEN_ITEMS_START + 0x76)
@@ -1493,7 +1493,7 @@
 #define FLAG_ARRIVED_AT_NAVEL_ROCK                  (SYSTEM_FLAGS + 0x81)
 #define FLAG_LANDMARK_TRAINER_HILL                  (SYSTEM_FLAGS + 0x82)
 
-#define FLAG_UNUSED_0x8E3                           (SYSTEM_FLAGS + 0x83) // Unused Flag
+#define FLAG_DREAM_OLDALE_DEBRIS                    (SYSTEM_FLAGS + 0x83) // Dream Emerald
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
