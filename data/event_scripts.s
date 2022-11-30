@@ -1059,4 +1059,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
+	.include "data/scripts/underground_tunnels.inc"
+	.include "data/text/underground_tunnels.inc"
+
 	.include "data/maps/DreamOldale/scripts.inc"
