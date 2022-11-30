@@ -26,7 +26,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .speciesName = _("Ralts D"),
         .cryId = CRY_RALTSD,
         .natDexNum = NATIONAL_DEX_RALTSD,
-        .categoryName = _("Rebel"),
+        .categoryName = _("Rare"),
         .height = 4,
         .weight = 66,
         .description = COMPOUND_STRING(
@@ -49,7 +49,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         ICON(RaltsD, 2),
         .footprint = gMonFootprint_RaltsD,
         LEARNSETS(RaltsD),
-        .evolutions = EVOLUTION({EVO_LEVEL, 24, SPECIES_KIRLIAD})
+        .evolutions = EVOLUTION({EVO_LEVEL, 23, SPECIES_KIRLIAD})
     },
     [SPECIES_KIRLIAD] =
     {
@@ -74,7 +74,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .speciesName = _("Kirlia D"),
         .cryId = CRY_KIRLIAD,
         .natDexNum = NATIONAL_DEX_KIRLIAD,
-        .categoryName = _("Growing"),
+        .categoryName = _("Rejection"),
         .height = 9,
         .weight = 226,
         .description = COMPOUND_STRING(
@@ -122,7 +122,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .speciesName = _("Gardevoir D"),
         .cryId = CRY_GARDEVOIRD,
         .natDexNum = NATIONAL_DEX_GARDEVOIRD,
-        .categoryName = _("Rejection"),
+        .categoryName = _("Renounce"),
         .height = 18,
         .weight = 526,
         .description = COMPOUND_STRING(
