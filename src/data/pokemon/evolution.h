@@ -285,11 +285,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
                                     #endif
                                        },
     [SPECIES_GARDEVOIR]             = {{EVO_MEGA_EVOLUTION, ITEM_GARDEVOIRITE, SPECIES_GARDEVOIR_MEGA}},
-<<<<<<< Updated upstream
     [SPECIES_RALTSD]                = {{EVO_LEVEL, 24, SPECIES_KIRLIAD}},
-=======
-    [SPECIES_RALTSD]                = {{EVO_LEVEL, 23, SPECIES_KIRLIAD}},
->>>>>>> Stashed changes
     [SPECIES_KIRLIAD]               = {{EVO_FRIENDSHIP, 0, SPECIES_GARDEVOIRD}},
     [SPECIES_BAGON]                 = {{EVO_LEVEL, 30, SPECIES_SHELGON}},
     [SPECIES_SHELGON]               = {{EVO_LEVEL, 50, SPECIES_SALAMENCE}},
