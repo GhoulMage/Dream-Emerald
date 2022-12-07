@@ -7263,6 +7263,16 @@ BattleScript_DreamcatcherActivates::
 	datahpupdate BS_ATTACKER
 	end2
 
+BattleScript_DreamcatcherActivates::
+	printstring STRINGID_DREAMCATCHERHPUP
+	waitmessage B_WAIT_TIME_LONG
+	recordability BS_ATTACKER
+	statusanimation BS_ATTACKER
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	end2
+
 BattleScript_BurnTurnDmg::
 	printstring STRINGID_PKMNHURTBYBURN
 	waitmessage B_WAIT_TIME_LONG

@@ -11,8 +11,6 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **Poison** is super-effective against fairy, and also resists it
 * **Sound Type**
 * New Map Areas
-* Default Text Speed to Fast
-* Default Sound to Stereo
 * Wild Pokémon will drop their items after fainting
 * 15% Chance to find a double wild Pokémon encounter
 * Mostly updated to Gen 8
@@ -21,33 +19,33 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Overworld Snow starts Hail weather in battle
 * Berries in rainy routes will always yield max amount of berries without the need to water them
 * Shiny chance is now 1/1024
-* Sort the bag using START Button
-* Change your Pokémon Pokéballs by using them in the bag
+* Use Pokéball out of battle to change Pokéballs of your Pokémon
 
 ### Quality Of Life Changes
 * Run indoors
-* Poison Fades at 1HP and Lowers Friendship
-* Move faster by pressing B in water
+* Eggs hatch at level 1
+* Default Sound to Stereo
+* Default Text Speed to Fast
 * No need for Move Deleter for HMs
-* Summary Screen Nature stats are coloured, IVs and EVs appear by pressing A Button
+* Move faster by pressing B in water
+* Poison Fades at 1HP and Lowers Friendship
 * Summary Screen wraps to first/last Pokémon (hate this wasn't a default)
+* Summary Screen Nature stats are coloured, IVs and EVs appear by pressing A Button
 * Easily swap between lower and upper case with R Button in Naming screen
 * Switches to lowercase after inputting the first character in Naming screen
 * Expiring a Repel will prompt the use of another one
-* Eggs hatch at level 1
-* Use Pokéball out of battle to change Pokéballs of your Pokémon
-* Low Health Beep does not longer loop
 * Berries grow faster, also planting and watering them is faster
 * See the Phyiscal/Special Split of abilities in battle
 * Hidden Power type is exposed
+* Sort the bag using START Button
 * Return/Frustration power is exposed
-* Low Health beep does not loop anymore
+* Low Health Beep does not longer loop
 
 ### Added Areas
 * **Dream Oldale**. An extension of Oldale Town that also wraps to Route 103 by the river.
 * **Underground Tunnels**. A mysterious series of tunnels. Entrances to it are all over the region, but are covered by debris.
 
-### Pokémon Sound Type Added
+### [Pokémon Sound Type Added]https://docs.google.com/document/d/1LJ6lqzNob5mojvyFraNFeUqGb1-6RZNTBh3nmbPbATw/edit?usp=sharing
 
 #### Normal/Sound
 * Audino
@@ -125,15 +123,29 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Dark Gardevoir
 
 #### Abilities
-* **NEW Dark Power**: Normal attacks become Dark.
-* **NEW Ultrasonic**: Deal and Receive +50% Damage from Sound attacks.
+* **NEW Dark Power**: Normal attacks become Dark and get a 20% damage boost.
 * **NEW Dragon Scale**: Boosts Special Defense by 50% while in status condition.
-* **NEW Singer**: Sound attacks become Normal.
 * **NEW Panic Attack**: Next Move will always crit if badly hurt by the foe (by super effective move, critical, < 1/2 Max HP attack).
+* **NEW Rash Cushion**: Recoil moves gain 20% Damage, and recoil damage is halved.
+* **NEW Dreamcatcher**: Restores 1/6 Max HP every turn while asleep.
+* **NEW Jackpot**: Gain twice the prize money if switched into battle.
+
+* **Soundproof**: Becomes immune to Sonic Sound moves. 50% **less** damage from Dance moves.
+* **Own Tempo**: Becomes immune to Dance Sound moves. 50% **less** damage from Sonic moves.
+* **NEW Singer**: Sound attacks become Normal and get a 30% damage boost.
+* **NEW Sand Song**: Sound attacks become Ground and get a 20% damage boost.
+* **NEW Ultrasonic**: Deal and Receive 50% **more** Damage from Sound attacks.
+* **NEW Rich Acoustics**: Turns receiving Sound attacks into HP.
+* **NEW Crescendo**: Sound moves deal 50% **more** Damage under 1/3 Max HP.
+* **NEW Upbeat**: Raises Speed by one stage after using or receiving a Sound move, even if its a non damaging move.
+* **NEW Heavy Sleeper**: Becomes **immune** to Sound moves if sleeping.
 
 #### Moves
 * **Return**: Power at Max Friendship is now 128.
 * **Frustration**: Power at Min Friendship is now 128.
+* **Freeze-Dry**: Super-effective on Water Pokémon.
+* **Scald**: Super-effective on Ice Pokémon. Deals normal damage to Water Pokémon.
+* **Bug Buzz**: Deals regular damage to Bug Pokémon.
 * **NEW Psychic Inversion**: Super-effective on Dark Pokémon. Might cause flinch.
 
 #### Mechanics
