@@ -3,7 +3,7 @@
 ## WORK IN PROGRESS
 
 I have been wanting to make my own hack of Pokémon Emerald for years and I decided to why not begin to work on it. For the time being it's just a lame git copy of pokeemerald Expansion with some added features.
-
+---
 
 ### Features/Changes
 * **Bug Type** rebalanced
@@ -45,6 +45,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **Dream Oldale**. An extension of Oldale Town that also wraps to Route 103 by the river.
 * **Underground Tunnels** (WORK IN PROGRESS). A mysterious series of tunnels. Entrances to it are all over the region, but are covered by debris.
 
+---
 ### [Pokémon Sound Type Docs](https://docs.google.com/document/d/1LJ6lqzNob5mojvyFraNFeUqGb1-6RZNTBh3nmbPbATw/edit?usp=sharing)
 
 #### Normal/Sound
@@ -129,7 +130,8 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **NEW Rash Cushion**: Recoil moves gain 20% Damage, and recoil damage is halved.
 * **NEW Dreamcatcher**: Restores 1/6 Max HP every turn while asleep.
 * **NEW Jackpot**: Gain twice the prize money if switched into battle.
-* ---
+---
+#### Sound Type Related Abilities
 * **Soundproof**: Becomes immune to Sonic Sound moves. 50% **less** damage from Dance moves.
 * **Own Tempo**: Becomes immune to Dance Sound moves. 50% **less** damage from Sonic moves.
 * **NEW Singer**: Sound attacks become Normal and get a 30% damage boost.
@@ -156,6 +158,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * There's a 15% Chance to find the second stage evolution of a Pokémon in the wild
 * There's a 5% Chance to find the special stage evolution of a Pokémon in the wild, think Slowking, Vileplume/Blossom, Lopunny, Mamoswine, etc.
 
+---
 
 #### Planned for sure
 * Rebalancing Pokémon and Moves
