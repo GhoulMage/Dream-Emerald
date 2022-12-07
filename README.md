@@ -3,6 +3,7 @@
 ## WORK IN PROGRESS
 
 I have been wanting to make my own hack of Pokémon Emerald for years and I decided to why not begin to work on it. For the time being it's just a lame git copy of pokeemerald Expansion with some added features.
+
 ---
 
 ### Features/Changes
@@ -20,6 +21,8 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Berries in rainy routes will always yield max amount of berries without the need to water them
 * Shiny chance is now 1/1024
 * Use Pokéball out of battle to change Pokéballs of your Pokémon
+* Rebalanced some Pokémon
+* Better AI (thanks to all who worked in pokeemerald-expansion)
 
 ### Quality Of Life Changes
 * Run indoors
@@ -130,7 +133,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **NEW Rash Cushion**: Recoil moves gain 20% Damage, and recoil damage is halved.
 * **NEW Dreamcatcher**: Restores 1/6 Max HP every turn while asleep.
 * **NEW Jackpot**: Gain twice the prize money if switched into battle.
----
+
 #### Sound Type Related Abilities
 * **Soundproof**: Becomes immune to Sonic Sound moves. 50% **less** damage from Dance moves.
 * **Own Tempo**: Becomes immune to Dance Sound moves. 50% **less** damage from Sonic moves.
@@ -157,8 +160,6 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * There's a 30% Chance to find the first stage evolution of a Pokémon in the wild
 * There's a 15% Chance to find the second stage evolution of a Pokémon in the wild
 * There's a 5% Chance to find the special stage evolution of a Pokémon in the wild, think Slowking, Vileplume/Blossom, Lopunny, Mamoswine, etc.
-
----
 
 #### Planned for sure
 * Rebalancing Pokémon and Moves
