@@ -119,6 +119,7 @@ extern const u8 BattleScript_OneHitKOMsg[];
 extern const u8 BattleScript_FocusPunchSetUp[];
 extern const u8 BattleScript_MoveUsedIsAsleep[];
 extern const u8 BattleScript_MoveUsedWokeUp[];
+extern const u8 BattleScript_MonWokeUpInLoudSound[];
 extern const u8 BattleScript_MonWokeUpInUproar[];
 extern const u8 BattleScript_PoisonTurnDmg[];
 extern const u8 BattleScript_BurnTurnDmg[];

@@ -2998,7 +2998,7 @@ u8 DoBattlerEndTurnEffects(void)
             }
             gBattleStruct->turnEffectsTracker++;
             break;
-        case ENDTURN_DREAMCATCHER:  // poison
+        case ENDTURN_DREAMCATCHER:
             if ((gBattleMons[gActiveBattler].status1 & STATUS1_SLEEP)
                 && gBattleMons[gActiveBattler].hp != 0)
             {
@@ -3287,6 +3287,15 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                     BattleScriptPushCursor();
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP_UPROAR;
                     gBattlescriptCurrInstr = BattleScript_MoveUsedWokeUp;
+                    effect = 2;
+                }
+                else if(gStatuses4[gBattlerAttacker] & STATUS4_LOUD_SOUND) {
+                    gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_SLEEP;
+                    gBattleMons[gBattlerAttacker].status2 &= ~STATUS2_NIGHTMARE;
+                    gStatuses4[gBattlerAttacker] &= ~STATUS4_LOUD_SOUND;
+                    BattleScriptPushCursor();
+                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP_LOUD;
+                    gBattlescriptCurrInstr = BattleScript_MonWokeUpInLoudSound;
                     effect = 2;
                 }
                 else
@@ -5462,7 +5471,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
              && TARGET_TURN_DAMAGED
              && IsBattlerAlive(battler)
-             && (moveType == TYPE_DARK || moveType == TYPE_BUG || moveType == TYPE_GHOST)
+             && (moveType == TYPE_DARK || moveType == TYPE_BUG || moveType == TYPE_GHOST || moveType == TYPE_SOUND)
              && CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
                 gEffectBattler = battler;
