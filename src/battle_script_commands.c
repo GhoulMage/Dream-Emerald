@@ -615,7 +615,6 @@ static void Cmd_jumpifoppositegenders(void);
 static void Cmd_unused(void);
 static void Cmd_tryworryseed(void);
 static void Cmd_callnative(void);
-static void Cmd_doubleifsound(void);
 
 void (* const gBattleScriptingCommandsTable[])(void) =
 {
@@ -874,9 +873,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_jumpifoppositegenders,                   //0xFC
     Cmd_unused,                                  //0xFD
     Cmd_tryworryseed,                            //0xFE
-    //Cmd_metalburstdamagecalculator,              
     Cmd_callnative,                              //0xFF
-    Cmd_doubleifsound,                           //0x100
 };
 
 const struct StatFractions gAccuracyStageRatios[] =
@@ -2008,6 +2005,11 @@ static void Cmd_adjustdamage(void)
     u32 rand = Random() % 100;
 
     GET_MOVE_TYPE(gCurrentMove, moveType);
+
+    if(gBattleMoves[gCurrentMove].effect == EFFECT_SONICBOOM
+        && (gBattleMons[gBattlerTarget].type1 == TYPE_SOUND || gBattleMons[gBattlerTarget].type2 == TYPE_SOUND)) {
+        gBattleMoveDamage *= 2;
+    }
 
     if (DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove))
         goto END;
@@ -12526,7 +12528,7 @@ static void Cmd_transformdataexecution(void)
         gDisableStructs[gBattlerAttacker].transformedMonShininess = gBattleMons[gBattlerTarget].isShiny;
         gDisableStructs[gBattlerAttacker].mimickedMoves = 0;
         gDisableStructs[gBattlerAttacker].usedMoves = 0;
-        //gDisableStructs[gBattlerAttacker].isInPanic = 0;
+        gDisableStructs[gBattlerAttacker].isInPanic = 0;
 
         timesGotHit = gBattleStruct->timesGotHit[GetBattlerSide(gBattlerTarget)][gBattlerPartyIndexes[gBattlerTarget]];
         gBattleStruct->timesGotHit[GetBattlerSide(gBattlerAttacker)][gBattlerPartyIndexes[gBattlerAttacker]] = timesGotHit;
@@ -15650,10 +15652,14 @@ static void Cmd_tryworryseed(void)
     }
 }
 
-static void Cmd_doubleifsound(void){
+static void BS_DoubleDMGIfSound(void){
+    NATIVE_ARGS(const u8 *failInstr);
+
     if(gBattleMons[gBattlerTarget].type1 == TYPE_SOUND || gBattleMons[gBattlerTarget].type2 == TYPE_SOUND){
         gBattleMoveDamage *= 2;
-        gBattlescriptCurrInstr++;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    } else {
+        gBattlescriptCurrInstr = cmd->failInstr;
     }
 }
 
