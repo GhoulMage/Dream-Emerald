@@ -900,6 +900,18 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                   && (moveType == TYPE_DARK || moveType == TYPE_GHOST || moveType == TYPE_BUG))
                     RETURN_SCORE_MINUS(10);
                 break;
+            case ABILITY_UPBEAT:
+                if (MoveIsSonic(move))
+                    RETURN_SCORE_MINUS(10);
+                break;
+            case ABILITY_SOUNDPROOF:
+                if (MoveHasSound(move))
+                    RETURN_SCORE_MINUS(10);
+                break;
+            case ABILITY_OWN_TEMPO:
+                if (MoveIsDance(move))
+                    RETURN_SCORE_MINUS(10);
+                break;
             case ABILITY_DAZZLING:
             case ABILITY_QUEENLY_MAJESTY:
             case ABILITY_ARMOR_TAIL:
@@ -1066,6 +1078,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     // throat chop check
     if (gDisableStructs[battlerAtk].throatChopTimer && MoveHasSound(move))
         return 0; // Can't even select move at all
+    if (gDisableStructs[battlerAtk].throatChopTimer && MoveIsDance(move))
+            RETURN_SCORE_MINUS(5);
     // heal block check
     if (gStatuses3[battlerAtk] & STATUS3_HEAL_BLOCK && IsHealBlockPreventingMove(battlerAtk, move))
         return 0; // Can't even select heal blocked move
@@ -2883,6 +2897,20 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     RETURN_SCORE_MINUS(10);
                 }
                 break;  // handled in AI_HPAware
+            case ABILITY_RICH_ACOUSTICS:
+                if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
+                {
+                    RETURN_SCORE_MINUS(10);
+                }
+                break;  // handled in AI_HPAware
+            case ABILITY_UPBEAT:
+                if (MoveIsSonic(move)
+                    && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPEED)
+                    && !CanIndexMoveFaintTarget(battlerAtk, battlerAtkPartner, AI_THINKING_STRUCT->movesetIndex, 1))
+                {
+                    RETURN_SCORE_PLUS(1);
+                }
+                break;
             case ABILITY_MOTOR_DRIVE:
                 if (moveType == TYPE_ELECTRIC && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPEED))
                 {
@@ -2906,6 +2934,10 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     RETURN_SCORE_MINUS(10);
                 }
                 break;  // handled in AI_HPAware
+            case ABILITY_RICH_ACOUSTICS:
+                if (MoveIsSonic(move))
+                    RETURN_SCORE_PLUS(WEAK_EFFECT);
+                break;
             case ABILITY_STORM_DRAIN:
                 if (B_REDIRECT_ABILITY_IMMUNITY >= GEN_5
                     && moveType == TYPE_WATER
@@ -5068,6 +5100,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         if ((effect == EFFECT_HEAL_PULSE || effect == EFFECT_HIT_ENEMY_HEAL_ALLY)
          || (moveType == TYPE_ELECTRIC && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_VOLT_ABSORB)
          || (moveType == TYPE_GROUND && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_EARTH_EATER)
+         || (MoveHasSound(move) && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_RICH_ACOUSTICS)
          || (moveType == TYPE_WATER && (AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DRY_SKIN || AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_WATER_ABSORB)))
         {
             if (gStatuses3[battlerDef] & STATUS3_HEAL_BLOCK)

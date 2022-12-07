@@ -902,6 +902,60 @@ static const union AnimCmd sSpriteAnim_TypeSound[] = {
     ANIMCMD_FRAME(TYPE_SOUND * 8, 0, FALSE, FALSE),
     ANIMCMD_END
 };
+
+#define SOUND_TYPE_VARIATIONS (NUMBER_OF_MON_TYPES-1)
+#define SOUND_TYPE_VARIATIONS_START (NUMBER_OF_MON_TYPES + CONTEST_CATEGORIES_COUNT)
+
+#define PAL_TYPE_NORMAL       13
+#define PAL_TYPE_FIGHTING     13
+#define PAL_TYPE_FLYING       14
+#define PAL_TYPE_POISON       14
+#define PAL_TYPE_GROUND       13
+#define PAL_TYPE_ROCK         13
+#define PAL_TYPE_BUG          15
+#define PAL_TYPE_GHOST        14
+#define PAL_TYPE_STEEL        13
+#define PAL_TYPE_MYSTERY      15
+#define PAL_TYPE_FIRE         13
+#define PAL_TYPE_WATER        14
+#define PAL_TYPE_GRASS        15
+#define PAL_TYPE_ELECTRIC     13
+#define PAL_TYPE_PSYCHIC      14
+#define PAL_TYPE_ICE          14
+#define PAL_TYPE_DRAGON       15
+#define PAL_TYPE_DARK         13
+#define PAL_TYPE_FAIRY        14
+#define PAL_TYPE_SOUND        11
+
+#define SPRITE_ANIM(type, paletteIndex)                 \
+{                                                       \
+    ANIMCMD_FRAME(TYPE_SOUND * 8, 30, FALSE, FALSE),    \
+    ANIMCMD_PALETTE(paletteIndex),                      \
+    ANIMCMD_FRAME(type * 8, 30, FALSE, FALSE),          \
+    ANIMCMD_PALETTE(PAL_TYPE_SOUND),                    \
+    ANIMCMD_JUMP(0)                                     \
+}
+
+static const union AnimCmd sSpriteAnim_TypeSoundNormal[]    = SPRITE_ANIM(TYPE_NORMAL    ,   PAL_TYPE_NORMAL);
+static const union AnimCmd sSpriteAnim_TypeSoundFighting[]  = SPRITE_ANIM(TYPE_FIGHTING  ,   PAL_TYPE_FIGHTING);
+static const union AnimCmd sSpriteAnim_TypeSoundFlying[]    = SPRITE_ANIM(TYPE_FLYING    ,   PAL_TYPE_FLYING);
+static const union AnimCmd sSpriteAnim_TypeSoundPoison[]    = SPRITE_ANIM(TYPE_POISON    ,   PAL_TYPE_POISON);
+static const union AnimCmd sSpriteAnim_TypeSoundGround[]    = SPRITE_ANIM(TYPE_GROUND    ,   PAL_TYPE_GROUND);
+static const union AnimCmd sSpriteAnim_TypeSoundRock[]      = SPRITE_ANIM(TYPE_ROCK      ,   PAL_TYPE_ROCK);
+static const union AnimCmd sSpriteAnim_TypeSoundBug[]       = SPRITE_ANIM(TYPE_BUG       ,   PAL_TYPE_BUG);
+static const union AnimCmd sSpriteAnim_TypeSoundGhost[]     = SPRITE_ANIM(TYPE_GHOST     ,   PAL_TYPE_GHOST);
+static const union AnimCmd sSpriteAnim_TypeSoundSteel[]     = SPRITE_ANIM(TYPE_STEEL     ,   PAL_TYPE_STEEL);
+static const union AnimCmd sSpriteAnim_TypeSoundMystery[]   = SPRITE_ANIM(TYPE_MYSTERY   ,   PAL_TYPE_MYSTERY);
+static const union AnimCmd sSpriteAnim_TypeSoundFire[]      = SPRITE_ANIM(TYPE_FIRE      ,   PAL_TYPE_FIRE);
+static const union AnimCmd sSpriteAnim_TypeSoundWater[]     = SPRITE_ANIM(TYPE_WATER     ,   PAL_TYPE_WATER);
+static const union AnimCmd sSpriteAnim_TypeSoundGrass[]     = SPRITE_ANIM(TYPE_GRASS     ,   PAL_TYPE_GRASS);
+static const union AnimCmd sSpriteAnim_TypeSoundElectric[]  = SPRITE_ANIM(TYPE_ELECTRIC  ,   PAL_TYPE_ELECTRIC);
+static const union AnimCmd sSpriteAnim_TypeSoundPsychic[]   = SPRITE_ANIM(TYPE_PSYCHIC   ,   PAL_TYPE_PSYCHIC);
+static const union AnimCmd sSpriteAnim_TypeSoundIce[]       = SPRITE_ANIM(TYPE_ICE       ,   PAL_TYPE_ICE);
+static const union AnimCmd sSpriteAnim_TypeSoundDragon[]    = SPRITE_ANIM(TYPE_DRAGON    ,   PAL_TYPE_DRAGON);
+static const union AnimCmd sSpriteAnim_TypeSoundDark[]      = SPRITE_ANIM(TYPE_DARK      ,   PAL_TYPE_DARK);
+static const union AnimCmd sSpriteAnim_TypeSoundFairy[]     = SPRITE_ANIM(TYPE_FAIRY     ,   PAL_TYPE_FAIRY);
+
 static const union AnimCmd sSpriteAnim_CategoryCool[] = {
     ANIMCMD_FRAME((CONTEST_CATEGORY_COOL + NUMBER_OF_MON_TYPES) * 8, 0, FALSE, FALSE),
     ANIMCMD_END
@@ -922,7 +976,7 @@ static const union AnimCmd sSpriteAnim_CategoryTough[] = {
     ANIMCMD_FRAME((CONTEST_CATEGORY_TOUGH + NUMBER_OF_MON_TYPES) * 8, 0, FALSE, FALSE),
     ANIMCMD_END
 };
-static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES + CONTEST_CATEGORIES_COUNT] = {
+static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES + CONTEST_CATEGORIES_COUNT + SOUND_TYPE_VARIATIONS] = {
     [TYPE_NONE] = sSpriteAnim_TypeNone,
     [TYPE_NORMAL] = sSpriteAnim_TypeNormal,
     [TYPE_FIGHTING] = sSpriteAnim_TypeFighting,
@@ -950,12 +1004,31 @@ static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_CUTE] = sSpriteAnim_CategoryCute,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_SMART] = sSpriteAnim_CategorySmart,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_TOUGH] = sSpriteAnim_CategoryTough,
+    sSpriteAnim_TypeSoundNormal,
+    sSpriteAnim_TypeSoundFighting,
+    sSpriteAnim_TypeSoundFlying,
+    sSpriteAnim_TypeSoundPoison,
+    sSpriteAnim_TypeSoundGround,
+    sSpriteAnim_TypeSoundRock,
+    sSpriteAnim_TypeSoundBug,
+    sSpriteAnim_TypeSoundGhost,
+    sSpriteAnim_TypeSoundSteel,
+    sSpriteAnim_TypeSoundMystery,
+    sSpriteAnim_TypeSoundFire,
+    sSpriteAnim_TypeSoundWater,
+    sSpriteAnim_TypeSoundGrass,
+    sSpriteAnim_TypeSoundElectric,
+    sSpriteAnim_TypeSoundPsychic,
+    sSpriteAnim_TypeSoundIce,
+    sSpriteAnim_TypeSoundDragon,
+    sSpriteAnim_TypeSoundDark,
+    sSpriteAnim_TypeSoundFairy,
 };
 
 const struct CompressedSpriteSheet gSpriteSheet_MoveTypes =
 {
     .data = gMoveTypes_Gfx,
-    .size = (NUMBER_OF_MON_TYPES + CONTEST_CATEGORIES_COUNT) * 0x100, //Rest 1 for MOVE_SOUND and so on
+    .size = (NUMBER_OF_MON_TYPES + CONTEST_CATEGORIES_COUNT) * 0x100,
     .tag = TAG_MOVE_TYPES
 };
 const struct SpriteTemplate gSpriteTemplate_MoveTypes =
@@ -976,6 +1049,7 @@ static const u8 sContestCategoryToOamPaletteNum[CONTEST_CATEGORIES_COUNT] =
     [CONTEST_CATEGORY_SMART] = 15,
     [CONTEST_CATEGORY_TOUGH] = 13,
 };
+
 static const struct OamData sOamData_MoveSelector =
 {
     .y = 0,
@@ -4017,13 +4091,16 @@ static void SetMoveTypeIcons(void)
                 u8 type = GetMonHiddenPowerType(&sMonSummaryScreen->currentMon);
 
                 SetTypeSpritePosAndPal(type & 0x3F, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
-            }
+            } else if(gBattleMoves[summary->moves[i]].type == TYPE_SOUND
+                    && gBattleMoves[summary->moves[i]].flags & FLAG_DANCE
+                    && gBattleMoves[summary->moves[i]].argument != TYPE_NONE
+                    && gBattleMoves[summary->moves[i]].argument != TYPE_SOUND)
+                SetTypeSpritePosAndPal(SOUND_TYPE_VARIATIONS_START + gBattleMoves[summary->moves[i]].argument, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
             else
                 SetTypeSpritePosAndPal(gMovesInfo[summary->moves[i]].type, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
         }
         else
             SetSpriteInvisibility(i + SPRITE_ARR_ID_TYPE, TRUE);
-        }
     }
 }
 

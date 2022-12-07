@@ -1753,6 +1753,8 @@ static void MoveSelectionDisplayMoveType(u32 battler)
     else if(moveInfo->moves[gMoveSelectionCursor[gActiveBattler]] == MOVE_HIDDEN_POWER)
     {
         type = GetMonHiddenPowerType(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]]) & 0x3F;
+    } else if(SelectedMoveHasTypeArgument(moveInfo) && GetTimer(moveInfo) < 30) {
+        type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].argument;
     } else {
         type = gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
     }

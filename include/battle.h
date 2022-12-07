@@ -632,6 +632,7 @@ struct BattleStruct
     u8 moneyMultiplier:6;
     u8 moneyMultiplierItem:1;
     u8 moneyMultiplierMove:1;
+    u8 moneyMultiplierAbility:1;
     u8 savedTurnActionNumber;
     u8 eventsBeforeFirstTurnState;
     u8 faintedActionsState;
