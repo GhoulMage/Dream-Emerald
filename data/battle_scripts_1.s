@@ -7226,6 +7226,12 @@ BattleScript_MonWokeUpInUproar::
 	updatestatusicon BS_ATTACKER
 	end2
 
+BattleScript_MonWokeUpInLoudSound::
+	printstring STRINGID_PKMNWOKEUPINLOUDSOUND
+	waitmessage B_WAIT_TIME_LONG
+	updatestatusicon BS_ATTACKER
+	end2
+
 BattleScript_PoisonTurnDmg::
 	printstring STRINGID_PKMNHURTBYPOISON
 	waitmessage B_WAIT_TIME_LONG

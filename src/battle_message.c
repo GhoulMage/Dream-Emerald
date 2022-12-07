@@ -183,6 +183,7 @@ static const u8 sText_PkmnFastAsleep[] = _("{B_ATK_NAME_WITH_PREFIX} is fast\nas
 static const u8 sText_PkmnWokeUp[] = _("{B_ATK_NAME_WITH_PREFIX} woke up!");
 static const u8 sText_PkmnUproarKeptAwake[] = _("But {B_SCR_ACTIVE_NAME_WITH_PREFIX}'s UPROAR\nkept it awake!");
 static const u8 sText_PkmnWokeUpInUproar[] = _("{B_ATK_NAME_WITH_PREFIX} woke up\nin the UPROAR!");
+static const u8 sText_PkmnWokeUpInLoudSound[] = _("The loud attack woke\n{B_ATK_NAME_WITH_PREFIX} up!");
 static const u8 sText_PkmnCausedUproar[] = _("{B_ATK_NAME_WITH_PREFIX} caused\nan UPROAR!");
 static const u8 sText_PkmnMakingUproar[] = _("{B_ATK_NAME_WITH_PREFIX} is making\nan UPROAR!");
 static const u8 sText_PkmnCalmedDown[] = _("{B_ATK_NAME_WITH_PREFIX} calmed down.");
@@ -910,6 +911,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_SUNLIGHTACTIVATEDABILITY - BATTLESTRINGS_TABLE_START] = sText_SunlightActivatedAbility,
     [STRINGID_BEINGHITCHARGEDPKMNWITHPOWER - BATTLESTRINGS_TABLE_START] = sText_BeingHitChargedPkmnWithPower,
     [STRINGID_ATTACKERSWITCHEDSTATWITHTARGET - BATTLESTRINGS_TABLE_START] = sText_AttackerSwitchedStatWithTarget,
+    [STRINGID_PKMNWOKEUPINLOUDSOUND - BATTLESTRINGS_TABLE_START] = sText_PkmnWokeUpInLoudSound,
     [STRINGID_JACKPOTENTERS - BATTLESTRINGS_TABLE_START] = sText_JackpotActivates,
     [STRINGID_DREAMCATCHERHPUP - BATTLESTRINGS_TABLE_START] = sText_DreamcatcherHpUp,
     [STRINGID_PKMNAVOIDEDDANCE - BATTLESTRINGS_TABLE_START] = sText_PkmnAvoidedDance,
@@ -1790,7 +1792,8 @@ const u16 gStockpileUsedStringIds[] =
 const u16 gWokeUpStringIds[] =
 {
     [B_MSG_WOKE_UP]        = STRINGID_PKMNWOKEUP,
-    [B_MSG_WOKE_UP_UPROAR] = STRINGID_PKMNWOKEUPINUPROAR
+    [B_MSG_WOKE_UP_UPROAR] = STRINGID_PKMNWOKEUPINUPROAR,
+    [B_MSG_WOKE_UP_LOUD]   = STRINGID_PKMNWOKEUPINLOUDSOUND,
 };
 
 const u16 gSwallowFailStringIds[] =
