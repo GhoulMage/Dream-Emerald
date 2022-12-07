@@ -9,7 +9,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **Bug Type** rebalanced
 * **Ice Type** rebalanced
 * **Poison** is super-effective against fairy, and also resists it
-* **Sound Type**
+* **NEW TYPE: Sound**
 * New Map Areas
 * Wild Pokémon will drop their items after fainting
 * 15% Chance to find a double wild Pokémon encounter
@@ -43,9 +43,9 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 
 ### Added Areas
 * **Dream Oldale**. An extension of Oldale Town that also wraps to Route 103 by the river.
-* **Underground Tunnels**. A mysterious series of tunnels. Entrances to it are all over the region, but are covered by debris.
+* **Underground Tunnels** (WORK IN PROGRESS). A mysterious series of tunnels. Entrances to it are all over the region, but are covered by debris.
 
-### [Pokémon Sound Type Added]https://docs.google.com/document/d/1LJ6lqzNob5mojvyFraNFeUqGb1-6RZNTBh3nmbPbATw/edit?usp=sharing
+### [Pokémon Sound Type Docs]https://docs.google.com/document/d/1LJ6lqzNob5mojvyFraNFeUqGb1-6RZNTBh3nmbPbATw/edit?usp=sharing
 
 #### Normal/Sound
 * Audino
@@ -145,6 +145,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **Frustration**: Power at Min Friendship is now 128.
 * **Freeze-Dry**: Super-effective on Water Pokémon.
 * **Scald**: Super-effective on Ice Pokémon. Deals normal damage to Water Pokémon.
+* **Sonic Boom**: Deals 40 fixed damage on Sonic Type Pokémon.
 * **Bug Buzz**: Deals regular damage to Bug Pokémon.
 * **NEW Psychic Inversion**: Super-effective on Dark Pokémon. Might cause flinch.
 
