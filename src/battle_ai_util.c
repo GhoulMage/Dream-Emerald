@@ -91,6 +91,8 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_FUR_COAT] = 7,
     [ABILITY_GALE_WINGS] = 6,
     [ABILITY_GALVANIZE] = 8,
+    [ABILITY_SAND_SONG] = 8,
+    [ABILITY_SINGER] = 7,
     [ABILITY_GLUTTONY] = 3,
     [ABILITY_GOOEY] = 5,
     [ABILITY_GRASS_PELT] = 2,
@@ -127,7 +129,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_LIGHTNING_ROD] = 7,
     [ABILITY_LIMBER] = 3,
     [ABILITY_LIQUID_OOZE] = 3,
-    [ABILITY_LIQUID_VOICE] = 5,
+    [ABILITY_LIQUID_VOICE] = 8,
     [ABILITY_LONG_REACH] = 3,
     [ABILITY_MAGIC_BOUNCE] = 9,
     [ABILITY_MAGIC_GUARD] = 9,
@@ -175,6 +177,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_QUICK_FEET] = 5,
     [ABILITY_RAIN_DISH] = 3,
     [ABILITY_RATTLED] = 3,
+    [ABILITY_UPBEAT] = 3,
     [ABILITY_RECEIVER] = 0,
     [ABILITY_RECKLESS] = 6,
     [ABILITY_REFRIGERATE] = 8,
@@ -235,10 +238,12 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_TANGLING_HAIR] = 5,
     [ABILITY_TECHNICIAN] = 8,
     [ABILITY_TELEPATHY] = 0,
+    [ABILITY_JACKPOT] = 0,
     [ABILITY_TERAVOLT] = 7,
     [ABILITY_THICK_FAT] = 7,
     [ABILITY_TINTED_LENS] = 7,
     [ABILITY_TORRENT] = 5,
+    [ABILITY_CRESCENDO] = 5,
     [ABILITY_ULTRASONIC] = 5,
     [ABILITY_TOXIC_BOOST] = 6,
     [ABILITY_TOUGH_CLAWS] = 7,
@@ -253,6 +258,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_VITAL_SPIRIT] = 4,
     [ABILITY_VOLT_ABSORB] = 7,
     [ABILITY_WATER_ABSORB] = 7,
+    [ABILITY_RICH_ACOUSTICS] = 7,
     [ABILITY_WATER_BUBBLE] = 8,
     [ABILITY_WATER_COMPACTION] = 4,
     [ABILITY_WATER_VEIL] = 4,
@@ -2220,7 +2226,7 @@ bool32 TestMovesetForSound(u8 battler){
     u16 *moves = GetMovesArray(battler);
 
     for(i = 0; i < MAX_MON_MOVES; i++){
-        if(moves[i] != MOVE_NONE && moves[i] != 0xFFFF && MoveHasSound(moves[i])){
+        if(moves[i] != MOVE_NONE && moves[i] != 0xFFFF && gBattleMoves[moves[i]].type == TYPE_SOUND){
             return TRUE;
         }
     }

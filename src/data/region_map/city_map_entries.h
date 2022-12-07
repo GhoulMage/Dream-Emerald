@@ -11,6 +11,11 @@ static const struct CityMapEntry sPokenavCityMaps[NUM_CITY_MAPS] =
         .tilemap = gPokenavCityMap_Oldale_0,
     },
     {
+        .mapSecId = MAPSEC_OLDALE_TOWN,
+        .index = 1,
+        .tilemap = gPokenavCityMap_Oldale_0,
+    },
+    {
         .mapSecId = MAPSEC_DEWFORD_TOWN,
         .index = 0,
         .tilemap = gPokenavCityMap_Dewford_0,

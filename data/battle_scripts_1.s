@@ -4951,6 +4951,7 @@ BattleScript_EffectSonicboom::
 	typecalc
 	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	setword gBattleMoveDamage, 20
+	doubledmgifsound
 	adjustdamage
 	goto BattleScript_HitFromAtkAnimation
 
@@ -7768,6 +7769,16 @@ BattleScript_PoisonHealActivates::
 	datahpupdate BS_ATTACKER
 	end2
 
+BattleScript_DreamcatcherActivates::
+	printstring STRINGID_DREAMCATCHERHPUP
+	waitmessage B_WAIT_TIME_LONG
+	recordability BS_ATTACKER
+	statusanimation BS_ATTACKER
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	end2
+
 BattleScript_BurnTurnDmg::
 	printstring STRINGID_PKMNHURTBYBURN
 	waitmessage B_WAIT_TIME_LONG
@@ -8637,6 +8648,16 @@ BattleScript_OwnTempoPrevents::
 	goto BattleScript_MoveEnd
 
 BattleScript_SoundproofProtected::
+	attackstring
+	ppreduce
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXBLOCKSY
+	waitmessage B_WAIT_TIME_LONG
+	orhalfword gMoveResultFlags, MOVE_RESULT_DOESNT_AFFECT_FOE
+	goto BattleScript_MoveEnd
+
+BattleScript_OwnTempoProtected::
 	attackstring
 	ppreduce
 	pause B_WAIT_TIME_SHORT

@@ -610,11 +610,24 @@ static void TryShowAsTarget(u32 battlerId)
     }
 }
 
+
+bool8 SelectedMoveHasTypeArgument(struct ChooseMoveStruct *moveInfo){
+    if(gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type == TYPE_SOUND
+            && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].flags & FLAG_DANCE
+            && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].argument != TYPE_NONE)
+        return TRUE;
+    
+    return FALSE;
+}
+
 static void HandleInputChooseMove(void)
 {
     u16 moveTarget;
     u32 canSelectTarget = 0;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[gActiveBattler][4]);
+    
+    if(SelectedMoveHasTypeArgument(moveInfo))
+        MoveSelectionDisplayMoveType();
 
     if (JOY_HELD(DPAD_ANY) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
         gPlayerDpadHoldFrames++;
@@ -1734,6 +1747,14 @@ static void MoveSelectionDisplayPpNumber(void)
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
 }
 
+u8 GetTimer(struct ChooseMoveStruct *moveInfo) {
+    if(++moveInfo->moveTypeTimer >= 60){
+        moveInfo->moveTypeTimer = 0;
+    }
+
+    return moveInfo->moveTypeTimer;
+}
+
 static void MoveSelectionDisplayMoveType(void)
 {
     u8 *txtPtr;
@@ -1748,7 +1769,10 @@ static void MoveSelectionDisplayMoveType(void)
         u8 type = GetMonHiddenPowerType(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]]);
         StringCopy(txtPtr, gTypeNames[type & 0x3F]);
     } else {
-        StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
+        if(SelectedMoveHasTypeArgument(moveInfo) && GetTimer(moveInfo) < 30)
+            StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].argument]);
+        else
+            StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
     }
 
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);

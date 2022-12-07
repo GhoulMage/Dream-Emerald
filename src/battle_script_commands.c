@@ -576,6 +576,7 @@ static void Cmd_jumpifoppositegenders(void);
 static void Cmd_trygetbaddreamstarget(void);
 static void Cmd_tryworryseed(void);
 static void Cmd_metalburstdamagecalculator(void);
+static void Cmd_doubleifsound(void);
 
 void (* const gBattleScriptingCommandsTable[])(void) =
 {
@@ -835,6 +836,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_trygetbaddreamstarget,                   //0xFD
     Cmd_tryworryseed,                            //0xFE
     Cmd_metalburstdamagecalculator,              //0xFF
+    Cmd_doubleifsound,                           //0x100
 };
 
 const struct StatFractions gAccuracyStageRatios[] =
@@ -3368,6 +3370,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             case MOVE_EFFECT_RECOIL_25: // Take Down, 25% recoil
                 gBattleMoveDamage = (gHpDealt) / 4;
+                if(gBattleMons[gEffectBattler].ability == ABILITY_RASH_CUSHION)
+                    gBattleMoveDamage /= 2;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
 
@@ -3376,6 +3380,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             case MOVE_EFFECT_RECOIL_33: // Double Edge, 33 % recoil
                 gBattleMoveDamage = gHpDealt / 3;
+                if(gBattleMons[gEffectBattler].ability == ABILITY_RASH_CUSHION)
+                    gBattleMoveDamage /= 2;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
 
@@ -3384,6 +3390,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             case MOVE_EFFECT_RECOIL_50: // Head Smash, 50 % recoil
                 gBattleMoveDamage = gHpDealt / 2;
+                if(gBattleMons[gEffectBattler].ability == ABILITY_RASH_CUSHION)
+                    gBattleMoveDamage /= 2;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
 
@@ -3392,6 +3400,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             case MOVE_EFFECT_RECOIL_33_STATUS: // Flare Blitz - can burn, Volt Tackle - can paralyze
                 gBattleScripting.savedDmg = gHpDealt / 3;
+                if(gBattleMons[gEffectBattler].ability == ABILITY_RASH_CUSHION)
+                    gBattleScripting.savedDmg /= 2;
                 if (gBattleScripting.savedDmg == 0)
                     gBattleScripting.savedDmg = 1;
 
@@ -5698,7 +5708,7 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_DANCER: // Special case because it's so annoying
-            if (gBattleMoves[gCurrentMove].flags & FLAG_DANCE)
+            if (MoveIsDance(gCurrentMove))
             {
                 u8 battler, nextDancer = 0;
 
@@ -13735,7 +13745,7 @@ bool32 DoesSubstituteBlockMove(u8 battlerAtk, u8 battlerDef, u32 move)
     if (!(gBattleMons[battlerDef].status2 & STATUS2_SUBSTITUTE))
         return FALSE;
 #if B_SOUND_SUBSTITUTE >= GEN_6
-    else if (MoveHasSound(move))
+    else if (MoveIsSonic(move))
         return FALSE;
 #endif
     else if (gBattleMoves[move].flags & FLAG_HIT_IN_SUBSTITUTE)
@@ -14609,6 +14619,13 @@ static void Cmd_tryworryseed(void)
     {
         gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = ABILITY_INSOMNIA;
         gBattlescriptCurrInstr += 5;
+    }
+}
+
+static void Cmd_doubleifsound(void){
+    if(gBattleMons[gBattlerTarget].type1 == TYPE_SOUND || gBattleMons[gBattlerTarget].type2 == TYPE_SOUND){
+        gBattleMoveDamage *= 2;
+        gBattlescriptCurrInstr++;
     }
 }
 

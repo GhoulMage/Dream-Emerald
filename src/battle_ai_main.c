@@ -747,6 +747,10 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 if (moveType == TYPE_WATER)
                     RETURN_SCORE_MINUS(20);
                 break;
+            case ABILITY_RICH_ACOUSTICS:
+                if (MoveIsSonic(move))
+                    RETURN_SCORE_MINUS(20);
+                break;
             case ABILITY_FLASH_FIRE:
                 if (moveType == TYPE_FIRE)
                     RETURN_SCORE_MINUS(20);
@@ -768,8 +772,16 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                   && (moveType == TYPE_DARK || moveType == TYPE_GHOST || moveType == TYPE_BUG))
                     RETURN_SCORE_MINUS(10);
                 break;
+            case ABILITY_UPBEAT:
+                if (MoveIsSonic(move))
+                    RETURN_SCORE_MINUS(10);
+                break;
             case ABILITY_SOUNDPROOF:
-                if (MoveHasSound(move))
+                if (MoveIsSonic(move))
+                    RETURN_SCORE_MINUS(10);
+                break;
+            case ABILITY_OWN_TEMPO:
+                if (MoveIsDance(move))
                     RETURN_SCORE_MINUS(10);
                 break;
             case ABILITY_BULLETPROOF:
@@ -908,8 +920,10 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
 // the following checks apply to any target (including user)
 
     // throat chop check
-    if (gDisableStructs[battlerAtk].throatChopTimer && MoveHasSound(move))
+    if (gDisableStructs[battlerAtk].throatChopTimer && MoveIsSonic(move))
         return 0; // Can't even select move at all
+    if (gDisableStructs[battlerAtk].throatChopTimer && MoveIsDance(move))
+            RETURN_SCORE_MINUS(5);
     // heal block check
     if (gStatuses3[battlerAtk] & STATUS3_HEAL_BLOCK && IsHealBlockPreventingMove(battlerAtk, move))
         return 0; // Can't even select heal blocked move
@@ -1817,6 +1831,8 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             if (AI_DATA->abilities[battlerAtk] != ABILITY_MAGIC_GUARD && AI_DATA->abilities[battlerAtk] != ABILITY_ROCK_HEAD)
             {
                 u32 recoilDmg = max(1, AI_DATA->simulatedDmg[battlerAtk][battlerDef][AI_THINKING_STRUCT->movesetIndex] / 4);
+                if(AI_DATA->abilities[battlerAtk] == ABILITY_RASH_CUSHION)
+                    recoilDmg /= 2;
                 if (!ShouldUseRecoilMove(battlerAtk, battlerDef, recoilDmg, AI_THINKING_STRUCT->movesetIndex))
                     score -= 10;
                 break;
@@ -1827,6 +1843,8 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             if (AI_DATA->abilities[battlerAtk] != ABILITY_MAGIC_GUARD && AI_DATA->abilities[battlerAtk] != ABILITY_ROCK_HEAD)
             {
                 u32 recoilDmg = max(1, AI_DATA->simulatedDmg[battlerAtk][battlerDef][AI_THINKING_STRUCT->movesetIndex] / 3);
+                if(AI_DATA->abilities[battlerAtk] == ABILITY_RASH_CUSHION)
+                    recoilDmg /= 2;
                 if (!ShouldUseRecoilMove(battlerAtk, battlerDef, recoilDmg, AI_THINKING_STRUCT->movesetIndex))
                     score -= 10;
                 break;
@@ -1836,6 +1854,8 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             if (AI_DATA->abilities[battlerAtk] != ABILITY_MAGIC_GUARD && AI_DATA->abilities[battlerAtk] != ABILITY_ROCK_HEAD)
             {
                 u32 recoilDmg = max(1, AI_DATA->simulatedDmg[battlerAtk][battlerDef][AI_THINKING_STRUCT->movesetIndex] / 2);
+                if(AI_DATA->abilities[battlerAtk] == ABILITY_RASH_CUSHION)
+                    recoilDmg /= 2;
                 if (!ShouldUseRecoilMove(battlerAtk, battlerDef, recoilDmg, AI_THINKING_STRUCT->movesetIndex))
                     score -= 10;
                 break;
@@ -1920,7 +1940,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             // TODO
             break;
         case EFFECT_HEAL_BELL:
-            if (!AnyPartyMemberStatused(battlerAtk, MoveHasSound(move)) || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, AI_DATA->partnerMove))
+            if (!AnyPartyMemberStatused(battlerAtk, MoveIsSonic(move)) || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, AI_DATA->partnerMove))
                 score -= 10;
             break;
         case EFFECT_HIT_PREVENT_ESCAPE:
@@ -2802,6 +2822,12 @@ static s16 AI_DoubleBattle(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                         RETURN_SCORE_PLUS(1);
                     }
                     break;
+                case ABILITY_RICH_ACOUSTICS:
+                    if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
+                    {
+                        RETURN_SCORE_MINUS(10);
+                    }
+                    break;  // handled in AI_HPAware
                 case ABILITY_WATER_ABSORB:
                 case ABILITY_DRY_SKIN:
                     if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
@@ -2853,6 +2879,14 @@ static s16 AI_DoubleBattle(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 case ABILITY_RATTLED:
                     if (!IS_MOVE_STATUS(move)
                       && (moveType == TYPE_DARK || moveType == TYPE_GHOST || moveType == TYPE_BUG)
+                      && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPEED)
+                      && !CanIndexMoveFaintTarget(battlerAtk, battlerAtkPartner, AI_THINKING_STRUCT->movesetIndex, 1))
+                    {
+                        RETURN_SCORE_PLUS(1);
+                    }
+                    break;
+                case ABILITY_UPBEAT:
+                    if (MoveIsSonic(move)
                       && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPEED)
                       && !CanIndexMoveFaintTarget(battlerAtk, battlerAtkPartner, AI_THINKING_STRUCT->movesetIndex, 1))
                     {
@@ -4599,7 +4633,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             score++;
         break;
     case EFFECT_THROAT_CHOP:
-        if (predictedMove != MOVE_NONE && MoveHasSound(predictedMove) && AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER)
+        if (predictedMove != MOVE_NONE && gBattleMoves[predictedMove].type == TYPE_SOUND && AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER)
             score += 3; // Ai goes first and predicts the target will use a sound move
         else if (TestMovesetForSound(battlerDef))
             score += 3;
@@ -5012,6 +5046,7 @@ static s16 AI_HPAware(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
     {
         if ((effect == EFFECT_HEAL_PULSE || effect == EFFECT_HIT_ENEMY_HEAL_ALLY)
          || (moveType == TYPE_ELECTRIC && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_VOLT_ABSORB)
+         || (MoveIsSonic(move) && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_RICH_ACOUSTICS)
          || (moveType == TYPE_WATER && (AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DRY_SKIN || AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_WATER_ABSORB)))
         {
             if (gStatuses3[battlerDef] & STATUS3_HEAL_BLOCK)

@@ -18,7 +18,7 @@ static const u8 sColorChangeDescription[] = _("Changes type to foe's move.");
 static const u8 sImmunityDescription[] = _("Prevents poisoning.");
 static const u8 sFlashFireDescription[] = _("Powers up if hit by fire.");
 static const u8 sShieldDustDescription[] = _("Prevents added effects.");
-static const u8 sOwnTempoDescription[] = _("Prevents confusion.");
+static const u8 sOwnTempoDescription[] = _("Evades dances and confusion.");
 static const u8 sSuctionCupsDescription[] = _("Firmly anchors the body.");
 static const u8 sIntimidateDescription[] = _("Lowers the foe's Attack.");
 static const u8 sShadowTagDescription[] = _("Prevents the foe's escape.");
@@ -41,7 +41,7 @@ static const u8 sInnerFocusDescription[] = _("Prevents flinching.");
 static const u8 sMagmaArmorDescription[] = _("Prevents freezing.");
 static const u8 sWaterVeilDescription[] = _("Prevents burns.");
 static const u8 sMagnetPullDescription[] = _("Traps Steel-type Pokémon.");
-static const u8 sSoundproofDescription[] = _("Avoids Sound attacks.");
+static const u8 sSoundproofDescription[] = _("Blocks Sonic attacks.");
 static const u8 sRainDishDescription[] = _("Slight HP recovery in rain.");
 static const u8 sSandStreamDescription[] = _("Summons a sandstorm.");
 static const u8 sPressureDescription[] = _("Raises foe's PP usage.");
@@ -254,10 +254,20 @@ static const u8 sChillingNeighDescription[] = _("KOs boost Attack stat.");
 static const u8 sGrimNeighDescription[] = _("KOs boost Sp. Atk stat.");
 static const u8 sAsOneIceRiderDescription[] = _("Unnerve and Chilling Neigh.");
 static const u8 sAsOneShadowRiderDescription[] = _("Unnerve and Grim Neigh.");
-static const u8 sDarkPowerDescription[] = _("Normal moves become Dark.");
+
+static const u8 sDarkPowerDescription[] = _("P. Normal moves become Dark.");
 static const u8 sDragonScaleDescription[] = _("Ups Sp. Def if suffering.");
 static const u8 sPanicAttackDescription[] = _("Crits if badly hurt.");
 static const u8 sSingerDescription[] = _("Sound moves become Normal.");
+static const u8 sSandSongDescription[] = _("Sound moves become Ground.");
+
+static const u8 sJackpotDescription[] = _("Doubles prize money.");
+static const u8 sDreamcatcherDescription[] = _("Restores HP while asleep.");
+static const u8 sHeavySleeperDescription[] = _("Negates Sound if asleep.");
+static const u8 sUpbeatDescription[] = _("Sound boosts Speed.");
+static const u8 sCrescendoDescription[] = _("Ups Sound moves in a pinch.");
+static const u8 sRichAcousticsDescription[] = _("Turns Sound into HP.");
+static const u8 sRashCushionDescription[] = _("Lowers recoil, ups damage.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -530,10 +540,19 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_GRIM_NEIGH] = _("Grim Neigh"),
     [ABILITY_AS_ONE_ICE_RIDER] = _("As One"),
     [ABILITY_AS_ONE_SHADOW_RIDER] = _("As One"),
+
     [ABILITY_DARK_POWER] = _("Dark Power"),
     [ABILITY_DRAGON_SCALE] = _("Dragon Scale"),
     [ABILITY_PANIC_ATTACK] = _("Panic Attack"),
     [ABILITY_SINGER] = _("Singer"),
+    [ABILITY_SAND_SONG] = _("Sand Song"),
+    [ABILITY_JACKPOT] = _("Jackpot"),
+    [ABILITY_DREAMCATCHER] = _("Dreamcatcher"),
+    [ABILITY_HEAVY_SLEEPER] = _("Heavy Sleeper"),
+    [ABILITY_UPBEAT] = _("Upbeat"),
+    [ABILITY_CRESCENDO] = _("Crescendo"),
+    [ABILITY_RICH_ACOUSTICS] = _("Rich Acoustics"),
+    [ABILITY_RASH_CUSHION] = _("Rash Cushion"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -806,10 +825,19 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_GRIM_NEIGH] = _("Grim Neigh"),
     [ABILITY_AS_ONE_ICE_RIDER] = _("As One"),
     [ABILITY_AS_ONE_SHADOW_RIDER] = _("As One"),
+
     [ABILITY_DARK_POWER] = _("Dark Power"),
     [ABILITY_DRAGON_SCALE] = _("Dragon Scale"),
     [ABILITY_PANIC_ATTACK] = _("Panic Attack"),
     [ABILITY_SINGER] = _("Singer"),
+    [ABILITY_SAND_SONG] = _("Sand Song"),
+    [ABILITY_JACKPOT] = _("Jackpot"),
+    [ABILITY_DREAMCATCHER] = _("Dreamcatcher"),
+    [ABILITY_HEAVY_SLEEPER] = _("Heavy Sleeper"),
+    [ABILITY_UPBEAT] = _("Upbeat"),
+    [ABILITY_CRESCENDO] = _("Crescendo"),
+    [ABILITY_RICH_ACOUSTICS] = _("Rich Acoustics"),
+    [ABILITY_RASH_CUSHION] = _("Rash Cushion"),
 };
 #endif
 
@@ -1083,8 +1111,17 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_GRIM_NEIGH] = sGrimNeighDescription,
     [ABILITY_AS_ONE_ICE_RIDER] = sAsOneIceRiderDescription,
     [ABILITY_AS_ONE_SHADOW_RIDER] = sAsOneShadowRiderDescription,
+
     [ABILITY_DARK_POWER] = sDarkPowerDescription,
     [ABILITY_DRAGON_SCALE] = sDragonScaleDescription,
     [ABILITY_PANIC_ATTACK] = sPanicAttackDescription,
     [ABILITY_SINGER] = sSingerDescription,
+    [ABILITY_SAND_SONG] = sSandSongDescription,
+    [ABILITY_JACKPOT] = sJackpotDescription,
+    [ABILITY_DREAMCATCHER] = sDreamcatcherDescription,
+    [ABILITY_HEAVY_SLEEPER] = sHeavySleeperDescription,
+    [ABILITY_UPBEAT] = sUpbeatDescription,
+    [ABILITY_CRESCENDO] = sCrescendoDescription,
+    [ABILITY_RICH_ACOUSTICS] = sRichAcousticsDescription,
+    [ABILITY_RASH_CUSHION] = sRashCushionDescription,
 };

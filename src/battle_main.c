@@ -5535,14 +5535,14 @@ void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk)
     }
     else if (gBattleMoves[move].type == TYPE_NORMAL
              && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
-             && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
              && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+             && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
              && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
              && ((attackerAbility == ABILITY_PIXILATE && (ateType = TYPE_FAIRY))
                  || (attackerAbility == ABILITY_REFRIGERATE && (ateType = TYPE_ICE))
                  || (attackerAbility == ABILITY_AERILATE && (ateType = TYPE_FLYING))
-                 || ((attackerAbility == ABILITY_GALVANIZE) && (ateType = TYPE_ELECTRIC))
-                 || ((attackerAbility == ABILITY_DARK_POWER) && (ateType = TYPE_DARK))
+                 || (attackerAbility == ABILITY_GALVANIZE && (ateType = TYPE_ELECTRIC))
+                 || (attackerAbility == ABILITY_DARK_POWER && gBattleMoves[move].split == SPLIT_PHYSICAL && (ateType = TYPE_DARK))
                 )
              )
     {
@@ -5551,20 +5551,27 @@ void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk)
     }
     else if (gBattleMoves[move].type != TYPE_NORMAL
              && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
+             && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
              && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
+             && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
              && attackerAbility == ABILITY_NORMALIZE)
     {
         gBattleStruct->dynamicMoveType = TYPE_NORMAL | F_DYNAMIC_TYPE_2;
         gBattleStruct->ateBoost[battlerAtk] = 1;
     }
-    else if (MoveHasSound(move)
-             && attackerAbility == ABILITY_LIQUID_VOICE)
+    else if (MoveIsSonic(move)
+             && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
+             && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+             && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
+             && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
+             && ((attackerAbility == ABILITY_SINGER && (ateType = TYPE_NORMAL))
+                 || (attackerAbility == ABILITY_SAND_SONG && (ateType = TYPE_GROUND))
+                 || (attackerAbility == ABILITY_LIQUID_VOICE && (ateType = TYPE_WATER))
+                )
+             )
     {
-        gBattleStruct->dynamicMoveType = TYPE_WATER | F_DYNAMIC_TYPE_2;
-    }
-    else if (MoveHasSound(move)
-             && attackerAbility == ABILITY_SINGER) {
-        gBattleStruct->dynamicMoveType = TYPE_NORMAL | F_DYNAMIC_TYPE_2;
+        gBattleStruct->dynamicMoveType = ateType | F_DYNAMIC_TYPE_2;
+        gBattleStruct->ateBoost[battlerAtk] = 1;
     }
     else if (gStatuses4[battlerAtk] & STATUS4_PLASMA_FISTS && moveType == TYPE_NORMAL)
     {

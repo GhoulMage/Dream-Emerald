@@ -993,6 +993,7 @@ static const u8 sAbilitiesAffectedByMoldBreaker[] =
     [ABILITY_KEEN_EYE] = 1,
     [ABILITY_LEAF_GUARD] = 1,
     [ABILITY_LEVITATE] = 1,
+    [ABILITY_HEAVY_SLEEPER] = 1,
     [ABILITY_LIGHTNING_ROD] = 1,
     [ABILITY_LIMBER] = 1,
     [ABILITY_MAGMA_ARMOR] = 1,
@@ -1017,6 +1018,7 @@ static const u8 sAbilitiesAffectedByMoldBreaker[] =
     [ABILITY_VITAL_SPIRIT] = 1,
     [ABILITY_VOLT_ABSORB] = 1,
     [ABILITY_WATER_ABSORB] = 1,
+    [ABILITY_RICH_ACOUSTICS] = 1,
     [ABILITY_WATER_VEIL] = 1,
     [ABILITY_WHITE_SMOKE] = 1,
     [ABILITY_WONDER_GUARD] = 1,
@@ -1786,7 +1788,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
         }
     }
 
-    if (!gBattleStruct->zmove.active && gDisableStructs[gActiveBattler].throatChopTimer != 0 && MoveHasSound(move))
+    if (!gBattleStruct->zmove.active && gDisableStructs[gActiveBattler].throatChopTimer != 0 && MoveIsSonic(move))
     {
         gCurrentMove = move;
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
@@ -2004,7 +2006,7 @@ u8 CheckMoveLimitations(u8 battlerId, u8 unusableMoves, u16 check)
         else if (check & MOVE_LIMITATION_BELCH && IsBelchPreventingMove(battlerId, gBattleMons[battlerId].moves[i]))
             unusableMoves |= gBitTable[i];
         // Throat Chop
-        else if (check & MOVE_LIMITATION_THROAT_CHOP && gDisableStructs[battlerId].throatChopTimer && MoveHasSound(gBattleMons[battlerId].moves[i]))
+        else if (check & MOVE_LIMITATION_THROAT_CHOP && gDisableStructs[battlerId].throatChopTimer && MoveIsSonic(gBattleMons[battlerId].moves[i]))
             unusableMoves |= gBitTable[i];
         // Stuff Cheeks
         else if (check & MOVE_LIMITATION_STUFF_CHEEKS && gBattleMons[battlerId].moves[i] == MOVE_STUFF_CHEEKS && ItemId_GetPocket(gBattleMons[gActiveBattler].item) != POCKET_BERRIES)
@@ -2672,6 +2674,7 @@ enum
     ENDTURN_SLOW_START,
     ENDTURN_PLASMA_FISTS,
     ENDTURN_PANIC_ATTACK,
+    ENDTURN_DREAMCATCHER,
     ENDTURN_BATTLER_COUNT,
 };
 
@@ -3220,6 +3223,27 @@ u8 DoBattlerEndTurnEffects(void)
                 if(gDisableStructs[gActiveBattler].isInPanic == 0){
                     BattleScriptExecute(BattleScript_CalmedDown);
                     effect++;
+                }
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        case ENDTURN_DREAMCATCHER:  // poison
+            if ((gBattleMons[gActiveBattler].status1 & STATUS1_SLEEP)
+                && gBattleMons[gActiveBattler].hp != 0)
+            {
+                MAGIC_GUARD_CHECK;
+
+                if (ability == ABILITY_DREAMCATCHER)
+                {
+                    if (!BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK))
+                    {
+                        gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 6;
+                        if (gBattleMoveDamage == 0)
+                            gBattleMoveDamage = 1;
+                        gBattleMoveDamage *= -1;
+                        BattleScriptExecute(BattleScript_DreamcatcherActivates);
+                        effect++;
+                    }
                 }
             }
             gBattleStruct->turnEffectsTracker++;
@@ -3810,7 +3834,7 @@ u8 AtkCanceller_UnableToUseMove(void)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_THROAT_CHOP:
-            if (gDisableStructs[gBattlerAttacker].throatChopTimer && MoveHasSound(gCurrentMove))
+            if (gDisableStructs[gBattlerAttacker].throatChopTimer && MoveIsSonic(gCurrentMove))
             {
                 gProtectStructs[gBattlerAttacker].usedThroatChopPreventedMove = TRUE;
                 CancelMultiTurnMoves(gBattlerAttacker);
@@ -4614,6 +4638,16 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 effect++;
             }
             break;
+        case ABILITY_JACKPOT:
+            if (!gSpecialStatuses[battler].switchInAbilityDone && !gBattleStruct->moneyMultiplierAbility && GetBattlerSide(battler) == B_SIDE_PLAYER) {
+                gBattleStruct->moneyMultiplier *= 2;
+                gBattleStruct->moneyMultiplierAbility = 1;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_JACKPOT;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
+                effect++;
+            }
+            break;
         case ABILITY_AURA_BREAK:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
@@ -5031,7 +5065,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
     {
         u16 moveTarget = GetBattlerMoveTargetType(battler, move);
 
-        if ((gLastUsedAbility == ABILITY_SOUNDPROOF && MoveHasSound(move) && !(moveTarget & MOVE_TARGET_USER))
+        if ((gLastUsedAbility == ABILITY_SOUNDPROOF && MoveIsSonic(move))
             || (gLastUsedAbility == ABILITY_BULLETPROOF && gBattleMoves[move].flags & FLAG_BALLISTIC))
         {
             if(CanBePutToSleep(moveTarget)){
@@ -5040,6 +5074,12 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 gBattlescriptCurrInstr = BattleScript_SoundproofProtected;
                 effect = 1;
             }
+        }
+        else if (gLastUsedAbility == ABILITY_OWN_TEMPO && MoveIsDance(move)) {
+                if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
+                    gHitMarker |= HITMARKER_NO_PPDEDUCT;
+                gBattlescriptCurrInstr = BattleScript_OwnTempoProtected;
+                effect = 1;
         }
         else if ((((gLastUsedAbility == ABILITY_DAZZLING || gLastUsedAbility == ABILITY_QUEENLY_MAJESTY
                    || (IsBattlerAlive(battler ^= BIT_FLANK)
@@ -5072,6 +5112,10 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             {
             case ABILITY_VOLT_ABSORB:
                 if (moveType == TYPE_ELECTRIC)
+                    effect = 1;
+                break;
+            case ABILITY_RICH_ACOUSTICS:
+                if (MoveIsSonic(move))
                     effect = 1;
                 break;
             case ABILITY_WATER_ABSORB:
@@ -5384,6 +5428,18 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 SET_STATCHANGER(STAT_ATK, MAX_STAT_STAGE - gBattleMons[battler].statStages[STAT_ATK], FALSE);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_TargetsStatWasMaxedOut;
+                effect++;
+            }
+            break;
+        case ABILITY_UPBEAT:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gBattleMons[battler].hp != 0
+             && gBattleMoves[move].type == TYPE_SOUND
+             && CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN))
+            {
+                SET_STATCHANGER(STAT_SPEED, 1, FALSE);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_TargetAbilityStatRaiseOnMoveEnd;
                 effect++;
             }
             break;
@@ -5734,7 +5790,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
         {
         case ABILITY_DANCER:
             if (IsBattlerAlive(battler)
-             && (gBattleMoves[gCurrentMove].flags & FLAG_DANCE)
+             && MoveIsDance(gCurrentMove)
              && !gSpecialStatuses[battler].dancerUsedMove
              && gBattlerAttacker != battler)
             {
@@ -6229,8 +6285,7 @@ bool32 CanSleep(u8 battlerId)
       || ability == ABILITY_VITAL_SPIRIT
       || ability == ABILITY_COMATOSE
       || gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_SAFEGUARD
-      //|| gBaseStats[gBattleMons[battlerId].species].type1 == TYPE_SOUND
-      //|| gBaseStats[gBattleMons[battlerId].species].type2 == TYPE_SOUND
+      || CanBePutToSleep(battlerId)
       || gBattleMons[battlerId].status1 & STATUS1_ANY
       || IsAbilityOnSide(battlerId, ABILITY_SWEET_VEIL)
       || IsAbilityStatusProtected(battlerId)
@@ -7433,7 +7488,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
         case HOLD_EFFECT_THROAT_SPRAY:  // Does NOT need to be a damaging move
             if (gProtectStructs[gBattlerAttacker].targetAffected
              && gBattleMons[gBattlerAttacker].hp != 0
-             && MoveHasSound(gCurrentMove)
+             && MoveIsSonic(gCurrentMove)
              && CompareStat(gBattlerAttacker, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN)
              && !NoAliveMonsForEitherParty())   // Don't activate if battle will end
             {
@@ -8495,6 +8550,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         if (gBattleMons[battlerAtk].status1 & STATUS1_PSN_ANY && IS_MOVE_PHYSICAL(move))
            MulModifier(&modifier, UQ_4_12(1.5));
         break;
+    case ABILITY_RASH_CUSHION:
     case ABILITY_RECKLESS:
         if (gBattleMoves[move].flags & FLAG_RECKLESS_BOOST)
            MulModifier(&modifier, UQ_4_12(1.2));
@@ -8567,20 +8623,28 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         if (moveType == TYPE_DARK && gBattleStruct->ateBoost[battlerAtk])
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
-    case ABILITY_ULTRASONIC:
-        if (MoveHasSound(move) && gBattleStruct->ateBoost[battlerAtk])
-            MulModifier(&modifier, UQ_4_12(1.5));
-        break;
-    case ABILITY_SINGER:
-        if (MoveHasSound(move) && gBattleStruct->ateBoost[battlerAtk])
+    case ABILITY_LIQUID_VOICE:
+        if (moveType == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_NORMALIZE:
         if (moveType == TYPE_NORMAL && gBattleStruct->ateBoost[battlerAtk])
+            MulModifier(&modifier, UQ_4_12(1.3));
+        break;
+    case ABILITY_ULTRASONIC:
+        if (MoveIsSonic(move) && gBattleStruct->ateBoost[battlerAtk])
+            MulModifier(&modifier, UQ_4_12(1.5));
+        break;
+    case ABILITY_SINGER:
+        if (moveType == TYPE_NORMAL && gBattleStruct->ateBoost[battlerAtk])
+            MulModifier(&modifier, UQ_4_12(1.3));
+        break;
+    case ABILITY_SAND_SONG:
+        if (moveType == TYPE_GROUND && gBattleStruct->ateBoost[battlerAtk])
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_PUNK_ROCK:
-        if (MoveHasSound(move))
+        if (MoveIsSonic(move))
             MulModifier(&modifier, UQ_4_12(1.3));
         break;
     case ABILITY_STEELY_SPIRIT:
@@ -8656,6 +8720,14 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         }
         if (moveType == TYPE_FIRE)
             MulModifier(&modifier, UQ_4_12(2.0));
+        break;
+        case ABILITY_OWN_TEMPO:
+            if (MoveIsSonic(move))
+                MulModifier(&modifier, UQ_4_12(0.5));
+        break;
+        case ABILITY_SOUNDPROOF:
+            if (MoveIsDance(move))
+                MulModifier(&modifier, UQ_4_12(0.5));
         break;
     }
 
@@ -8789,6 +8861,8 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         MulModifier(&modifier, UQ_4_12(1.5));
     if (gStatuses3[battlerAtk] & STATUS3_CHARGED_UP && moveType == TYPE_ELECTRIC)
         MulModifier(&modifier, UQ_4_12(2.0));
+    if(gDisableStructs[battlerAtk].throatChopTimer && MoveIsDance(move))
+        MulModifier(&modifier, UQ_4_12(0.5));
     if (gStatuses3[battlerAtk] & STATUS3_ME_FIRST)
         MulModifier(&modifier, UQ_4_12(1.5));
     if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && moveType == TYPE_GRASS && IsBattlerGrounded(battlerAtk) && !(gStatuses3[battlerAtk] & STATUS3_SEMI_INVULNERABLE))
@@ -8897,12 +8971,16 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
         if (moveType == TYPE_BUG && gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 3))
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
+    case ABILITY_CRESCENDO:
+        if (moveType == TYPE_SOUND && gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 3))
+            MulModifier(&modifier, UQ_4_12(1.5));
+        break;
     case ABILITY_TORRENT:
         if (moveType == TYPE_WATER && gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 3))
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_ULTRASONIC:
-        if(moveType == TYPE_SOUND)
+        if(MoveIsSonic(move))
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_BLAZE:
@@ -8967,7 +9045,7 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
             MulModifier(&modifier, UQ_4_12(0.5));
         break;
     case ABILITY_ULTRASONIC:
-        if(moveType == TYPE_SOUND){
+        if(MoveIsSonic(move)){
             MulModifier(&modifier, UQ_4_12(1.5));
         }
         break;
@@ -9126,7 +9204,7 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_PUNK_ROCK:
-        if (MoveHasSound(move))
+        if (MoveIsSonic(move))
             MulModifier(&modifier, UQ_4_12(2.0));
         break;
     }
@@ -9239,7 +9317,16 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     }
 
     // check stab
-    if (IS_BATTLER_OF_TYPE(battlerAtk, moveType) && move != MOVE_STRUGGLE && move != MOVE_NONE)
+    if(DanceHasSecondaryType(move)) {
+        if (IS_BATTLER_OF_TYPE(battlerAtk, gBattleMoves[move].argument) && move != MOVE_NONE)
+        {
+            if (abilityAtk == ABILITY_ADAPTABILITY)
+                MulModifier(&finalModifier, UQ_4_12(2.0));
+            else
+                MulModifier(&finalModifier, UQ_4_12(1.5));
+        }
+    }
+    else if (IS_BATTLER_OF_TYPE(battlerAtk, moveType) && move != MOVE_STRUGGLE && move != MOVE_NONE)
     {
         if (abilityAtk == ABILITY_ADAPTABILITY)
             MulModifier(&finalModifier, UQ_4_12(2.0));
@@ -9427,14 +9514,32 @@ static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 batt
             RecordAbilityBattle(battlerAtk, ABILITY_SCRAPPY);
     }
 
-    if (moveType == TYPE_PSYCHIC && defType == TYPE_DARK && gStatuses3[battlerDef] & STATUS3_MIRACLE_EYED && mod == UQ_4_12(0.0))
-        mod = UQ_4_12(1.0);
-    if (gBattleMoves[move].effect == EFFECT_FREEZE_DRY && defType == TYPE_WATER)
-        mod = UQ_4_12(2.0);
-    if (gBattleMoves[move].effect == EFFECT_PSYCHIC_INVERSION && defType == TYPE_DARK)
-        mod = UQ_4_12(2.0);
-    if (moveType == TYPE_GROUND && defType == TYPE_FLYING && IsBattlerGrounded(battlerDef) && mod == UQ_4_12(0.0))
-        mod = UQ_4_12(1.0);
+    switch(defType){
+        case TYPE_DARK:
+            if (moveType == TYPE_PSYCHIC && gStatuses3[battlerDef] & STATUS3_MIRACLE_EYED && mod == UQ_4_12(0.0))
+                mod = UQ_4_12(1.0);
+            if (gBattleMoves[move].effect == EFFECT_PSYCHIC_INVERSION)
+                mod = UQ_4_12(2.0);
+            break;
+        case TYPE_WATER:
+            if (gBattleMoves[move].effect == EFFECT_SCALD)
+                mod = UQ_4_12(1.0);
+            else if (gBattleMoves[move].effect == EFFECT_FREEZE_DRY)
+                mod = UQ_4_12(2.0);
+            break;
+        case TYPE_BUG:
+            if (move == MOVE_BUG_BUZZ)
+                mod = UQ_4_12(1.0);
+            break;
+        case TYPE_ICE:
+            if(gBattleMoves[move].effect == EFFECT_SCALD)
+                mod = UQ_4_12(2.0);
+            break;
+        case TYPE_FLYING:
+            if (moveType == TYPE_GROUND && IsBattlerGrounded(battlerDef) && mod == UQ_4_12(0.0))
+                mod = UQ_4_12(1.0);
+            break;
+    }
     if (moveType == TYPE_FIRE && gDisableStructs[battlerDef].tarShot)
         mod = UQ_4_12(2.0);
 
@@ -9494,6 +9599,41 @@ static u16 CalcTypeEffectivenessMultiplierInternal(u16 move, u8 moveType, u8 bat
             RecordAbilityBattle(battlerDef, ABILITY_LEVITATE);
         }
     }
+    else if (moveType == TYPE_SOUND) {
+        if(defAbility == ABILITY_HEAVY_SLEEPER && gBattleMons[battlerDef].status1 & STATUS1_SLEEP){
+            modifier = UQ_4_12(0.0);
+            if (recordAbilities)
+            {
+                gLastUsedAbility = ABILITY_HEAVY_SLEEPER;
+                gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
+                gLastLandedMoves[battlerDef] = 0;
+                gBattleCommunication[MISS_TYPE] = B_MSG_SOUND_MISS;
+                RecordAbilityBattle(battlerDef, ABILITY_HEAVY_SLEEPER);
+            }
+        }
+        else if(defAbility == ABILITY_SOUNDPROOF && MoveIsSonic(move)) {
+            modifier = UQ_4_12(0.0);
+            if (recordAbilities)
+            {
+                gLastUsedAbility = ABILITY_SOUNDPROOF;
+                gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
+                gLastLandedMoves[battlerDef] = 0;
+                gBattleCommunication[MISS_TYPE] = B_MSG_SONIC_MISS;
+                RecordAbilityBattle(battlerDef, ABILITY_SOUNDPROOF);
+            }
+        }
+        else if(defAbility == ABILITY_OWN_TEMPO && MoveIsDance(move)) {
+            modifier = UQ_4_12(0.0);
+            if (recordAbilities)
+            {
+                gLastUsedAbility = ABILITY_OWN_TEMPO;
+                gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
+                gLastLandedMoves[battlerDef] = 0;
+                gBattleCommunication[MISS_TYPE] = B_MSG_DANCE_MISS;
+                RecordAbilityBattle(battlerDef, ABILITY_OWN_TEMPO);
+            }
+        }
+    }
 #if B_SHEER_COLD_IMMUNITY >= GEN_7
     else if (move == MOVE_SHEER_COLD && IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE))
     {
@@ -9539,7 +9679,10 @@ u16 CalcTypeEffectivenessMultiplier(u16 move, u8 moveType, u8 battlerAtk, u8 bat
     if (move != MOVE_STRUGGLE && moveType != TYPE_MYSTERY)
     {
         modifier = CalcTypeEffectivenessMultiplierInternal(move, moveType, battlerAtk, battlerDef, recordAbilities, modifier);
-        if (gBattleMoves[move].effect == EFFECT_TWO_TYPED_MOVE)
+
+        if (DanceHasSecondaryType(move) && gBattleMoves[move].argument != MOVE_NONE)
+            modifier = CalcTypeEffectivenessMultiplierInternal(move, gBattleMoves[move].argument, battlerAtk, battlerDef, recordAbilities, modifier);
+        else if (gBattleMoves[move].effect == EFFECT_TWO_TYPED_MOVE)
             modifier = CalcTypeEffectivenessMultiplierInternal(move, gBattleMoves[move].argument, battlerAtk, battlerDef, recordAbilities, modifier);
     }
 
@@ -10032,8 +10175,24 @@ bool32 TestMoveFlags(u16 move, u32 flag)
     return FALSE;
 }
 
-bool32 MoveHasSound(u16 move){
-    return gBattleMoves[move].type == TYPE_SOUND || gBattleMoves[move].flags & FLAG_SOUND;
+bool32 MoveIsSonic(u16 move){
+    if(gBattleMoves[move].type == TYPE_SOUND || gBattleMoves[move].flags & FLAG_SOUND)
+        return TRUE;
+
+    return FALSE;
+}
+
+bool32 MoveIsDance(u16 move){
+    if(gBattleMoves[move].type == TYPE_SOUND || gBattleMoves[move].flags & FLAG_DANCE)
+        return TRUE;
+    
+    return FALSE;
+}
+
+bool32 DanceHasSecondaryType(u16 move){
+    if(MoveIsDance(move) && gBattleMoves[move].argument != TYPE_NONE)
+        return TRUE;
+    return FALSE;
 }
 
 struct Pokemon *GetBattlerPartyData(u8 battlerId)
