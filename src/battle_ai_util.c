@@ -2337,6 +2337,11 @@ bool32 HasSubstituteIgnoringMove(u32 battler)
     CHECK_MOVE_FLAG(ignoresSubstitute);
 }
 
+bool32 HasSoundMove(u32 battler)
+{
+    CHECK_MOVE_FLAG(sonicMove);
+}
+
 bool32 HasHighCritRatioMove(u32 battler)
 {
     s32 i;

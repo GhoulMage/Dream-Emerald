@@ -10168,7 +10168,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .description = COMPOUND_STRING(
             "A damaging sound wave that\n"
             "may lower Sp. Def."),
-        .effect = EFFECT_HIT,
+        .effect = EFFECT_SUPER_EFFECTIVE_ON_ARG,
+        .argument = TYPE_BUG,
         .power = 90,
         .type = TYPE_BUG,
         .accuracy = 100,

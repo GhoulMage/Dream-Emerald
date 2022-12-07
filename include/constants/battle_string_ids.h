@@ -716,8 +716,13 @@
 #define STRINGID_PKMNDROPPEDITEM                      713
 #define STRINGID_BAGISFULL                            714
 #define STRINGID_PKMNISINPANIC                        715
+#define STRINGID_PKMNAVOIDEDSOUND                     716
+#define STRINGID_PKMNAVOIDEDSONIC                     717
+#define STRINGID_PKMNAVOIDEDDANCE                     718
+#define STRINGID_DREAMCATCHERHPUP                     719
+#define STRINGID_JACKPOTENTERS                        720
 
-#define BATTLESTRINGS_COUNT                           716
+#define BATTLESTRINGS_COUNT                           721
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -749,6 +754,9 @@
 #define B_MSG_AVOIDED_ATK  2
 #define B_MSG_AVOIDED_DMG  3
 #define B_MSG_GROUND_MISS  4
+#define B_MSG_SOUND_MISS   5
+#define B_MSG_SONIC_MISS   6
+#define B_MSG_DANCE_MISS   7
 
 // gAbsorbDrainStringIds
 #define B_MSG_ABSORB      0
@@ -966,6 +974,7 @@
 #define B_MSG_SWITCHIN_CURIOUS_MEDICINE 14
 #define B_MSG_SWITCHIN_PASTEL_VEIL      15
 #define B_MSG_SWITCHIN_NEUTRALIZING_GAS 16
+#define B_MSG_SWITCHIN_JACKPOT          17
 
 // gMentalHerbCureStringIds
 #define B_MSG_MENTALHERBCURE_INFATUATION       0
