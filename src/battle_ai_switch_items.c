@@ -356,6 +356,10 @@ static bool32 FindMonThatAbsorbsOpponentsMove(u32 battler, bool32 emitResult)
         absorbingTypeAbilities[0] = ABILITY_SAP_SIPPER;
         numAbsorbingAbilities = 1;
     }
+    else if (MoveHasSound(gLastLandedMoves[battler]))
+    {
+        absorbingTypeAbilities[0] = ABILITY_RICH_ACOUSTICS;
+    }
     else
     {
         return FALSE;

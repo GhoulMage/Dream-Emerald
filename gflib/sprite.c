@@ -61,6 +61,7 @@ static void AnimCmd_frame(struct Sprite *sprite);
 static void AnimCmd_end(struct Sprite *sprite);
 static void AnimCmd_jump(struct Sprite *sprite);
 static void AnimCmd_loop(struct Sprite *sprite);
+static void AnimCmd_palette(struct Sprite *sprite);
 static void BeginAnimLoop(struct Sprite *sprite);
 static void ContinueAnimLoop(struct Sprite *sprite);
 static void JumpToTopOfAnimLoop(struct Sprite *sprite);
@@ -190,6 +191,7 @@ static const AnimFunc sAffineAnimFuncs[] =
 
 static const AnimCmdFunc sAnimCmdFuncs[] =
 {
+    AnimCmd_palette,
     AnimCmd_loop,
     AnimCmd_jump,
     AnimCmd_end,
@@ -903,9 +905,9 @@ void ContinueAnim(struct Sprite *sprite)
         s16 funcIndex;
         sprite->animCmdIndex++;
         type = sprite->anims[sprite->animNum][sprite->animCmdIndex].type;
-        funcIndex = 3;
+        funcIndex = 4;
         if (type < 0)
-            funcIndex = type + 3;
+            funcIndex = type + 4;
         sAnimCmdFuncs[funcIndex](sprite);
     }
 }
@@ -976,6 +978,19 @@ void AnimCmd_loop(struct Sprite *sprite)
         ContinueAnimLoop(sprite);
     else
         BeginAnimLoop(sprite);
+}
+void AnimCmd_palette(struct Sprite *sprite) {
+    s16 type;
+    s16 funcIndex;
+    
+    sprite->oam.paletteNum = sprite->anims[sprite->animNum][sprite->animCmdIndex].pal.palNum;
+
+    sprite->animCmdIndex++;
+    type = sprite->anims[sprite->animNum][sprite->animCmdIndex].type;
+    funcIndex = 4;
+    if (type < 0)
+        funcIndex = type + 4;
+    sAnimCmdFuncs[funcIndex](sprite);
 }
 
 void BeginAnimLoop(struct Sprite *sprite)

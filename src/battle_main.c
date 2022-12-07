@@ -6044,8 +6044,8 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
              && ((attackerAbility == ABILITY_PIXILATE && (ateType = TYPE_FAIRY))
                  || (attackerAbility == ABILITY_REFRIGERATE && (ateType = TYPE_ICE))
                  || (attackerAbility == ABILITY_AERILATE && (ateType = TYPE_FLYING))
-                 || ((attackerAbility == ABILITY_GALVANIZE) && (ateType = TYPE_ELECTRIC))
-                 || ((attackerAbility == ABILITY_DARK_POWER) && (ateType = TYPE_DARK))
+                 || (attackerAbility == ABILITY_GALVANIZE && (ateType = TYPE_ELECTRIC))
+                 || (attackerAbility == ABILITY_DARK_POWER && gBattleMoves[move].split == SPLIT_PHYSICAL && (ateType = TYPE_DARK))
                 )
              )
     {
@@ -6062,12 +6062,13 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
         if (!IsDynamaxed(battlerAtk))
             gBattleStruct->ateBoost[battlerAtk] = 1;
     }
-    else if (MoveHasSound(move))
+    else if (MoveIsSonic(move) && ((attackerAbility == ABILITY_SINGER && (ateType = TYPE_NORMAL))
+                 || (attackerAbility == ABILITY_SAND_SONG && (ateType = TYPE_GROUND))
+                 || (attackerAbility == ABILITY_LIQUID_VOICE && (ateType = TYPE_WATER)))
+            )
     {
-        if(attackerAbility == ABILITY_LIQUID_VOICE)
-            gBattleStruct->dynamicMoveType = TYPE_WATER | F_DYNAMIC_TYPE_SET;
-        else if(attackerAbility == ABILITY_SINGER)
-            gBattleStruct->dynamicMoveType = TYPE_NORMAL | F_DYNAMIC_TYPE_2;
+        gBattleStruct->dynamicMoveType = ateType | F_DYNAMIC_TYPE_2;
+        gBattleStruct->ateBoost[battlerAtk] = 1;
     }
     else if (gMovesInfo[move].effect == EFFECT_AURA_WHEEL && gBattleMons[battlerAtk].species == SPECIES_MORPEKO_HANGRY)
     {
