@@ -45,7 +45,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **Dream Oldale**. An extension of Oldale Town that also wraps to Route 103 by the river.
 * **Underground Tunnels** (WORK IN PROGRESS). A mysterious series of tunnels. Entrances to it are all over the region, but are covered by debris.
 
-### [Pokémon Sound Type Docs]https://docs.google.com/document/d/1LJ6lqzNob5mojvyFraNFeUqGb1-6RZNTBh3nmbPbATw/edit?usp=sharing
+### [Pokémon Sound Type Docs](https://docs.google.com/document/d/1LJ6lqzNob5mojvyFraNFeUqGb1-6RZNTBh3nmbPbATw/edit?usp=sharing)
 
 #### Normal/Sound
 * Audino
