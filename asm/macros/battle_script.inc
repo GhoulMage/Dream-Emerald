@@ -32,6 +32,10 @@
 	.macro adjustdamage
 	.byte 0x7
 	.endm
+	
+	.macro doubledmgifsound
+	.byte 0x100
+	.endm
 
 	.macro multihitresultmessage
 	.byte 0x8
