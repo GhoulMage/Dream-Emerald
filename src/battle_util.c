@@ -3227,7 +3227,7 @@ u8 DoBattlerEndTurnEffects(void)
             }
             gBattleStruct->turnEffectsTracker++;
             break;
-        case ENDTURN_DREAMCATCHER:  // poison
+        case ENDTURN_DREAMCATCHER:
             if ((gBattleMons[gActiveBattler].status1 & STATUS1_SLEEP)
                 && gBattleMons[gActiveBattler].hp != 0)
             {
@@ -3536,6 +3536,15 @@ u8 AtkCanceller_UnableToUseMove(void)
                     BattleScriptPushCursor();
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP_UPROAR;
                     gBattlescriptCurrInstr = BattleScript_MoveUsedWokeUp;
+                    effect = 2;
+                }
+                else if(gStatuses4[gBattlerAttacker] & STATUS4_LOUD_SOUND) {
+                    gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_SLEEP;
+                    gBattleMons[gBattlerAttacker].status2 &= ~STATUS2_NIGHTMARE;
+                    gStatuses4[gBattlerAttacker] &= ~STATUS4_LOUD_SOUND;
+                    BattleScriptPushCursor();
+                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP_LOUD;
+                    gBattlescriptCurrInstr = BattleScript_MonWokeUpInLoudSound;
                     effect = 2;
                 }
                 else
@@ -5240,7 +5249,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
              && TARGET_TURN_DAMAGED
              && IsBattlerAlive(battler)
-             && (moveType == TYPE_DARK || moveType == TYPE_BUG || moveType == TYPE_GHOST)
+             && (moveType == TYPE_DARK || moveType == TYPE_BUG || moveType == TYPE_GHOST || moveType == TYPE_SOUND)
              && CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
                 SET_STATCHANGER(STAT_SPEED, 1, FALSE);
@@ -8856,7 +8865,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     #define TERRAIN_TYPE_BOOST UQ_4_12(1.5)
 #endif
 
-    // various effecs
+    // various effects
     if (gProtectStructs[battlerAtk].helpingHand)
         MulModifier(&modifier, UQ_4_12(1.5));
     if (gStatuses3[battlerAtk] & STATUS3_CHARGED_UP && moveType == TYPE_ELECTRIC)
@@ -9299,6 +9308,20 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     #endif
         && abilityAtk != ABILITY_GUTS)
         dmg = ApplyModifier(UQ_4_12(0.5), dmg);
+
+    // check sleep
+    if ((gBattleMons[battlerDef].status1 & STATUS1_SLEEP || gBattleMons[battlerDef].ability == ABILITY_COMATOSE)
+        && MoveIsSonic(move)
+        && IS_BATTLER_OF_TYPE(battlerAtk, TYPE_SOUND)
+        && gBattleMons[battlerDef].ability != ABILITY_SOUNDPROOF
+        && gBattleMons[battlerDef].ability != ABILITY_OWN_TEMPO
+        && gBattleMons[battlerDef].ability != ABILITY_HEAVY_SLEEPER) {
+        if(gBattleMons[battlerDef].status2 & STATUS2_NIGHTMARE)
+            dmg = ApplyModifier(UQ_4_12(2.0), dmg);
+        else
+            dmg = ApplyModifier(UQ_4_12(1.5), dmg);
+        gStatuses4[battlerDef] |= STATUS4_LOUD_SOUND;
+    }
 
     // check sunny/rain weather
     if (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_RAIN))

@@ -4951,7 +4951,6 @@ BattleScript_EffectSonicboom::
 	typecalc
 	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	setword gBattleMoveDamage, 20
-	doubledmgifsound
 	adjustdamage
 	goto BattleScript_HitFromAtkAnimation
 
@@ -7741,6 +7740,12 @@ BattleScript_MoveUsedWokeUp::
 
 BattleScript_MonWokeUpInUproar::
 	printstring STRINGID_PKMNWOKEUPINUPROAR
+	waitmessage B_WAIT_TIME_LONG
+	updatestatusicon BS_ATTACKER
+	end2
+
+BattleScript_MonWokeUpInLoudSound::
+	printstring STRINGID_PKMNWOKEUPINLOUDSOUND
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_ATTACKER
 	end2

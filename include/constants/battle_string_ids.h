@@ -639,8 +639,9 @@
 #define STRINGID_PKMNAVOIDEDDANCE                     636
 #define STRINGID_DREAMCATCHERHPUP                     637
 #define STRINGID_JACKPOTENTERS                        638
+#define STRINGID_PKMNWOKEUPINLOUDSOUND                639
 
-#define BATTLESTRINGS_COUNT                           639
+#define BATTLESTRINGS_COUNT                           640
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -740,6 +741,7 @@
 // gWokeUpStringIds
 #define B_MSG_WOKE_UP        0
 #define B_MSG_WOKE_UP_UPROAR 1
+#define B_MSG_WOKE_UP_LOUD   2
 
 // gUproarAwakeStringIds
 #define B_MSG_CANT_SLEEP_UPROAR  0

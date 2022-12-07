@@ -576,7 +576,6 @@ static void Cmd_jumpifoppositegenders(void);
 static void Cmd_trygetbaddreamstarget(void);
 static void Cmd_tryworryseed(void);
 static void Cmd_metalburstdamagecalculator(void);
-static void Cmd_doubleifsound(void);
 
 void (* const gBattleScriptingCommandsTable[])(void) =
 {
@@ -836,7 +835,6 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_trygetbaddreamstarget,                   //0xFD
     Cmd_tryworryseed,                            //0xFE
     Cmd_metalburstdamagecalculator,              //0xFF
-    Cmd_doubleifsound,                           //0x100
 };
 
 const struct StatFractions gAccuracyStageRatios[] =
@@ -2011,6 +2009,11 @@ static void Cmd_adjustdamage(void)
     u32 rand = Random() % 100;
 
     GET_MOVE_TYPE(gCurrentMove, moveType);
+
+    if(gBattleMoves[gCurrentMove].effect == EFFECT_SONICBOOM
+        && (gBattleMons[gBattlerTarget].type1 == TYPE_SOUND || gBattleMons[gBattlerTarget].type2 == TYPE_SOUND)) {
+        gBattleMoveDamage *= 2;
+    }
 
     if (DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove))
         goto END;
@@ -11538,7 +11541,7 @@ static void Cmd_transformdataexecution(void)
         gDisableStructs[gBattlerAttacker].transformedMonPersonality = gBattleMons[gBattlerTarget].personality;
         gDisableStructs[gBattlerAttacker].mimickedMoves = 0;
         gDisableStructs[gBattlerAttacker].usedMoves = 0;
-        //gDisableStructs[gBattlerAttacker].isInPanic = 0;
+        gDisableStructs[gBattlerAttacker].isInPanic = 0;
 
         PREPARE_SPECIES_BUFFER(gBattleTextBuff1, gBattleMons[gBattlerTarget].species)
 
@@ -14619,13 +14622,6 @@ static void Cmd_tryworryseed(void)
     {
         gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = ABILITY_INSOMNIA;
         gBattlescriptCurrInstr += 5;
-    }
-}
-
-static void Cmd_doubleifsound(void){
-    if(gBattleMons[gBattlerTarget].type1 == TYPE_SOUND || gBattleMons[gBattlerTarget].type2 == TYPE_SOUND){
-        gBattleMoveDamage *= 2;
-        gBattlescriptCurrInstr++;
     }
 }
 
