@@ -597,7 +597,6 @@ static void Cmd_jumpifoppositegenders(void);
 static void Cmd_unused(void);
 static void Cmd_tryworryseed(void);
 static void Cmd_callnative(void);
-static void Cmd_doubleifsound(void);
 
 void (* const gBattleScriptingCommandsTable[])(void) =
 {
@@ -856,9 +855,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_jumpifoppositegenders,                   //0xFC
     Cmd_unused,                                  //0xFD
     Cmd_tryworryseed,                            //0xFE
-    //Cmd_metalburstdamagecalculator,              
     Cmd_callnative,                              //0xFF
-    Cmd_doubleifsound,                           //0x100
 };
 
 const struct StatFractions gAccuracyStageRatios[] =
