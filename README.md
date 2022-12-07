@@ -129,7 +129,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **NEW Rash Cushion**: Recoil moves gain 20% Damage, and recoil damage is halved.
 * **NEW Dreamcatcher**: Restores 1/6 Max HP every turn while asleep.
 * **NEW Jackpot**: Gain twice the prize money if switched into battle.
-
+* ---
 * **Soundproof**: Becomes immune to Sonic Sound moves. 50% **less** damage from Dance moves.
 * **Own Tempo**: Becomes immune to Dance Sound moves. 50% **less** damage from Sonic moves.
 * **NEW Singer**: Sound attacks become Normal and get a 30% damage boost.
