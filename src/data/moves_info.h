@@ -22021,4 +22021,24 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .battleAnimScript = Move_G_MAX_RAPID_FLOW,
     },
 
+    [MOVE_PSYCHIC_INVERSION] =
+    {
+        .name = COMPOUND_STRING("Psychic Inversion"),
+        .description = COMPOUND_STRING(
+            "Super effective on Psychic and Dark-\n"
+            "types. May cause freezing."),
+        .effect = EFFECT_PSYCHIC_INVERSION,
+        .power = 100,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 90,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_FLINCH,
+            .chance = 30,
+        }),
+    },
+
 };

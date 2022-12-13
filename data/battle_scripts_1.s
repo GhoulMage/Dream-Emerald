@@ -4578,10 +4578,6 @@ BattleScript_EffectMirrorCoat::
 	adjustdamage
 	goto BattleScript_HitFromAtkAnimation
 
-BattleScript_EffectPsychicInversion:
-	setmoveeffect MOVE_EFFECT_FLINCH
-	goto BattleScript_EffectHit
-
 BattleScript_EffectFutureSight::
 	attackcanceler
 	attackstring
