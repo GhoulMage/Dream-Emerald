@@ -6366,7 +6366,9 @@ static const union AnimCmd sAnim_TIRTOUGA_1[] =
 {
     ANIMCMD_FRAME(0, 30),
     ANIMCMD_FRAME(1, 30),
-    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(0, 2),
     ANIMCMD_END,
 };
 
