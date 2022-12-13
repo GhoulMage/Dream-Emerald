@@ -76,6 +76,7 @@ gFieldEffectScriptPointers::
 	.4byte gFldEffScript_UseVsSeeker                    @ FLDEFF_USE_VS_SEEKER
 	.4byte gFldEffScript_XIcon                          @ FLDEFF_X_ICON
 	.4byte gFldEffScript_DoubleExclMarkIcon             @ FLDEFF_DOUBLE_EXCL_MARK_ICON
+	.4byte gFieldEffectScript_UseHeadbutt               @ FLDEFF_USE_HEADBUTT
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -358,4 +359,7 @@ gFldEffScript_XIcon::
 
 gFldEffScript_DoubleExclMarkIcon::
 	field_eff_callnative FldEff_DoubleExclMarkIcon
+
+gFieldEffectScript_UseHeadbutt::
+	field_eff_callnative FldEff_UseHeadbutt
 	field_eff_end
