@@ -922,13 +922,15 @@ static const union AnimCmd sSpriteAnim_TypeSound[] = {
 #define PAL_TYPE_FAIRY        14
 #define PAL_TYPE_SOUND        11
 
-#define SPRITE_ANIM(type, paletteIndex)                 \
-{                                                       \
-    ANIMCMD_FRAME(TYPE_SOUND * 8, 30, FALSE, FALSE),    \
-    ANIMCMD_PALETTE(paletteIndex),                      \
-    ANIMCMD_FRAME(type * 8, 30, FALSE, FALSE),          \
-    ANIMCMD_PALETTE(PAL_TYPE_SOUND),                    \
-    ANIMCMD_JUMP(0)                                     \
+#define SPRITE_ANIM_FRAMES 40
+
+#define SPRITE_ANIM(type, paletteIndex)                              \
+{                                                                    \
+    ANIMCMD_FRAME(TYPE_SOUND * 8, SPRITE_ANIM_FRAMES, FALSE, FALSE), \
+    ANIMCMD_PALETTE(paletteIndex),                                   \
+    ANIMCMD_FRAME(type * 8, SPRITE_ANIM_FRAMES, FALSE, FALSE),       \
+    ANIMCMD_PALETTE(PAL_TYPE_SOUND),                                 \
+    ANIMCMD_JUMP(0)                                                  \
 }
 
 static const union AnimCmd sSpriteAnim_TypeSoundNormal[]    = SPRITE_ANIM(TYPE_NORMAL    ,   PAL_TYPE_NORMAL);
@@ -993,11 +995,13 @@ static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES
     sSpriteAnim_TypeDark,
     sSpriteAnim_TypeFairy,
     sSpriteAnim_TypeSound,
+
     sSpriteAnim_CategoryCool,
     sSpriteAnim_CategoryBeauty,
     sSpriteAnim_CategoryCute,
     sSpriteAnim_CategorySmart,
     sSpriteAnim_CategoryTough,
+
     sSpriteAnim_TypeSoundNormal,
     sSpriteAnim_TypeSoundFighting,
     sSpriteAnim_TypeSoundFlying,
@@ -1035,6 +1039,7 @@ const struct SpriteTemplate gSpriteTemplate_MoveTypes =
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallbackDummy
 };
+
 static const u8 sContestCategoryToOamPaletteNum[CONTEST_CATEGORIES_COUNT] =
 {
     [CONTEST_CATEGORY_COOL] = 13,
