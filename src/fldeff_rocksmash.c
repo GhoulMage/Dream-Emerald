@@ -18,6 +18,8 @@
 #include "constants/field_effects.h"
 #include "constants/map_types.h"
 #include "constants/songs.h"
+#include "fieldmap.h"
+#include "constants/metatile_behaviors.h"
 
 static void Task_DoFieldMove_Init(u8 taskId);
 static void Task_DoFieldMove_ShowMonAfterPose(u8 taskId);
@@ -26,6 +28,9 @@ static void Task_DoFieldMove_RunFunc(u8 taskId);
 
 static void FieldCallback_RockSmash(void);
 static void FieldMove_RockSmash(void);
+
+static void FieldMove_Headbutt(void);
+static void FieldCallback_Headbutt(void);
 
 bool8 CheckObjectGraphicsInFrontOfPlayer(u16 graphicsId)
 {
@@ -165,4 +170,42 @@ static void FieldMove_RockSmash(void)
     PlaySE(SE_M_ROCK_THROW);
     FieldEffectActiveListRemove(FLDEFF_USE_ROCK_SMASH);
     ScriptContext_Enable();
+}
+
+static void FieldMove_Headbutt(void)
+{
+    PlaySE(SE_NOT_EFFECTIVE);
+    FieldEffectActiveListRemove(FLDEFF_USE_HEADBUTT);
+    ScriptContext_Enable();
+}
+
+bool8 FldEff_UseHeadbutt(void)
+{
+    u8 taskId = CreateFieldMoveTask();
+
+    gTasks[taskId].data[8] = (u32)FieldMove_Headbutt >> 16;
+    gTasks[taskId].data[9] = (u32)FieldMove_Headbutt;
+    IncrementGameStat(GAME_STAT_USED_HEADBUTT);
+    return FALSE;
+}
+
+bool8 SetUpFieldMove_Headbutt(void)
+{
+    GetXYCoordsOneStepInFrontOfPlayer(&gPlayerFacingPosition.x, &gPlayerFacingPosition.y);
+    if (MapGridGetMetatileBehaviorAt(gPlayerFacingPosition.x, gPlayerFacingPosition.y) == MB_HEADBUTT_TREE)
+    {
+        gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
+        gPostMenuFieldCallback = FieldCallback_Headbutt;
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+
+static void FieldCallback_Headbutt(void)
+{
+    gFieldEffectArguments[0] = GetCursorSelectionMonId();
+    ScriptContext_SetupScript(EventScript_UseHeadbutt);
 }

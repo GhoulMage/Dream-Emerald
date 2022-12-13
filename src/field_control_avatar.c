@@ -344,6 +344,11 @@ const u8 hiddenItemQuantity[HIDDEN_ITEM_COUNT] =
     [FLAG_HIDDEN_ITEM_DREAM_OLDALE_PECHA            - FLAG_HIDDEN_ITEMS_START] = 4,
     [FLAG_HIDDEN_ITEM_DREAM_OLDALE_POTION           - FLAG_HIDDEN_ITEMS_START] = 3,
     [FLAG_HIDDEN_ITEM_DREAM_OLDALE_RARE_CANDY       - FLAG_HIDDEN_ITEMS_START] = 2,
+
+    [FLAG_HIDDEN_ITEM_DREAM_PETALBURG_MYSTIC_WATER  - FLAG_HIDDEN_ITEMS_START] = 1,
+    [FLAG_HIDDEN_ITEM_DREAM_PETALBURG_TINY_MUSHROOM - FLAG_HIDDEN_ITEMS_START] = 2,
+    [FLAG_HIDDEN_ITEM_DREAM_PETALBURG_ANTIDOTE      - FLAG_HIDDEN_ITEMS_START] = 2,
+    [FLAG_HIDDEN_ITEM_DREAM_PETALBURG_INSECT_PLATE  - FLAG_HIDDEN_ITEMS_START] = 2,
 };
 
 u8 GetQuantityForHiddenItemFlag(u32 flag){
@@ -453,6 +458,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_Questionnaire;
     if (MetatileBehavior_IsTrainerHillTimer(metatileBehavior) == TRUE)
         return EventScript_TrainerHillTimer;
+    if (MetatileBehavior_IsHeadbuttTree(metatileBehavior) == TRUE)
+        return EventScript_Headbutt;
 
     elevation = position->elevation;
     if (elevation == MapGridGetElevationAt(position->x, position->y))
