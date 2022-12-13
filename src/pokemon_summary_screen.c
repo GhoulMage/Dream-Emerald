@@ -1001,6 +1001,7 @@ static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES
     sSpriteAnim_CategoryCute,
     sSpriteAnim_CategorySmart,
     sSpriteAnim_CategoryTough,
+
     sSpriteAnim_TypeSoundNormal,
     sSpriteAnim_TypeSoundFighting,
     sSpriteAnim_TypeSoundFlying,
