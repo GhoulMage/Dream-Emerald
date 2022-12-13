@@ -98,8 +98,10 @@
 #define FLAG_RESCUED_BIRCH                       0x52
 #define FLAG_LEGENDARIES_IN_SOOTOPOLIS           0x53
 
-#define FLAG_UNUSED_0x054                    0x54  // Unused Flag
-#define FLAG_UNUSED_0x055                    0x55  // Unused Flag
+#define FLAG_NINJA_BOY1                      0x54  // Dream Emerald Flag
+#define FLAG_NINJA_BOY2                      0x55  // Dream Emerald Flag
+
+#define NINJA_FLAG_COUNT                     6
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56  // Always set after new game, object it hides is added directly
 #define FLAG_MET_RIVAL_MOM                   0x57
@@ -120,7 +122,7 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 //
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
 
-#define FLAG_UNUSED_0x068                    0x68  // Unused Flag
+#define FLAG_NINJA_BOY3                      0x68  // Dream Emerald Flag
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_HM_STRENGTH            0x6A
@@ -169,7 +171,7 @@
 #define FLAG_MR_BRINEY_SAILING_INTRO         0x93
 #define FLAG_DOCK_REJECTED_DEVON_GOODS       0x94
 #define FLAG_DELIVERED_DEVON_GOODS           0x95
-#define FLAG_RECEIVED_CONTEST_PASS           0x96 // Unused, leftover from R/S
+#define FLAG_NINJA_BOY4                      0x96 // Unused, leftover from R/S
 #define FLAG_RECEIVED_CASTFORM               0x97
 #define FLAG_RECEIVED_SUPER_ROD              0x98
 #define FLAG_RUSTBORO_NPC_TRADE_COMPLETED    0x99
@@ -240,7 +242,7 @@
 #define FLAG_MET_WAILMER_TRAINER             0xDA
 #define FLAG_EVIL_LEADER_PLEASE_STOP         0xDB
 
-#define FLAG_NEVER_SET_0x0DC                 0xDC // This flag is read, but never written to
+#define FLAG_NINJA_BOY5                      0xDC // Dream Emerald Flag
 
 #define FLAG_RECEIVED_GO_GOGGLES             0xDD
 #define FLAG_WINGULL_SENT_ON_ERRAND          0xDE
@@ -255,7 +257,7 @@
 #define FLAG_RECEIVED_TM_ROAR                0xE7
 #define FLAG_RECEIVED_TM_GIGA_DRAIN          0xE8
 
-#define FLAG_UNUSED_0x0E9                    0xE9 // Unused Flag
+#define FLAG_NINJA_BOY6                      0xE9 // Dream Emerald Flag - Last Ninja Boy battle before rematches
 
 #define FLAG_RECEIVED_TM_REST                0xEA
 #define FLAG_RECEIVED_TM_ATTRACT             0xEB
@@ -460,7 +462,7 @@
 #define FLAG_REGISTERED_DRAKE                (TRAINER_REGISTERED_FLAGS_START + REMATCH_DRAKE)
 #define FLAG_REGISTERED_WALLACE              (TRAINER_REGISTERED_FLAGS_START + REMATCH_WALLACE)
 
-#define FLAG_UNUSED_0x1AA                    0x1AA // Unused Flag
+#define FLAG_NINJA_BOY_REMATCH               0x1AA // Dream Emerald Flag
 #define FLAG_UNUSED_0x1AB                    0x1AB // Unused Flag
 
 #define FLAG_DEFEATED_DEOXYS                 0x1AC
@@ -660,11 +662,11 @@
 #define FLAG_HIDDEN_ITEM_DREAM_OLDALE_POTION                 (FLAG_HIDDEN_ITEMS_START + 0x71)
 #define FLAG_HIDDEN_ITEM_DREAM_OLDALE_RARE_CANDY             (FLAG_HIDDEN_ITEMS_START + 0x72)
 #define FLAG_HIDDEN_ITEM_DREAM_OLDALE_PECHA                  (FLAG_HIDDEN_ITEMS_START + 0x73)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x74                         (FLAG_HIDDEN_ITEMS_START + 0x74)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x75                         (FLAG_HIDDEN_ITEMS_START + 0x75)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x76                         (FLAG_HIDDEN_ITEMS_START + 0x76)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x77                         (FLAG_HIDDEN_ITEMS_START + 0x77)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x78                         (FLAG_HIDDEN_ITEMS_START + 0x78)
+#define FLAG_HIDDEN_ITEM_DREAM_PETALBURG_MYSTIC_WATER        (FLAG_HIDDEN_ITEMS_START + 0x74)
+#define FLAG_HIDDEN_ITEM_DREAM_PETALBURG_TINY_MUSHROOM       (FLAG_HIDDEN_ITEMS_START + 0x75)
+#define FLAG_HIDDEN_ITEM_DREAM_PETALBURG_ANTIDOTE            (FLAG_HIDDEN_ITEMS_START + 0x76)
+#define FLAG_HIDDEN_ITEM_DREAM_PETALBURG_INSECT_PLATE        (FLAG_HIDDEN_ITEMS_START + 0x77)
+#define FLAG_HIDDEN_ITEM_DREAM_PETALBURG_TM60                (FLAG_HIDDEN_ITEMS_START + 0x78)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x79                         (FLAG_HIDDEN_ITEMS_START + 0x79)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x7A                         (FLAG_HIDDEN_ITEMS_START + 0x7A)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x7B                         (FLAG_HIDDEN_ITEMS_START + 0x7B)
@@ -1231,9 +1233,9 @@
 #define FLAG_ITEM_DREAM_OLDALE_POTION                               0x493
 #define FLAG_ITEM_DREAM_OLDALE_SHARPEDONITE                         0x494
 
-#define FLAG_UNUSED_0x4A0                                           0x4A0 // Unused Flag
-#define FLAG_UNUSED_0x4A1                                           0x4A1 // Unused Flag
-#define FLAG_UNUSED_0x4A2                                           0x4A2 // Unused Flag
+#define FLAG_ITEM_DREAM_PETALBURG_ROOST                             0x4A0
+#define FLAG_ITEM_DREAM_PETALBURG_DAWN_STONE                        0x4A1 // Unused Flag
+#define FLAG_ITEM_DREAM_PETALBURG_TM72                              0x4A2 // Unused Flag
 #define FLAG_UNUSED_0x4A3                                           0x4A3 // Unused Flag
 #define FLAG_UNUSED_0x4A4                                           0x4A4 // Unused Flag
 #define FLAG_UNUSED_0x4A5                                           0x4A5 // Unused Flag
@@ -1497,7 +1499,7 @@
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
-#define FLAG_UNUSED_0x8E5                           (SYSTEM_FLAGS + 0x85) // Unused Flag
+#define FLAG_DREAM_PETALBURG_DEBRIS                 (SYSTEM_FLAGS + 0x85) // Dream Emerald
 #define FLAG_UNUSED_0x8E6                           (SYSTEM_FLAGS + 0x86) // Unused Flag
 #define FLAG_UNUSED_0x8E7                           (SYSTEM_FLAGS + 0x87) // Unused Flag
 #define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
