@@ -6068,7 +6068,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .accuracy = 0,
         .pp = 40,
         .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
+        .target = MOVE_TARGET_USER | MOVE_TARGET_ALLY,
         .priority = 0,
         .split = SPLIT_STATUS,
         .zMovePower = 0,
@@ -13630,9 +13630,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_PSYCHIC_INVERSION] =
     {
-        //.effect = EFFECT_FLINCH_HIT,
         .effect = EFFECT_PSYCHIC_INVERSION,
-        .power = 90,
+        .power = 100,
         .type = TYPE_PSYCHIC,
         .accuracy = 90,
         .pp = 15,
@@ -13641,7 +13640,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST,
         .split = SPLIT_SPECIAL,
-        .zMovePower = 140,
+        .zMovePower = 180,
         .zMoveEffect = Z_EFFECT_NONE,
     },
 
