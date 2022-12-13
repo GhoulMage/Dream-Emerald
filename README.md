@@ -115,6 +115,10 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Boldore
 * Gigalith
 
+### Poison/Sound
+* Ekans
+* Arbok
+
 #### Pure Sound
 * Whismur
 * Loudred
@@ -137,6 +141,8 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 #### Sound Type Related Abilities
 * **Soundproof**: Becomes immune to Sonic Sound moves. 50% **less** damage from Dance moves.
 * **Own Tempo**: Becomes immune to Dance Sound moves. 50% **less** damage from Sonic moves.
+* **Comatose**: Always get extra damage from Sound moves.
+* **Rattled**: Procs on Sound moves too.
 * **NEW Singer**: Sound attacks become Normal and get a 30% damage boost.
 * **NEW Sand Song**: Sound attacks become Ground and get a 20% damage boost.
 * **NEW Ultrasonic**: Deal and Receive 50% **more** Damage from Sound attacks.
@@ -186,8 +192,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 
 
 ### Known Bugs
-**Visual**
-* If a Pokémon levels up and can learn a new move, the summary screen will glitch showing either nothing, one of the Wild Pokémon, or the Pokémon with corrupted colors instead.
+* None
 
 #### Possible Bugs/Not Intended
 * Does Friendship lower correctly after the Poison Fades?
