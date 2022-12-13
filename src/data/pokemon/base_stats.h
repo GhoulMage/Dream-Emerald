@@ -1465,14 +1465,14 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_EKANS] =
     {
-        .baseHP        = 35,
+        .baseHP        = 40, //buff
         .baseAttack    = 60,
-        .baseDefense   = 44,
+        .baseDefense   = 40, //nerf
         .baseSpeed     = 55,
         .baseSpAttack  = 40,
-        .baseSpDefense = 54,
+        .baseSpDefense = 55, //buff
         .type1 = TYPE_POISON,
-        .type2 = TYPE_POISON,
+        .type2 = TYPE_SOUND,
         .catchRate = 255,
         .expYield = 58,
         .evYield_Attack    = 1,
@@ -1490,17 +1490,17 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_ARBOK] =
     {
         .baseHP        = 60,
-        .baseDefense   = 69,
+        .baseDefense   = 80, //buff
         .baseSpeed     = 80,
         .baseSpAttack  = 65,
-        .baseSpDefense = 79,
+        .baseSpDefense = 80, //buff
         #if P_UPDATED_STATS >= GEN_7
-            .baseAttack    = 95,
+            .baseAttack    = 105, //buff
         #else
             .baseAttack    = 85,
         #endif
         .type1 = TYPE_POISON,
-        .type2 = TYPE_POISON,
+        .type2 = TYPE_SOUND,
         .catchRate = 90,
         .expYield = 157,
         .evYield_Attack    = 2,

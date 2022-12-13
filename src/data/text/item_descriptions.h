@@ -3270,8 +3270,10 @@ static const u8 sTM50Desc[] = _(
     "attack, but sharply\n"
     "lowers Sp. Atk.");
 
-static const u8 sTM51Desc[] = _( // Todo
-    "?????");
+static const u8 sTM51Desc[] = _(
+    "Restores the user's\n"
+    "HP by half of its\n"
+    "max HP.");
 
 static const u8 sTM52Desc[] = _( // Todo
     "?????");
@@ -3297,8 +3299,10 @@ static const u8 sTM58Desc[] = _( // Todo
 static const u8 sTM59Desc[] = _( // Todo
     "?????");
 
-static const u8 sTM60Desc[] = _( // Todo
-    "?????");
+static const u8 sTM60Desc[] = _(
+    "Recovers half the\n"
+    "HP of the damage\n"
+    "this move inflicts.");
 
 static const u8 sTM61Desc[] = _( // Todo
     "?????");
@@ -3333,8 +3337,10 @@ static const u8 sTM70Desc[] = _( // Todo
 static const u8 sTM71Desc[] = _( // Todo
     "?????");
 
-static const u8 sTM72Desc[] = _( // Todo
-    "?????");
+static const u8 sTM72Desc[] = _(
+    "Attack that gains\n"
+    "power if injured by\n"
+    "the foe.");
 
 static const u8 sTM73Desc[] = _( // Todo
     "?????");
