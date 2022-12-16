@@ -282,6 +282,17 @@
 	.byte 0x27
 	.endm
 
+	@ Sets all ninja flags but the one specified
+	.macro setninjaflags flag:req
+	.byte 0xe5
+	.2byte \flag
+	.endm
+
+	@ Checks if Ninja Boy can rematch, FLAG_NINJA_BOY_REMATCH has to be unset
+	.macro checkninjaboyrematch
+	.byte 0xe6
+	.endm
+
 	@ Blocks script execution for frames. (Pokemon Emerald runs at just shy of 60 frames per second.)
 	.macro delay frames:req
 	.byte 0x28
@@ -1355,7 +1366,7 @@
 	@ The specified id can be used to refer to the sprite again later with turnvobject.
 	.macro createvobject graphicsId:req, id:req, x:req, y:req, elevation=3, direction=DIR_SOUTH
 	.byte 0xaa
-	.byte \graphicsId
+	.2byte \graphicsId
 	.byte \id
 	.2byte \x
 	.2byte \y

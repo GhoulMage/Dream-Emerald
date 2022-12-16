@@ -32,7 +32,7 @@ static void FieldMove_RockSmash(void);
 static void FieldMove_Headbutt(void);
 static void FieldCallback_Headbutt(void);
 
-bool8 CheckObjectGraphicsInFrontOfPlayer(u8 graphicsId)
+bool8 CheckObjectGraphicsInFrontOfPlayer(u16 graphicsId)
 {
     u8 objEventId;
 
