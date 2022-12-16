@@ -1078,4 +1078,13 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/underground_tunnels.inc"
 	.include "data/text/underground_tunnels.inc"
 
+	.include "data/scripts/ninja_boy.inc"
+	.include "data/text/ninja_boy.inc"
+
 	.include "data/maps/DreamOldale/scripts.inc"
+
+	.include "data/maps/DreamPetalburg/scripts.inc"
+
+	.include "data/maps/DreamPetalburg_House1/scripts.inc"
+
+	.include "data/maps/DreamPetalburg_FishermanDream/scripts.inc"

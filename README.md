@@ -46,6 +46,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 
 ### Added Areas
 * **Dream Oldale**. An extension of Oldale Town that also wraps to Route 103 by the river.
+* **Deam Petalburg**. An extension of Petalburg City and Route 103, rare Pokémon can be found here.
 * **Underground Tunnels** (WORK IN PROGRESS). A mysterious series of tunnels. Entrances to it are all over the region, but are covered by debris.
 
 ---
@@ -148,7 +149,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * **NEW Ultrasonic**: Deal and Receive 50% **more** Damage from Sound attacks.
 * **NEW Rich Acoustics**: Turns receiving Sound attacks into HP.
 * **NEW Crescendo**: Sound moves deal 50% **more** Damage under 1/3 Max HP.
-* **NEW Upbeat**: Raises Speed by one stage after using or receiving a Sound move, even if its a non damaging move.
+* **NEW Upbeat**: Raises Speed by one stage after using or receiving a Sound move, including non damaging moves.
 * **NEW Heavy Sleeper**: Becomes **immune** to Sound moves if sleeping.
 
 #### Moves
@@ -192,7 +193,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 
 
 ### Known Bugs
-* None
+* Fighting Stacy will glitch all sprites somehow after the 4th mon.
 
 #### Possible Bugs/Not Intended
 * Does Friendship lower correctly after the Poison Fades?

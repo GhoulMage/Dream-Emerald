@@ -860,12 +860,28 @@
 #define TRAINER_MAY_PLACEHOLDER             854
 #define TRAINER_OLD_LADY_1                  855
 #define TRAINER_OLD_LADY_2                  856
+#define TRAINER_CHARLES                     857
+#define TRAINER_MIKE_3                      858
+#define TRAINER_JULIE_2                     859
+
+#define TRAINER_NINJABOY_1                  860
+#define TRAINER_NINJABOY_2                  861
+#define TRAINER_NINJABOY_3                  862
+#define TRAINER_NINJABOY_4                  863
+#define TRAINER_NINJABOY_5                  864
+#define TRAINER_NINJABOY_6                  865
+#define TRAINER_NINJABOY_REMATCH            866
+
+#define TRAINER_JACOB_2                     867
+#define TRAINER_CLEMENTINE                  868
+#define TRAINER_STACY                       869
+#define TRAINER_STEPHANIE                   870
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 102 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      855
+#define TRAINERS_COUNT                      871
 #define MAX_TRAINERS_COUNT                  0x3C0 //960
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 

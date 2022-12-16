@@ -25,6 +25,8 @@ bool8 VarSet(u16 id, u16 value);
 u16 VarGetObjectEventGraphicsId(u8 id);
 u8 *GetFlagPointer(u16 id);
 u8 FlagSet(u16 id);
+u8 NinjaFlagsSet(u16 id);
+bool8 NinjaBoyCanRematch(void);
 u8 FlagToggle(u16 id);
 u8 FlagClear(u16 id);
 bool8 FlagGet(u16 id);

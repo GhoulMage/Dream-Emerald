@@ -4420,6 +4420,36 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/DreamOldale/border.bin",
       "blockdata_filepath": "data/layouts/DreamOldale/map.bin"
+    },
+    {
+      "id": "LAYOUT_DREAM_PETALBURG",
+      "name": "DreamPetalburg_Layout",
+      "width": 40,
+      "height": 65,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/DreamPetalburg/border.bin",
+      "blockdata_filepath": "data/layouts/DreamPetalburg/map.bin"
+    },
+    {
+      "id": "LAYOUT_DREAM_PETALBURG_HOUSE1",
+      "name": "DreamPetalburg_House1_Layout",
+      "width": 13,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/DreamPetalburg_House1/border.bin",
+      "blockdata_filepath": "data/layouts/DreamPetalburg_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_DREAM_PETALBURG_FISHERMAN_DREAM",
+      "name": "DreamPetalburg_FishermanDream_Layout",
+      "width": 22,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Shop",
+      "border_filepath": "data/layouts/DreamPetalburg_FishermanDream/border.bin",
+      "blockdata_filepath": "data/layouts/DreamPetalburg_FishermanDream/map.bin"
     }
   ]
 }

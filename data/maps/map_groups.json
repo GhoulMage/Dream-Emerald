@@ -94,7 +94,8 @@
     "Underwater_Route129",
     "Underwater_Route105",
     "Underwater_Route125",
-    "DreamOldale"
+    "DreamOldale",
+    "DreamPetalburg"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -164,7 +165,9 @@
     "PetalburgCity_House2",
     "PetalburgCity_PokemonCenter_1F",
     "PetalburgCity_PokemonCenter_2F",
-    "PetalburgCity_Mart"
+    "PetalburgCity_Mart",
+    "DreamPetalburg_House1",
+    "DreamPetalburg_FishermanDream"
   ],
   "gMapGroup_IndoorSlateport": [
     "SlateportCity_SternsShipyard_1F",
@@ -626,12 +629,14 @@
   "connections_include_order": [
     "LittlerootTown",
     "OldaleTown",
+    "DreamOldale",
     "DewfordTown",
     "LavaridgeTown",
     "FallarborTown",
     "VerdanturfTown",
     "PacifidlogTown",
     "PetalburgCity",
+    "DreamPetalburg",
     "SlateportCity",
     "MauvilleCity",
     "RustboroCity",
@@ -681,7 +686,6 @@
     "Underwater_Route127",
     "Underwater_Route128",
     "Underwater_Route129",
-    "DreamOldale",
     "SafariZone_Northwest",
     "SafariZone_North",
     "SafariZone_Southwest",
