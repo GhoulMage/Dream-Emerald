@@ -588,6 +588,12 @@ bool8 ScrCmd_setflag(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_setninjaflags(struct ScriptContext *ctx)
+{
+    NinjaFlagsSet(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
 bool8 ScrCmd_clearflag(struct ScriptContext *ctx)
 {
     FlagClear(ScriptReadHalfword(ctx));
@@ -597,6 +603,11 @@ bool8 ScrCmd_clearflag(struct ScriptContext *ctx)
 bool8 ScrCmd_checkflag(struct ScriptContext *ctx)
 {
     ctx->comparisonResult = FlagGet(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+bool8 ScrCmd_checkninjaboyrematch(struct ScriptContext *ctx)
+{
+    ctx->comparisonResult = NinjaBoyCanRematch();
     return FALSE;
 }
 
