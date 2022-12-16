@@ -282,6 +282,17 @@
 	.byte 0x27
 	.endm
 
+	@ Sets all ninja flags but the one specified
+	.macro setninjaflags flag:req
+	.byte 0xe7
+	.2byte \flag
+	.endm
+
+	@ Checks if Ninja Boy can rematch, FLAG_NINJA_BOY_REMATCH has to be unset
+	.macro checkninjaboyrematch
+	.byte 0xe8
+	.endm
+
 	@ Blocks script execution for frames. (Pokemon Emerald runs at just shy of 60 frames per second.)
 	.macro delay frames:req
 	.byte 0x28

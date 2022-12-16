@@ -219,6 +219,70 @@ u8 FlagSet(u16 id)
     return 0;
 }
 
+u16 getNinjaFlag(u16 index){ // hardcoded because i couldn't add an array in this file or event_data.h for some reason. i am NOT a C programmer
+    switch ((index))
+    {
+    case 0:
+        return FLAG_NINJA_BOY1;
+    case 1:
+        return FLAG_NINJA_BOY2;
+    case 2:
+        return FLAG_NINJA_BOY3;
+    case 3:
+        return FLAG_NINJA_BOY4;
+    case 4:
+        return FLAG_NINJA_BOY5;
+    case 5:
+        return FLAG_NINJA_BOY6;
+    default:
+        return -1;
+    }
+}
+
+void SetAllNinjaFlags(void){
+    u16 i;
+
+    for(i = 0; i < NINJA_FLAG_COUNT; i++){
+        u8 *ptr = GetFlagPointer(getNinjaFlag(i));
+        if (ptr)
+            *ptr |= 1 << (getNinjaFlag(i) & 7);
+    }
+}
+
+u8 NinjaFlagsSet(u16 id)
+{
+    u8 *ptr = GetFlagPointer(id);
+    
+    if (ptr){
+        SetAllNinjaFlags();
+        *ptr &= ~(1 << (id & 7));
+    }
+    return 0;
+}
+
+bool8 NinjaBoyCanRematch(void)
+{
+    u16 i;
+    u8 *rematchPtr = GetFlagPointer(FLAG_NINJA_BOY_REMATCH);
+
+    for(i = 0; i < NINJA_FLAG_COUNT; i++) {
+        u8 *ptr = GetFlagPointer(getNinjaFlag(i));
+
+        if(!ptr)
+            return FALSE;
+        if (!(((*ptr) >> (getNinjaFlag(i) & 7)) & 1))
+            return FALSE;
+    }
+
+    if (!rematchPtr)
+        return TRUE;
+
+    if (!(((*rematchPtr) >> (FLAG_NINJA_BOY_REMATCH & 7)) & 1))
+        return TRUE;
+
+    return FALSE;
+}
+
 u8 FlagToggle(u16 id)
 {
     u8 *ptr = GetFlagPointer(id);
