@@ -602,6 +602,16 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gShinyOverworldPalette_Arbok[] = INCBIN_U32("graphics/pokemon/arbok/overworld_shiny.gbapal.lz");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
+
+    const u32 gMonFrontPic_Adokana[] = INCBIN_U32("graphics/pokemon/adokana/anim_front.4bpp.lz");
+    const u32 gMonPalette_Adokana[] = INCBIN_U32("graphics/pokemon/adokana/normal.gbapal.lz");
+    const u32 gMonBackPic_Adokana[] = INCBIN_U32("graphics/pokemon/adokana/back.4bpp.lz");
+    const u32 gMonShinyPalette_Adokana[] = INCBIN_U32("graphics/pokemon/adokana/shiny.gbapal.lz");
+    const u8 gMonIcon_Adokana[] = INCBIN_U8("graphics/pokemon/adokana/icon.4bpp");
+#if P_FOOTPRINTS
+    const u8 gMonFootprint_Adokana[] = INCBIN_U8("graphics/pokemon/adokana/footprint.1bpp");
+#endif //P_FOOTPRINTS
+
 #endif //P_FAMILY_EKANS
 
 #if P_FAMILY_PIKACHU
@@ -7152,21 +7162,27 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gMonBackPic_RaltsD[] = INCBIN_U32("graphics/pokemon/raltsD/back.4bpp.lz");
     const u32 gMonShinyPalette_RaltsD[] = INCBIN_U32("graphics/pokemon/raltsD/shiny.gbapal.lz");
     const u8 gMonIcon_RaltsD[] = INCBIN_U8("graphics/pokemon/raltsD/icon.4bpp");
+#if P_FOOTPRINTS
     const u8 gMonFootprint_RaltsD[] = INCBIN_U8("graphics/pokemon/raltsD/footprint.1bpp");
+#endif //P_FOOTPRINTS
 
     const u32 gMonFrontPic_KirliaD[] = INCBIN_U32("graphics/pokemon/kirliaD/anim_front.4bpp.lz");
     const u32 gMonPalette_KirliaD[] = INCBIN_U32("graphics/pokemon/kirliaD/normal.gbapal.lz");
     const u32 gMonBackPic_KirliaD[] = INCBIN_U32("graphics/pokemon/kirliaD/back.4bpp.lz");
     const u32 gMonShinyPalette_KirliaD[] = INCBIN_U32("graphics/pokemon/kirliaD/shiny.gbapal.lz");
     const u8 gMonIcon_KirliaD[] = INCBIN_U8("graphics/pokemon/kirliaD/icon.4bpp");
+#if P_FOOTPRINTS
     const u8 gMonFootprint_KirliaD[] = INCBIN_U8("graphics/pokemon/kirliaD/footprint.1bpp");
+#endif //P_FOOTPRINTS
     
     const u32 gMonFrontPic_GardevoirD[] = INCBIN_U32("graphics/pokemon/gardevoirD/anim_front.4bpp.lz");
     const u32 gMonPalette_GardevoirD[] = INCBIN_U32("graphics/pokemon/gardevoirD/normal.gbapal.lz");
     const u32 gMonBackPic_GardevoirD[] = INCBIN_U32("graphics/pokemon/gardevoirD/back.4bpp.lz");
     const u32 gMonShinyPalette_GardevoirD[] = INCBIN_U32("graphics/pokemon/gardevoirD/shiny.gbapal.lz");
     const u8 gMonIcon_GardevoirD[] = INCBIN_U8("graphics/pokemon/gardevoirD/icon.4bpp");
+#if P_FOOTPRINTS
     const u8 gMonFootprint_GardevoirD[] = INCBIN_U8("graphics/pokemon/gardevoirD/footprint.1bpp");
+#endif //P_FOOTPRINTS
 
 #if P_MEGA_EVOLUTIONS
     const u32 gMonFrontPic_GardevoirMega[] = INCBIN_U32("graphics/pokemon/gardevoir/mega/front.4bpp.lz");

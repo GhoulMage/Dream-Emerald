@@ -204,6 +204,14 @@ const struct BardSound gBardSounds_Pokemon[NUM_SPECIES][6] = {
         NULL_BARD_SOUND,
         NULL_BARD_SOUND,
     },
+    [SPECIES_ADOKANA] = {
+        { 0x6, 0x0, 0x0, 0x0, 0x0},
+        { 0x17, 0x0, 0x0, 0x0, 0x0},
+        { 0x33, 0x0, 0x0, 0x0, 0x0},
+        NULL_BARD_SOUND,
+        NULL_BARD_SOUND,
+        NULL_BARD_SOUND
+    },
     [SPECIES_PIKACHU] = {
         { .songLengthId = 12 },
         { .songLengthId = 42 },

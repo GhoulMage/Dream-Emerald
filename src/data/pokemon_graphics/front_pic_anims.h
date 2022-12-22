@@ -343,7 +343,15 @@ static const union AnimCmd sAnim_Pichu_1[] =
 PLACEHOLDER_ANIM_SINGLE_FRAME(PichuSpikyEared);
 #endif //P_GEN_2_CROSS_EVOS
 
-static const union AnimCmd sAnim_Pikachu_1[] =
+static const union AnimCmd sAnim_Adokana_1[] =
+{
+    ANIMCMD_FRAME(0, 5),
+    ANIMCMD_FRAME(1, 35),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_PIKACHU_1[] =
 {
     ANIMCMD_FRAME(0, 15),
     ANIMCMD_FRAME(1, 60),
@@ -10265,6 +10273,7 @@ SINGLE_ANIMATION(Fearow);
 #if P_FAMILY_EKANS
 SINGLE_ANIMATION(Ekans);
 SINGLE_ANIMATION(Arbok);
+SINGLE_ANIMATION(Adokana);
 #endif //P_FAMILY_EKANS
 #if P_FAMILY_PIKACHU
 #if P_GEN_2_CROSS_EVOS
