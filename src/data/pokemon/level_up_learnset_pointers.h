@@ -25,6 +25,7 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_FEAROW] = sFearowLevelUpLearnset,
     [SPECIES_EKANS] = sEkansLevelUpLearnset,
     [SPECIES_ARBOK] = sArbokLevelUpLearnset,
+    [SPECIES_ADOKANA] = sAdokanaLevelUpLearnset,
     [SPECIES_PIKACHU] = sPikachuLevelUpLearnset,
     [SPECIES_RAICHU] = sRaichuLevelUpLearnset,
     [SPECIES_SANDSHREW] = sSandshrewLevelUpLearnset,

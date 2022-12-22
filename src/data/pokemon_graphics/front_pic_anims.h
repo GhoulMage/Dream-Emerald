@@ -271,6 +271,14 @@ static const union AnimCmd sAnim_ARBOK_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_ADOKANA_1[] =
+{
+    ANIMCMD_FRAME(0, 5),
+    ANIMCMD_FRAME(1, 35),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sAnim_PIKACHU_1[] =
 {
     ANIMCMD_FRAME(0, 15),
@@ -9691,6 +9699,12 @@ static const union AnimCmd *const sAnims_ARBOK[] =
     sAnim_ARBOK_1,
 };
 
+static const union AnimCmd *const sAnims_ADOKANA[] =
+{
+    sAnim_GeneralFrame0,
+    sAnim_ADOKANA_1,
+};
+
 static const union AnimCmd *const sAnims_PIKACHU[] =
 {
     sAnim_GeneralFrame0,
@@ -17081,6 +17095,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     ANIM_CMD(SNEASLER),
     ANIM_CMD(OVERQWIL),
     ANIM_CMD(ENAMORUS),
+    ANIM_CMD(ADOKANA),
 #endif
     ANIM_CMD(VENUSAUR_MEGA),
     ANIM_CMD(CHARIZARD_MEGA_X),

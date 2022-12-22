@@ -21,6 +21,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_RATTATA]               = {{EVO_LEVEL, 20, SPECIES_RATICATE}},
     [SPECIES_SPEAROW]               = {{EVO_LEVEL, 20, SPECIES_FEAROW}},
     [SPECIES_EKANS]                 = {{EVO_LEVEL, 22, SPECIES_ARBOK}},
+    [SPECIES_ARBOK]                 = {{EVO_LEVEL, 31, SPECIES_ADOKANA}},
     [SPECIES_PIKACHU]               = {{EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_RAICHU},
                                        {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_RAICHU_ALOLAN}},
     [SPECIES_SANDSHREW]             = {{EVO_LEVEL, 22, SPECIES_SANDSLASH}},

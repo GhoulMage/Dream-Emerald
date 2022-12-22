@@ -148,6 +148,12 @@ const u8 gArbokPokedexText[] = _(
     "steel oil drums. Once it wraps its body\n"
     "around its foe, escaping is impossible.");
 
+const u8 gAdokanaPokedexText[] = _(
+    "It can create a loud sound that stuns\n"
+    "foes easily. It then wraps around enemies\n"
+    "to asphixiate them. Its peculiar design\n"
+    "scares foes that approach it.");
+
 const u8 gPikachuPokedexText[] = _(
     "It stores electricity in the electric sacs\n"
     "on its cheeks. When it releases pent-up\n"

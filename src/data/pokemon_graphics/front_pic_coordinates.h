@@ -29,6 +29,7 @@ const struct MonCoords gMonFrontPicCoords[] =
     [SPECIES_FEAROW]                       = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_EKANS]                        = { .size = MON_COORDS_SIZE(48, 48), .y_offset = 10 },
     [SPECIES_ARBOK]                        = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
+    [SPECIES_ADOKANA]                      = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
     [SPECIES_PIKACHU]                      = { .size = MON_COORDS_SIZE(48, 48), .y_offset =  9 },
     [SPECIES_RAICHU]                       = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  3 },
     [SPECIES_SANDSHREW]                    = { .size = MON_COORDS_SIZE(48, 48), .y_offset = 11 },

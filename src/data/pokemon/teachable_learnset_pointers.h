@@ -25,6 +25,7 @@ const u16 *const gTeachableLearnsets[NUM_SPECIES] =
     [SPECIES_FEAROW] = sFearowTeachableLearnset,
     [SPECIES_EKANS] = sEkansTeachableLearnset,
     [SPECIES_ARBOK] = sArbokTeachableLearnset,
+    [SPECIES_ADOKANA] = sAdokanaTeachableLearnset,
     [SPECIES_PIKACHU] = sPikachuTeachableLearnset,
     [SPECIES_RAICHU] = sRaichuTeachableLearnset,
     [SPECIES_SANDSHREW] = sSandshrewTeachableLearnset,

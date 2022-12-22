@@ -300,6 +300,18 @@ const struct PokedexEntry gPokedexEntries[] =
         .trainerOffset = 2,
     },
 
+    [NATIONAL_DEX_ADOKANA] =
+    {
+        .categoryName = _("Anaconda"),
+        .height = 40,
+        .weight = 500,
+        .description = gAdokanaPokedexText,
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 290,
+        .trainerOffset = 2,
+    },
+
     [NATIONAL_DEX_PIKACHU] =
     {
         .categoryName = _("Mouse"),

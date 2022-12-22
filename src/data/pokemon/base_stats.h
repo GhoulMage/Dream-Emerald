@@ -1515,6 +1515,35 @@ const struct BaseStats gBaseStats[] =
         .noFlip = FALSE,
     },
 
+    [SPECIES_ADOKANA] =
+    {
+        .baseHP        = 70,
+        .baseDefense   = 85,
+        .baseSpeed     = 100,
+        .baseSpAttack  = 75,
+        .baseSpDefense = 85,
+        #if P_UPDATED_STATS >= GEN_7
+            .baseAttack    = 120,
+        #else
+            .baseAttack    = 95,
+        #endif
+        .type1 = TYPE_POISON,
+        .type2 = TYPE_SOUND,
+        .catchRate = 40,
+        .expYield = 195,
+        .evYield_Attack    = 2,
+        .evYield_Speed     = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = 50,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroup1 = EGG_GROUP_FIELD,
+        .eggGroup2 = EGG_GROUP_DRAGON,
+        .abilities = {ABILITY_INTIMIDATE, ABILITY_SHED_SKIN, ABILITY_CRESCENDO}, //TODO: create ABILITY_TERRORIZE
+        .bodyColor = BODY_COLOR_PURPLE,
+        .noFlip = FALSE,
+    },
+
     [SPECIES_PIKACHU] = PIKACHU_BASE_STATS(PERCENT_FEMALE(50), FLIP),
 
     [SPECIES_RAICHU] =

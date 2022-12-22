@@ -1,5 +1,6 @@
 const u16 gEasyChatGroup_Pokemon2[] = {
     SPECIES_ABRA,
+    SPECIES_ADOKANA,
     SPECIES_AERODACTYL,
     SPECIES_AIPOM,
     SPECIES_ALAKAZAM,
