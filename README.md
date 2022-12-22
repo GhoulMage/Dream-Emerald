@@ -119,6 +119,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 ### Poison/Sound
 * Ekans
 * Arbok
+* **NEW Adokana**
 
 #### Pure Sound
 * Whismur
@@ -130,6 +131,7 @@ I have been wanting to make my own hack of Pokémon Emerald for years and I deci
 * Dark Ralts
 * Dark Kirlia
 * Dark Gardevoir
+* **Arbok Evolution**: Adokana
 
 #### Abilities
 * **NEW Dark Power**: Normal attacks become Dark and get a 20% damage boost.
