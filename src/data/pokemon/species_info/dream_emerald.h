@@ -147,6 +147,54 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         LEARNSETS(GardevoirD),
     },
 
+    [SPECIES_GARDEVOIRD] =
+    {
+        .baseHP        = 70,
+        .baseDefense   = 85,
+        .baseSpeed     = 100,
+        .baseSpAttack  = 75,
+        .baseSpDefense = 85,
+        .baseAttack    = 120,
+        .types = { TYPE_POISON, TYPE_SOUND },
+        .catchRate = 40,
+        .expYield = 195,
+        .evYield_Attack    = 2,
+        .evYield_Speed     = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = 50,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_DRAGON },
+        .abilities = {ABILITY_INTIMIDATE, ABILITY_SHED_SKIN, ABILITY_CRESCENDO}, //TODO: create ABILITY_TERRORIZE
+        .bodyColor = BODY_COLOR_PURPLE,
+        .speciesName = _("Adokana"),
+        .cryId = CRY_ADOKANA,
+        .natDexNum = NATIONAL_DEX_ADOKANA,
+        .categoryName = _("Anaconda"),
+        .height = 40,
+        .weight = 500,
+        .description = COMPOUND_STRING(
+            "It can create a loud sound that stuns\n"
+            "foes easily. It then wraps around enemies\n"
+            "to asphixiate them. Its peculiar design\n"
+            "scares foes that approach it."),
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 290,
+        .trainerOffset = 2,
+        FRONT_PIC(Adokana, 64, 64),
+        .frontPicYOffset = 1,
+        .frontAnimFrames = sAnims_Adokana,
+        .frontAnimId = ANIM_V_SHAKE_TWICE,
+        BACK_PIC(Adokana, 64, 64),
+        .backPicYOffset = 1,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        PALETTES(Adokana),
+        ICON(Adokana, 2),
+        .footprint = gMonFootprint_Adokana,
+        LEARNSETS(Adokana),
+    },
+
     [SPECIES_ARCEUS_SOUND]    = ARCEUS_SPECIES_INFO(TYPE_SOUND, Sound),
 
 #ifdef __INTELLISENSE__
