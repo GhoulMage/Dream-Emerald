@@ -5,6 +5,7 @@ const u16 gPokedexOrder_Alphabetical[] =
     NATIONAL_DEX_ABRA,
     NATIONAL_DEX_ABSOL,
     NATIONAL_DEX_ACCELGOR,
+    NATIONAL_DEX_ADOKANA,
     NATIONAL_DEX_AEGISLASH,
     NATIONAL_DEX_AERODACTYL,
     NATIONAL_DEX_AGGRON,
@@ -2197,6 +2198,7 @@ const u16 gPokedexOrder_Weight[] =
     // 109.8 lbs / 49.8 kg
     NATIONAL_DEX_HITMONLEE,
     // 110.2 lbs / 50.0 kg
+    NATIONAL_DEX_ADOKANA,
     NATIONAL_DEX_ZWEILOUS,
     NATIONAL_DEX_DRAGAPULT,
     // 110.7 lbs / 50.2 kg
@@ -4258,6 +4260,7 @@ const u16 gPokedexOrder_Height[] =
     NATIONAL_DEX_DHELMISE,
     // 13'01" / 4.0m
     NATIONAL_DEX_DRAGONAIR,
+    NATIONAL_DEX_ADOKANA,
     NATIONAL_DEX_LUNALA,
     // 13'09" / 4.2m
     NATIONAL_DEX_PALKIA,
