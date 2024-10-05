@@ -148,7 +148,7 @@ LilycoveCity_LilycoveMuseum_1F_EventScript_PsychicM::
 	end
 
 LilycoveCity_LilycoveMuseum_1F_EventScript_Artist2::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_LilycoveMuseum_1F_Text_AimToSeeGreatPaintings, MSGBOX_DEFAULT
 	closemessage

@@ -33,7 +33,7 @@ EverGrandeCity_PokemonCenter_1F_EventScript_ExpertM::
 	end
 
 EverGrandeCity_PokemonCenter_1F_EventScript_Scott::
-	locktarget
+	lock
 	faceplayer
 	msgbox EverGrandeCity_PokemonCenter_1F_Text_ScottHappyForYou, MSGBOX_DEFAULT
 	closemessage

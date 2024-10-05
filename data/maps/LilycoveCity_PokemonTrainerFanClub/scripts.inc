@@ -198,7 +198,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_SetFanMemberPositionsForFirstFanM
 	end
 
 LilycoveCity_PokemonTrainerFanClub_EventScript_Man::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_0x8004, FANCLUB_MEMBER6
 	special BufferFanClubTrainerName
@@ -234,7 +234,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_ManPlayerNotChampion::
 	end
 
 LilycoveCity_PokemonTrainerFanClub_EventScript_Lass::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_0x8004, FANCLUB_MEMBER1
 	special BufferFanClubTrainerName
@@ -270,7 +270,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_LassPlayerNotChampion::
 	end
 
 LilycoveCity_PokemonTrainerFanClub_EventScript_PokefanM::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_0x8004, FANCLUB_MEMBER2
 	special BufferFanClubTrainerName
@@ -306,7 +306,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_PokefanMPlayerNotChampion::
 	end
 
 LilycoveCity_PokemonTrainerFanClub_EventScript_LittleGirl::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_0x8004, FANCLUB_MEMBER3
 	special BufferFanClubTrainerName
@@ -342,7 +342,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_LittleGirlPlayerNotChampion::
 	end
 
 LilycoveCity_PokemonTrainerFanClub_EventScript_NinjaBoy::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_0x8004, FANCLUB_MEMBER4
 	special BufferFanClubTrainerName
@@ -372,7 +372,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_NinjaBoyOnlyNonFan::
 	end
 
 LilycoveCity_PokemonTrainerFanClub_EventScript_Boy::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_0x8004, FANCLUB_MEMBER5
 	special BufferFanClubTrainerName
@@ -402,7 +402,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_BoyOnlyNonFan::
 	end
 
 LilycoveCity_PokemonTrainerFanClub_EventScript_Woman::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_0x8004, FANCLUB_MEMBER7
 	special BufferFanClubTrainerName
@@ -432,7 +432,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_WomanOnlyNonFan::
 	end
 
 LilycoveCity_PokemonTrainerFanClub_EventScript_ExpertF::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_0x8004, FANCLUB_MEMBER8
 	special BufferFanClubTrainerName
@@ -462,7 +462,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_ExpertFOnlyNonFan::
 	end
 
 LilycoveCity_PokemonTrainerFanClub_EventScript_Interviewer::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_FAN_CLUB_STRENGTH_SHARED, LilycoveCity_PokemonTrainerFanClub_EventScript_AlreadyInterviewed
 	goto_if_unset FLAG_FAN_CLUB_STRENGTH_SHARED, LilycoveCity_PokemonTrainerFanClub_EventScript_Interview
@@ -481,7 +481,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_Interview::
 	setvar VAR_0x8004, EASY_CHAT_TYPE_FAN_QUESTION
 	copyvar VAR_0x8005, VAR_0x800A
 	call Common_ShowEasyChatScreen
-	locktarget
+	lock
 	faceplayer
 	goto_if_eq VAR_RESULT, 1, LilycoveCity_PokemonTrainerFanClub_EventScript_SubmitOpinion
 	goto_if_eq VAR_RESULT, 0, LilycoveCity_PokemonTrainerFanClub_EventScript_CancelGiveOpinion
@@ -507,7 +507,7 @@ LilycoveCity_PokemonTrainerFanClub_EventScript_AskForOpinion::
 	setvar VAR_0x8004, EASY_CHAT_TYPE_FAN_QUESTION
 	copyvar VAR_0x8005, VAR_0x800A
 	call Common_ShowEasyChatScreen
-	locktarget
+	lock
 	faceplayer
 	goto_if_eq VAR_RESULT, 1, LilycoveCity_PokemonTrainerFanClub_EventScript_SubmitOpinion
 	goto_if_eq VAR_RESULT, 0, LilycoveCity_PokemonTrainerFanClub_EventScript_CancelGiveOpinion

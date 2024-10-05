@@ -4,7 +4,7 @@ BattleFrontier_Mart_MapScripts::
 	.byte 0
 
 BattleFrontier_Mart_EventScript_Clerk::
-	locktarget
+	lock
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -37,7 +37,7 @@ BattleFrontier_Mart_EventScript_OldMan::
 	end
 
 BattleFrontier_Mart_EventScript_OldWoman::
-	locktarget
+	lock
 	applymovement LOCALID_OLD_WOMAN, Common_Movement_FaceDown
 	waitmovement 0
 	msgbox BattleFrontier_Mart_Text_ProteinMakeNiceGift, MSGBOX_DEFAULT

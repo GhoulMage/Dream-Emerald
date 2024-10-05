@@ -14,7 +14,7 @@ Route119_WeatherInstitute_1F_EventScript_SetLittleBoyPos::
 	return
 
 Route119_WeatherInstitute_1F_EventScript_LittleBoy::
-	locktarget
+	lock
 	faceplayer
 	special GetPlayerBigGuyGirlString
 	goto_if_eq VAR_WEATHER_INSTITUTE_STATE, 0, Route119_WeatherInstitute_1F_EventScript_LittleBoyTeamAquaHere
@@ -28,7 +28,7 @@ Route119_WeatherInstitute_1F_EventScript_LittleBoyTeamAquaHere::
 	end
 
 Route119_WeatherInstitute_1F_EventScript_InstituteWorker1::
-	locktarget
+	lock
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, Route119_WeatherInstitute_1F_EventScript_StudyingRain
 	setvar VAR_0x8004, 0

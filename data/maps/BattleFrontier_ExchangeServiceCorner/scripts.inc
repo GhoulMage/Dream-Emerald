@@ -67,7 +67,7 @@ BattleFrontier_ExchangeServiceCorner_EventScript_BagFull::
 	end
 
 BattleFrontier_ExchangeServiceCorner_EventScript_DecorClerk1::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, EXCHANGE_CORNER_DECOR1_CLERK
 	call BattleFrontier_ExchangeServiceCorner_EventScript_ClerkWelcome
@@ -176,7 +176,7 @@ BattleFrontier_ExchangeServiceCorner_EventScript_TotodileDoll::
 	end
 
 BattleFrontier_ExchangeServiceCorner_EventScript_DecorClerk2::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, EXCHANGE_CORNER_DECOR2_CLERK
 	call BattleFrontier_ExchangeServiceCorner_EventScript_ClerkWelcome
@@ -240,7 +240,7 @@ BattleFrontier_ExchangeServiceCorner_EventScript_BlastoiseDoll::
 	end
 
 BattleFrontier_ExchangeServiceCorner_EventScript_VitaminClerk::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, EXCHANGE_CORNER_VITAMIN_CLERK
 	call BattleFrontier_ExchangeServiceCorner_EventScript_ClerkWelcome
@@ -313,7 +313,7 @@ BattleFrontier_ExchangeServiceCorner_EventScript_HPUp::
 	end
 
 BattleFrontier_ExchangeServiceCorner_EventScript_HoldItemClerk::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, EXCHANGE_CORNER_HOLD_ITEM_CLERK
 	call BattleFrontier_ExchangeServiceCorner_EventScript_ClerkWelcome
@@ -421,7 +421,7 @@ BattleFrontier_ExchangeServiceCorner_EventScript_Sailor::
 	end
 
 BattleFrontier_ExchangeServiceCorner_EventScript_PokefanF::
-	locktarget
+	lock
 	msgbox BattleFrontier_ExchangeServiceCorner_Text_GetYouAnythingYouWant, MSGBOX_DEFAULT
 	release
 	end

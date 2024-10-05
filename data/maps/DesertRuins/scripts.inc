@@ -55,7 +55,7 @@ DesertRuins_EventScript_CaveEntranceSide::
 	end
 
 DesertRuins_EventScript_Regirock::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_REGIROCK, CRY_MODE_ENCOUNTER

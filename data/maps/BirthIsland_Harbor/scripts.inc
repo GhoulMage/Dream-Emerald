@@ -5,7 +5,7 @@ BirthIsland_Harbor_MapScripts::
 	.byte 0
 
 BirthIsland_Harbor_EventScript_Sailor::
-	locktarget
+	lock
 	faceplayer
 	msgbox BirthIsland_Harbor_Text_SailorReturn, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, BirthIsland_Harbor_EventScript_AsYouLike

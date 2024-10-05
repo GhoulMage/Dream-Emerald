@@ -55,7 +55,7 @@ AncientTomb_EventScript_CaveEntranceSide::
 	end
 
 AncientTomb_EventScript_Registeel::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_REGISTEEL, CRY_MODE_ENCOUNTER

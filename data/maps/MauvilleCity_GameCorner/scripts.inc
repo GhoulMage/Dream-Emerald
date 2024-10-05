@@ -13,7 +13,7 @@ MauvilleCity_GameCorner_MapScripts::
 	.set COINS_PRICE_500, 10000
 
 MauvilleCity_GameCorner_EventScript_CoinsClerk::
-	locktarget
+	lock
 	faceplayer
 	msgbox MauvilleCity_GameCorner_Text_ThisIsMauvilleGameCorner, MSGBOX_DEFAULT
 	checkitem ITEM_COIN_CASE
@@ -100,7 +100,7 @@ MauvilleCity_GameCorner_EventScript_NoRoomForCoins::
 	end
 
 MauvilleCity_GameCorner_EventScript_PrizeCornerDolls::
-	locktarget
+	lock
 	faceplayer
 	msgbox MauvilleCity_GameCorner_Text_ExchangeCoinsForPrizes, MSGBOX_DEFAULT
 	checkitem ITEM_COIN_CASE
@@ -213,7 +213,7 @@ MauvilleCity_GameCorner_EventScript_CancelDollSelect::
 	end
 
 MauvilleCity_GameCorner_EventScript_PrizeCornerTMs::
-	locktarget
+	lock
 	faceplayer
 	msgbox MauvilleCity_GameCorner_Text_ExchangeCoinsForPrizes, MSGBOX_DEFAULT
 	checkitem ITEM_COIN_CASE
@@ -357,8 +357,8 @@ MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM::
 	goto MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
 	end
 
-MauvilleCity_GameCorner_EventScript_YouAlreadyHaveThis::
-	msgbox gText_YouAlreadyHaveThis, MSGBOX_DEFAULT
+MauvilleCity_GameCorner_EventScript_NoRoomForTM::
+	call Common_EventScript_BagIsFull
 	goto MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
 	end
 
@@ -377,7 +377,7 @@ MauvilleCity_GameCorner_EventScript_Gentleman::
 	end
 
 MauvilleCity_GameCorner_EventScript_Girl::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_STARTER_DOLL, MauvilleCity_GameCorner_EventScript_ReceivedStarterDoll
 	msgbox MauvilleCity_GameCorner_Text_GotTwoOfSameDollWantOne, MSGBOX_YESNO
@@ -435,7 +435,7 @@ MauvilleCity_GameCorner_EventScript_ReceivedStarterDoll::
 	end
 
 MauvilleCity_GameCorner_EventScript_PokefanM::
-	locktarget
+	lock
 	faceplayer
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_GameCorner_EventScript_TryGive20Coins
@@ -460,21 +460,21 @@ MauvilleCity_GameCorner_EventScript_PokefanMNormal::
 	end
 
 MauvilleCity_GameCorner_EventScript_OldMan::
-	locktarget
+	lock
 	faceplayer
 	msgbox MauvilleCity_GameCorner_Text_RouletteTablesDifferentRates, MSGBOX_DEFAULT
 	goto MauvilleCity_GameCorner_EventScript_NPCReturnToSlots
 	end
 
 MauvilleCity_GameCorner_EventScript_Cook::
-	locktarget
+	lock
 	faceplayer
 	msgbox MauvilleCity_GameCorner_Text_EasyToLoseTrackOfTime, MSGBOX_DEFAULT
 	goto MauvilleCity_GameCorner_EventScript_NPCReturnToSlots
 	end
 
 MauvilleCity_GameCorner_EventScript_Man::
-	locktarget
+	lock
 	faceplayer
 	msgbox MauvilleCity_GameCorner_Text_UpTo3CoinsCanBeUsed, MSGBOX_DEFAULT
 	goto MauvilleCity_GameCorner_EventScript_NPCReturnToSlots
@@ -488,14 +488,14 @@ MauvilleCity_GameCorner_EventScript_NPCReturnToSlots::
 	end
 
 MauvilleCity_GameCorner_EventScript_Maniac::
-	locktarget
+	lock
 	faceplayer
 	msgbox MauvilleCity_GameCorner_Text_DifficultToStopOn7, MSGBOX_DEFAULT
 	goto MauvilleCity_GameCorner_EventScript_NPCReturnToSlots
 	end
 
 MauvilleCity_GameCorner_EventScript_Woman::
-	locktarget
+	lock
 	faceplayer
 	msgbox MauvilleCity_GameCorner_Text_HeresSomeSlotsInfo, MSGBOX_DEFAULT
 	goto MauvilleCity_GameCorner_EventScript_NPCReturnToSlots

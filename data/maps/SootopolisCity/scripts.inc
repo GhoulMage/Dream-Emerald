@@ -683,7 +683,7 @@ SootopolisCity_Movement_UnusedPanBack:
 	step_end
 
 SootopolisCity_EventScript_CaveOfOriginExpert::
-	locktarget
+	lock
 	faceplayer
 	goto_if_ge VAR_SOOTOPOLIS_CITY_STATE, 6, SootopolisCity_EventScript_ExpertPostLegendaries
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_ExpertLegendaries
@@ -708,7 +708,7 @@ SootopolisCity_EventScript_ExpertLegendaries::
 	end
 
 SootopolisCity_EventScript_Kiri::
-	locktarget
+	lock
 	faceplayer
 	goto_if_le VAR_SOOTOPOLIS_CITY_STATE, 1, SootopolisCity_EventScript_KiriGiveBerry
 	goto_if_ge VAR_SOOTOPOLIS_CITY_STATE, 6, SootopolisCity_EventScript_KiriGiveBerry
@@ -788,7 +788,7 @@ SootopolisCity_EventScript_Woman2Rayquaza::
 	end
 
 SootopolisCity_EventScript_Man::
-	locktarget
+	lock
 	faceplayer
 	goto_if_ge VAR_SOOTOPOLIS_CITY_STATE, 6, SootopolisCity_EventScript_ManPostLegendaries
 	msgbox SootopolisCity_Text_NoOrdinaryTourist, MSGBOX_DEFAULT
@@ -801,7 +801,7 @@ SootopolisCity_EventScript_ManPostLegendaries::
 	end
 
 SootopolisCity_EventScript_Woman1::
-	locktarget
+	lock
 	faceplayer
 	goto_if_ge VAR_SOOTOPOLIS_CITY_STATE, 6, SootopolisCity_EventScript_Woman1PostLegendaries
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_Woman1Rayquaza
@@ -1298,7 +1298,7 @@ SootopolisCity_EventScript_ManiacRayquaza::
 	end
 
 SootopolisCity_EventScript_Wallace::
-	locktarget
+	lock
 	faceplayer
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 4, SootopolisCity_EventScript_GoToSkyPillar
 	goto_if_set FLAG_RECEIVED_HM_WATERFALL, SootopolisCity_EventScript_GoToGym

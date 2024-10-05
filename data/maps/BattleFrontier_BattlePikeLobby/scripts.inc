@@ -93,7 +93,7 @@ BattleFrontier_BattlePikeLobby_EventScript_LostChallenge::
 	end
 
 BattleFrontier_BattlePikeLobby_EventScript_Attendant::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_PIKE
 	setvar VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES

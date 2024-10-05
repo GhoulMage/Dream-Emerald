@@ -2,7 +2,7 @@ PetalburgCity_Mart_MapScripts::
 	.byte 0
 
 PetalburgCity_Mart_EventScript_Clerk::
-	locktarget
+	lock
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage

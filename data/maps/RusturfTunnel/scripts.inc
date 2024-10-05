@@ -24,7 +24,7 @@ RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos::
 	return
 
 RusturfTunnel_EventScript_Wanda::
-	locktarget
+	lock
 	faceplayer
 	msgbox RusturfTunnel_Text_BoyfriendOnOtherSideOfRock, MSGBOX_DEFAULT
 	closemessage
@@ -34,7 +34,7 @@ RusturfTunnel_EventScript_Wanda::
 	end
 
 RusturfTunnel_EventScript_WandasBoyfriend::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_TEMP_1, RusturfTunnel_EventScript_AlreadySpokenTo
 	setflag FLAG_TEMP_1
@@ -293,7 +293,7 @@ RusturfTunnel_Movement_GruntAndPeekoBackUp:
 	step_end
 
 RusturfTunnel_EventScript_Peeko::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
@@ -303,7 +303,7 @@ RusturfTunnel_EventScript_Peeko::
 	end
 
 RusturfTunnel_EventScript_Grunt::
-	locktarget
+	lock
 	faceplayer
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	msgbox RusturfTunnel_Text_GruntIntro, MSGBOX_DEFAULT

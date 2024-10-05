@@ -10,7 +10,7 @@ SootopolisCity_House4_EventScript_Woman::
 	end
 
 SootopolisCity_House4_EventScript_Azumarill::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_AZUMARILL, CRY_MODE_NORMAL

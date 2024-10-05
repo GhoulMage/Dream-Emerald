@@ -2,7 +2,7 @@ BattleFrontier_Lounge7_MapScripts::
 	.byte 0
 
 BattleFrontier_Lounge7_EventScript_LeftMoveTutor::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_C, SCROLL_MULTI_BF_MOVE_TUTOR_1
 	goto_if_set FLAG_MET_FRONTIER_BEAUTY_MOVE_TUTOR, BattleFrontier_Lounge7_EventScript_AlreadyMetLeftTutor
@@ -126,7 +126,7 @@ BattleFrontier_Lounge7_EventScript_SwordsDance::
 	end
 
 BattleFrontier_Lounge7_EventScript_RightMoveTutor::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_C, SCROLL_MULTI_BF_MOVE_TUTOR_2
 	goto_if_set FLAG_MET_FRONTIER_SWIMMER_MOVE_TUTOR, BattleFrontier_Lounge7_EventScript_AlreadyMetRightTutor

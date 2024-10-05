@@ -50,7 +50,7 @@ SafariZone_South_EventScript_Youngster::
 	end
 
 SafariZone_South_EventScript_ExitAttendant::
-	locktarget
+	lock
 	faceplayer
 	goto_if_unset FLAG_GOOD_LUCK_SAFARI_ZONE, SafariZone_South_EventScript_GoodLuck
 	msgbox SafariZone_South_Text_StillHaveTimeExit, MSGBOX_YESNO

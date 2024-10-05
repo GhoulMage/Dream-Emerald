@@ -10,7 +10,7 @@ FortreeCity_DecorationShop_EventScript_Girl::
 	end
 
 FortreeCity_DecorationShop_EventScript_ClerkDesks::
-	locktarget
+	lock
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -34,7 +34,7 @@ FortreeCity_DecorationShop_PokemartDecor_Desks:
 	end
 
 FortreeCity_DecorationShop_EventScript_ClerkChairs::
-	locktarget
+	lock
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
