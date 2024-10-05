@@ -9,7 +9,7 @@ FallarborTown_OnTransition:
 	end
 
 FallarborTown_EventScript_ExpertM::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, FallarborTown_EventScript_ExpertMNormal
 	msgbox FallarborTown_Text_ShadyCharactersCozmosHome, MSGBOX_DEFAULT
@@ -30,7 +30,7 @@ FallarborTown_EventScript_Gentleman::
 	end
 
 FallarborTown_EventScript_Azurill::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_AZURILL, CRY_MODE_NORMAL

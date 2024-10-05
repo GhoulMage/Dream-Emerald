@@ -439,7 +439,7 @@ Route119_EventScript_Rachel::
 	end
 
 Route119_EventScript_BridgeAquaGrunt1::
-	locktarget
+	lock
 	faceplayer
 	msgbox Route119_Text_StayAwayFromWeatherInstitute, MSGBOX_DEFAULT
 	closemessage
@@ -449,7 +449,7 @@ Route119_EventScript_BridgeAquaGrunt1::
 	end
 
 Route119_EventScript_BridgeAquaGrunt2::
-	locktarget
+	lock
 	faceplayer
 	msgbox Route119_Text_DontGoNearWeatherInstitute, MSGBOX_DEFAULT
 	closemessage

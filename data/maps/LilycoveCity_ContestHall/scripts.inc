@@ -47,7 +47,7 @@ LilycoveCity_ContestHall_EventScript_Sailor::
 	end
 
 LilycoveCity_ContestHall_EventScript_SmartContestMC::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_GiveItBestSmartAppeal, MSGBOX_DEFAULT
 	closemessage
@@ -57,7 +57,7 @@ LilycoveCity_ContestHall_EventScript_SmartContestMC::
 	end
 
 LilycoveCity_ContestHall_EventScript_SmartContestJudge::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_AreYouEnjoyingThisContest, MSGBOX_DEFAULT
 	closemessage
@@ -67,7 +67,7 @@ LilycoveCity_ContestHall_EventScript_SmartContestJudge::
 	end
 
 LilycoveCity_ContestHall_EventScript_SmartContestant1::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_EnteredWrongContest, MSGBOX_DEFAULT
 	closemessage
@@ -77,7 +77,7 @@ LilycoveCity_ContestHall_EventScript_SmartContestant1::
 	end
 
 LilycoveCity_ContestHall_EventScript_SmartContestant2::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_RaisedMonToBeSmart, MSGBOX_DEFAULT
 	closemessage
@@ -87,7 +87,7 @@ LilycoveCity_ContestHall_EventScript_SmartContestant2::
 	end
 
 LilycoveCity_ContestHall_EventScript_SmartContestant3::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_IfMonPullsSmartMoveNext, MSGBOX_DEFAULT
 	closemessage
@@ -97,7 +97,7 @@ LilycoveCity_ContestHall_EventScript_SmartContestant3::
 	end
 
 LilycoveCity_ContestHall_EventScript_SmartContestant4::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_DontAppreciateCuteLeechLife, MSGBOX_DEFAULT
 	closemessage
@@ -111,7 +111,7 @@ LilycoveCity_ContestHall_EventScript_SmartContestAudience1::
 	end
 
 LilycoveCity_ContestHall_EventScript_SmartContestAudience2::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_AllSeemToUseDifferentMoves, MSGBOX_DEFAULT
 	closemessage
@@ -121,7 +121,7 @@ LilycoveCity_ContestHall_EventScript_SmartContestAudience2::
 	end
 
 LilycoveCity_ContestHall_EventScript_SmartContestAudience3::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_PokemonSmarterThanTrainers, MSGBOX_DEFAULT
 	closemessage
@@ -131,7 +131,7 @@ LilycoveCity_ContestHall_EventScript_SmartContestAudience3::
 	end
 
 LilycoveCity_ContestHall_EventScript_SmartContestAudience4::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_StillLoveSmartnessContests, MSGBOX_DEFAULT
 	closemessage
@@ -141,7 +141,7 @@ LilycoveCity_ContestHall_EventScript_SmartContestAudience4::
 	end
 
 LilycoveCity_ContestHall_EventScript_BeautyContestMC::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_AreYouEnteringBeautyContest, MSGBOX_DEFAULT
 	closemessage
@@ -151,7 +151,7 @@ LilycoveCity_ContestHall_EventScript_BeautyContestMC::
 	end
 
 LilycoveCity_ContestHall_EventScript_BeautyContestJudge::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_EveryPokemonPristineBeauty, MSGBOX_DEFAULT
 	closemessage
@@ -161,7 +161,7 @@ LilycoveCity_ContestHall_EventScript_BeautyContestJudge::
 	end
 
 LilycoveCity_ContestHall_EventScript_BeautyContestant1::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_EyesWillBeGluedToMyBeauty, MSGBOX_DEFAULT
 	closemessage
@@ -171,7 +171,7 @@ LilycoveCity_ContestHall_EventScript_BeautyContestant1::
 	end
 
 LilycoveCity_ContestHall_EventScript_BeautyContestant2::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_OverdidGrooming, MSGBOX_DEFAULT
 	closemessage
@@ -181,7 +181,7 @@ LilycoveCity_ContestHall_EventScript_BeautyContestant2::
 	end
 
 LilycoveCity_ContestHall_EventScript_BeautyContestant3::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_JudgeWontSeeAuroraBeam, MSGBOX_DEFAULT
 	closemessage
@@ -191,7 +191,7 @@ LilycoveCity_ContestHall_EventScript_BeautyContestant3::
 	end
 
 LilycoveCity_ContestHall_EventScript_BeautyContestant4::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_PokemonLooksLikeYoungerMe, MSGBOX_DEFAULT
 	closemessage
@@ -201,7 +201,7 @@ LilycoveCity_ContestHall_EventScript_BeautyContestant4::
 	end
 
 LilycoveCity_ContestHall_EventScript_BeautyContestAudience1::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_WinBeautyContestMakesMeHappy, MSGBOX_DEFAULT
 	closemessage
@@ -211,7 +211,7 @@ LilycoveCity_ContestHall_EventScript_BeautyContestAudience1::
 	end
 
 LilycoveCity_ContestHall_EventScript_BeautyContestAudience2::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_GanderAtAllThosePrettyPokemon, MSGBOX_DEFAULT
 	closemessage
@@ -221,7 +221,7 @@ LilycoveCity_ContestHall_EventScript_BeautyContestAudience2::
 	end
 
 LilycoveCity_ContestHall_EventScript_BeautyContestAudience3::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_CantWinOnBeautyAlone, MSGBOX_DEFAULT
 	closemessage
@@ -231,7 +231,7 @@ LilycoveCity_ContestHall_EventScript_BeautyContestAudience3::
 	end
 
 LilycoveCity_ContestHall_EventScript_CuteContestMC::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_InTheMiddleOfContest, MSGBOX_DEFAULT
 	closemessage
@@ -241,7 +241,7 @@ LilycoveCity_ContestHall_EventScript_CuteContestMC::
 	end
 
 LilycoveCity_ContestHall_EventScript_CuteContestJudge::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_SuchCharmingCuteAppeals, MSGBOX_DEFAULT
 	closemessage
@@ -251,7 +251,7 @@ LilycoveCity_ContestHall_EventScript_CuteContestJudge::
 	end
 
 LilycoveCity_ContestHall_EventScript_CuteContestant1::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_MyAzurillWasDistracted, MSGBOX_DEFAULT
 	closemessage
@@ -261,7 +261,7 @@ LilycoveCity_ContestHall_EventScript_CuteContestant1::
 	end
 
 LilycoveCity_ContestHall_EventScript_CuteContestant2::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_NeverWonBattleButContest, MSGBOX_DEFAULT
 	closemessage
@@ -271,7 +271,7 @@ LilycoveCity_ContestHall_EventScript_CuteContestant2::
 	end
 
 LilycoveCity_ContestHall_EventScript_CuteContestant3::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_PetalDanceIsMarvel, MSGBOX_DEFAULT
 	closemessage
@@ -281,7 +281,7 @@ LilycoveCity_ContestHall_EventScript_CuteContestant3::
 	end
 
 LilycoveCity_ContestHall_EventScript_CuteContestant4::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_MyMonAppealSoMuchCuter, MSGBOX_DEFAULT
 	closemessage
@@ -304,7 +304,7 @@ LilycoveCity_ContestHall_EventScript_CuteContestAudience1::
 	end
 
 LilycoveCity_ContestHall_EventScript_CuteContestAudience2::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_WantCuteMonOfMyOwn, MSGBOX_DEFAULT
 	closemessage
@@ -314,7 +314,7 @@ LilycoveCity_ContestHall_EventScript_CuteContestAudience2::
 	end
 
 LilycoveCity_ContestHall_EventScript_CuteContestAudience3::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestHall_Text_ThatGirlThereIsCutest, MSGBOX_DEFAULT
 	closemessage

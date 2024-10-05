@@ -2,7 +2,7 @@ SlateportCity_PokemonFanClub_MapScripts::
 	.byte 0
 
 SlateportCity_PokemonFanClub_EventScript_Chairman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_unset FLAG_ENTERED_CONTEST, SlateportCity_PokemonFanClub_EventScript_ChairmanNotEnteredContest
 	call_if_unset FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN, SlateportCity_PokemonFanClub_EventScript_MeetChairman
@@ -187,7 +187,7 @@ SlateportCity_PokemonFanClub_EventScript_MeetChairman::
 	return
 
 SlateportCity_PokemonFanClub_EventScript_SootheBellWoman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_SOOTHE_BELL, SlateportCity_PokemonFanClub_EventScript_ReceivedSootheBell
 	msgbox SlateportCity_PokemonFanClub_Text_ShowMePokemonThatLoveYou, MSGBOX_DEFAULT
@@ -223,7 +223,7 @@ SlateportCity_PokemonFanClub_EventScript_Twin::
 	end
 
 SlateportCity_PokemonFanClub_EventScript_Skitty::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL
@@ -233,7 +233,7 @@ SlateportCity_PokemonFanClub_EventScript_Skitty::
 	end
 
 SlateportCity_PokemonFanClub_EventScript_Zigzagoon::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
@@ -243,7 +243,7 @@ SlateportCity_PokemonFanClub_EventScript_Zigzagoon::
 	end
 
 SlateportCity_PokemonFanClub_EventScript_Azumarill::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_AZUMARILL, CRY_MODE_NORMAL

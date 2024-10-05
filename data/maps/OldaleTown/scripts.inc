@@ -38,7 +38,7 @@ OldaleTown_EventScript_Girl::
 	end
 
 OldaleTown_EventScript_MartEmployee::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_ExplainPotion
 	goto_if_set FLAG_TEMP_1, OldaleTown_EventScript_ExplainPotion
@@ -192,7 +192,7 @@ OldaleTown_Movement_Unknown2:
 	step_end
 
 OldaleTown_EventScript_FootprintsMan::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
 	msgbox OldaleTown_Text_DiscoveredFootprints, MSGBOX_DEFAULT

@@ -4,7 +4,7 @@ GraniteCave_StevensRoom_MapScripts::
 	.byte 0
 
 GraniteCave_StevensRoom_EventScript_Steven::
-	locktarget
+	lock
 	faceplayer
 	msgbox GraniteCave_StevensRoom_Text_ImStevenLetterForMe, MSGBOX_DEFAULT
 	setvar VAR_0x8004, ITEM_LETTER

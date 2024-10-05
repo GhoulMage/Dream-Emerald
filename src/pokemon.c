@@ -6606,3 +6606,14 @@ bool8 IsLevelEvolution(u16 species, u32 evo){
     }
     return FALSE;
 }
+
+u16 HasSpecialEvolution(u16 species) {
+    u32 i;
+    for(i = 0; i < EVOS_PER_MON; i++){
+        if(gEvolutionTable[species][i].method
+            && !IsLevelEvolution(species, i)) {
+            return gEvolutionTable[species][i].targetSpecies;
+        }
+    }
+	return 0;
+}

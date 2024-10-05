@@ -2,7 +2,7 @@ SlateportCity_NameRatersHouse_MapScripts::
 	.byte 0
 
 SlateportCity_NameRatersHouse_EventScript_NameRater::
-	locktarget
+	lock
 	faceplayer
 	msgbox SlateportCity_NameRatersHouse_Text_PleasedToRateMonNickname, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, SlateportCity_NameRatersHouse_EventScript_ChooseMonToRate

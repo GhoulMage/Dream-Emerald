@@ -62,13 +62,13 @@ BattleFrontier_OutsideEast_EventScript_BlackBelt1::
 	end
 
 BattleFrontier_OutsideEast_EventScript_Cook::
-	locktarget
+	lock
 	msgbox BattleFrontier_OutsideEast_Text_BelieveInYouBuddy, MSGBOX_DEFAULT
 	release
 	end
 
 BattleFrontier_OutsideEast_EventScript_Zigzagoon::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
@@ -94,7 +94,7 @@ BattleFrontier_OutsideEast_EventScript_Twin::
 	end
 
 BattleFrontier_OutsideEast_EventScript_Man2::
-	locktarget
+	lock
 	msgbox BattleFrontier_OutsideEast_Text_GoRackUpSomeWinsForDaddy, MSGBOX_DEFAULT
 	release
 	end
@@ -104,7 +104,7 @@ BattleFrontier_OutsideEast_EventScript_TriathleteM::
 	end
 
 BattleFrontier_OutsideEast_EventScript_Sudowoodo::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playse SE_SUDOWOODO_SHAKE
@@ -114,7 +114,7 @@ BattleFrontier_OutsideEast_EventScript_Sudowoodo::
 	end
 
 BattleFrontier_OutsideEast_EventScript_WaterSudowoodo::
-	locktarget
+	lock
 	faceplayer
 	special DoWateringBerryTreeAnim
 	waitstate
@@ -193,13 +193,13 @@ BattleFrontier_OutsideEast_EventScript_BlackBelt2::
 	end
 
 BattleFrontier_OutsideEast_EventScript_Maniac2::
-	locktarget
+	lock
 	msgbox BattleFrontier_OutsideEast_Text_CanDoAnythingWithYou, MSGBOX_DEFAULT
 	release
 	end
 
 BattleFrontier_OutsideEast_EventScript_Woman3::
-	locktarget
+	lock
 	msgbox BattleFrontier_OutsideEast_Text_PowerOfOurLoveWillOvercome, MSGBOX_DEFAULT
 	release
 	end
@@ -217,7 +217,7 @@ BattleFrontier_OutsideEast_EventScript_Gentleman::
 	end
 
 BattleFrontier_OutsideEast_EventScript_OldWoman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_SUDOWOODO, BattleFrontier_OutsideEast_EventScript_OldWomanSudowoodoGone
 	msgbox BattleFrontier_OutsideEast_Text_OddTreeHereSeemsToWiggle, MSGBOX_DEFAULT

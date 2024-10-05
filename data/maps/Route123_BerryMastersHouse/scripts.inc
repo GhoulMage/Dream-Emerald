@@ -7,7 +7,7 @@ Route123_BerryMastersHouse_OnTransition:
 	end
 
 Route123_BerryMastersHouse_EventScript_BerryMaster::
-	locktarget
+	lock
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY, Route123_BerryMastersHouse_EventScript_ReceivedBerryToday
@@ -34,14 +34,14 @@ Route123_BerryMastersHouse_EventScript_ReceivedBerryToday::
 	end
 
 Route123_BerryMastersHouse_EventScript_BerryMastersWife::
-	locktarget
+	lock
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_BERRY_MASTERS_WIFE, Route123_BerryMastersHouse_EventScript_ReceivedWifeBerryToday
 	msgbox Route123_BerryMastersHouse_Text_HeardAGoodSayingLately, MSGBOX_DEFAULT
 	setvar VAR_0x8004, EASY_CHAT_TYPE_GOOD_SAYING
 	call Common_ShowEasyChatScreen
-	locktarget
+	lock
 	faceplayer
 	goto_if_eq VAR_RESULT, TRUE, Route123_BerryMastersHouse_EventScript_GavePhrase
 	goto_if_eq VAR_RESULT, FALSE, Route123_BerryMastersHouse_EventScript_CancelPhrase

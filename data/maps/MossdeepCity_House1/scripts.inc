@@ -2,7 +2,7 @@ MossdeepCity_House1_MapScripts::
 	.byte 0
 
 MossdeepCity_House1_EventScript_BlackBelt::
-	locktarget
+	lock
 	faceplayer
 	bufferleadmonspeciesname STR_VAR_1
 	msgbox MossdeepCity_House1_Text_HmmYourPokemon, MSGBOX_DEFAULT

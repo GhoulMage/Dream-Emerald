@@ -12,7 +12,7 @@ MossdeepCity_House2_EventScript_Twin::
 	end
 
 MossdeepCity_House2_EventScript_Wingull::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL

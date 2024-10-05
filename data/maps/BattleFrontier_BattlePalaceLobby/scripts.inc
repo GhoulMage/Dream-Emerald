@@ -107,7 +107,7 @@ BattleFrontier_BattlePalaceLobby_EventScript_ResumeChallenge::
 	goto BattleFrontier_BattlePalaceLobby_EventScript_EnterChallenge
 
 BattleFrontier_BattlePalaceLobby_EventScript_SinglesAttendant::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_PALACE
 	setvar VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES
@@ -115,7 +115,7 @@ BattleFrontier_BattlePalaceLobby_EventScript_SinglesAttendant::
 	end
 
 BattleFrontier_BattlePalaceLobby_EventScript_DoublesAttendant::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_PALACE
 	setvar VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_DOUBLES
