@@ -1,6 +1,3 @@
-extern const void HandleRepelMenuChoice(void);
-extern const void TryDrawRepelMenu(void);
-
 // multichoice lists
 static const struct MenuAction MultichoiceList_BrineyOnDewford[] =
 {
