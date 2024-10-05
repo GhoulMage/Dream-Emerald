@@ -33,7 +33,7 @@ Route110_EventScript_BeginCylcingRoadChallenge::
 	return
 
 Route110_EventScript_AquaGrunt1::
-	locktarget
+	lock
 	faceplayer
 	msgbox Route110_Text_WeCantTalkAboutAquaActivities, MSGBOX_DEFAULT
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -42,7 +42,7 @@ Route110_EventScript_AquaGrunt1::
 	end
 
 Route110_EventScript_AquaGrunt2::
-	locktarget
+	lock
 	faceplayer
 	msgbox Route110_Text_KickUpARuckus, MSGBOX_DEFAULT
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -51,7 +51,7 @@ Route110_EventScript_AquaGrunt2::
 	end
 
 Route110_EventScript_AquaGrunt3::
-	locktarget
+	lock
 	faceplayer
 	msgbox Route110_Text_MyFirstJobInAqua, MSGBOX_DEFAULT
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -60,7 +60,7 @@ Route110_EventScript_AquaGrunt3::
 	end
 
 Route110_EventScript_AquaGrunt4::
-	locktarget
+	lock
 	faceplayer
 	msgbox Route110_Text_AquaActionsBringSmiles, MSGBOX_DEFAULT
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -146,7 +146,7 @@ Route110_EventScript_NoRecordSet::
 	end
 
 Route110_EventScript_ChallengeGuy::
-	locktarget
+	lock
 	faceplayer
 	specialvar VAR_RESULT, GetPlayerAvatarBike
 	goto_if_eq VAR_RESULT, 1, Route110_EventScript_PlayerRidingAcroBike

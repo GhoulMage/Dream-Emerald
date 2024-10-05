@@ -6,7 +6,7 @@ LilycoveCity_House1_EventScript_ExpertM::
 	end
 
 LilycoveCity_House1_EventScript_Kecleon::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL

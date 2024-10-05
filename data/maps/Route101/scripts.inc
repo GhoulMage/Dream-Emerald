@@ -219,7 +219,7 @@ Route101_EventScript_RouteSign::
 	end
 
 Route101_EventScript_BirchsBag::
-	locktarget
+	lock
 	faceplayer
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_RESCUED_BIRCH

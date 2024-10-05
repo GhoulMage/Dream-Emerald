@@ -34,7 +34,7 @@ LilycoveCity_EventScript_SetWailmerMetatiles::
 	return
 
 LilycoveCity_EventScript_BerryGentleman::
-	locktarget
+	lock
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_LILYCOVE_RECEIVED_BERRY, LilycoveCity_EventScript_ReceivedBerry
@@ -58,7 +58,7 @@ LilycoveCity_EventScript_Man3::
 	end
 
 LilycoveCity_EventScript_Girl::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_BADGE07_GET, LilycoveCity_EventScript_GirlAquaGone
 	msgbox LilycoveCity_Text_StrangeCaveInCove, MSGBOX_DEFAULT
@@ -75,7 +75,7 @@ LilycoveCity_EventScript_RichBoy::
 	end
 
 LilycoveCity_EventScript_Sailor2::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, LilycoveCity_EventScript_Sailor2AquaGone
 	msgbox LilycoveCity_Text_TeamAquaBeenTrainingWailmer, MSGBOX_DEFAULT
@@ -88,7 +88,7 @@ LilycoveCity_EventScript_Sailor2AquaGone::
 	end
 
 LilycoveCity_EventScript_Woman2::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, LilycoveCity_EventScript_Woman2AquaGone
 	msgbox LilycoveCity_Text_SomeoneStoleMyPokemon, MSGBOX_DEFAULT
@@ -113,7 +113,7 @@ LilycoveCity_EventScript_ExpertF::
 	end
 
 LilycoveCity_EventScript_ExpertM2::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_BADGE07_GET, LilycoveCity_EventScript_ExpertM2AquaGone
 	msgbox LilycoveCity_Text_TeamAquaRenovatedCavern, MSGBOX_DEFAULT
@@ -230,7 +230,7 @@ LilycoveCity_EventScript_AquaGrunt4::
 	end
 
 LilycoveCity_EventScript_Rival::
-	locktarget
+	lock
 	faceplayer
 	checkplayergender
 	goto_if_eq VAR_RESULT, MALE, LilycoveCity_EventScript_May
@@ -396,7 +396,7 @@ LilycoveCity_EventScript_RivalFlyAway::
 	end
 
 LilycoveCity_EventScript_SchoolKidM::
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_Text_DoYouKnowAboutBerryBlender, MSGBOX_YESNO
 	call_if_eq VAR_RESULT, YES, LilycoveCity_EventScript_KnowAboutBerryBlender

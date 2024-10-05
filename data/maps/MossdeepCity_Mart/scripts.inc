@@ -2,7 +2,7 @@ MossdeepCity_Mart_MapScripts::
 	.byte 0
 
 MossdeepCity_Mart_EventScript_Clerk::
-	locktarget
+	lock
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage

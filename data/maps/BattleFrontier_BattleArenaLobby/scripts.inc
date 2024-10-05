@@ -106,7 +106,7 @@ BattleFrontier_BattleArenaLobby_EventScript_ResumeChallenge::
 	goto BattleFrontier_BattleArenaLobby_EventScript_EnterChallenge
 
 BattleFrontier_BattleArenaLobby_EventScript_Attendant::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_ARENA
 	setvar VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES

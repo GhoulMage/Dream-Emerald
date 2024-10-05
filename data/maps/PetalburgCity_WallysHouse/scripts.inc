@@ -29,7 +29,7 @@ PetalburgCity_WallysHouse_EventScript_GiveHMSurf::
 	end
 
 PetalburgCity_WallysHouse_EventScript_WallysDad::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_WALLY_VICTORY_ROAD, PetalburgCity_WallysHouse_EventScript_DefeatedWallyInVictoryRoad
 	goto_if_set FLAG_RECEIVED_HM_SURF, PetalburgCity_WallysHouse_EventScript_ReceievedHMSurf
@@ -55,7 +55,7 @@ PetalburgCity_WallysHouse_EventScript_PlayedWithWally::
 	end
 
 PetalburgCity_WallysHouse_EventScript_WallysMom::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_SURF, PetalburgCity_WallysHouse_EventScript_ReceivedHMSurf
 	msgbox PetalburgCity_WallysHouse_Text_WallyWasReallyHappy, MSGBOX_DEFAULT

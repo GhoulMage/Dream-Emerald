@@ -2,7 +2,7 @@ VerdanturfTown_WandasHouse_MapScripts::
 	.byte 0
 
 VerdanturfTown_WandasHouse_EventScript_Wally::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_WALLY_SPEECH, VerdanturfTown_WandasHouse_EventScript_WallyShortSpeech
 	msgbox VerdanturfTown_WandasHouse_Text_StrongerSpeech, MSGBOX_DEFAULT
@@ -16,7 +16,7 @@ VerdanturfTown_WandasHouse_EventScript_WallyShortSpeech::
 	end
 
 VerdanturfTown_WandasHouse_EventScript_WallysUncle::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_WALLY_VICTORY_ROAD, VerdanturfTown_WandasHouse_EventScript_WallysUncleEverGrande
 	goto_if_set FLAG_DEFEATED_LAVARIDGE_GYM, VerdanturfTown_WandasHouse_EventScript_WallysUncleSlippedOff
@@ -39,7 +39,7 @@ VerdanturfTown_WandasHouse_EventScript_WandasBoyfriend::
 	end
 
 VerdanturfTown_WandasHouse_EventScript_Wanda::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_LAVARIDGE_GYM, VerdanturfTown_WandasHouse_EventScript_WandaDontWorry
 	goto_if_set FLAG_DEFEATED_WALLY_MAUVILLE, VerdanturfTown_WandasHouse_EventScript_MeetWanda
@@ -58,7 +58,7 @@ VerdanturfTown_WandasHouse_EventScript_WandaDontWorry::
 	end
 
 VerdanturfTown_WandasHouse_EventScript_WallysAunt::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_WALLY_VICTORY_ROAD, VerdanturfTown_WandasHouse_EventScript_WallysAuntEverGrande
 	goto_if_set FLAG_DEFEATED_LAVARIDGE_GYM, VerdanturfTown_WandasHouse_EventScript_WallysAuntAnythingHappened

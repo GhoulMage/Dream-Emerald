@@ -28,7 +28,7 @@ FallarborTown_PokemonCenter_1F_EventScript_ExpertM::
 	end
 
 FallarborTown_PokemonCenter_1F_EventScript_Lanette::
-	locktarget
+	lock
 	faceplayer
 	msgbox FallarborTown_PokemonCenter_1F_Text_LanetteGreeting, MSGBOX_DEFAULT
 	closemessage

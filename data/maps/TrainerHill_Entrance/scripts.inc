@@ -110,7 +110,7 @@ TrainerHill_Entrance_EventScript_Nurse::
 	end
 
 TrainerHill_Entrance_EventScript_Attendant::
-	locktarget
+	lock
 	faceplayer
 	trainerhill_inchallenge
 	goto_if_eq VAR_RESULT, FALSE, TrainerHill_Entrance_EventScript_ThanksForPlaying
@@ -244,7 +244,7 @@ TrainerHill_Entrance_EventScript_GirlTrainerHillClosed::
 	end
 
 TrainerHill_Entrance_EventScript_Clerk::
-	locktarget
+	lock
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage

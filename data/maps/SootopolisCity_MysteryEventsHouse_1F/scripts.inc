@@ -68,7 +68,7 @@ SootopolisCity_MysteryEventsHouse_1F_Movement_OldManWalkBehindPlayer:
 	step_end
 
 SootopolisCity_MysteryEventsHouse_1F_EventScript_OldMan::
-	locktarget
+	lock
 	faceplayer
 	frontier_checkvisittrainer
 	goto_if_eq VAR_RESULT, 1, SootopolisCity_MysteryEventsHouse_1F_EventScript_InvalidVisitingTrainer

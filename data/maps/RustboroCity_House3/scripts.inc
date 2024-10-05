@@ -11,7 +11,7 @@ RustboroCity_House3_EventScript_OldWoman::
 
 @ Misspelling on purpose, see nickname
 RustboroCity_House3_EventScript_Pekachu::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_PIKACHU, CRY_MODE_NORMAL

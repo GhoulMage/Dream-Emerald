@@ -27,7 +27,7 @@ AquaHideout_B1F_EventScript_ShowElectrode2::
 	return
 
 AquaHideout_B1F_EventScript_Electrode1::
-	locktarget
+	lock
 	faceplayer
 	setwildbattle SPECIES_ELECTRODE, 30
 	waitse
@@ -51,7 +51,7 @@ AquaHideout_B1F_EventScript_DefeatedElectrode1::
 	end
 
 AquaHideout_B1F_EventScript_Electrode2::
-	locktarget
+	lock
 	faceplayer
 	setwildbattle SPECIES_ELECTRODE, 30
 	waitse

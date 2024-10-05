@@ -2,7 +2,7 @@ SootopolisCity_Mart_MapScripts::
 	.byte 0
 
 SootopolisCity_Mart_EventScript_Clerk::
-	locktarget
+	lock
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -27,7 +27,7 @@ SootopolisCity_Mart_Pokemart:
 	end
 
 SootopolisCity_Mart_EventScript_FatMan::
-	locktarget
+	lock
 	faceplayer
 	goto_if_ge VAR_SKY_PILLAR_STATE, 2, SootopolisCity_Mart_EventScript_FatManNoLegendaries
 	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_Mart_EventScript_FatManNoLegendaries
@@ -41,7 +41,7 @@ SootopolisCity_Mart_EventScript_FatManNoLegendaries::
 	end
 
 SootopolisCity_Mart_EventScript_Gentleman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_ge VAR_SKY_PILLAR_STATE, 2, SootopolisCity_Mart_EventScript_GentlemanNoLegendaries
 	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_Mart_EventScript_GentlemanNoLegendaries

@@ -10,7 +10,7 @@ VerdanturfTown_OnTransition:
 	end
 
 VerdanturfTown_EventScript_Twin::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RUSTURF_TUNNEL_OPENED, VerdanturfTown_EventScript_TwinTunnelOpen
 	msgbox VerdanturfTown_Text_ManTryingToDigTunnel, MSGBOX_DEFAULT
@@ -35,7 +35,7 @@ VerdanturfTown_EventScript_Camper::
 	end
 
 VerdanturfTown_EventScript_Boy::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RUSTURF_TUNNEL_OPENED, VerdanturfTown_EventScript_BoyTunnelOpen
 	msgbox VerdanturfTown_Text_GuyTryingToBustThroughCave, MSGBOX_DEFAULT

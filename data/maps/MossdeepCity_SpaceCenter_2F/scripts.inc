@@ -103,7 +103,7 @@ MossdeepCity_SpaceCenter_2F_Movement_Grunt7Defeated:
 	step_end
 
 MossdeepCity_SpaceCenter_2F_EventScript_Scientist::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, MossdeepCity_SpaceCenter_2F_EventScript_ScientistNormal
 	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_2F_EventScript_ScientistMagma
@@ -122,7 +122,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_ScientistMagma::
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_Gentleman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, MossdeepCity_SpaceCenter_2F_EventScript_GentlemanNormal
 	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_2F_EventScript_GentlemanMagma
@@ -141,7 +141,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_GentlemanMagma::
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_RichBoy::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, MossdeepCity_SpaceCenter_2F_EventScript_RichBoyNormal
 	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_2F_EventScript_RichBoyMagma
@@ -173,7 +173,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_Grunt5::
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_Tabitha::
-	locktarget
+	lock
 	faceplayer
 	msgbox MossdeepCity_SpaceCenter_2F_Text_WellTakeCareOfYou, MSGBOX_DEFAULT
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection

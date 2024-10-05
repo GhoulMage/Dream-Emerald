@@ -16,7 +16,7 @@ ShoalCave_LowTideEntranceRoom_EventScript_SetLowTide::
 	end
 
 ShoalCave_LowTideEntranceRoom_EventScript_ShellBellExpert::
-	locktarget
+	lock
 	faceplayer
 	dotimebasedevents
 	call_if_set FLAG_SYS_SHOAL_ITEM, ShoalCave_LowTideEntranceRoom_EventScript_ResetShoalItems

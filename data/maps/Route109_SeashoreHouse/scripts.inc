@@ -7,7 +7,7 @@ Route109_SeashoreHouse_OnTransition:
 	end
 
 Route109_SeashoreHouse_EventScript_Owner::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_6_SODA_POP, Route109_SeashoreHouse_EventScript_AlreadyReceivedSodaPop
 	goto_if_set FLAG_DEFEATED_SEASHORE_HOUSE, Route109_SeashoreHouse_EventScript_DefeatedTrainers

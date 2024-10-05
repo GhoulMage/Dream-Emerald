@@ -142,7 +142,7 @@ SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron4::
 	end
 
 SlateportCity_OceanicMuseum_1F_EventScript_FamiliarGrunt::
-	locktarget
+	lock
 	faceplayer
 	delay 8
 	playse SE_PIN

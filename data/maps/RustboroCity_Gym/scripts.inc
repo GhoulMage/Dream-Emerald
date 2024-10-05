@@ -54,7 +54,7 @@ RustboroCity_Gym_EventScript_Marc::
 	end
 
 RustboroCity_Gym_EventScript_GymGuide::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_RUSTBORO_GYM, RustboroCity_Gym_EventScript_GymGuidePostVictory
 	msgbox RustboroCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT
@@ -214,8 +214,8 @@ RustboroCity_Gym_Text_ExplainRockTomb:
 	.string "rocks, it also lowers SPEED.\p"
 	.string "If you use a TM, it instantly teaches\n"
 	.string "the move to a POKéMON.\p"
- 	.string "And don't worry, a TM can be used as\n"
-	.string "many times as you want.$"
+	.string "Remember, a TM can be used only once,\n"
+	.string "so think before you use it.$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
 	.string "Since you are so strong, you should\n"
@@ -281,4 +281,3 @@ RustboroCity_Gym_Text_RoxanneRematchNeedTwoMons:
 	.string "You only have one POKéMON with you?\p"
 	.string "Please return with at least one more\n"
 	.string "POKéMON.$"
-

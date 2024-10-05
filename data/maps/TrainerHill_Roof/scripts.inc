@@ -5,7 +5,7 @@ TrainerHill_Roof_MapScripts::
 
 TrainerHill_Roof_EventScript_Owner::
 	trainerhill_settrainerflags
-	locktarget
+	lock
 	faceplayer
 	trainerhill_getownerstate
 	switch VAR_RESULT
@@ -23,8 +23,7 @@ TrainerHill_Roof_EventScript_GivePrize::
 TrainerHill_Roof_EventScript_ReceivePrize::
 	msgbox TrainerHill_Roof_Text_HaveTheMostMarvelousGift, MSGBOX_DEFAULT
 	playfanfare MUS_LEVEL_UP
-	buffernumberstring 0, 1
-	message gText_PlayerObtainedItems
+	message gText_ObtainedTheItem
 	waitfanfare
 	waitmessage
 	goto TrainerHill_Roof_EventScript_CheckFinalTime

@@ -2,13 +2,13 @@ BattleFrontier_Lounge5_MapScripts::
 	.byte 0
 
 BattleFrontier_Lounge5_EventScript_NatureGirl::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_Lounge5_Text_NatureGirlGreeting, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, BattleFrontier_Lounge5_EventScript_NatureGirlNoneShown
 	special ChoosePartyMon
 	waitstate
-	locktarget
+	lock
 	faceplayer
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, BattleFrontier_Lounge5_EventScript_NatureGirlNoneShown
 	specialvar VAR_RESULT, ScriptGetPartyMonSpecies

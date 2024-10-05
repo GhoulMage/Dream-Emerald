@@ -204,7 +204,7 @@ Route119_WeatherInstitute_2F_Movement_ScientistApproachPlayer:
 	step_end
 
 Route119_WeatherInstitute_2F_EventScript_WeatherScientist::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_CASTFORM, Route119_WeatherInstitute_2F_EventScript_ScientistMentionWeather
 	goto Route119_WeatherInstitute_2F_EventScript_ReceiveCastform
