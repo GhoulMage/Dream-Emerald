@@ -290,22 +290,7 @@
 #define ABILITY_AS_ONE_ICE_RIDER 266
 #define ABILITY_AS_ONE_SHADOW_RIDER 267
 
-#define ABILITY_DARK_POWER              268
-#define ABILITY_ULTRASONIC              269
-#define ABILITY_DRAGON_SCALE            270
-#define ABILITY_PANIC_ATTACK            271
-#define ABILITY_SINGER                  272
-#define ABILITY_SAND_SONG               273
-
-#define ABILITY_JACKPOT                 274
-#define ABILITY_DREAMCATCHER            275
-#define ABILITY_HEAVY_SLEEPER           276
-#define ABILITY_UPBEAT                  277
-#define ABILITY_CRESCENDO               278
-#define ABILITY_RICH_ACOUSTICS          279
-#define ABILITY_RASH_CUSHION            280
-
-#define ABILITIES_COUNT_GEN8 281
+#define ABILITIES_COUNT_GEN8 268
 
 // Gen 9
 #define ABILITY_LINGERING_AROMA 268
@@ -354,6 +339,23 @@
 
 #define ABILITIES_COUNT_GEN9 311
 
-#define ABILITIES_COUNT ABILITIES_COUNT_GEN9
+#define ABILITY_DARK_POWER              299
+#define ABILITY_ULTRASONIC              300
+#define ABILITY_DRAGON_SCALE            301
+#define ABILITY_PANIC_ATTACK            302
+#define ABILITY_SINGER                  303
+#define ABILITY_SAND_SONG               304
+
+#define ABILITY_JACKPOT                 305
+#define ABILITY_DREAMCATCHER            306
+#define ABILITY_HEAVY_SLEEPER           307
+#define ABILITY_UPBEAT                  308
+#define ABILITY_CRESCENDO               309
+#define ABILITY_RICH_ACOUSTICS          310
+#define ABILITY_RASH_CUSHION            311
+
+#define ABILITIES_COUNT_DREAM_EMERALD   312
+
+#define ABILITIES_COUNT ABILITIES_COUNT_DREAM_EMERALD
 
 #endif  // GUARD_CONSTANTS_ABILITIES_H

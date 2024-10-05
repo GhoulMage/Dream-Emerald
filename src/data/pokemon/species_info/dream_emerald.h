@@ -147,7 +147,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         LEARNSETS(GardevoirD),
     },
 
-    [SPECIES_GARDEVOIRD] =
+    [SPECIES_ADOKANA] =
     {
         .baseHP        = 70,
         .baseDefense   = 85,
