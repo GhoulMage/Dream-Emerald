@@ -53,7 +53,7 @@ BattleFrontier_BattleTowerLobby_EventScript_GetChallengeStatus::
 	end
 
 BattleFrontier_BattleTowerLobby_EventScript_QuitWithoutSaving::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_BattleTowerLobby_Text_DidntSaveBeforeQuitting, MSGBOX_DEFAULT
 	closemessage
@@ -65,7 +65,7 @@ BattleFrontier_BattleTowerLobby_EventScript_QuitWithoutSaving::
 	end
 
 BattleFrontier_BattleTowerLobby_EventScript_WonChallenge::
-	locktarget
+	lock
 	faceplayer
 	frontier_isbrain
 	goto_if_eq VAR_RESULT, TRUE, BattleFrontier_BattleTowerLobby_EventScript_DefeatedMaiden
@@ -107,7 +107,7 @@ BattleFrontier_BattleTowerLobby_EventScript_LostChallenge::
 BattleFrontier_BattleTowerLobby_EventScript_CancelWinStreak::
 	tower_set TOWER_DATA_WIN_STREAK_ACTIVE, FALSE
 BattleFrontier_BattleTowerLobby_EventScript_LostThanksForPlaying::
-	locktarget
+	lock
 	faceplayer
 	message BattleFrontier_BattleTowerLobby_Text_ThankYouForPlaying
 	waitmessage
@@ -155,7 +155,7 @@ BattleFrontier_EventScript_GetCantRecordBattle::
 	return
 
 BattleFrontier_BattleTowerLobby_EventScript_ResumeChallenge::
-	locktarget
+	lock
 	faceplayer
 	call_if_eq VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES, BattleFrontier_BattleTowerLobby_EventScript_SetBravoTrainerOn
 	message BattleFrontier_BattleTowerLobby_Text_WeveBeenWaitingForYou
@@ -174,7 +174,7 @@ BattleFrontier_BattleTowerLobby_EventScript_SetBravoTrainerOn::
 	return
 
 BattleFrontier_BattleTowerLobby_EventScript_SinglesAttendant::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER
 	special SavePlayerParty
@@ -238,7 +238,7 @@ BattleFrontier_BattleTowerLobby_EventScript_ExplainSinglesChallenge::
 	end
 
 BattleFrontier_BattleTowerLobby_EventScript_DoublesAttendant::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER
 	special SavePlayerParty
@@ -302,7 +302,7 @@ BattleFrontier_BattleTowerLobby_EventScript_ExplainDoublesChallenge::
 	end
 
 BattleFrontier_BattleTowerLobby_EventScript_MultisAttendant::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER
 	clearflag FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER
@@ -367,7 +367,7 @@ BattleFrontier_BattleTowerLobby_EventScript_ExplainMultisChallenge::
 	end
 
 BattleFrontier_BattleTowerLobby_EventScript_LinkMultisAttendant::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER
 	special SavePlayerParty
@@ -439,7 +439,7 @@ BattleFrontier_BattleTowerLobby_EventScript_SaveBeforeLinkMultisChallenge::
 	end
 
 BattleFrontier_BattleTowerLobby_EventScript_FeelingsMan::
-	locktarget
+	lock
 	faceplayer
 	message BattleFrontier_BattleTowerLobby_Text_DescribeFeelingsAboutBattleTower
 	waitmessage
@@ -457,7 +457,7 @@ BattleFrontier_BattleTowerLobby_EventScript_FeelingsBattleNow::
 	msgbox BattleFrontier_BattleTowerLobby_Text_FeelWhatWhenYouBegin, MSGBOX_DEFAULT
 	setvar VAR_0x8004, EASY_CHAT_TYPE_BATTLE_START
 	call Common_ShowEasyChatScreen
-	locktarget
+	lock
 	faceplayer
 	goto BattleFrontier_BattleTowerLobby_EventScript_CheckFeelings
 	end
@@ -466,7 +466,7 @@ BattleFrontier_BattleTowerLobby_EventScript_FeelingsIWon::
 	msgbox BattleFrontier_BattleTowerLobby_Text_FeelWhatWhenYouveWon, MSGBOX_DEFAULT
 	setvar VAR_0x8004, EASY_CHAT_TYPE_BATTLE_WON
 	call Common_ShowEasyChatScreen
-	locktarget
+	lock
 	faceplayer
 	goto BattleFrontier_BattleTowerLobby_EventScript_CheckFeelings
 	end
@@ -475,7 +475,7 @@ BattleFrontier_BattleTowerLobby_EventScript_FeelingsILost::
 	msgbox BattleFrontier_BattleTowerLobby_Text_FeelWhatWhenYouveLost, MSGBOX_DEFAULT
 	setvar VAR_0x8004, EASY_CHAT_TYPE_BATTLE_LOST
 	call Common_ShowEasyChatScreen
-	locktarget
+	lock
 	faceplayer
 	goto BattleFrontier_BattleTowerLobby_EventScript_CheckFeelings
 	end

@@ -55,7 +55,7 @@ FortreeCity_House4_Movement_WingullExit:
 	step_end
 
 FortreeCity_House4_EventScript_Wingull::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL

@@ -2,7 +2,7 @@ MtPyre_1F_MapScripts::
 	.byte 0
 
 MtPyre_1F_EventScript_CleanseTagWoman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_CLEANSE_TAG, MtPyre_1F_EventScript_ReceivedCleanseTag
 	msgbox MtPyre_1F_Text_TakeThisForYourOwnGood, MSGBOX_DEFAULT

@@ -565,46 +565,46 @@ LilycoveCity_ContestLobby_EventScript_LinkContestResults::
 	end
 
 LilycoveCity_ContestLobby_EventScript_BlendMaster::
-	locktarget
+	lock
 	faceplayer
 	msgbox BerryBlender_Text_BlendWithTheBlendMaster, MSGBOX_DEFAULT
 	goto LilycoveCity_ContestLobby_EventScript_FaceOriginalDirection
 	end
 
 LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker1::
-	locktarget
+	lock
 	msgbox BerryBlender_Text_WhoaAwesome, MSGBOX_DEFAULT
 	release
 	end
 
 LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker2::
-	locktarget
+	lock
 	msgbox BerryBlender_Text_WickedlyFast, MSGBOX_DEFAULT
 	release
 	end
 
 LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker3::
-	locktarget
+	lock
 	msgbox BerryBlender_Text_WhatAnExpert, MSGBOX_DEFAULT
 	release
 	end
 
 LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker4::
-	locktarget
+	lock
 	faceplayer
 	msgbox BerryBlender_Text_MadeAmazingPokeblocksWithMaster, MSGBOX_DEFAULT
 	goto LilycoveCity_ContestLobby_EventScript_FaceOriginalDirection
 	end
 
 LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker5::
-	locktarget
+	lock
 	faceplayer
 	msgbox BerryBlender_Text_QualitiesOfBlendMaster, MSGBOX_DEFAULT
 	goto LilycoveCity_ContestLobby_EventScript_FaceOriginalDirection
 	end
 
 LilycoveCity_ContestLobby_EventScript_BlendMasterOnlooker6::
-	locktarget
+	lock
 	faceplayer
 	msgbox BerryBlender_Text_MasterWorksOnSkillsInMountains, MSGBOX_DEFAULT
 	goto LilycoveCity_ContestLobby_EventScript_FaceOriginalDirection
@@ -619,7 +619,7 @@ LilycoveCity_ContestLobby_EventScript_FaceOriginalDirection::
 
 LilycoveCity_ContestLobby_EventScript_LinkContestReceptionist::
 	special ClearLinkContestFlags
-	locktarget
+	lock
 	faceplayer
 	msgbox LilycoveCity_ContestLobby_Text_LinkContestReception, MSGBOX_DEFAULT
 	goto LilycoveCity_ContestLobby_EventScript_AskEnterLinkContest
@@ -970,7 +970,7 @@ LilycoveCity_ContestLobby_Movement_LinkReceptionistFacePlayer:
 	step_end
 
 LilycoveCity_ContestLobby_EventScript_LittleGirl::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_POKEBLOCK_CASE, LilycoveCity_ContestLobby_EventScript_LittleGirlHaveCase
 	msgbox LilycoveCity_ContestLobby_Text_LadyGaveMePokeblockCase, MSGBOX_DEFAULT

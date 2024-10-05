@@ -7,7 +7,7 @@ SlateportCity_OceanicMuseum_2F_MapScripts::
 	.byte 0
 
 SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
-	locktarget
+	lock
 	faceplayer
 	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYouForTheParts, MSGBOX_DEFAULT
 	closemessage
@@ -264,7 +264,7 @@ SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron2::
 	end
 
 SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron3::
-	locktarget
+	lock
 	faceplayer
 	msgbox SlateportCity_OceanicMuseum_2F_Text_WantToRideSubmarine, MSGBOX_DEFAULT
 	closemessage

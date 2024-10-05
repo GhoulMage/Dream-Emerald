@@ -2,7 +2,7 @@ SootopolisCity_House2_MapScripts::
 	.byte 0
 
 SootopolisCity_House2_EventScript_ExpertF::
-	locktarget
+	lock
 	faceplayer
 	msgbox SootopolisCity_House2_Text_DidYouKnowAboutMtPyreOrbs, MSGBOX_YESNO
 	call_if_eq VAR_RESULT, YES, SootopolisCity_House2_EventScript_KnowAboutOrbs

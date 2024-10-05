@@ -2,7 +2,7 @@ PacifidlogTown_House5_MapScripts::
 	.byte 0
 
 PacifidlogTown_House5_EventScript_MirageIslandWatcher::
-	locktarget
+	lock
 	faceplayer
 	specialvar VAR_RESULT, IsMirageIslandPresent
 	goto_if_eq VAR_RESULT, TRUE, PacifidlogTown_House5_EventScript_MirageIslandPresent

@@ -2,7 +2,7 @@ PacifidlogTown_House2_MapScripts::
 	.byte 0
 
 PacifidlogTown_House2_EventScript_FanClubYoungerBrother::
-	locktarget
+	lock
 	faceplayer
 	dotimebasedevents
 	call PacifidlogTown_House2_EventScript_UpdateFanClubTMFlag
@@ -69,7 +69,7 @@ PacifidlogTown_House2_EventScript_ComeBackInXDays::
 	end
 
 PacifidlogTown_House2_EventScript_HappyAzurill::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_AZURILL, CRY_MODE_NORMAL
@@ -80,7 +80,7 @@ PacifidlogTown_House2_EventScript_HappyAzurill::
 	end
 
 PacifidlogTown_House2_EventScript_UnhappyAzurill::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_AZURILL, CRY_MODE_ENCOUNTER

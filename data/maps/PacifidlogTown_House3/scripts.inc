@@ -2,7 +2,7 @@ PacifidlogTown_House3_MapScripts::
 	.byte 0
 
 PacifidlogTown_House3_EventScript_Trader::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED, PacifidlogTown_House3_EventScript_TradeCompleted
 	setvar VAR_0x8008, INGAME_TRADE_HORSEA

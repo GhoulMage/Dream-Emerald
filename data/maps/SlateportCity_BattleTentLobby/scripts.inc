@@ -90,7 +90,7 @@ SlateportCity_BattleTentLobby_EventScript_ResumeChallenge::
 	goto SlateportCity_BattleTentLobby_EventScript_EnterChallenge
 
 SlateportCity_BattleTentLobby_EventScript_Attendant::
-	locktarget
+	lock
 	faceplayer
 	slateporttent_getprize
 	goto_if_ne VAR_RESULT, ITEM_NONE, SlateportCity_BattleTentLobby_EventScript_GivePrize
@@ -197,7 +197,7 @@ SlateportCity_BattleTentLobby_Movement_UnusedEnterDoor::
 	step_end
 
 SlateportCity_BattleTentLobby_EventScript_TormentGiver::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_TORMENT, SlateportCity_BattleTentLobby_EventScript_ReceivedTorment
 	msgbox SlateportCity_BattleTentLobby_Text_CouldntFindMonForMe, MSGBOX_DEFAULT

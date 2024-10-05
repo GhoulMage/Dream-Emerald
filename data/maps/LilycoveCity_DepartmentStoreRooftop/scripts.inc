@@ -17,7 +17,7 @@ LilycoveCity_DepartmentStoreRooftop_EventScript_HideSaleWoman::
 	return
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_SaleWoman::
-	locktarget
+	lock
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -47,7 +47,7 @@ LilycoveCity_DepartmentStoreRooftop_PokemartDecor_ClearOutSale:
 	end
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_Man::
-	locktarget
+	lock
 	faceplayer
 	getpokenewsactive POKENEWS_LILYCOVE
 	call_if_eq VAR_RESULT, TRUE, LilycoveCity_DepartmentStoreRooftop_EventScript_ManClearOutSale
@@ -150,8 +150,7 @@ LilycoveCity_DepartmentStoreRooftop_EventScript_TryBuyDrink::
 	additem VAR_TEMP_0
 	bufferitemname STR_VAR_2, VAR_TEMP_0
 	bufferstdstring STR_VAR_3, STDSTRING_ITEMS
-    buffernumberstring 0, 1
-	msgbox gText_PutItemsInPocket, MSGBOX_DEFAULT
+	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	random 64  @ 1/64 * the prev 1/64 chance of a third additional drink dropping, ~ 0.02% chance
 	goto_if_ne VAR_RESULT, 0, LilycoveCity_DepartmentStoreRooftop_EventScript_ChooseNewDrink
 	checkitemspace VAR_TEMP_0
@@ -161,8 +160,7 @@ LilycoveCity_DepartmentStoreRooftop_EventScript_TryBuyDrink::
 	additem VAR_TEMP_0
 	bufferitemname STR_VAR_2, VAR_TEMP_0
 	bufferstdstring STR_VAR_3, STDSTRING_ITEMS
-    buffernumberstring 0, 1
-	msgbox gText_PutItemsInPocket, MSGBOX_DEFAULT
+	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	goto LilycoveCity_DepartmentStoreRooftop_EventScript_ChooseNewDrink
 	end
 

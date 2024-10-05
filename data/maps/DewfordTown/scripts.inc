@@ -19,7 +19,7 @@ DewfordTown_OnTransition:
 	end
 
 DewfordTown_EventScript_Briney::
-	locktarget
+	lock
 	faceplayer
 	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
 	message DewfordTown_Text_WhereAreWeBound
@@ -82,7 +82,7 @@ DewfordTown_EventScript_HallSign::
 	end
 
 DewfordTown_EventScript_OldRodFisherman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_OLD_ROD, DewfordTown_EventScript_HowsFishing
 	msgbox DewfordTown_Text_GettingItchToFish, MSGBOX_YESNO
@@ -599,7 +599,7 @@ DewfordTown_Movement_BrineyExitBoat:
 	step_end
 
 DewfordTown_EventScript_TrendyPhraseBoy::
-	locktarget
+	lock
 	faceplayer
 	call Common_EventScript_BufferTrendyPhrase
 	msgbox DewfordTown_Text_XIsTheBiggestHappeningThingRight, MSGBOX_YESNO
@@ -616,7 +616,7 @@ DewfordTown_EventScript_RejectTrendyPhrase::
 	msgbox DewfordTown_Text_TellMeWhatsNewAndIn, MSGBOX_DEFAULT
 	setvar VAR_0x8004, EASY_CHAT_TYPE_TRENDY_PHRASE
 	call Common_ShowEasyChatScreen
-	locktarget
+	lock
 	faceplayer
 	goto_if_eq VAR_RESULT, TRUE, DewfordTown_EventScript_GiveNewTrendyPhrase
 	goto_if_eq VAR_RESULT, FALSE, DewfordTown_EventScript_CancelNewTrendyPhrase

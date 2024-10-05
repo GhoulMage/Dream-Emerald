@@ -83,7 +83,7 @@ BattleFrontier_RankingHall_EventScript_PalaceArenaPyramidRecordsSIgn::
 	end
 
 BattleFrontier_RankingHall_EventScript_NinjaBoy::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_RankingHall_Text_IsYourNameOnThisList, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, BattleFrontier_RankingHall_EventScript_NinjaBoyNameOnList

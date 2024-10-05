@@ -16,7 +16,7 @@ FortreeCity_EventScript_Man::
 	end
 
 FortreeCity_EventScript_Woman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_KECLEON_FLED_FORTREE, FortreeCity_EventScript_WomanGymAccessible
 	msgbox FortreeCity_Text_SomethingBlockingGym, MSGBOX_DEFAULT
@@ -53,7 +53,7 @@ FortreeCity_EventScript_GymSign::
 	end
 
 FortreeCity_EventScript_Kecleon::
-	locktarget
+	lock
 	faceplayer
 	checkitem ITEM_DEVON_SCOPE
 	goto_if_eq VAR_RESULT, TRUE, FortreeCity_EventScript_AskUseDevonScope

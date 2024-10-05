@@ -103,7 +103,7 @@ FallarborTown_BattleTentLobby_EventScript_ResumeChallenge::
 	goto FallarborTown_BattleTentLobby_EventScript_EnterChallenge
 
 FallarborTown_BattleTentLobby_EventScript_Attendant::
-	locktarget
+	lock
 	faceplayer
 	fallarbortent_getprize
 	goto_if_ne VAR_RESULT, ITEM_NONE, FallarborTown_BattleTentLobby_EventScript_PrizeWaiting
@@ -239,7 +239,7 @@ FallarborTown_BattleTentLobby_EventScript_Lass::
 	end
 
 FallarborTown_BattleTentLobby_EventScript_Scott::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_MET_SCOTT_IN_FALLARBOR, FallarborTown_BattleTentLobby_EventScript_ScottAlreadySpokenTo
 	msgbox FallarborTown_BattleTentLobby_Text_ScottLookingForSomeone, MSGBOX_DEFAULT

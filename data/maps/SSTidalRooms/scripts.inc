@@ -2,7 +2,7 @@ SSTidalRooms_MapScripts::
 	.byte 0
 
 SSTidalRooms_EventScript_SnatchGiver::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_SNATCH, SSTidalRooms_EventScript_ExplainSnatch
 	msgbox SSTidalRooms_Text_NotSuspiciousTakeThis, MSGBOX_DEFAULT

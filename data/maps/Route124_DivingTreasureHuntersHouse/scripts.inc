@@ -7,7 +7,7 @@ Route124_DivingTreasureHuntersHouse_OnTransition:
 	end
 
 Route124_DivingTreasureHuntersHouse_EventScript_TreasureHunter::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_MET_DIVING_TREASURE_HUNTER, Route124_DivingTreasureHuntersHouse_EventScript_SkipGreeting
 	msgbox Route124_DivingTreasureHuntersHouse_Text_Greeting, MSGBOX_DEFAULT

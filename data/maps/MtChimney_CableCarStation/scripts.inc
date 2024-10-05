@@ -30,7 +30,7 @@ MtChimney_CableCarStation_EventScript_ExitCableCar::
 	end
 
 MtChimney_CableCarStation_EventScript_Attendant::
-	locktarget
+	lock
 	faceplayer
 	msgbox MtChimney_CableCarStation_Text_CableCarReadyGetOn, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, MtChimney_CableCarStation_EventScript_RideCableCar

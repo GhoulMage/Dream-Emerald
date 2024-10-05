@@ -2,7 +2,7 @@ MauvilleCity_BikeShop_MapScripts::
 	.byte 0
 
 MauvilleCity_BikeShop_EventScript_Rydel::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_BIKE, MauvilleCity_BikeShop_EventScript_AskSwitchBikes
 	goto_if_set FLAG_DECLINED_BIKE, MauvilleCity_BikeShop_EventScript_SkipGreeting
