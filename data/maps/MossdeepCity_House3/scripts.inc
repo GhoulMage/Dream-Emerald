@@ -2,7 +2,7 @@ MossdeepCity_House3_MapScripts::
 	.byte 0
 
 MossdeepCity_House3_EventScript_SuperRodFisherman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_SUPER_ROD, MossdeepCity_House3_EventScript_ReceivedSuperRod
 	msgbox MossdeepCity_House3_Text_YouWantSuperRod, MSGBOX_YESNO

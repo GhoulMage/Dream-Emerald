@@ -137,7 +137,7 @@ RustboroCity_Movement_ScientistLeave:
 	step_end
 
 RustboroCity_EventScript_FatMan::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DEVON_GOODS_STOLEN, RustboroCity_EventScript_FatManSawGrunt
 	msgbox RustboroCity_Text_WeShortenItToDevon, MSGBOX_DEFAULT
@@ -150,7 +150,7 @@ RustboroCity_EventScript_FatManSawGrunt::
 	end
 
 RustboroCity_EventScript_DevonEmployee2::
-	locktarget
+	lock
 	faceplayer
 	msgbox RustboroCity_Text_YoureNewAroundHere, MSGBOX_DEFAULT
 	release
@@ -161,7 +161,7 @@ RustboroCity_EventScript_Woman::
 	end
 
 RustboroCity_EventScript_Man1::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_BADGE01_GET, RustboroCity_EventScript_Man1HaveBadge
 	msgbox RustboroCity_Text_HaveYouChallengedGym, MSGBOX_DEFAULT
@@ -174,7 +174,7 @@ RustboroCity_EventScript_Man1HaveBadge::
 	end
 
 RustboroCity_EventScript_Boy2::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_POKENAV, RustboroCity_EventScript_Boy2BrineyLeftTunnel
 	msgbox RustboroCity_Text_MrBrineyWalksInTheTunnel, MSGBOX_DEFAULT
@@ -224,7 +224,7 @@ RustboroCity_EventScript_CuttersHouseSign::
 	end
 
 RustboroCity_EventScript_LittleBoy::
-	locktarget
+	lock
 	faceplayer
 	msgbox RustboroCity_Text_PokemonCanChangeLookFromExp, MSGBOX_DEFAULT
 	applymovement LOCALID_LITTLE_BOY, Common_Movement_FaceOriginalDirection
@@ -233,7 +233,7 @@ RustboroCity_EventScript_LittleBoy::
 	end
 
 RustboroCity_EventScript_LittleGirl::
-	locktarget
+	lock
 	faceplayer
 	msgbox RustboroCity_Text_PokemonChangeShape, MSGBOX_DEFAULT
 	applymovement LOCALID_LITTLE_GIRL, Common_Movement_FaceOriginalDirection
@@ -242,7 +242,7 @@ RustboroCity_EventScript_LittleGirl::
 	end
 
 RustboroCity_EventScript_Man2::
-	locktarget
+	lock
 	faceplayer
 	msgbox RustboroCity_Text_TradePokemonGrowFast, MSGBOX_DEFAULT
 	release
@@ -465,7 +465,7 @@ RustboroCity_Movement_EmployeeApproachPlayerFar:
 	step_end
 
 RustboroCity_EventScript_DevonEmployee1::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECOVERED_DEVON_GOODS, RustboroCity_EventScript_ReturnGoodsSpokeToEmployee
 	msgbox RustboroCity_Text_ShadyCharacterTookOffTowardsTunnel, MSGBOX_DEFAULT

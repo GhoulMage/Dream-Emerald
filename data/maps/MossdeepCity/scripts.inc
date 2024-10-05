@@ -18,7 +18,7 @@ MossdeepCity_OnTransition:
 	end
 
 MossdeepCity_EventScript_PokefanF::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_DIVE, MossdeepCity_EventScript_PokefanFMagmaGone
 	msgbox MossdeepCity_Text_SpaceCenterReceivedLetter, MSGBOX_DEFAULT
@@ -31,7 +31,7 @@ MossdeepCity_EventScript_PokefanFMagmaGone::
 	end
 
 MossdeepCity_EventScript_Sailor::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_DIVE, MossdeepCity_EventScript_SailorMagmaGone
 	msgbox MossdeepCity_Text_MossdeepTargetedByMagma, MSGBOX_DEFAULT
@@ -220,7 +220,7 @@ MossdeepCity_Movement_Grunt4EnterSpaceCenter:
 	step_end
 
 MossdeepCity_EventScript_Man::
-	locktarget
+	lock
 	faceplayer
 	msgbox MossdeepCity_Text_SurfExhilarating, MSGBOX_DEFAULT
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -229,7 +229,7 @@ MossdeepCity_EventScript_Man::
 	end
 
 MossdeepCity_EventScript_KingsRockBoy::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_KINGS_ROCK, MossdeepCity_EventScript_ReceivedKingsRock
 	msgbox MossdeepCity_Text_WantKingsRockStevenGaveMe, MSGBOX_YESNO
@@ -256,7 +256,7 @@ MossdeepCity_EventScript_BlackBelt::
 	end
 
 MossdeepCity_EventScript_Scott::
-	locktarget
+	lock
 	faceplayer
 	msgbox MossdeepCity_Text_ScottSomethingWrongWithTown, MSGBOX_DEFAULT
 	closemessage

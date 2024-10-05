@@ -10,7 +10,7 @@ SouthernIsland_Exterior_OnTransition:
 	end
 
 SouthernIsland_Exterior_EventScript_Sailor::
-	locktarget
+	lock
 	faceplayer
 	msgbox EventTicket_Text_SouthernIslandSailBack, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, SouthernIsland_Exterior_EventScript_AsYouLike

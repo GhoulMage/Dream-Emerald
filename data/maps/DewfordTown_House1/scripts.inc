@@ -10,7 +10,7 @@ DewfordTown_House1_EventScript_Woman::
 	end
 
 DewfordTown_House1_EventScript_Zigzagoon::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL

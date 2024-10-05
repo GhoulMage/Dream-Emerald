@@ -2,7 +2,7 @@ RustboroCity_CuttersHouse_MapScripts::
 	.byte 0
 
 RustboroCity_CuttersHouse_EventScript_Cutter::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_CUT, RustboroCity_CuttersHouse_EventScript_ExplainCut
 	msgbox RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse, MSGBOX_DEFAULT
@@ -41,7 +41,7 @@ RustboroCity_CuttersHouse_Text_ExplainCut:
 	.string "Any POKéMON that's learned CUT can\n"
 	.string "chop down thin trees if the TRAINER\l"
 	.string "has earned the STONE BADGE.\p"
-	.string "And, like a TM, an HM can be used\n"
+	.string "And, unlike a TM, an HM can be used\n"
 	.string "more than once.$"
 
 RustboroCity_CuttersHouse_Text_DadHelpedClearLandOfTrees:

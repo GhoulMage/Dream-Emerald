@@ -51,7 +51,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_SetMagmaNote::
 	return
 
 MossdeepCity_SpaceCenter_1F_EventScript_RocketLaunchCounter::
-	locktarget
+	lock
 	faceplayer
 	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_1F_EventScript_RocketLaunchCounterMagma
 	dotimebasedevents
@@ -94,7 +94,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_ShowLaunchNumberMagma::
 	return
 
 MossdeepCity_SpaceCenter_1F_EventScript_Scientist::
-	locktarget
+	lock
 	faceplayer
 	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_1F_EventScript_ScientistMagma
 	msgbox MossdeepCity_SpaceCenter_1F_Text_RocketLaunchDemandsPerfection, MSGBOX_DEFAULT
@@ -109,7 +109,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_ScientistMagma::
 	end
 
 MossdeepCity_SpaceCenter_1F_EventScript_SunStoneMan::
-	locktarget
+	lock
 	faceplayer
 	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_1F_EventScript_SunStoneManMagma
 	goto_if_set FLAG_RECEIVED_SUN_STONE_MOSSDEEP, MossdeepCity_SpaceCenter_1F_EventScript_GaveSunStone
@@ -146,7 +146,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_GaveSunStoneMagma::
 	end
 
 MossdeepCity_SpaceCenter_1F_EventScript_Woman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, MossdeepCity_SpaceCenter_1F_EventScript_WomanNormal
 	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_1F_EventScript_WomanMagma
@@ -165,7 +165,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_WomanMagma::
 	end
 
 MossdeepCity_SpaceCenter_1F_EventScript_OldMan::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, MossdeepCity_SpaceCenter_1F_EventScript_OldManNormal
 	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_1F_EventScript_OldManMagma
@@ -190,7 +190,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_OldManMagma::
 	end
 
 MossdeepCity_SpaceCenter_1F_EventScript_Steven::
-	locktarget
+	lock
 	faceplayer
 	msgbox MossdeepCity_SpaceCenter_1F_Text_StevenMagmaCantBeAllowedToTakeFuel, MSGBOX_DEFAULT
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -220,7 +220,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_Grunt4::
 	end
 
 MossdeepCity_SpaceCenter_1F_EventScript_Grunt2::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_GRUNT_SPACE_CENTER_1F, MossdeepCity_SpaceCenter_1F_EventScript_Grunt2Defeated
 	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt2Intro, MSGBOX_DEFAULT

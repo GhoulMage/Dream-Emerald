@@ -111,7 +111,7 @@ BattleFrontier_BattleFactoryLobby_EventScript_ResumeChallenge::
 	goto BattleFrontier_BattleFactoryLobby_EventScript_EnterChallenge
 
 BattleFrontier_BattleFactoryLobby_EventScript_SinglesAttendant::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_FACTORY
 	setvar VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES
@@ -267,7 +267,7 @@ BattleFrontier_BattleFactoryLobby_EventScript_Camper::
 	end
 
 BattleFrontier_BattleFactoryLobby_EventScript_Picnicker::
-	locktarget
+	lock
 	msgbox BattleFrontier_BattleFactoryLobby_Text_NeedToCheckOpponentsMons, MSGBOX_DEFAULT
 	release
 	end

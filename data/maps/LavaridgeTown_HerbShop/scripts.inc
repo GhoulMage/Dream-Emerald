@@ -2,7 +2,7 @@ LavaridgeTown_HerbShop_MapScripts::
 	.byte 0
 
 LavaridgeTown_HerbShop_EventScript_Clerk::
-	locktarget
+	lock
 	faceplayer
 	message LavaridgeTown_HerbShop_Text_WelcomeToHerbShop
 	waitmessage
@@ -26,7 +26,7 @@ LavaridgeTown_HerbShop_EventScript_ExpertM::
 	end
 
 LavaridgeTown_HerbShop_EventScript_OldMan::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_CHARCOAL, LavaridgeTown_HerbShop_EventScript_ExplainCharcoal
 	msgbox LavaridgeTown_HerbShop_Text_YouveComeToLookAtHerbalMedicine, MSGBOX_DEFAULT

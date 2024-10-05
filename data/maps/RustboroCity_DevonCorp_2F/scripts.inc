@@ -13,7 +13,7 @@ RustboroCity_DevonCorp_2F_EventScript_SetFossilReady::
 	return
 
 RustboroCity_DevonCorp_2F_EventScript_TalkToPokemonScientist::
-	locktarget
+	lock
 	faceplayer
 	call_if_eq VAR_FOSSIL_RESURRECTION_STATE, 1, RustboroCity_DevonCorp_2F_EventScript_SetFossilReady
 	msgbox RustboroCity_DevonCorp_2F_Text_DeviceForTalkingToPokemon, MSGBOX_DEFAULT
@@ -21,7 +21,7 @@ RustboroCity_DevonCorp_2F_EventScript_TalkToPokemonScientist::
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_BallScientist::
-	locktarget
+	lock
 	faceplayer
 	call_if_eq VAR_FOSSIL_RESURRECTION_STATE, 1, RustboroCity_DevonCorp_2F_EventScript_SetFossilReady
 	goto_if_set FLAG_MET_DEVON_EMPLOYEE, RustboroCity_DevonCorp_2F_EventScript_DevelopedBalls
@@ -35,7 +35,7 @@ RustboroCity_DevonCorp_2F_EventScript_DevelopedBalls::
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_PokenavScientist::
-	locktarget
+	lock
 	faceplayer
 	call_if_eq VAR_FOSSIL_RESURRECTION_STATE, 1, RustboroCity_DevonCorp_2F_EventScript_SetFossilReady
 	goto_if_set FLAG_RECEIVED_POKENAV, RustboroCity_DevonCorp_2F_EventScript_HasPokenav
@@ -49,7 +49,7 @@ RustboroCity_DevonCorp_2F_EventScript_HasPokenav::
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_PokemonDreamsScientist::
-	locktarget
+	lock
 	faceplayer
 	call_if_eq VAR_FOSSIL_RESURRECTION_STATE, 1, RustboroCity_DevonCorp_2F_EventScript_SetFossilReady
 	msgbox RustboroCity_DevonCorp_2F_Text_DeviceToVisualizePokemonDreams, MSGBOX_DEFAULT
@@ -57,7 +57,7 @@ RustboroCity_DevonCorp_2F_EventScript_PokemonDreamsScientist::
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_FossilScientist::
-	locktarget
+	lock
 	faceplayer
 	goto_if_eq VAR_FOSSIL_RESURRECTION_STATE, 2, RustboroCity_DevonCorp_2F_EventScript_FossilMonReady
 	goto_if_eq VAR_FOSSIL_RESURRECTION_STATE, 1, RustboroCity_DevonCorp_2F_EventScript_StillRegenerating
@@ -257,7 +257,7 @@ RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect::
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_MatchCallScientist::
-	locktarget
+	lock
 	faceplayer
 	call_if_eq VAR_FOSSIL_RESURRECTION_STATE, 1, RustboroCity_DevonCorp_2F_EventScript_SetFossilReady
 	goto_if_ge VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_DevonCorp_2F_EventScript_WorkOnNext

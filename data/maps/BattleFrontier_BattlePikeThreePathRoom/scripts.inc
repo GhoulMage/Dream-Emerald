@@ -63,49 +63,49 @@ BattleFrontier_BattlePikeThreePathRoom_EventScript_Attendant::
 	end
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_AttendantRoom1::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_CurrentlyInRoom1, MSGBOX_DEFAULT
 	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_AskContinueChallenge
 	end
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_AttendantRoom3::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_CurrentlyInRoom3, MSGBOX_DEFAULT
 	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_AskContinueChallenge
 	end
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_AttendantRoom5::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_CurrentlyInRoom5, MSGBOX_DEFAULT
 	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_AskContinueChallenge
 	end
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_AttendantRoom7::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_CurrentlyInRoom7, MSGBOX_DEFAULT
 	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_AskContinueChallenge
 	end
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_AttendantRoom9::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_CurrentlyInRoom9, MSGBOX_DEFAULT
 	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_AskContinueChallenge
 	end
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_AttendantRoom11::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_CurrentlyInRoom11, MSGBOX_DEFAULT
 	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_AskContinueChallenge
 	end
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_AttendantRoom13::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_CurrentlyInRoom13, MSGBOX_DEFAULT
 	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_AskContinueChallenge
@@ -173,7 +173,7 @@ BattleFrontier_BattlePikeThreePathRoom_EventScript_GivePikeQueenHint::
 BattleFrontier_BattlePikeThreePathRoom_EventScript_HintGiver::
 	pike_gethint
 	goto_if_eq VAR_RESULT, PIKE_HINT_BRAIN, BattleFrontier_BattlePikeThreePathRoom_EventScript_GiveBrainHint
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_FindingItDifficultToChoose, MSGBOX_YESNO
 	switch VAR_RESULT
@@ -238,7 +238,7 @@ BattleFrontier_BattlePikeThreePathRoom_EventScript_HintPeople::
 	end
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_GiveBrainHint::
-	locktarget
+	lock
 	faceplayer
 	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_DreadfulPresence, MSGBOX_DEFAULT
 	release

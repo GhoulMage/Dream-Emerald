@@ -7,7 +7,7 @@ Route114_FossilManiacsHouse_OnTransition:
 	end
 
 Route114_FossilManiacsHouse_EventScript_FossilManiacsBrother::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_DIG, Route114_FossilManiacsHouse_EventScript_ReceivedDig
 	msgbox Route114_FossilManiacsHouse_Text_HaveThisToDigLikeMyBrother, MSGBOX_DEFAULT

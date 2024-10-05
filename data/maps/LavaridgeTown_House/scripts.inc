@@ -6,7 +6,7 @@ LavaridgeTown_House_EventScript_OldMan::
 	end
 
 LavaridgeTown_House_EventScript_Zigzagoon::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL

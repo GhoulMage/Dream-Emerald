@@ -20,7 +20,7 @@ FarawayIsland_Entrance_EventScript_ClearWeather::
 	end
 
 FarawayIsland_Entrance_EventScript_Sailor::
-	locktarget
+	lock
 	faceplayer
 	msgbox FarawayIsland_Entrance_Text_SailorReturn, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, FarawayIsland_Entrance_EventScript_AsYouLike

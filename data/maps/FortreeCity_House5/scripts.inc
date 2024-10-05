@@ -10,7 +10,7 @@ FortreeCity_House5_EventScript_Man::
 	end
 
 FortreeCity_House5_EventScript_Zigzagoon::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL

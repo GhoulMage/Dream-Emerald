@@ -82,7 +82,7 @@ BattleFrontier_BattleTowerMultiPartnerRoom_Movement_AttendantBlockExit:
 	step_end
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_Attendant::
-	locktarget
+	lock
 	faceplayer
 	message BattleFrontier_BattleTowerMultiPartnerRoom_Text_QuitLookingForPartner
 	waitmessage
@@ -158,7 +158,7 @@ BattleFrontier_BattleTowerMultiPartnerRoom_Movement_AttendantEnterElevator:
 	step_end
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_Partner1::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, 0
 	goto BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_TalkToPotentialPartner
@@ -230,49 +230,49 @@ BattleFrontier_BattleTowerMultiPartnerRoom_Movement_PartnerExitSouth:
 	step_end
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_Partner2::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, 1
 	goto BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_TalkToPotentialPartner
 	end
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_Partner3::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, 2
 	goto BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_TalkToPotentialPartner
 	end
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_Partner4::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, 3
 	goto BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_TalkToPotentialPartner
 	end
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_Partner5::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, 4
 	goto BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_TalkToPotentialPartner
 	end
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_Partner6::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, 5
 	goto BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_TalkToPotentialPartner
 	end
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_Partner7::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, 6
 	goto BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_TalkToPotentialPartner
 	end
 
 BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_Partner8::
-	locktarget
+	lock
 	faceplayer
 	setvar VAR_TEMP_2, 7
 	goto BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_TalkToPotentialPartner

@@ -3,7 +3,7 @@ BattleFrontier_Lounge1_MapScripts::
 
 @ NPC that rates pokemon based on their IVs
 BattleFrontier_Lounge1_EventScript_Breeder::
-	locktarget
+	lock
 	faceplayer
 	call_if_unset FLAG_MET_BATTLE_FRONTIER_BREEDER, BattleFrontier_Lounge1_EventScript_BreederIntro
 	call_if_set FLAG_MET_BATTLE_FRONTIER_BREEDER, BattleFrontier_Lounge1_EventScript_AlreadyMetBreeder
