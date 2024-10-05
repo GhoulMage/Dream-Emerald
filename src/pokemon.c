@@ -84,7 +84,7 @@ EWRAM_DATA u8 gEnemyPartyCount = 0;
 EWRAM_DATA struct Pokemon gPlayerParty[PARTY_SIZE] = {0};
 EWRAM_DATA struct Pokemon gEnemyParty[PARTY_SIZE] = {0};
 EWRAM_DATA struct SpriteTemplate gMultiuseSpriteTemplate = {0};
-EWRAM_DATA static struct MonSpritesGfxManager *sMonSpritesGfxManager = NULL;
+EWRAM_DATA static struct MonSpritesGfxManager *sMonSpritesGfxManagers[MON_SPR_GFX_MANAGERS_COUNT] = {NULL};
 EWRAM_DATA static u8 sTriedEvolving = 0;
 EWRAM_DATA u16 gFollowerSteps = 0;
 
@@ -2196,8 +2196,12 @@ void SetMultiuseSpriteTemplateToPokemon(u16 speciesTag, u8 battlerPosition)
 {
     if (gMonSpritesGfxPtr != NULL)
         gMultiuseSpriteTemplate = gMonSpritesGfxPtr->templates[battlerPosition];
-    else if (sMonSpritesGfxManager)
-        gMultiuseSpriteTemplate = sMonSpritesGfxManager->templates[battlerPosition];
+    else if (sMonSpritesGfxManagers[MON_SPR_GFX_MANAGER_A])
+        gMultiuseSpriteTemplate = sMonSpritesGfxManagers[MON_SPR_GFX_MANAGER_A]->templates[battlerPosition];
+    else if (sMonSpritesGfxManagers[MON_SPR_GFX_MANAGER_B])
+        gMultiuseSpriteTemplate = sMonSpritesGfxManagers[MON_SPR_GFX_MANAGER_B]->templates[battlerPosition];
+    else
+        gMultiuseSpriteTemplate = gBattlerSpriteTemplates[battlerPosition];
 
     gMultiuseSpriteTemplate.paletteTag = speciesTag;
     if (battlerPosition == B_POSITION_PLAYER_LEFT || battlerPosition == B_POSITION_PLAYER_RIGHT)
@@ -6285,7 +6289,7 @@ static bool8 ShouldSkipFriendshipChange(void)
 
 static void InitMonSpritesGfx_Battle(struct MonSpritesGfxManager* gfx)
 {
-    u32 i, j;
+    u16 i, j;
     for (i = 0; i < gfx->numSprites; i++)
     {
         gfx->templates[i] = gBattlerSpriteTemplates[i];
@@ -6311,13 +6315,14 @@ static void InitMonSpritesGfx_FullParty(struct MonSpritesGfxManager* gfx)
     }
 }
 
-struct MonSpritesGfxManager *CreateMonSpritesGfxManager(void)
+struct MonSpritesGfxManager *CreateMonSpritesGfxManager(u8 managerId, u8 mode)
 {
-    u32 i;
+    u8 i;
     u8 failureFlags;
     struct MonSpritesGfxManager *gfx;
 
     failureFlags = 0;
+    managerId %= MON_SPR_GFX_MANAGERS_COUNT;
     gfx = AllocZeroed(sizeof(*gfx));
     if (gfx == NULL)
         return NULL;
@@ -6366,7 +6371,18 @@ struct MonSpritesGfxManager *CreateMonSpritesGfxManager(void)
     {
         for (i = 0; i < gfx->numFrames * gfx->numSprites; i++)
             gfx->frameImages[i].size = MON_PIC_SIZE;
-        InitMonSpritesGfx_Battle(gfx);
+
+        switch (gfx->mode)
+        {
+        case MON_SPR_GFX_MODE_FULL_PARTY:
+            InitMonSpritesGfx_FullParty(gfx);
+            break;
+        case MON_SPR_GFX_MODE_NORMAL:
+        case MON_SPR_GFX_MODE_BATTLE:
+        default:
+            InitMonSpritesGfx_Battle(gfx);
+            break;
+        }
     }
 
     // If either of the allocations failed free their respective members
@@ -6389,21 +6405,27 @@ struct MonSpritesGfxManager *CreateMonSpritesGfxManager(void)
     }
     else
     {
-        gfx->active = TRUE;
-        sMonSpritesGfxManager = gfx;
+        gfx->active = GFX_MANAGER_ACTIVE;
+        sMonSpritesGfxManagers[managerId] = gfx;
     }
- 
-    return sMonSpritesGfxManager;
+
+    return sMonSpritesGfxManagers[managerId];
 }
 
-void DestroyMonSpritesGfxManager(void)
+void DestroyMonSpritesGfxManager(u8 managerId)
 {
-    struct MonSpritesGfxManager *gfx = sMonSpritesGfxManager;
+    struct MonSpritesGfxManager *gfx;
 
+    managerId %= MON_SPR_GFX_MANAGERS_COUNT;
+    gfx = sMonSpritesGfxManagers[managerId];
     if (gfx == NULL)
         return;
- 
-    if (gfx->active)
+
+    if (gfx->active != GFX_MANAGER_ACTIVE)
+    {
+        memset(gfx, 0, sizeof(*gfx));
+    }
+    else
     {
         TRY_FREE_AND_SET_NULL(gfx->frameImages);
         TRY_FREE_AND_SET_NULL(gfx->templates);
@@ -6412,22 +6434,22 @@ void DestroyMonSpritesGfxManager(void)
         memset(gfx, 0, sizeof(*gfx));
         Free(gfx);
     }
-    else
-        memset(gfx, 0, sizeof(*gfx));
 }
 
-u8 *MonSpritesGfxManager_GetSpritePtr(u8 spriteNum)
+u8 *MonSpritesGfxManager_GetSpritePtr(u8 managerId, u8 spriteNum)
 {
-    struct MonSpritesGfxManager *gfx = sMonSpritesGfxManager;
- 
-    if (gfx->active)
+    struct MonSpritesGfxManager *gfx = sMonSpritesGfxManagers[managerId % MON_SPR_GFX_MANAGERS_COUNT];
+    if (gfx->active != GFX_MANAGER_ACTIVE)
+    {
+        return NULL;
+    }
+    else
     {
         if (spriteNum >= gfx->numSprites)
             spriteNum = 0;
- 
+
         return gfx->spritePointers[spriteNum];
     }
-    return NULL;
 }
 
 u16 GetFormSpeciesId(u16 speciesId, u8 formId)
