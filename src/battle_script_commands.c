@@ -3490,30 +3490,9 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                     gBattlescriptCurrInstr = BattleScript_DefSpDefDown;
                 }
                 break;
-            case MOVE_EFFECT_RECOIL_25: // Take Down, 25% recoil
-                gBattleMoveDamage = (gHpDealt) / 4;
-                if(gBattleMons[gEffectBattler].ability == ABILITY_RASH_CUSHION)
-                    gBattleMoveDamage /= 2;
-                if (gBattleMoveDamage == 0)
-                    gBattleMoveDamage = 1;
-
-                BattleScriptPush(gBattlescriptCurrInstr + 1);
-                gBattlescriptCurrInstr = sMoveEffectBS_Ptrs[gBattleScripting.moveEffect];
-                break;
-            case MOVE_EFFECT_RECOIL_33: // Double Edge, 33 % recoil
-                gBattleMoveDamage = gHpDealt / 3;
-                if(gBattleMons[gEffectBattler].ability == ABILITY_RASH_CUSHION)
-                    gBattleMoveDamage /= 2;
-                if (gBattleMoveDamage == 0)
-                    gBattleMoveDamage = 1;
-
-                BattleScriptPush(gBattlescriptCurrInstr + 1);
-                gBattlescriptCurrInstr = sMoveEffectBS_Ptrs[gBattleScripting.moveEffect];
-                break;
             case MOVE_EFFECT_RECOIL_50: // Head Smash, 50 % recoil
                 gBattleMoveDamage = gHpDealt / 2;
-                if(gBattleMons[gEffectBattler].ability == ABILITY_RASH_CUSHION)
-                    gBattleMoveDamage /= 2;
+                
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
 
@@ -3522,8 +3501,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 break;
             case MOVE_EFFECT_RECOIL_33_STATUS: // Flare Blitz - can burn, Volt Tackle - can paralyze
                 gBattleScripting.savedDmg = gHpDealt / 3;
-                if(gBattleMons[gEffectBattler].ability == ABILITY_RASH_CUSHION)
-                    gBattleScripting.savedDmg /= 2;
+
                 if (gBattleScripting.savedDmg == 0)
                     gBattleScripting.savedDmg = 1;
 
@@ -3532,6 +3510,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 break;
             case MOVE_EFFECT_RECOIL_HP_25: // Struggle
                 gBattleMoveDamage = (gBattleMons[gEffectBattler].maxHP) / 4;
+                
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 if (GetBattlerAbility(gEffectBattler) == ABILITY_PARENTAL_BOND)
@@ -5600,6 +5579,9 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_MoveEffectRecoil;
                     effect = TRUE;
                 }
+                
+                if(gBattleMons[gEffectBattler].ability == ABILITY_RASH_CUSHION)
+                     gBattleMoveDamage = max(1, gBattleMoveDamage / 2);
             }
             gBattleScripting.moveendState++;
             break;
@@ -10853,12 +10835,9 @@ static void Cmd_various(void)
                 return;
             }
         }
+        gBattlescriptCurrInstr = cmd->nextInstr;
         break;
     }
-    } // End of switch (cmd->id)
-
-    gBattlescriptCurrInstr = cmd->nextInstr;
-        break;
     } // End of switch (gBattlescriptCurrInstr[2])
 
     gBattlescriptCurrInstr += 3;

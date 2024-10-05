@@ -5045,6 +5045,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gHitMarker |= HITMARKER_NO_PPDEDUCT;
                 gBattlescriptCurrInstr = BattleScript_OwnTempoProtected;
                 effect = 1;
+        }
         else if ((((gLastUsedAbility == ABILITY_DAZZLING || gLastUsedAbility == ABILITY_QUEENLY_MAJESTY
                    || (IsBattlerAlive(battler ^= BIT_FLANK)
                        && ((GetBattlerAbility(battler) == ABILITY_DAZZLING) || GetBattlerAbility(battler) == ABILITY_QUEENLY_MAJESTY)))
@@ -6374,7 +6375,7 @@ bool32 CanSleep(u32 battler)
 }
 
 bool32 CanBePutToSleep(u8 battlerId){
-    if(gBaseStats[gBattleMons[battlerId].species].types[0] == TYPE_SOUND || gBaseStats[gBattleMons[battlerId].species].types[1] == TYPE_SOUND)
+    if(IS_BATTLER_OF_TYPE(battlerId, TYPE_SOUND))
         return FALSE;
 
     return TRUE;
@@ -10072,7 +10073,7 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
         mod = UQ_4_12(1.0);
     if (gMovesInfo[move].effect == EFFECT_SCALD && defType == TYPE_ICE)
         mod = UQ_4_12(2.0);
-    if (move == MOVE_BUG_BUZZ && defType == TYPE_BUG)
+    if (gMovesInfo[move].effect == EFFECT_BUG_BUZZ && defType == TYPE_BUG)
         mod = UQ_4_12(2.0);
     if (moveType == TYPE_GROUND && defType == TYPE_FLYING && IsBattlerGrounded(battlerDef) && mod == UQ_4_12(0.0))
         mod = UQ_4_12(1.0);
