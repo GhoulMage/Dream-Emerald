@@ -1330,7 +1330,7 @@ static u8 GetPartyBoxPaletteFlags(u8 slot, u8 animNum)
         palFlags |= PARTY_PAL_MULTI_ALT;
     if (gPartyMenu.action == PARTY_ACTION_SWITCHING)
         palFlags |= PARTY_PAL_SWITCHING;
-    if (gPartyMenu.action == PARTY_ACTION_SWITCH || gPartyMenu.action == PARTY_ACTION_SWITCH_ITEM)
+    if (gPartyMenu.action == PARTY_ACTION_SWITCH)
     {
         if (slot == gPartyMenu.slotId || slot == gPartyMenu.slotId2)
             palFlags |= PARTY_PAL_TO_SWITCH;
@@ -1442,7 +1442,7 @@ void Task_HandleChooseMonInput(u8 taskId)
 
 static s8 *GetCurrentPartySlotPtr(void)
 {
-    if (gPartyMenu.action == PARTY_ACTION_SWITCH || gPartyMenu.action == PARTY_ACTION_SOFTBOILED || gPartyMenu.action == PARTY_ACTION_SWITCH_ITEM)
+    if (gPartyMenu.action == PARTY_ACTION_SWITCH || gPartyMenu.action == PARTY_ACTION_SOFTBOILED)
         return &gPartyMenu.slotId2;
     else
         return &gPartyMenu.slotId;
@@ -1498,13 +1498,6 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
                 PlaySE(SE_SELECT);
                 PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
                 TryGiveItemOrMailToSelectedMon(taskId);
-            }
-            break;
-        case PARTY_ACTION_SWITCH_ITEM:
-            if(IsSelectedMonNotEgg((u8 *)slotPtr)){
-                PlaySE(SE_SELECT);
-                PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-                SwitchSelectedMonsItems(taskId);
             }
             break;
         case PARTY_ACTION_SWITCH:
@@ -1571,9 +1564,6 @@ static void HandleChooseMonCancel(u8 taskId, s8 *slotPtr)
     case PARTY_ACTION_SOFTBOILED:
         PlaySE(SE_SELECT);
         FinishTwoMonAction(taskId);
-        break;
-    case PARTY_ACTION_SWITCH_ITEM:
-        FinishItemSwapAction(taskId);
         break;
     case PARTY_ACTION_MINIGAME:
         PlaySE(SE_SELECT);
@@ -3045,7 +3035,7 @@ static void CursorCb_Switch(u8 taskId)
 static void CursorCb_SwitchItem(u8 taskId)
 {
     PlaySE(SE_SELECT);
-    gPartyMenu.action = PARTY_ACTION_SWITCH_ITEM;
+    gPartyMenu.action = PARTY_ACTION_SWITCH;
     DisplayPartyMenuStdMessage(PARTY_MSG_MOVE_TO_WHERE);
     AnimatePartySlot(gPartyMenu.slotId, 1);
     gPartyMenu.slotId2 = gPartyMenu.slotId;
