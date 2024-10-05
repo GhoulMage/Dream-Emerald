@@ -10957,7 +10957,7 @@ static const struct TrainerMon sParty_Juan5[] = {
 
 static const struct TrainerMon sParty_OldLady1[] = {
     {
-    .iv = 255,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 36,
     .species = SPECIES_SEALEO,
     .heldItem = ITEM_LEFTOVERS,
@@ -10966,7 +10966,7 @@ static const struct TrainerMon sParty_OldLady1[] = {
     .isShiny = TRUE,
     },
     {
-    .iv = 255,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 34,
     .species = SPECIES_CRYOGONAL,
     .heldItem = ITEM_ICICLE_PLATE,
@@ -10974,7 +10974,7 @@ static const struct TrainerMon sParty_OldLady1[] = {
     .ability = ABILITY_LEVITATE,
     },
     {
-    .iv = 255,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 33,
     .species = SPECIES_RELICANTH,
     .heldItem = ITEM_ICY_ROCK,
@@ -10982,7 +10982,7 @@ static const struct TrainerMon sParty_OldLady1[] = {
     .ability = ABILITY_ROCK_HEAD,
     },
     {
-    .iv = 255,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 34,
     .species = SPECIES_GLAMEOW,
     .heldItem = ITEM_SILK_SCARF,
@@ -10990,7 +10990,7 @@ static const struct TrainerMon sParty_OldLady1[] = {
     .ability = ABILITY_DEFIANT,
     },
     {
-    .iv = 255,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 36,
     .species = SPECIES_CLAYDOL,
     .heldItem = ITEM_COLBUR_BERRY,
@@ -10998,7 +10998,7 @@ static const struct TrainerMon sParty_OldLady1[] = {
     .ability = ABILITY_LEVITATE,
     },
     {
-    .iv = 255,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 35,
     .species = SPECIES_LAPRAS,
     .heldItem = ITEM_QUICK_CLAW,
@@ -11009,7 +11009,7 @@ static const struct TrainerMon sParty_OldLady1[] = {
 
 static const struct TrainerMon sParty_OldLady2[] = {
     {
-    .iv = 255,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 32,
     .species = SPECIES_SLAKING,
     .heldItem = ITEM_LEFTOVERS,
@@ -11018,7 +11018,7 @@ static const struct TrainerMon sParty_OldLady2[] = {
     .shiny = FALSE,
     },
     {
-    .iv = 255,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 34,
     .species = SPECIES_VICTREEBEL,
     .heldItem = ITEM_SHELL_BELL,
@@ -11027,7 +11027,7 @@ static const struct TrainerMon sParty_OldLady2[] = {
     .shiny = FALSE,
     },
     {
-    .iv = 255,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 33,
     .species = SPECIES_SHUCKLE,
     .heldItem = ITEM_LAX_INCENSE,
@@ -11035,50 +11035,6 @@ static const struct TrainerMon sParty_OldLady2[] = {
     .ability = ABILITY_CONTRARY,
     .shiny = FALSE,
     },
-};
-
-static const struct TrainerMonDouble sParty_Test1[] = {
-    {
-        .mon1 {
-            .iv = 255,
-            .lvl = 6,
-            .species = SPECIES_POOCHYENA,
-            .heldItem = ITEM_ORAN_BERRY,
-            .moves = {MOVE_POUND, MOVE_GROWL, MOVE_NONE, MOVE_NONE},
-            .ability = ABILITY_TRUANT,
-            .shiny = FALSE,
-        },
-        .mon2 {
-            .iv = 255,
-            .lvl = 6,
-            .species = SPECIES_ZIGZAGOON,
-            .heldItem = ITEM_ORAN_BERRY,
-            .moves = {MOVE_TACKLE, MOVE_TAIL_WHIP, MOVE_NONE, MOVE_NONE},
-            .ability = ABILITY_TRUANT,
-            .shiny = TRUE,
-        }
-    },
-
-    {
-        .mon1 {
-            .iv = 255,
-            .lvl = 7,
-            .species = SPECIES_METAPOD,
-            .heldItem = ITEM_ORAN_BERRY,
-            .moves = {MOVE_TACKLE, MOVE_STRING_SHOT, MOVE_HARDEN, MOVE_NONE},
-            .ability = ABILITY_SHED_SKIN,
-            .shiny = FALSE,
-        },
-        .mon2 {
-            .iv = 255,
-            .lvl = 7,
-            .species = SPECIES_KAKUNA,
-            .heldItem = ITEM_ORAN_BERRY,
-            .moves = {MOVE_POISON_STING, MOVE_STRING_SHOT, MOVE_HARDEN, MOVE_NONE},
-            .ability = ABILITY_SHED_SKIN,
-            .shiny = TRUE,
-        }
-    }
 };
 
 static const struct TrainerMon sParty_Angelo[] = {
