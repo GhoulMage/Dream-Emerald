@@ -3393,6 +3393,11 @@ static s8 CompareItemsAlphabetically(struct ItemSlot* itemSlot1, struct ItemSlot
     return 0; //Will never be reached
 }
 
+static u16 GetBagItemQuantity(u16 *quantity)
+{
+    return gSaveBlock2Ptr->encryptionKey ^ *quantity;
+}
+
 static s8 CompareItemsByMost(struct ItemSlot* itemSlot1, struct ItemSlot* itemSlot2)
 {
     u16 quantity1 = GetBagItemQuantity(&itemSlot1->quantity);
