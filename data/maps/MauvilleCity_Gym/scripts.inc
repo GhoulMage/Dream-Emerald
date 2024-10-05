@@ -222,7 +222,7 @@ MauvilleCity_Gym_EventScript_Angelo::
 	end
 
 MauvilleCity_Gym_EventScript_GymGuide::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DEFEATED_MAUVILLE_GYM, MauvilleCity_Gym_EventScript_GymGuidePostVictory
 	msgbox MauvilleCity_Gym_Text_GymGuideAdvice, MSGBOX_DEFAULT

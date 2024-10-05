@@ -233,7 +233,7 @@ LavaridgeTown_EventScript_ExpertF::
 	end
 
 LavaridgeTown_EventScript_EggWoman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_LAVARIDGE_EGG, LavaridgeTown_EventScript_ReceivedEgg
 	msgbox LavaridgeTown_Text_HaveEggWillYouTakeIt, MSGBOX_YESNO

@@ -55,7 +55,7 @@ MauvilleCity_EventScript_GameCornerSign::
 	end
 
 MauvilleCity_EventScript_SchoolKidM::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_TV_EXPLAINED, MauvilleCity_EventScript_TVExplained
 	msgbox MauvilleCity_Text_ExplainTV, MSGBOX_DEFAULT
@@ -69,7 +69,7 @@ MauvilleCity_EventScript_TVExplained::
 	end
 
 MauvilleCity_EventScript_WallysUncle::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_DECLINED_WALLY_BATTLE_MAUVILLE, MauvilleCity_EventScript_UncleAskPlayerToBattleWally
 	msgbox MauvilleCity_Text_UncleHesTooPeppy, MSGBOX_DEFAULT
@@ -416,7 +416,7 @@ MauvilleCity_Movement_ScottExitEast:
 	step_end
 
 MauvilleCity_EventScript_Wattson::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_ReceivedThunderbolt
 	goto_if_eq VAR_NEW_MAUVILLE_STATE, 2, MauvilleCity_EventScript_CompletedNewMauville

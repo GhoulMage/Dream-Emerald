@@ -87,7 +87,7 @@ PetalburgCity_EventScript_WalkToWallyHouse::
 	end
 
 PetalburgCity_EventScript_Boy::
-	locktarget
+	lock
 	faceplayer
 	msgbox PetalburgCity_Text_WaterReflection, MSGBOX_DEFAULT
 	closemessage

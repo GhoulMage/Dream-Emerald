@@ -7,7 +7,7 @@ Route114_LanettesHouse_OnTransition:
 	end
 
 Route114_LanettesHouse_EventScript_Lanette::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_DOLL_LANETTE, Route114_LanettesHouse_EventScript_OfferAdvice
 	setflag FLAG_SYS_PC_LANETTE

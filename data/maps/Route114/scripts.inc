@@ -20,7 +20,7 @@ Route114_OnFrame:
 	.2byte 0
 
 Route114_EventScript_Man::
-	locktarget
+	lock
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_ROUTE_114_RECEIVED_BERRY, Route114_EventScript_ReceivedBerry
@@ -41,7 +41,7 @@ Route114_EventScript_ReceivedBerry::
 	end
 
 Route114_EventScript_RoarGentleman::
-	locktarget
+	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_ROAR, Route114_EventScript_ReceivedRoar
 	msgbox Route114_Text_AllMyMonDoesIsRoarTakeThis, MSGBOX_DEFAULT
@@ -58,7 +58,7 @@ Route114_EventScript_ReceivedRoar::
 	end
 
 Route114_EventScript_Poochyena::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_POOCHYENA, CRY_MODE_ENCOUNTER

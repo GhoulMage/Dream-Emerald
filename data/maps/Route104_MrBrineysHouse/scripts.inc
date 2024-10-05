@@ -23,7 +23,7 @@ Route104_MrBrineysHouse_EventScript_SetBrineyPeekoPos::
 	return
 
 Route104_MrBrineysHouse_EventScript_Briney::
-	locktarget
+	lock
 	faceplayer
 	call_if_unset FLAG_MR_BRINEY_SAILING_INTRO, Route104_MrBrineysHouse_EventScript_SailingIntro
 	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, Route104_MrBrineysHouse_EventScript_SailBothDeliveries
@@ -88,7 +88,7 @@ Route104_MrBrineysHouse_EventScript_SailToDewford::
 	end
 
 Route104_MrBrineysHouse_EventScript_Peeko::
-	locktarget
+	lock
 	faceplayer
 	waitse
 	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL

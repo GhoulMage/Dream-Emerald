@@ -2,7 +2,7 @@ LilycoveCity_DepartmentStore_3F_MapScripts::
 	.byte 0
 
 LilycoveCity_DepartmentStore_3F_EventScript_ClerkLeft::
-	locktarget
+	lock
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
@@ -24,7 +24,7 @@ LilycoveCity_DepartmentStore_3F_Pokemart_Vitamins:
 	end
 
 LilycoveCity_DepartmentStore_3F_EventScript_ClerkRight::
-	locktarget
+	lock
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
