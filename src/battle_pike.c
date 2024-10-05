@@ -870,7 +870,7 @@ static bool8 DoesTypePreventStatus(u16 species, u32 status)
             ret = TRUE;
         break;
     case STATUS1_SLEEP:
-        if(gBaseStats[species].type1 == TYPE_SOUND || gBaseStats[species].type2 == TYPE_SOUND)
+        if(gSpeciesInfo[species].types[0] == TYPE_SOUND || gSpeciesInfo[species].types[1] == TYPE_SOUND)
            ret = TRUE;
         break;
     }
