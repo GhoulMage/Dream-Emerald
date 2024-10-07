@@ -445,6 +445,7 @@ struct SpeciesInfo /*0x8C*/
  /* 0x88 */ const struct Evolution *evolutions;
  /* 0x84 */ const u16 *formSpeciesIdTable;
  /* 0x84 */ const struct FormChange *formChangeTable;
+ /* 0xIDK */ u8 gaynessRatio;
 };
 
 struct MoveInfo

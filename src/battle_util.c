@@ -11339,6 +11339,8 @@ bool32 CanBattlerBeAttracted(u32 attractorBattler, u32 targetBattler) {
             return AreBattlersOfOppositeGender(attractorBattler, targetBattler);
         case MON_GAYNESS_IS_GAY:
             return AreBattlersOfSameGender(attractorBattler, targetBattler);
+        case MON_GAYNESS_IS_ACE:
+            return FALSE;
         case MON_GAYNESS_IS_PAN:
             return TRUE;
     }
