@@ -1305,6 +1305,7 @@ u8 GetDaycareCompatibilityScore(struct DayCare *daycare)
     // neither parent is Ditto
     else
     {
+        //TODO: Do check for gay and pan pokemon
         if (genders[0] == genders[1])
             return PARENTS_INCOMPATIBLE;
         if (genders[0] == MON_GENDERLESS || genders[1] == MON_GENDERLESS)

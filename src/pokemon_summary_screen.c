@@ -903,7 +903,7 @@ static const union AnimCmd sSpriteAnim_TypeSound[] = {
     ANIMCMD_END
 };
 
-#define SOUND_TYPE_VARIATIONS (NUMBER_OF_MON_TYPES-1)
+#define SOUND_TYPE_VARIATIONS (NUMBER_OF_MON_TYPES-1) // Minus Sound type itself
 #define SOUND_TYPE_VARIATIONS_START (NUMBER_OF_MON_TYPES + CONTEST_CATEGORIES_COUNT)
 
 #define PAL_TYPE_NORMAL       13
@@ -4096,9 +4096,9 @@ static void SetMoveTypeIcons(void)
                 SetTypeSpritePosAndPal(type & 0x3F, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
             } else if(gBattleMoves[summary->moves[i]].type == TYPE_SOUND
                     && gBattleMoves[summary->moves[i]].danceMove
-                    && gBattleMoves[summary->moves[i]].argument != TYPE_NONE
-                    && gBattleMoves[summary->moves[i]].argument != TYPE_SOUND)
-                SetTypeSpritePosAndPal(SOUND_TYPE_VARIATIONS_START + gBattleMoves[summary->moves[i]].argument, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+                    && gBattleMoves[summary->moves[i]].danceMoveSecondaryType != TYPE_NONE
+                    && gBattleMoves[summary->moves[i]].danceMoveSecondaryType != TYPE_SOUND)
+                SetTypeSpritePosAndPal(SOUND_TYPE_VARIATIONS_START + gBattleMoves[summary->moves[i]].danceMoveSecondaryType, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
             else
                 SetTypeSpritePosAndPal(gMovesInfo[summary->moves[i]].type, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
         }

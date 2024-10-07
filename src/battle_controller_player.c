@@ -901,6 +901,8 @@ static void HandleInputChooseMove(u32 battler)
             PlaySE(SE_SELECT);
         }
     }
+    
+    MoveSelectionDisplayMoveType(battler);
 }
 
 static void ReloadMoveNames(u32 battler)
@@ -1713,6 +1715,22 @@ static void MoveSelectionDisplayPpNumber(u32 battler)
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
 }
 
+bool8 SelectedMoveHasSecondaryType(struct ChooseMoveStruct *moveInfo, u32 battler){
+    if(gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_SOUND
+            && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].danceMove
+            && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].danceMoveSecondaryType != TYPE_NONE)
+        return TRUE;
+    
+    return FALSE;
+}
+u8 GetTimer(struct ChooseMoveStruct *moveInfo) {
+    if(++moveInfo->moveTypeTimer >= 60){
+        moveInfo->moveTypeTimer = 0;
+    }
+
+    return moveInfo->moveTypeTimer;
+}
+
 static void MoveSelectionDisplayMoveType(u32 battler)
 {
     u8 *txtPtr, *end;
@@ -1753,8 +1771,8 @@ static void MoveSelectionDisplayMoveType(u32 battler)
     else if(moveInfo->moves[gMoveSelectionCursor[gActiveBattler]] == MOVE_HIDDEN_POWER)
     {
         type = GetMonHiddenPowerType(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]]) & 0x3F;
-    //} else if(SelectedMoveHasTypeArgument(moveInfo) && GetTimer(moveInfo) < 30) {
-        //type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].argument;
+    } else if(SelectedMoveHasSecondaryType(moveInfo, battler) && GetTimer(moveInfo) < 30) {
+        type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].danceMoveSecondaryType & 0x3F;
     } else {
         type = gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
     }

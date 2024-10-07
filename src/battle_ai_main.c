@@ -1437,7 +1437,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_SCORE(-8);
             break;
         case EFFECT_CAPTIVATE:
-            if (!AreBattlersOfOppositeGender(battlerAtk, battlerDef))
+            if (!CanBattlerBeAttracted(battlerAtk, battlerDef)) //TODO: AI learning the opposing pokemon's gayness? or guessing based on species gayness ratio.
                 ADJUST_SCORE(-10);
             break;
     // other

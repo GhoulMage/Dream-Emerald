@@ -5869,7 +5869,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
              && IsBattlerAlive(gBattlerTarget)
              && (B_ABILITY_TRIGGER_CHANCE >= GEN_4 ? RandomPercentage(RNG_CUTE_CHARM, 30) : RandomChance(RNG_CUTE_CHARM, 1, 3))
              && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION)
-             && AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
+             && CanBattlerBeAttracted(gBattlerAttacker, gBattlerTarget)
              && GetBattlerAbility(gBattlerAttacker) != ABILITY_OBLIVIOUS
              && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_PROTECTIVE_PADS
              && IsMoveMakingContact(move, gBattlerAttacker)
@@ -9288,10 +9288,43 @@ static inline u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         break;
     case ABILITY_RIVALRY:
-        if (AreBattlersOfSameGender(battlerAtk, battlerDef))
-            modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
-        else if (AreBattlersOfOppositeGender(battlerAtk, battlerDef))
-            modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));
+        #if GENDERLESS_POKEMON_CANT_BE_INFATUATED
+        
+        if(GetBattlerGender(battlerAtk) != MON_GENDERLESS && GetBattlerGender(battlerDef) != MON_GENDERLESS){
+            switch(GetBattlerGayness(battlerAtk)){
+                case MON_GAYNESS_IS_HET:
+                case MON_GAYNESS_IS_GAY:
+                    if(AreBattlersOfSameGender(battlerAtk, battlerDef)) {
+                        modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
+                    } else {
+                        modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));
+                    }
+                break;
+                case MON_GAYNESS_IS_PAN:
+                    modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
+                break;
+            }
+        }
+        
+        #else
+        //We skip the genderless check
+
+        switch(GetBattlerGayness(battlerAtk)){
+            case MON_GAYNESS_IS_HET:
+            case MON_GAYNESS_IS_GAY:
+                if(AreBattlersOfSameGender(battlerAtk, battlerDef)) {
+                    modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
+                } else {
+                    modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));
+                }
+            break;
+            case MON_GAYNESS_IS_PAN:
+                modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
+            break;
+        }
+        
+        #endif
+        
         break;
     case ABILITY_ANALYTIC:
         if (GetBattlerTurnOrderNum(battlerAtk) == gBattlersCount - 1 && move != MOVE_FUTURE_SIGHT && move != MOVE_DOOM_DESIRE)
@@ -9343,7 +9376,7 @@ static inline u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 
         break;
     case ABILITY_LIQUID_VOICE:
         if (moveType == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
-            MulModifier(&modifier, UQ_4_12(1.2));
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
     case ABILITY_NORMALIZE:
         if (moveType == TYPE_NORMAL && gBattleStruct->ateBoost[battlerAtk])
@@ -11772,6 +11805,41 @@ u8 GetBattlerGender(u32 battler)
 {
     return GetGenderFromSpeciesAndPersonality(gBattleMons[battler].species,
                                               gBattleMons[battler].personality);
+}
+
+u8 GetBattlerGayness(u32 battler) {
+    return GetGaynessFromSpeciesAndPersonality(gBattleMons[battler].species,
+                                               gBattleMons[battler].personality);
+}
+
+bool32 CanBattlerBeAttracted(u32 attractorBattler, u32 targetBattler) {
+#if GENDERLESS_POKEMON_CANT_BE_INFATUATED
+    //Assuming no genderless pokemon will ever try to attract other pokemon
+    if(GetBattlerGender(targetBattler) == MON_GENDERLESS)
+        return FALSE;
+#endif
+
+    switch(GetBattlerGayness(targetBattler)){
+        case MON_GAYNESS_IS_HET:
+            return AreBattlersOfOppositeGender(attractorBattler, targetBattler);
+        case MON_GAYNESS_IS_GAY:
+            return AreBattlersOfSameGender(attractorBattler, targetBattler);
+        case MON_GAYNESS_IS_PAN:
+            return TRUE;
+    }
+    
+    return FALSE;
+}
+
+bool32 AreBattlersOfSameGender(u32 battler1, u32 battler2) {
+    u8 gender1 = GetBattlerGender(battler1);
+    u8 gender2 = GetBattlerGender(battler2);
+
+#if GENDERLESS_POKEMON_CANT_BE_INFATUATED
+    return (gender1 != MON_GENDERLESS && gender2 != MON_GENDERLESS && gender1 == gender2);
+#else
+    return gender1 == gender2;
+#endif
 }
 
 bool32 AreBattlersOfOppositeGender(u32 battler1, u32 battler2)

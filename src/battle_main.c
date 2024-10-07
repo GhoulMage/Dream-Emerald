@@ -1905,6 +1905,15 @@ u32 GeneratePersonalityForGender(u32 gender, u32 species)
         return speciesInfo->genderRatio / 2;
 }
 
+u32 GeneratePersonalityForGayness(u32 gayness, u32 species) {
+    const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[species];
+
+    if(gayness == MON_GAYNESS_IS_HET)
+        return ((255 - speciesInfo->gaynessRatio) / 2) + speciesInfo->gaynessRatio;
+    else
+        return speciesInfo->gaynessRatio / 2;
+}
+
 void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon *partyEntry)
 {
     bool32 noMoveSet = TRUE;
@@ -1963,10 +1972,12 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
 
             if (trainer->doubleBattle == TRUE)
                 personalityValue = 0x80;
-            else if (trainer->encounterMusic_gender & F_TRAINER_FEMALE)
-                personalityValue = 0x78; // Use personality more likely to result in a female Pokémon
-            else
-                personalityValue = 0x88; // Use personality more likely to result in a male Pokémon
+            
+            // Why though?
+            //else if (trainer->encounterMusic_gender & F_TRAINER_FEMALE)
+            //    personalityValue = 0x78; // Use personality more likely to result in a female Pokémon
+            //else
+            //    personalityValue = 0x88; // Use personality more likely to result in a male Pokémon
 
             personalityValue += personalityHash << 8;
             if (partyData[i].gender == TRAINER_MON_MALE)
@@ -1975,6 +1986,18 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[i].species);
             else if (partyData[i].gender == TRAINER_MON_RANDOM_GENDER)
                 personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(Random() & 1 ? MON_MALE : MON_FEMALE, partyData[i].species);
+            
+            // We using the second byte for this.
+            if(partyData[i].gayness == TRAINER_MON_HET) {
+                personalityValue = (personalityValue & 0xFFFF00FF) | (GeneratePersonalityForGayness(MON_GAYNESS_IS_HET, partyData[i].species) << 8);
+            }
+            else if(partyData[i].gayness == TRAINER_MON_GAY){
+                personalityValue = (personalityValue & 0xFFFF00FF) | (GeneratePersonalityForGayness(MON_GAYNESS_IS_GAY, partyData[i].species) << 8);
+            }
+            else if(partyData[i].gayness == TRAINER_MON_PAN){
+                personalityValue = (personalityValue & 0xFFFF00FF) | (GeneratePersonalityForGayness(MON_GAYNESS_IS_PAN, partyData[i].species) << 8);
+            }
+
             ModifyPersonalityForNature(&personalityValue, partyData[i].nature);
             if (partyData[i].isShiny)
             {
