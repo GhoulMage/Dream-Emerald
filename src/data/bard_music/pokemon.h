@@ -205,9 +205,9 @@ const struct BardSound gBardSounds_Pokemon[NUM_SPECIES][6] = {
         NULL_BARD_SOUND,
     },
     [SPECIES_ADOKANA] = {
-        { 0x6, 0x0, 0x0, 0x0, 0x0},
-        { 0x17, 0x0, 0x0, 0x0, 0x0},
-        { 0x33, 0x0, 0x0, 0x0, 0x0},
+        { .songLengthId = 6 },
+        { .songLengthId = 23 },
+        { .songLengthId = 51 },
         NULL_BARD_SOUND,
         NULL_BARD_SOUND,
         NULL_BARD_SOUND
@@ -2965,6 +2965,30 @@ const struct BardSound gBardSounds_Pokemon[NUM_SPECIES][6] = {
         NULL_BARD_SOUND,
     },
     [SPECIES_GARDEVOIR] = {
+        { .songLengthId = 27 },
+        { .songLengthId = 9 },
+        { .songLengthId = 27 },
+        { .songLengthId = 51 },
+        NULL_BARD_SOUND,
+        NULL_BARD_SOUND,
+    },
+    [SPECIES_RALTSD] = {
+        { .songLengthId =  7 },
+        { .songLengthId = 51 },
+        { .songLengthId = 51 },
+        NULL_BARD_SOUND,
+        NULL_BARD_SOUND,
+        NULL_BARD_SOUND,
+    },
+    [SPECIES_KIRLIAD] = {
+        { .songLengthId = 48 },
+        { .songLengthId = 12 },
+        { .songLengthId = 42 },
+        NULL_BARD_SOUND,
+        NULL_BARD_SOUND,
+        NULL_BARD_SOUND,
+    },
+    [SPECIES_GARDEVOIRD] = {
         { .songLengthId = 27 },
         { .songLengthId = 9 },
         { .songLengthId = 27 },

@@ -72,6 +72,7 @@ struct TrainerMon
     bool8 gigantamaxFactor : 1;
     bool8 shouldDynamax : 1;
     bool8 shouldTerastal : 1;
+    bool8 gayness : 3;
 };
 
 #define TRAINER_PARTY(partyArray) partyArray, .partySize = ARRAY_COUNT(partyArray)
