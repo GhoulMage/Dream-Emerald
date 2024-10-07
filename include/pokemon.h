@@ -496,7 +496,6 @@ struct MoveInfo
     u8 danceMoveSecondaryType:1;
     u32 ballisticMove:1;
     u32 powderMove:1;
-    u32 danceMove:1;
     u32 windMove:1;
     u32 slicingMove:1; // end of word
     u32 healingMove:1;

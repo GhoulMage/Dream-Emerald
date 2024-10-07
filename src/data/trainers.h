@@ -2148,7 +2148,7 @@ F_TRAINER_FEMALE |
         .items = {ITEM_FULL_RESTORE, ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_NONE},
         .doubleBattle = TRUE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = ITEM_CUSTOM_MOVES(sParty_OldLady1),
+        .party = TRAINER_PARTY(sParty_OldLady1),
     },
 
     [TRAINER_OLD_LADY_2] =
@@ -2160,7 +2160,7 @@ F_TRAINER_FEMALE |
         .items = {ITEM_HYPER_POTION, ITEM_SUPER_POTION, ITEM_NONE, ITEM_NONE},
         .doubleBattle = TRUE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = ITEM_CUSTOM_MOVES(sParty_OldLady2),
+        .party = TRAINER_PARTY(sParty_OldLady2),
     },
 
     [TRAINER_GABBY_AND_TY_1] =
@@ -42217,7 +42217,7 @@ F_TRAINER_FEMALE |
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = 0,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Charles),
+        .party = TRAINER_PARTY(sParty_Charles),
     },
 
     [TRAINER_MIKE_3] =
@@ -42229,7 +42229,7 @@ F_TRAINER_FEMALE |
         .items = {ITEM_POTION, ITEM_POTION, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = ITEM_DEFAULT_MOVES(sParty_Mike3),
+        .party = TRAINER_PARTY(sParty_Mike3),
     },
 
     [TRAINER_JULIE_2] =
@@ -42241,7 +42241,7 @@ F_TRAINER_FEMALE |
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Julie2),
+        .party = TRAINER_PARTY(sParty_Julie2),
     },
 
     [TRAINER_NINJABOY_1] =
@@ -42253,7 +42253,7 @@ F_TRAINER_FEMALE |
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_NinjaBoy1),
+        .party = TRAINER_PARTY(sParty_NinjaBoy1),
     },
 
     [TRAINER_NINJABOY_2] =
@@ -42265,7 +42265,7 @@ F_TRAINER_FEMALE |
         .items = { ITEM_SUPER_POTION, ITEM_POTION, ITEM_NONE, ITEM_NONE },
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = ITEM_DEFAULT_MOVES(sParty_NinjaBoy2),
+        .party = TRAINER_PARTY(sParty_NinjaBoy2),
     },
 
     [TRAINER_NINJABOY_3] =
@@ -42277,7 +42277,7 @@ F_TRAINER_FEMALE |
         .items = { ITEM_HYPER_POTION, ITEM_SUPER_POTION, ITEM_SUPER_POTION, ITEM_NONE },
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = ITEM_DEFAULT_MOVES(sParty_NinjaBoy3),
+        .party = TRAINER_PARTY(sParty_NinjaBoy3),
     },
 
     [TRAINER_NINJABOY_4] =
@@ -42289,7 +42289,7 @@ F_TRAINER_FEMALE |
         .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_SUPER_POTION, ITEM_SUPER_POTION },
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = ITEM_DEFAULT_MOVES(sParty_NinjaBoy4),
+        .party = TRAINER_PARTY(sParty_NinjaBoy4),
     },
 
     [TRAINER_JACOB_2] =
@@ -42301,7 +42301,7 @@ F_TRAINER_FEMALE |
         .items = { },
         .doubleBattle = TRUE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Jacob2),
+        .party = TRAINER_PARTY(sParty_Jacob2),
     },
 
     [TRAINER_CLEMENTINE] =
@@ -42313,7 +42313,7 @@ F_TRAINER_FEMALE |
         .items = { ITEM_SUPER_POTION, ITEM_SUPER_POTION, ITEM_NONE, ITEM_NONE },
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Clementine),
+        .party = TRAINER_PARTY(sParty_Clementine),
     },
 
     [TRAINER_STACY] =
@@ -42325,7 +42325,7 @@ F_TRAINER_FEMALE |
         .items = { ITEM_SUPER_POTION, ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE },
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Stacy),
+        .party = TRAINER_PARTY(sParty_Stacy),
     },
 
     [TRAINER_STEPHANIE] =
@@ -42337,6 +42337,6 @@ F_TRAINER_FEMALE |
         .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_HYPER_POTION, ITEM_HYPER_POTION },
         .doubleBattle = TRUE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = ITEM_CUSTOM_MOVES(sParty_Stephanie),
+        .party = TRAINER_PARTY(sParty_Stephanie),
     },
 };

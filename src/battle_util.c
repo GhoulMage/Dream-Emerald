@@ -2989,9 +2989,9 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_PANIC_ATTACK:
-            if (gDisableStructs[gActiveBattler].isInPanic > 0) {
-                gDisableStructs[gActiveBattler].isInPanic--;
-                if(gDisableStructs[gActiveBattler].isInPanic == 0){
+            if (gDisableStructs[battler].isInPanic > 0) {
+                gDisableStructs[battler].isInPanic--;
+                if(gDisableStructs[battler].isInPanic == 0){
                     BattleScriptExecute(BattleScript_CalmedDown);
                     effect++;
                 }
@@ -2999,16 +2999,16 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_DREAMCATCHER:
-            if ((gBattleMons[gActiveBattler].status1 & STATUS1_SLEEP)
-                && gBattleMons[gActiveBattler].hp != 0)
+            if ((gBattleMons[battler].status1 & STATUS1_SLEEP)
+                && gBattleMons[battler].hp != 0)
             {
                 MAGIC_GUARD_CHECK;
 
                 if (ability == ABILITY_DREAMCATCHER)
                 {
-                    if (!BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK))
+                    if (!BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                     {
-                        gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 6;
+                        gBattleMoveDamage = gBattleMons[battler].maxHP / 6;
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
                         gBattleMoveDamage *= -1;
@@ -9335,11 +9335,11 @@ static inline u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 
         break;
     case ABILITY_DARK_POWER:
         if (moveType == TYPE_DARK && gBattleStruct->ateBoost[battlerAtk])
-            MulModifier(&modifier, UQ_4_12(1.2));
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
     case ABILITY_LIQUID_VOICE:
         if (moveType == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
-            MulModifier(&modifier, UQ_4_12(1.2));
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
     case ABILITY_NORMALIZE:
         if (moveType == TYPE_NORMAL && gBattleStruct->ateBoost[battlerAtk])
@@ -9486,11 +9486,11 @@ static inline u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 
         break;
         case ABILITY_OWN_TEMPO:
             if (MoveIsSonic(move))
-                MulModifier(&modifier, UQ_4_12(0.5));
+                modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
         break;
         case ABILITY_SOUNDPROOF:
             if (MoveIsDance(move))
-                MulModifier(&modifier, UQ_4_12(0.5));
+                modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
         break;
     }
 
@@ -9683,7 +9683,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         break;
     case ABILITY_CRESCENDO:
         if (moveType == TYPE_SOUND && gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 3))
-            MulModifier(&modifier, UQ_4_12(1.5));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
     case ABILITY_TORRENT:
         if (moveType == TYPE_WATER && gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 3))
@@ -9691,7 +9691,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         break;
     case ABILITY_ULTRASONIC:
         if(MoveIsSonic(move))
-            MulModifier(&modifier, UQ_4_12(1.5));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
     case ABILITY_BLAZE:
         if (moveType == TYPE_FIRE && gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 3))
@@ -9750,7 +9750,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         break;
     case ABILITY_ULTRASONIC:
         if(MoveIsSonic(move)){
-            MulModifier(&modifier, UQ_4_12(1.5));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         }
         break;
     }
@@ -9898,7 +9898,7 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         break;
     case ABILITY_DRAGON_SCALE:
         if(!usesDefStat)
-            MulModifier(&modifier, UQ_4_12(1.5));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
             if (updateFlags)
                 RecordAbilityBattle(battlerDef, ABILITY_DRAGON_SCALE);
         break;
@@ -10015,7 +10015,7 @@ static inline uq4_12_t GetSameTypeAttackBonusModifier(u32 battlerAtk, u32 moveTy
         return UQ_4_12(1.0);
     else if (gBattleStruct->pledgeMove && IS_BATTLER_OF_TYPE(BATTLE_PARTNER(battlerAtk), moveType))
         return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
-    else if(MoveIsDance(move) && DanceHasSecondaryType(gBattleMoves[move])) {
+    else if(MoveIsDance(move) && DanceHasSecondaryType(move)) {
         if (IS_BATTLER_OF_TYPE(battlerAtk, gBattleMoves[move].danceMoveSecondaryType) && move != MOVE_NONE)
         {
             return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
@@ -10184,7 +10184,7 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
         if (IS_MOVE_SPECIAL(move))
             return UQ_4_12(0.5);
         break;
-    case ABILITY_ULTRASOUND:
+    case ABILITY_ULTRASONIC:
         if(MoveIsSonic(move)){
             return UQ_4_12(1.5);
         }
@@ -10657,7 +10657,7 @@ uq4_12_t CalcTypeEffectivenessMultiplier(u32 move, u32 moveType, u32 battlerAtk,
         modifier = CalcTypeEffectivenessMultiplierInternal(move, moveType, battlerAtk, battlerDef, recordAbilities, modifier, defAbility);
 
         //Dance moves can have a secondary type and use an unique flag
-        if(DanceHasSecondaryType(gMovesInfo[move]) && gMovesInfo[move].danceMoveSecondaryType != TYPE_NONE)
+        if(DanceHasSecondaryType(move) && gMovesInfo[move].danceMoveSecondaryType != TYPE_NONE)
             modifier = CalcTypeEffectivenessMultiplierInternal(move, gMovesInfo[move].danceMoveSecondaryType, battlerAtk, battlerDef, recordAbilities, modifier, defAbility);
         else if (gMovesInfo[move].effect == EFFECT_TWO_TYPED_MOVE)
             modifier = CalcTypeEffectivenessMultiplierInternal(move, gMovesInfo[move].argument, battlerAtk, battlerDef, recordAbilities, modifier, defAbility);

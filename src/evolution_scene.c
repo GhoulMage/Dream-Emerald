@@ -165,7 +165,7 @@ static void CB2_BeginEvolutionScene(void)
 #define tPartyId            data[10]
 
 #define TASK_BIT_CAN_STOP       (1 << 0)
-#define TASK_BIT_PLAYING_MUSIC  (1 << 7)
+#define TASK_BIT_LEARN_MOVE  (1 << 7)
 
 static void Task_BeginEvolutionScene(u8 taskId)
 {
@@ -789,11 +789,11 @@ static void Task_EvolutionScene(u8 taskId)
             if(!gTasks[taskId].tEvoWasStopped){
                 sEvoGraphicsTaskId = DisplayCaughtMonDexPage(GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonData(mon, MON_DATA_OT_ID, NULL), GetMonData(mon, MON_DATA_PERSONALITY, NULL));
                 
-                if (!(gTasks[taskId].tBits & TASK_BIT_PLAYING_MUSIC))
+                if (!(gTasks[taskId].tBits & TASK_BIT_LEARN_MOVE))
                 {
                     StopMapMusic();
                     Overworld_PlaySpecialMapMusic();
-                    gTasks[taskId].tBits |= TASK_BIT_PLAYING_MUSIC;
+                    gTasks[taskId].tBits |= TASK_BIT_LEARN_MOVE;
                 }
             }
             gTasks[taskId].tState++;
@@ -810,7 +810,7 @@ static void Task_EvolutionScene(u8 taskId)
                 {
                     StopMapMusic();
                     Overworld_PlaySpecialMapMusic();
-                    gTasks[taskId].tBits |= TASK_BIT_PLAYING_MUSIC;
+                    gTasks[taskId].tBits |= TASK_BIT_LEARN_MOVE;
                 }
 
                 gTasks[taskId].tLearnsFirstMove = FALSE;
@@ -835,11 +835,11 @@ static void Task_EvolutionScene(u8 taskId)
     case EVOSTATE_END:
         if (!gPaletteFade.active)
         {
-            if (!(gTasks[taskId].tBits & TASK_BIT_PLAYING_MUSIC))
+            if (!(gTasks[taskId].tBits & TASK_BIT_LEARN_MOVE))
             {
                 StopMapMusic();
                 Overworld_PlaySpecialMapMusic();
-                gTasks[taskId].tBits |= TASK_BIT_PLAYING_MUSIC;
+                gTasks[taskId].tBits |= TASK_BIT_LEARN_MOVE;
             }
             if (!gTasks[taskId].tEvoWasStopped)
                 CreateShedinja(gTasks[taskId].tPreEvoSpecies, mon);

@@ -4095,7 +4095,7 @@ static void SetMoveTypeIcons(void)
 
                 SetTypeSpritePosAndPal(type & 0x3F, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
             } else if(gBattleMoves[summary->moves[i]].type == TYPE_SOUND
-                    && gBattleMoves[summary->moves[i]].flags & FLAG_DANCE
+                    && gBattleMoves[summary->moves[i]].danceMove
                     && gBattleMoves[summary->moves[i]].argument != TYPE_NONE
                     && gBattleMoves[summary->moves[i]].argument != TYPE_SOUND)
                 SetTypeSpritePosAndPal(SOUND_TYPE_VARIATIONS_START + gBattleMoves[summary->moves[i]].argument, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
