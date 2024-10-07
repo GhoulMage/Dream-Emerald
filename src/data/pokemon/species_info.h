@@ -76,6 +76,11 @@
 // 255 (MON_GENDERLESS) is reserved for genderless Pokémon.
 #define PERCENT_FEMALE(percent) min(254, ((percent * 255) / 100))
 
+// Maximum value for a gay Pokémon is 253 (MON_GAYNESS_IS_GAY), making all of them gay.
+// 254 is MON_GAYNESS_IS_ACE which is an asexual Pokémon.
+// 255 is MON_GAYNESS_IS_PAN which is a pansexual Pokémon.
+#define PERCENT_GAYNESS(percent) min(253, ((percent * 255) / 100))
+
 #define MON_TYPES(type1, ...) { type1, DEFAULT(type1, __VA_ARGS__) }
 #define MON_EGG_GROUPS(group1, ...) { group1, DEFAULT(group1, __VA_ARGS__) }
 

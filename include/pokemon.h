@@ -449,6 +449,7 @@ struct SpeciesInfo /*0xC4*/
  /* 0x8C */ const struct Evolution *evolutions;
  /* 0x90 */ const u16 *formSpeciesIdTable;
  /* 0x94 */ const struct FormChange *formChangeTable;
+ /* 0xIDK*/ u8 gaynessRatio;
 #if OW_POKEMON_OBJECT_EVENTS
  /* 0x98 */ struct ObjectEventGraphicsInfo overworldData;
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE

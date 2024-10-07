@@ -179,7 +179,8 @@
 #define GENDERLESS_POKEMON_CANT_BE_INFATUATED FALSE
 
 #define MON_GAYNESS_IS_HET       0x00
-#define MON_GAYNESS_IS_GAY       0xFE
+#define MON_GAYNESS_IS_GAY       0xFD
+#define MON_GAYNESS_IS_ACE       0xFE
 #define MON_GAYNESS_IS_PAN       0xFF
 
 // Constants for AdjustFriendship

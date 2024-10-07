@@ -1994,6 +1994,9 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             else if(partyData[i].gayness == TRAINER_MON_GAY){
                 personalityValue = (personalityValue & 0xFFFF00FF) | (GeneratePersonalityForGayness(MON_GAYNESS_IS_GAY, partyData[i].species) << 8);
             }
+            else if(partyData[i].gayness == TRAINER_MON_ACE){
+                personalityValue = (personalityValue & 0xFFFF00FF) | (GeneratePersonalityForGayness(MON_GAYNESS_IS_ACE, partyData[i].species) << 8);
+            }
             else if(partyData[i].gayness == TRAINER_MON_PAN){
                 personalityValue = (personalityValue & 0xFFFF00FF) | (GeneratePersonalityForGayness(MON_GAYNESS_IS_PAN, partyData[i].species) << 8);
             }

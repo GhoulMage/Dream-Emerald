@@ -2200,14 +2200,6 @@ Cry_Kirlia::
 	.align 2
 Cry_Gardevoir::
 	.incbin "sound/direct_sound_samples/cries/gardevoir.bin"
-	
-	.align 2
-Cry_RaltsD::
-	.incbin "sound/direct_sound_samples/cries/raltsD.bin"
-
-	.align 2
-Cry_KirliaD::
-	.incbin "sound/direct_sound_samples/cries/kirliaD.bin"
 
 .if P_MEGA_EVOLUTIONS == TRUE
 	.align 2
@@ -2225,13 +2217,22 @@ Cry_GalladeMega::
 	.incbin "sound/direct_sound_samples/cries/gallade_mega.bin"
 .endif @ P_MEGA_EVOLUTIONS
 .endif @ P_GEN_4_CROSS_EVOS
-.endif @ P_FAMILY_RALTS
 
-.if P_FAMILY_SURSKIT == TRUE
+	.align 2
+Cry_RaltsD::
+	.incbin "sound/direct_sound_samples/cries/raltsD.bin"
+
+	.align 2
+Cry_KirliaD::
+	.incbin "sound/direct_sound_samples/cries/kirliaD.bin"
 
 	.align 2
 Cry_GardevoirD::
 	.incbin "sound/direct_sound_samples/cries/gardevoirD.bin"
+
+.endif @ P_FAMILY_RALTS
+
+.if P_FAMILY_SURSKIT == TRUE
 
 	.align 2
 Cry_Surskit::
