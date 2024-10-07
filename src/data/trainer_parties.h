@@ -8986,10 +8986,25 @@ static const struct TrainerMon sParty_Tyron[] = {
 
 static const struct TrainerMon sParty_Celina[] = {
     {
-    .lvl = 18,
-    .species = SPECIES_ROSELIA,
+    .lvl = 50,
+    .species = SPECIES_CLEFAIRY,
+    .ability = ABILITY_CUTE_CHARM,
+    .moves = { MOVE_ATTRACT, MOVE_NONE, MOVE_NONE, MOVE_NONE },
+    .gender = TRAINER_MON_MALE,
+    .gayness = TRAINER_MON_GAY,
+    .nature = NATURE_ADAMANT,
+    },
+    {
+    .lvl = 50,
+    .species = SPECIES_LOPUNNY,
+    .ability = ABILITY_CUTE_CHARM,
+    .moves = { MOVE_ATTRACT, MOVE_NONE, MOVE_NONE, MOVE_NONE },
+    .gender = TRAINER_MON_MALE,
+    .gayness = TRAINER_MON_GAY,
+    .nature = NATURE_ADAMANT,
     }
 };
+
 
 static const struct TrainerMon sParty_Bianca[] = {
     {

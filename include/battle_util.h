@@ -275,6 +275,8 @@ u32 CountBattlerStatIncreases(u32 battler, bool32 countEvasionAcc);
 bool32 ChangeTypeBasedOnTerrain(u32 battler);
 void RemoveConfusionStatus(u32 battler);
 u8 GetBattlerGender(u32 battler);
+u8 GetBattlerGayness(u32 battler);
+bool32 CanBattlerBeAttracted(u32 attractorBattler, u32 targetBattler);
 bool32 AreBattlersOfOppositeGender(u32 battler1, u32 battler2);
 bool32 AreBattlersOfSameGender(u32 battler1, u32 battler2);
 u32 CalcSecondaryEffectChance(u32 battler, u32 battlerAbility, const struct AdditionalEffect *additionalEffect);

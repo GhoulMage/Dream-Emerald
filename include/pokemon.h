@@ -493,7 +493,7 @@ struct MoveInfo
     u32 pulseMove:1;
     u32 sonicMove:1;
     u32 danceMove:1;
-    u8 danceMoveSecondaryType:1;
+    u8 danceMoveSecondaryType;
     u32 ballisticMove:1;
     u32 powderMove:1;
     u32 windMove:1;
@@ -740,6 +740,7 @@ u8 GetDefaultMoveTarget(u8 battlerId);
 u8 GetMonGender(struct Pokemon *mon);
 u8 GetBoxMonGender(struct BoxPokemon *boxMon);
 u8 GetGenderFromSpeciesAndPersonality(u16 species, u32 personality);
+u8 GetGaynessFromSpeciesAndPersonality(u16 species, u32 personality);
 bool32 IsPersonalityFemale(u16 species, u32 personality);
 u32 GetUnownSpeciesId(u32 personality);
 void SetMultiuseSpriteTemplateToPokemon(u16 speciesTag, u8 battlerPosition);

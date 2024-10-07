@@ -2179,6 +2179,20 @@ u8 GetGenderFromSpeciesAndPersonality(u16 species, u32 personality)
         return MON_MALE;
 }
 
+u8 GetGaynessFromSpeciesAndPersonality(u16 species, u32 personality){
+    switch(gSpeciesInfo[species].gaynessRatio){
+        case MON_GAYNESS_IS_HET:
+        case MON_GAYNESS_IS_GAY:
+        case MON_GAYNESS_IS_PAN:
+            return gSpeciesInfo[species].gaynessRatio;
+    }
+
+    if(gSpeciesInfo[species].gaynessRatio > ((personality >> 8) & 0xFF)) // Grab the value of the second byte and compare it to the species' ratio
+        return MON_GAYNESS_IS_GAY;
+    else
+        return MON_GAYNESS_IS_HET;
+}
+
 bool32 IsPersonalityFemale(u16 species, u32 personality)
 {
     return GetGenderFromSpeciesAndPersonality(species, personality) == MON_FEMALE;

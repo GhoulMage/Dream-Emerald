@@ -517,18 +517,6 @@ static void CreateWildMon(u16 species, u8 level)
         species = newSpecies;
     }
 
-    // if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3 && !MonEvolutionIsBanned(newSpecies = HasSpecialEvolution(species))) {
-    //     species = newSpecies;
-    // } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE2 && !MonEvolutionIsBanned(newSpecies = HasLevelEvolution(species, level, 2))) {
-    //     species = newSpecies;
-    // } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE1 && !MonEvolutionIsBanned(newSpecies = HasLevelEvolution(species, level, 1))) {
-    //     species = newSpecies;
-    // }
-    
-    // if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3 && !MonEvolutionIsBanned(newSpecies = HasSpecialEvolution(species))) {
-    //     species = newSpecies;
-    // }
-
     switch (gSpeciesInfo[species].genderRatio)
     {
     case MON_MALE:
