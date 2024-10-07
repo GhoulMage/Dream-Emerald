@@ -4790,7 +4790,6 @@ const struct Item gItemsInfo[] =
     [ITEM_SONIC_PLATE] =
     {
         .name = _("Sonic Plate"),
-        .itemId = ITEM_SONIC_PLATE,
         .price = 1000,
         .holdEffect = HOLD_EFFECT_PLATE,
         .holdEffectParam = 20,
@@ -6714,7 +6713,6 @@ const struct Item gItemsInfo[] =
     [ITEM_SOUNDIUM_Z] =
     {
         .name = _("Soundium Z"),
-        .itemId = ITEM_SOUNDIUM_Z,
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
         .description = sSoundiumZDesc,
