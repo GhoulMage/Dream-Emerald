@@ -1177,6 +1177,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         }
     }
 
+    SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
     SetBoxMonData(boxMon, MON_DATA_OT_ID, &value);
 
     checksum = CalculateBoxMonChecksum(boxMon);
@@ -2183,10 +2184,11 @@ u8 GetGaynessFromSpeciesAndPersonality(u16 species, u32 personality){
     switch(gSpeciesInfo[species].gaynessRatio){
         case MON_GAYNESS_IS_HET:
         case MON_GAYNESS_IS_GAY:
+        case MON_GAYNESS_IS_ACE:
         case MON_GAYNESS_IS_PAN:
             return gSpeciesInfo[species].gaynessRatio;
     }
-
+    
     if(gSpeciesInfo[species].gaynessRatio > ((personality >> 8) & 0xFF)) // Grab the value of the second byte and compare it to the species' ratio
         return MON_GAYNESS_IS_GAY;
     else

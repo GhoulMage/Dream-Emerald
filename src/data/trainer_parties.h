@@ -8990,9 +8990,8 @@ static const struct TrainerMon sParty_Celina[] = {
     .species = SPECIES_CLEFAIRY,
     .ability = ABILITY_CUTE_CHARM,
     .moves = { MOVE_ATTRACT, MOVE_NONE, MOVE_NONE, MOVE_NONE },
-    .gender = TRAINER_MON_MALE,
+    .gender = TRAINER_MON_FEMALE,
     .gayness = TRAINER_MON_GAY,
-    .nature = NATURE_ADAMANT,
     },
     {
     .lvl = 50,
@@ -9001,7 +9000,6 @@ static const struct TrainerMon sParty_Celina[] = {
     .moves = { MOVE_ATTRACT, MOVE_NONE, MOVE_NONE, MOVE_NONE },
     .gender = TRAINER_MON_MALE,
     .gayness = TRAINER_MON_GAY,
-    .nature = NATURE_ADAMANT,
     }
 };
 
