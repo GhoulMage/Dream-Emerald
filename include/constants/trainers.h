@@ -382,6 +382,7 @@
 
 #define TRAINER_MON_HET     1
 #define TRAINER_MON_GAY     2
-#define TRAINER_MON_PAN     3
+#define TRAINER_MON_ACE     3
+#define TRAINER_MON_PAN     4
 
 #endif  // GUARD_TRAINERS_H
