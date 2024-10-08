@@ -306,8 +306,8 @@ static const u8 sMapHealLocations[][3] =
     [MAPSEC_MOSSDEEP_CITY] = {MAP_GROUP(MOSSDEEP_CITY), MAP_NUM(MOSSDEEP_CITY), HEAL_LOCATION_MOSSDEEP_CITY},
     [MAPSEC_SOOTOPOLIS_CITY] = {MAP_GROUP(SOOTOPOLIS_CITY), MAP_NUM(SOOTOPOLIS_CITY), HEAL_LOCATION_SOOTOPOLIS_CITY},
     [MAPSEC_EVER_GRANDE_CITY] = {MAP_GROUP(EVER_GRANDE_CITY), MAP_NUM(EVER_GRANDE_CITY), HEAL_LOCATION_EVER_GRANDE_CITY},
-    [MAPSEC_DREAM_OLDALE] = {MAP_GROUP(OLDALE_TOWN), MAP_NUM(OLDALE_TOWN), HEAL_LOCATION_OLDALE_TOWN},
-    [MAPSEC_DREAM_PETALBURG] = {MAP_GROUP(PETALBURG_CITY), MAP_NUM(PETALBURG_CITY), HEAL_LOCATION_PETALBURG_CITY},
+    [MAPSEC_DREAM_OLDALE] = {MAP_GROUP(OLDALE_TOWN), MAP_NUM(DREAM_OLDALE), HEAL_LOCATION_OLDALE_TOWN},
+    [MAPSEC_DREAM_PETALBURG] = {MAP_GROUP(PETALBURG_CITY), MAP_NUM(DREAM_PETALBURG), HEAL_LOCATION_PETALBURG_CITY},
     [MAPSEC_ROUTE_101] = {MAP_GROUP(ROUTE101), MAP_NUM(ROUTE101), HEAL_LOCATION_NONE},
     [MAPSEC_ROUTE_102] = {MAP_GROUP(ROUTE102), MAP_NUM(ROUTE102), HEAL_LOCATION_NONE},
     [MAPSEC_ROUTE_103] = {MAP_GROUP(ROUTE103), MAP_NUM(ROUTE103), HEAL_LOCATION_NONE},
@@ -350,12 +350,32 @@ static const u8 *const sEverGrandeCityNames[] =
     gText_PokemonCenter
 };
 
+static const u8 *const sDreamOldaleNames[] =
+{
+    gText_OldaleTown
+};
+
+static const u8 *const sDreamPetalburgNames[] =
+{
+    gText_PetalburgCity,
+};
+
 static const struct MultiNameFlyDest sMultiNameFlyDestinations[] =
 {
     {
         .name = sEverGrandeCityNames,
         .mapSecId = MAPSEC_EVER_GRANDE_CITY,
         .flag = FLAG_LANDMARK_POKEMON_LEAGUE
+    },
+    {
+        .name = sDreamOldaleNames,
+        .mapSecId = MAPSEC_DREAM_OLDALE,
+        .flag = FLAG_VISITED_DREAM_OLDALE
+    },
+    {
+        .name = sDreamPetalburgNames,
+        .mapSecId = MAPSEC_DREAM_PETALBURG,
+        .flag = FLAG_VISITED_DREAM_PETALBURG
     }
 };
 
@@ -1185,8 +1205,9 @@ static u8 GetMapsecType(u16 mapSecId)
     case MAPSEC_LITTLEROOT_TOWN:
         return FlagGet(FLAG_VISITED_LITTLEROOT_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_OLDALE_TOWN:
-    case MAPSEC_DREAM_OLDALE:
         return FlagGet(FLAG_VISITED_OLDALE_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_DREAM_OLDALE:
+        return FlagGet(FLAG_VISITED_DREAM_OLDALE) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_DEWFORD_TOWN:
         return FlagGet(FLAG_VISITED_DEWFORD_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_LAVARIDGE_TOWN:
@@ -1198,8 +1219,9 @@ static u8 GetMapsecType(u16 mapSecId)
     case MAPSEC_PACIFIDLOG_TOWN:
         return FlagGet(FLAG_VISITED_PACIFIDLOG_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_PETALBURG_CITY:
-    case MAPSEC_DREAM_PETALBURG:
         return FlagGet(FLAG_VISITED_PETALBURG_CITY) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_DREAM_PETALBURG:
+        return FlagGet(FLAG_VISITED_DREAM_PETALBURG) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_SLATEPORT_CITY:
         return FlagGet(FLAG_VISITED_SLATEPORT_CITY) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_MAUVILLE_CITY:
@@ -1766,6 +1788,7 @@ static void SetFlyMapCallback(void callback(void))
 static void DrawFlyDestTextWindow(void)
 {
     u16 i;
+    u8 maxNameIndex; // If you have more than 256 values you're crazy
     bool32 namePrinted;
     const u8 *name;
 
@@ -1778,12 +1801,13 @@ static void DrawFlyDestTextWindow(void)
             {
                 if (FlagGet(sMultiNameFlyDestinations[i].flag))
                 {
-                    StringLength(sMultiNameFlyDestinations[i].name[sFlyMap->regionMap.posWithinMapSec]);
+                    maxNameIndex = min(ARRAY_COUNT(sMultiNameFlyDestinations[i].name)-1, sFlyMap->regionMap.posWithinMapSec);
+                    StringLength(sMultiNameFlyDestinations[i].name[maxNameIndex]);
                     namePrinted = TRUE;
                     ClearStdWindowAndFrameToTransparent(WIN_MAPSEC_NAME, FALSE);
                     DrawStdFrameWithCustomTileAndPalette(WIN_MAPSEC_NAME_TALL, FALSE, 101, 13);
                     AddTextPrinterParameterized(WIN_MAPSEC_NAME_TALL, FONT_NORMAL, sFlyMap->regionMap.mapSecName, 0, 1, 0, NULL);
-                    name = sMultiNameFlyDestinations[i].name[sFlyMap->regionMap.posWithinMapSec];
+                    name = sMultiNameFlyDestinations[i].name[maxNameIndex];
                     AddTextPrinterParameterized(WIN_MAPSEC_NAME_TALL, FONT_NORMAL, name, GetStringRightAlignXOffset(FONT_NORMAL, name, 96), 17, 0, NULL);
                     ScheduleBgCopyTilemapToVram(0);
                     sDrawFlyDestTextWindow = TRUE;
@@ -1867,7 +1891,7 @@ static void CreateFlyDestIcons(void)
         else
             shape = SPRITE_SHAPE(8x8);
 
-        spriteId = CreateSprite(&sFlyDestIconSpriteTemplate, x, y, 10);
+        spriteId = CreateSprite(&sFlyDestIconSpriteTemplate, x, y+1, 10);
         if (spriteId != MAX_SPRITES)
         {
             gSprites[spriteId].oam.shape = shape;
@@ -2011,6 +2035,12 @@ static void CB_ExitFlyMap(void)
                     break;
                 case MAPSEC_EVER_GRANDE_CITY:
                     SetWarpDestinationToHealLocation(FlagGet(FLAG_LANDMARK_POKEMON_LEAGUE) && sFlyMap->regionMap.posWithinMapSec == 0 ? HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE : HEAL_LOCATION_EVER_GRANDE_CITY);
+                    break;
+                case MAPSEC_DREAM_OLDALE:
+                    SetWarpDestinationToHealLocation(HEAL_LOCATION_OLDALE_TOWN);
+                    break;
+                case MAPSEC_DREAM_PETALBURG:
+                    SetWarpDestinationToHealLocation(HEAL_LOCATION_PETALBURG_CITY);
                     break;
                 default:
                     if (sMapHealLocations[sFlyMap->regionMap.mapSecId][2] != HEAL_LOCATION_NONE)

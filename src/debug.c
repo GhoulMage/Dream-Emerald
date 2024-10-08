@@ -1276,12 +1276,14 @@ static u8 Debug_CheckToggleFlags(u8 id)
         case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_LOCATIONS:
             result = FlagGet(FLAG_VISITED_LITTLEROOT_TOWN) &&
                 FlagGet(FLAG_VISITED_OLDALE_TOWN) &&
+                FlagGet(FLAG_VISITED_DREAM_OLDALE) &&
                 FlagGet(FLAG_VISITED_DEWFORD_TOWN) &&
                 FlagGet(FLAG_VISITED_LAVARIDGE_TOWN) &&
                 FlagGet(FLAG_VISITED_FALLARBOR_TOWN) &&
                 FlagGet(FLAG_VISITED_VERDANTURF_TOWN) &&
                 FlagGet(FLAG_VISITED_PACIFIDLOG_TOWN) &&
                 FlagGet(FLAG_VISITED_PETALBURG_CITY) &&
+                FlagGet(FLAG_VISITED_DREAM_PETALBURG) &&
                 FlagGet(FLAG_VISITED_SLATEPORT_CITY) &&
                 FlagGet(FLAG_VISITED_MAUVILLE_CITY) &&
                 FlagGet(FLAG_VISITED_RUSTBORO_CITY) &&
