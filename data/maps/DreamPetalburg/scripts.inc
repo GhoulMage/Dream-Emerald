@@ -3,6 +3,7 @@ DreamPetalburg_MapScripts::
 	.byte 0
 
 DreamPetalburg_OnTransition::
+	setflag FLAG_VISITED_DREAM_PETALBURG
 	goto_if_set FLAG_NINJA_BOY1, DreamPetalburg_DoNothing
 	setninjaflags FLAG_NINJA_BOY1
 DreamPetalburg_DoNothing::

@@ -1,5 +1,10 @@
 DreamOldale_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, DreamOldale_OnTransition
 	.byte 0
+
+DreamOldale_OnTransition:
+	setflag FLAG_VISITED_DREAM_OLDALE
+	end
 
 DreamOldale_EventScript_RouteSign::
 	msgbox DreamOldale_Text_RouteSign, MSGBOX_SIGN

@@ -9,6 +9,7 @@ const u32 gPokenavCityMap_Pacifidlog_0[] = INCBIN_U32("graphics/pokenav/region_m
 const u32 gPokenavCityMap_Mauville_1[] = INCBIN_U32("graphics/pokenav/region_map/city_maps/mauville_1.bin.lz");
 const u32 gPokenavCityMap_Mauville_0[] = INCBIN_U32("graphics/pokenav/region_map/city_maps/mauville_0.bin.lz");
 const u32 gPokenavCityMap_Oldale_0[] = INCBIN_U32("graphics/pokenav/region_map/city_maps/oldale_0.bin.lz");
+//const u32 gPokenavCityMap_Oldale_1[] = INCBIN_U32("graphics/pokenav/region_map/city_maps/dream_oldale_0.bin.lz");
 const u32 gPokenavCityMap_Lilycove_1[] = INCBIN_U32("graphics/pokenav/region_map/city_maps/lilycove_1.bin.lz");
 const u32 gPokenavCityMap_Lilycove_0[] = INCBIN_U32("graphics/pokenav/region_map/city_maps/lilycove_0.bin.lz");
 const u32 gPokenavCityMap_Littleroot_0[] = INCBIN_U32("graphics/pokenav/region_map/city_maps/littleroot_0.bin.lz");

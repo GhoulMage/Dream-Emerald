@@ -1093,6 +1093,14 @@ const u8 gText_CreateAQuiz[] = _("Create a quiz!");
 const u8 gText_SelectTheAnswer[] = _("Select the answer!");
 const u8 gText_LyricsCantBeDeleted[] = _("The lyrics can't be deleted.");
 const u8 gText_PokemonLeague[] = _("POKéMON LEAGUE");
+
+// Dream Emerald
+const u8 gText_DreamOldale[] = _("DREAM OLDALE");
+const u8 gText_DreamPetalburg[] = _("DREAM OLDALE");
+
+const u8 gText_OldaleTown[] = _("OLDALE TOWN");
+const u8 gText_PetalburgCity[] = _("PETALBURG CITY");
+
 const u8 gText_PokemonCenter[] = _("POKéMON CENTER");
 const u8 gText_GetsAPokeBlockQuestion[] = _(" gets a {POKEBLOCK}?");
 const u8 gText_Coolness[] = _("Coolness ");
