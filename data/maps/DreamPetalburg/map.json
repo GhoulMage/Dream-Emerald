@@ -208,6 +208,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "DreamPetalburg_EventScript_Item3",
       "flag": "FLAG_ITEM_DREAM_PETALBURG_TM72"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
+      "x": 6,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CutTree",
+      "flag": "FLAG_HIDE_DREAM_PETALBURG_TREE_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
+      "x": 7,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CutTree",
+      "flag": "FLAG_HIDE_DREAM_PETALBURG_TREE_2"
     }
   ],
   "warp_events": [
@@ -245,6 +271,20 @@
       "elevation": 0,
       "dest_map": "MAP_DREAM_PETALBURG_FISHERMAN_DREAM",
       "dest_warp_id": "2"
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_CITY",
+      "dest_warp_id": "6"
+    },
+    {
+      "x": 7,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_CITY",
+      "dest_warp_id": "7"
     }
   ],
   "coord_events": [
@@ -305,7 +345,7 @@
       "y": 6,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "DreamPetalburg_EventScript_RouteSign"
+      "script": "DreamPetalburg_EventScript_DreamSign1"
     },
     {
       "type": "hidden_item",
@@ -314,6 +354,14 @@
       "elevation": 0,
       "item": "ITEM_TM60",
       "flag": "FLAG_HIDDEN_ITEM_DREAM_PETALBURG_TM60"
+    },
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DreamPetalburg_EventScript_DreamSign2"
     }
   ]
 }

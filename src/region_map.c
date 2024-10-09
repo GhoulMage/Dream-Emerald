@@ -67,6 +67,12 @@ struct MultiNameFlyDest
     u16 flag;
 };
 
+struct FlavourNameFlyDest
+{
+    u16 mapSecId;
+    const u8 *flavourText;
+};
+
 static EWRAM_DATA struct RegionMap *sRegionMap = NULL;
 
 static EWRAM_DATA struct {
@@ -350,16 +356,6 @@ static const u8 *const sEverGrandeCityNames[] =
     gText_PokemonCenter
 };
 
-static const u8 *const sDreamOldaleNames[] =
-{
-    gText_OldaleTown
-};
-
-static const u8 *const sDreamPetalburgNames[] =
-{
-    gText_PetalburgCity,
-};
-
 static const struct MultiNameFlyDest sMultiNameFlyDestinations[] =
 {
     {
@@ -367,16 +363,18 @@ static const struct MultiNameFlyDest sMultiNameFlyDestinations[] =
         .mapSecId = MAPSEC_EVER_GRANDE_CITY,
         .flag = FLAG_LANDMARK_POKEMON_LEAGUE
     },
+};
+
+static const struct FlavourNameFlyDest sFlavourNameFlyDestinations[] =
+{
     {
-        .name = sDreamOldaleNames,
         .mapSecId = MAPSEC_DREAM_OLDALE,
-        .flag = FLAG_VISITED_DREAM_OLDALE
+        .flavourText = gText_OldaleTown
     },
     {
-        .name = sDreamPetalburgNames,
         .mapSecId = MAPSEC_DREAM_PETALBURG,
-        .flag = FLAG_VISITED_DREAM_PETALBURG
-    }
+        .flavourText = gText_PetalburgCity
+    },
 };
 
 static const struct BgTemplate sFlyMapBgTemplates[] =
@@ -1788,7 +1786,6 @@ static void SetFlyMapCallback(void callback(void))
 static void DrawFlyDestTextWindow(void)
 {
     u16 i;
-    u8 maxNameIndex; // If you have more than 256 values you're crazy
     bool32 namePrinted;
     const u8 *name;
 
@@ -1801,17 +1798,32 @@ static void DrawFlyDestTextWindow(void)
             {
                 if (FlagGet(sMultiNameFlyDestinations[i].flag))
                 {
-                    maxNameIndex = min(ARRAY_COUNT(sMultiNameFlyDestinations[i].name)-1, sFlyMap->regionMap.posWithinMapSec);
-                    StringLength(sMultiNameFlyDestinations[i].name[maxNameIndex]);
+                    StringLength(sMultiNameFlyDestinations[i].name[sFlyMap->regionMap.posWithinMapSec]);
                     namePrinted = TRUE;
                     ClearStdWindowAndFrameToTransparent(WIN_MAPSEC_NAME, FALSE);
                     DrawStdFrameWithCustomTileAndPalette(WIN_MAPSEC_NAME_TALL, FALSE, 101, 13);
                     AddTextPrinterParameterized(WIN_MAPSEC_NAME_TALL, FONT_NORMAL, sFlyMap->regionMap.mapSecName, 0, 1, 0, NULL);
-                    name = sMultiNameFlyDestinations[i].name[maxNameIndex];
+                    name = sMultiNameFlyDestinations[i].name[sFlyMap->regionMap.posWithinMapSec];
                     AddTextPrinterParameterized(WIN_MAPSEC_NAME_TALL, FONT_NORMAL, name, GetStringRightAlignXOffset(FONT_NORMAL, name, 96), 17, 0, NULL);
                     ScheduleBgCopyTilemapToVram(0);
                     sDrawFlyDestTextWindow = TRUE;
                 }
+                break;
+            }
+        }
+        for(i = 0; i < ARRAY_COUNT(sFlavourNameFlyDestinations); i++){
+            // TODO: Find a potential way to fix the flicker when switching between regions that still have the same flavour text.
+            if (sFlyMap->regionMap.mapSecId == sFlavourNameFlyDestinations[i].mapSecId)
+            {
+                StringLength(sFlavourNameFlyDestinations[i].flavourText);
+                namePrinted = TRUE;
+                ClearStdWindowAndFrameToTransparent(WIN_MAPSEC_NAME, FALSE);
+                DrawStdFrameWithCustomTileAndPalette(WIN_MAPSEC_NAME_TALL, FALSE, 101, 13);
+                AddTextPrinterParameterized(WIN_MAPSEC_NAME_TALL, FONT_NORMAL, sFlyMap->regionMap.mapSecName, 0, 1, 0, NULL);
+                name = sFlavourNameFlyDestinations[i].flavourText;
+                AddTextPrinterParameterized(WIN_MAPSEC_NAME_TALL, FONT_NORMAL, name, GetStringRightAlignXOffset(FONT_NORMAL, name, 96), 17, 0, NULL);
+                ScheduleBgCopyTilemapToVram(0);
+                sDrawFlyDestTextWindow = TRUE;
                 break;
             }
         }
