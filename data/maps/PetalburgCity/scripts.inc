@@ -744,7 +744,8 @@ PetalburgCity_Text_GymSign:
 
 PetalburgCity_Text_CitySign:
 	.string "PETALBURG CITY\n"
-	.string "“Where people mingle with nature.”$"
+	.string "“Where people mingle with nature.”\p"
+	.string "{DOWN_ARROW} Dream Petalburg$"
 
 PetalburgCity_Text_WallyHouseSign:
 	.string "WALLY'S HOUSE$"

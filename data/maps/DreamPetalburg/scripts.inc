@@ -9,8 +9,12 @@ DreamPetalburg_OnTransition::
 DreamPetalburg_DoNothing::
 	end
 
-DreamPetalburg_EventScript_RouteSign::
-	msgbox DreamPetalburg_Text_RouteSign, MSGBOX_SIGN
+DreamPetalburg_EventScript_DreamSign1::
+	msgbox DreamPetalburg_Text_DreamSign1, MSGBOX_SIGN
+	end
+
+DreamPetalburg_EventScript_DreamSign2::
+	msgbox DreamPetalburg_Text_DreamSign2, MSGBOX_SIGN
 	end
 
 DreamPetalburg_EventScript_Sign1::
@@ -193,6 +197,12 @@ DreamPetalburg_Text_Sign2:
 	.string "FISHERMAN's DREAM\p"
 	.string "Come and get the fish of your dreams!$"
 
-DreamPetalburg_Text_RouteSign:
+DreamPetalburg_Text_DreamSign1:
 	.string "DREAM PETALBURG\n"
+	.string "“Wavering nature connects to the beach.”\p"
 	.string "{UP_ARROW} ROUTE 102$"
+
+DreamPetalburg_Text_DreamSign2:
+	.string "DREAM PETALBURG\n"
+	.string "“Wavering nature connects to the beach.”\p"
+	.string "{UP_ARROW} PETALBURG CITY$"

@@ -1236,8 +1236,9 @@
 #define FLAG_ITEM_DREAM_PETALBURG_ROOST                             0x4A0
 #define FLAG_ITEM_DREAM_PETALBURG_DAWN_STONE                        0x4A1
 #define FLAG_ITEM_DREAM_PETALBURG_TM72                              0x4A2
-#define FLAG_UNUSED_0x4A3                                           0x4A3 // Unused Flag
-#define FLAG_UNUSED_0x4A4                                           0x4A4 // Unused Flag
+#define FLAG_HIDE_DREAM_PETALBURG_TREE_1                            0x4A3
+#define FLAG_HIDE_DREAM_PETALBURG_TREE_2                            0x4A4
+
 #define FLAG_UNUSED_0x4A5                                           0x4A5 // Unused Flag
 #define FLAG_UNUSED_0x4A6                                           0x4A6 // Unused Flag
 #define FLAG_UNUSED_0x4A7                                           0x4A7 // Unused Flag
