@@ -185,6 +185,20 @@
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_CITY_MART",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 15,
+      "y": 28,
+      "elevation": 0,
+      "dest_map": "MAP_DREAM_PETALBURG",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 16,
+      "y": 28,
+      "elevation": 0,
+      "dest_map": "MAP_DREAM_PETALBURG",
+      "dest_warp_id": "6"
     }
   ],
   "coord_events": [

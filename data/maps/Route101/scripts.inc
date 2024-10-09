@@ -1,5 +1,6 @@
 .set LOCALID_BIRCH, 2
 .set LOCALID_ZIGZAGOON, 4
+.set LOCALID_BARD, 7
 
 Route101_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route101_OnTransition
@@ -206,6 +207,19 @@ Route101_Movement_Unused2:
 	walk_up
 	step_end
 
+Route101_EventScript_Bard::
+	msgbox Route101_Text_ThereIsSomethingWrongHere, MSGBOX_NPC
+	applymovement LOCALID_BARD, Route101_Movement_Bard
+	end
+
+Route101_Movement_Bard:
+	face_right
+	step_end
+
+Route101_EventScript_Cook::
+	msgbox Route101_Text_CookingMushrooms, MSGBOX_NPC
+	end
+
 Route101_EventScript_Youngster::
 	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
 	end
@@ -283,6 +297,15 @@ Route101_Text_YouSavedMe:
 	.string "Hi, you're {PLAYER}{KUN}!\p"
 	.string "This is not the place to chat, so come\n"
 	.string "by my POKéMON LAB later, okay?$"
+
+Route101_Text_ThereIsSomethingWrongHere:
+	.string "There's something wrong here,\n"
+	.string "but I can't figure out what.$"
+
+Route101_Text_CookingMushrooms:
+	.string "I really like to cook mushrooms.\p"
+	.string "...\n"
+	.string "Please don't tell anybody.$"
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
 	.string "If POKéMON get tired, take them to\n"
