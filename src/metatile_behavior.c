@@ -5,16 +5,17 @@
 #define TILE_FLAG_HAS_ENCOUNTERS (1 << 0)
 #define TILE_FLAG_SURFABLE       (1 << 1)
 #define TILE_FLAG_UNUSED         (1 << 2) // Roughly all of the traversable metatiles. Set but never read
+#define TILE_FLAG_HAS_VERY_RARE_ENCOUNTERS  (1 << 3) // For the rare Cave and Water encounters outside of Cave Dust and Water Splashes
 
 static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
 {
-    [MB_NORMAL]                          = TILE_FLAG_UNUSED,
+    [MB_NORMAL]                          = TILE_FLAG_UNUSED | TILE_FLAG_HAS_VERY_RARE_ENCOUNTERS,
     [MB_TALL_GRASS]                      = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_LONG_GRASS]                      = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_UNUSED_05]                       = TILE_FLAG_HAS_ENCOUNTERS,
     [MB_DEEP_SAND]                       = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_SHORT_GRASS]                     = TILE_FLAG_UNUSED,
-    [MB_CAVE]                            = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
+    [MB_CAVE]                            = TILE_FLAG_UNUSED | TILE_FLAG_HAS_VERY_RARE_ENCOUNTERS,
     [MB_LONG_GRASS_SOUTH_EDGE]           = TILE_FLAG_UNUSED,
     [MB_NO_RUNNING]                      = TILE_FLAG_UNUSED,
     [MB_INDOOR_ENCOUNTER]                = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
@@ -24,10 +25,10 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_MT_PYRE_HOLE]                    = TILE_FLAG_UNUSED,
     [MB_POND_WATER]                      = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_INTERIOR_DEEP_WATER]             = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_ENCOUNTERS,
-    [MB_DEEP_WATER]                      = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_ENCOUNTERS,
+    [MB_DEEP_WATER]                      = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_VERY_RARE_ENCOUNTERS,
     [MB_WATERFALL]                       = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_SOOTOPOLIS_DEEP_WATER]           = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
-    [MB_OCEAN_WATER]                     = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_ENCOUNTERS,
+    [MB_OCEAN_WATER]                     = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_VERY_RARE_ENCOUNTERS,
     [MB_PUDDLE]                          = TILE_FLAG_UNUSED,
     [MB_SHALLOW_WATER]                   = TILE_FLAG_UNUSED,
     [MB_NO_SURFACING]                    = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
@@ -66,8 +67,8 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_SLIDE_NORTH]                     = TILE_FLAG_UNUSED,
     [MB_SLIDE_SOUTH]                     = TILE_FLAG_UNUSED,
     [MB_TRICK_HOUSE_PUZZLE_8_FLOOR]      = TILE_FLAG_UNUSED,
-    [MB_UNUSED_49]                       = TILE_FLAG_UNUSED,
-    [MB_UNUSED_4A]                       = TILE_FLAG_UNUSED,
+    //[MB_UNUSED_49]                       = TILE_FLAG_UNUSED,
+    //[MB_UNUSED_4A]                       = TILE_FLAG_UNUSED,
     [MB_EASTWARD_CURRENT]                = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_WESTWARD_CURRENT]                = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_NORTHWARD_CURRENT]               = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
@@ -129,6 +130,9 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_UP_LEFT_STAIR_WARP]              = TILE_FLAG_UNUSED,
     [MB_DOWN_RIGHT_STAIR_WARP]           = TILE_FLAG_UNUSED,
     [MB_DOWN_LEFT_STAIR_WARP]            = TILE_FLAG_UNUSED,
+
+    [MB_CAVE_DUST]                       = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
+    [MB_WATER_SPLASHES]                  = TILE_FLAG_UNUSED,
 };
 
 bool8 MetatileBehavior_IsATile(u8 metatileBehavior)
@@ -139,6 +143,14 @@ bool8 MetatileBehavior_IsATile(u8 metatileBehavior)
 bool8 MetatileBehavior_IsEncounterTile(u8 metatileBehavior)
 {
     if ((sTileBitAttributes[metatileBehavior] & TILE_FLAG_HAS_ENCOUNTERS))
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsRareEncounterTile(u8 metatileBehavior)
+{
+    if((sTileBitAttributes[metatileBehavior] & TILE_FLAG_HAS_VERY_RARE_ENCOUNTERS))
         return TRUE;
     else
         return FALSE;
@@ -820,6 +832,24 @@ bool8 MetatileBehavior_IsBridgeOverWaterNoEdge(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsLandVeryRareWildEncounter(u8 metatileBehavior)
+{
+    if (MetatileBehavior_IsSurfableWaterOrUnderwater(metatileBehavior) == FALSE
+     && MetatileBehavior_IsRareEncounterTile(metatileBehavior) == TRUE)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsWaterVeryRareWildEncounter(u8 metatileBehavior)
+{
+    if (MetatileBehavior_IsSurfableWaterOrUnderwater(metatileBehavior) == TRUE
+     && MetatileBehavior_IsRareEncounterTile(metatileBehavior) == TRUE)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsLandWildEncounter(u8 metatileBehavior)
 {
     if (MetatileBehavior_IsSurfableWaterOrUnderwater(metatileBehavior) == FALSE
@@ -1443,4 +1473,11 @@ bool8 MetatileBehavior_IsDirectionalStairWarp(u8 metatileBehavior)
         return TRUE;
     else
         return FALSE;
+}
+
+bool8 MetatileBehavior_IsCaveDust(u8 metatileBehavior) {
+    if(metatileBehavior == MB_CAVE_DUST)
+        return TRUE;
+    
+    return FALSE;
 }

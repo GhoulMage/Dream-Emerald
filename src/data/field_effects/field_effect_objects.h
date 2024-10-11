@@ -304,6 +304,64 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_GroundImpactDust = {
     .callback = UpdateJumpImpactEffect,
 };
 
+static const struct SpriteFrameImage sPicTable_CaveDust[] = {
+    overworld_frame(gFieldEffectObjectPic_CaveDust, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_CaveDust, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_CaveDust, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_CaveDust, 2, 2, 3),
+    overworld_frame(gFieldEffectObjectPic_CaveDust, 2, 2, 4),
+};
+
+static const union AnimCmd sAnim_CaveDust[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 6),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_FRAME(4, 6),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_CaveDust[] =
+{
+    sAnim_CaveDust,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_CaveDust = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_ASH,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_CaveDust,
+    .images = sPicTable_CaveDust,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = WaitFieldEffectSpriteAnim,
+};
+
+static const union AnimCmd sAnim_JumpCaveDust[] =
+{
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_FRAME(1, 6),
+    ANIMCMD_FRAME(2, 5),
+    ANIMCMD_FRAME(3, 5),
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_JumpCaveDust[] =
+{
+    sAnim_JumpCaveDust,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_JumpCaveDust = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_ASH,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_JumpCaveDust,
+    .images = sPicTable_CaveDust,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = WaitFieldEffectSpriteAnim,
+};
+
 static const struct SpriteFrameImage sPicTable_JumpTallGrass[] = {
     overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 0),
     overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 1),

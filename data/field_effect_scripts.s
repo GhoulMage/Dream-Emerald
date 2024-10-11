@@ -77,6 +77,8 @@ gFieldEffectScriptPointers::
 	.4byte gFldEffScript_XIcon                          @ FLDEFF_X_ICON
 	.4byte gFldEffScript_DoubleExclMarkIcon             @ FLDEFF_DOUBLE_EXCL_MARK_ICON
 	.4byte gFieldEffectScript_UseHeadbutt               @ FLDEFF_USE_HEADBUTT
+	.4byte gFieldEffectScript_CaveDust					@ FLDEFF_CAVE_DUST
+	.4byte gFieldEffectScript_JumpCaveDust              @ FLDEFF_JUMP_CAVE_DUST
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -362,4 +364,12 @@ gFldEffScript_DoubleExclMarkIcon::
 
 gFieldEffectScript_UseHeadbutt::
 	field_eff_callnative FldEff_UseHeadbutt
+	field_eff_end
+
+gFieldEffectScript_CaveDust::
+	field_eff_loadfadedpal_callnative gSpritePalette_Ash, FldEff_CaveDust
+	field_eff_end
+
+gFieldEffectScript_JumpCaveDust::
+	field_eff_loadfadedpal_callnative gSpritePalette_Ash, FldEff_JumpCaveDust
 	field_eff_end
