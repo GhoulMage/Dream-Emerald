@@ -57,6 +57,7 @@ gCryTable::
 .if P_FAMILY_EKANS == TRUE
 	cry Cry_Ekans
 	cry Cry_Arbok
+	cry Cry_Adokana
 .endif @ P_FAMILY_EKANS
 .if P_FAMILY_PIKACHU == TRUE
 .if P_GEN_2_CROSS_EVOS == TRUE
@@ -773,6 +774,9 @@ gCryTable::
 	cry Cry_Ralts
 	cry Cry_Kirlia
 	cry Cry_Gardevoir
+	cry Cry_RaltsD
+	cry Cry_KirliaD
+	cry Cry_GardevoirD
 .if P_MEGA_EVOLUTIONS == TRUE
 	cry Cry_GardevoirMega
 .endif @ P_MEGA_EVOLUTIONS
@@ -782,9 +786,6 @@ gCryTable::
 	cry Cry_GalladeMega
 .endif @ P_MEGA_EVOLUTIONS
 .endif @ P_GEN_4_CROSS_EVOS
-	cry Cry_RaltsD
-	cry Cry_KirliaD
-	cry Cry_GardevoirD
 .endif @ P_FAMILY_RALTS
 .if P_FAMILY_SURSKIT == TRUE
 	cry Cry_Surskit
@@ -2486,6 +2487,7 @@ gCryTable_Reverse::
 .if P_FAMILY_EKANS == TRUE
 	cry_reverse Cry_Ekans
 	cry_reverse Cry_Arbok
+	cry_reverse Cry_Adokana
 .endif @ P_FAMILY_EKANS
 .if P_FAMILY_PIKACHU == TRUE
 .if P_GEN_2_CROSS_EVOS == TRUE
@@ -3202,6 +3204,9 @@ gCryTable_Reverse::
 	cry_reverse Cry_Ralts
 	cry_reverse Cry_Kirlia
 	cry_reverse Cry_Gardevoir
+	cry_reverse Cry_RaltsD
+	cry_reverse Cry_KirliaD
+	cry_reverse Cry_GardevoirD
 .if P_MEGA_EVOLUTIONS == TRUE
 	cry_reverse Cry_GardevoirMega
 .endif @ P_MEGA_EVOLUTIONS
@@ -3211,9 +3216,6 @@ gCryTable_Reverse::
 	cry_reverse Cry_GalladeMega
 .endif @ P_MEGA_EVOLUTIONS
 .endif @ P_GEN_4_CROSS_EVOS
-	cry_reverse Cry_RaltsD
-	cry_reverse Cry_KirliaD
-	cry_reverse Cry_GardevoirD
 .endif @ P_FAMILY_RALTS
 .if P_FAMILY_SURSKIT == TRUE
 	cry_reverse Cry_Surskit

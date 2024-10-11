@@ -532,6 +532,10 @@ Cry_Ekans::
 	.align 2
 Cry_Arbok::
 	.incbin "sound/direct_sound_samples/cries/arbok.bin"
+
+	.align 2
+Cry_Adokana::
+	.incbin "sound/direct_sound_samples/cries/adokana.bin"
 .endif @ P_FAMILY_EKANS
 
 .if P_FAMILY_PIKACHU == TRUE
@@ -2200,6 +2204,18 @@ Cry_Kirlia::
 Cry_Gardevoir::
 	.incbin "sound/direct_sound_samples/cries/gardevoir.bin"
 
+	.align 2
+Cry_RaltsD::
+	.incbin "sound/direct_sound_samples/cries/raltsD.bin"
+
+	.align 2
+Cry_KirliaD::
+	.incbin "sound/direct_sound_samples/cries/kirliaD.bin"
+
+	.align 2
+Cry_GardevoirD::
+	.incbin "sound/direct_sound_samples/cries/gardevoirD.bin"
+
 .if P_MEGA_EVOLUTIONS == TRUE
 	.align 2
 Cry_GardevoirMega::
@@ -2216,19 +2232,6 @@ Cry_GalladeMega::
 	.incbin "sound/direct_sound_samples/cries/gallade_mega.bin"
 .endif @ P_MEGA_EVOLUTIONS
 .endif @ P_GEN_4_CROSS_EVOS
-
-	.align 2
-Cry_RaltsD::
-	.incbin "sound/direct_sound_samples/cries/raltsD.bin"
-
-	.align 2
-Cry_KirliaD::
-	.incbin "sound/direct_sound_samples/cries/kirliaD.bin"
-
-	.align 2
-Cry_GardevoirD::
-	.incbin "sound/direct_sound_samples/cries/gardevoirD.bin"
-
 .endif @ P_FAMILY_RALTS
 
 .if P_FAMILY_SURSKIT == TRUE

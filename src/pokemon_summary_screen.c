@@ -2443,7 +2443,7 @@ static void Task_HandleReplaceMoveInput(u8 taskId)
 //    //     return FALSE;
 //}
 
-static void ShowCantForgetHMsWindow(u8 taskId)
+static void UNUSED ShowCantForgetHMsWindow(u8 taskId)
 {
     ClearWindowTilemap(PSS_LABEL_WINDOW_MOVES_POWER_ACC);
     ClearWindowTilemap(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM);
@@ -3578,24 +3578,6 @@ static void PrintRibbonCount(void)
     PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_RIBBON_COUNT), text, x, 1, 0, 0);
 }
 
-static void BufferStat(u8 *dst, s8 natureMod, u32 stat, u32 strId, u32 n)
-{
-    static const u8 sTextNatureDown[] = _("{COLOR}{08}");
-    static const u8 sTextNatureUp[] = _("{COLOR}{05}");
-    static const u8 sTextNatureNeutral[] = _("{COLOR}{01}");
-    u8 *txtPtr;
-
-    if (natureMod == 0 || !SUMMARY_SCREEN_NATURE_COLORS)
-        txtPtr = StringCopy(dst, sTextNatureNeutral);
-    else if (natureMod > 0)
-        txtPtr = StringCopy(dst, sTextNatureUp);
-    else
-        txtPtr = StringCopy(dst, sTextNatureDown);
-
-    ConvertIntToDecimalStringN(txtPtr, stat, STR_CONV_MODE_RIGHT_ALIGN, n);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(strId, dst);
-}
-
 static void BufferLeftColumnStats(void)
 {
     u8 *currentHPString = Alloc(20);
@@ -4090,7 +4072,6 @@ static void SetMoveTypeIcons(void)
         }
         else
             SetSpriteInvisibility(i + SPRITE_ARR_ID_TYPE, TRUE);
-        }
     }
 }
 
@@ -4448,6 +4429,7 @@ static void BufferStat(u8 *dst, s8 natureMod, u32 stat, u32 strId, u32 n){
 
 static void BufferIvOrEvStats(){
     u16 hp, hp2, atk, def, spA, spD, spe;
+    hp2 = 0;
     u8 *currHPString = Alloc(20);
     const s8 *natureMod = gNatureStatTable[sMonSummaryScreen->summary.nature];
 

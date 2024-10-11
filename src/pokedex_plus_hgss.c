@@ -4422,7 +4422,8 @@ static void CreateTypeIconSprites(void)
     u8 i;
 
     LoadCompressedSpriteSheet(&gSpriteSheet_MoveTypes);
-    LoadCompressedPalette(gMoveTypes_Pal, 0x1D0, 0x60);
+    LoadCompressedPalette(gMoveTypes_Pal0, 0x1D0, 0x60);
+    LoadCompressedPalette(gMoveTypes_Pal1, 0x1B0, 0x20); // I think this location is unused, profiting from it for adding a new palette
     for (i = 0; i < 2; i++)
     {
         if (sPokedexView->typeIconSpriteIds[i] == 0xFF)
@@ -4906,7 +4907,8 @@ static void Task_LoadStatsScreen(u8 taskId)
         sPokedexView->typeIconSpriteIds[1] = 0xFF;
         CreateTypeIconSprites();
         sPokedexView->categoryIconSpriteId = 0xFF;
-        LoadCompressedPalette(gMoveTypes_Pal, 0x1D0, 0x60);
+        LoadCompressedPalette(gMoveTypes_Pal0, 0x1D0, 0x60); //Physical/Special Split
+        LoadCompressedPalette(gMoveTypes_Pal1, 0x1B0, 0x20); //Physical/Special Split
         LoadCompressedSpriteSheet(&sSpriteSheet_CategoryIcons);
         LoadSpritePalette(&sSpritePal_CategoryIcons);
         gMain.state++;

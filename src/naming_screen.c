@@ -1472,10 +1472,8 @@ static bool8 HandleKeyboardEvent(void)
         MoveCursorToOKButton();
         return FALSE;
     }
-    else
-    {
-        return sKeyboardKeyHandlers[keyRole](input);
-    }
+    
+    return sKeyboardKeyHandlers[keyRole](input);
 }
 
 static bool8 KeyboardKeyHandler_Character(u8 input)

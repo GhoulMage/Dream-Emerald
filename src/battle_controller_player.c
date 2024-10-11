@@ -399,6 +399,12 @@ static void HandleInputChooseAction(u32 battler)
         {
             if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) // If wild battle, pressing B moves cursor to "Run".
             {
+                if(gActionSelectionCursor[battler] == 3) { // If already on RUN button, attempt run.
+                    BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_RUN, 0);
+                    PlayerBufferExecCompleted(battler);
+                    return;
+                }
+
                 PlaySE(SE_SELECT);
                 ActionSelectionDestroyCursorAt(gActionSelectionCursor[battler]);
                 gActionSelectionCursor[battler] = 3;
@@ -1773,10 +1779,10 @@ static void MoveSelectionDisplayMoveType(u32 battler)
         else
             type = gMovesInfo[MOVE_IVY_CUDGEL].type;
     }
-    else if(moveInfo->moves[gMoveSelectionCursor[gActiveBattler]] == MOVE_HIDDEN_POWER){
-        type = GetMonHiddenPowerType(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]]) & 0x3F;
+    else if(moveInfo->moves[gMoveSelectionCursor[battler]] == MOVE_HIDDEN_POWER){
+        type = GetMonHiddenPowerType(&gPlayerParty[gBattlerPartyIndexes[battler]]) & 0x3F;
     } else if(SelectedMoveHasSecondaryType(moveInfo, battler) && GetTimer(moveInfo) < 30) {
-        type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].danceMoveSecondaryType & 0x3F;
+        type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].danceMoveSecondaryType & 0x3F;
     } else {
         type = gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
     }
