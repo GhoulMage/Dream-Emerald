@@ -5527,7 +5527,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_PANIC_ATTACK:
             if(!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-            && BATTLER_DAMAGED(gBattlerTarget)
+            && TARGET_TURN_DAMAGED
             && IsBattlerAlive(gBattlerTarget)
             && (gIsCriticalHit
                 || gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE
@@ -9368,10 +9368,6 @@ static inline u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 
         break;
     case ABILITY_DARK_POWER:
         if (moveType == TYPE_DARK && gBattleStruct->ateBoost[battlerAtk])
-            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
-        break;
-    case ABILITY_LIQUID_VOICE:
-        if (moveType == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
     case ABILITY_LIQUID_VOICE:

@@ -351,14 +351,6 @@ static const union AnimCmd sAnim_Adokana_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_Adokana_1[] =
-{
-    ANIMCMD_FRAME(0, 5),
-    ANIMCMD_FRAME(1, 35),
-    ANIMCMD_FRAME(0, 10),
-    ANIMCMD_END,
-};
-
 static const union AnimCmd sAnim_Pikachu_1[] =
 {
     ANIMCMD_FRAME(0, 15),

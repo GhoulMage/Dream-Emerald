@@ -15,10 +15,6 @@ gText_PutItemsInPocket::
 	.string "{PLAYER} put away {STR_VAR_1} {STR_VAR_2}\n"
 	.string "in the {STR_VAR_3} POCKET.$"
 
-gText_PutItemsInPocket::
-	.string "{PLAYER} put away {STR_VAR_1} {STR_VAR_2}\n"
-	.string "in the {STR_VAR_3} POCKET.$"
-
 gText_PlayerFoundOneItem::
 	.string "{PLAYER} found one {STR_VAR_2}!$"
 

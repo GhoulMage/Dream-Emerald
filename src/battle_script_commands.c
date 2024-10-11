@@ -583,7 +583,6 @@ static void Cmd_handleballthrow(void);
 static void Cmd_givecaughtmon(void);
 static void Cmd_trysetcaughtmondexflags(void);
 static void Cmd_displaydexinfo(void);
-static void Cmd_DisplayMonDexInfo(u8 mon);
 static void Cmd_trygivecaughtmonnick(void);
 static void Cmd_subattackerhpbydmg(void);
 static void Cmd_removeattackerstatus1(void);
@@ -15913,7 +15912,7 @@ static void Cmd_tryworryseed(void)
     }
 }
 
-static void BS_DoubleDMGIfSound(void){
+static void UNUSED BS_DoubleDMGIfSound(void){
     NATIVE_ARGS(const u8 *failInstr);
 
     if(gBattleMons[gBattlerTarget].type1 == TYPE_SOUND || gBattleMons[gBattlerTarget].type2 == TYPE_SOUND){
