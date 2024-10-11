@@ -13,7 +13,14 @@ GraniteCave_1F_EventScript_Hiker::
 	end
 
 GraniteCave_1F_EventScript_ReceivedFlash::
-	msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT
+	msgbox GraniteCave_1F_Text_ExplainCaveDust, MSGBOX_DEFAULT
+	release
+	end
+
+GraniteCave_1F_EventScript_Hiker2::
+	lock
+	faceplayer
+	msgbox GraniteCave_1F_Hiker2_CaveDust, MSGBOX_DEFAULT
 	release
 	end
 
@@ -37,3 +44,14 @@ GraniteCave_1F_Text_ExplainFlash:
 	.string "But, to use it, you need the GYM BADGE\n"
 	.string "from DEWFORD's POKéMON GYM.$"
 
+GraniteCave_1F_Text_ExplainCaveDust:
+	.string "This Cave Dust…\p"
+	.string "In all caves, POKéMON seem attracted.\n"
+	.string "to whatever moves these peebles.$"
+
+GraniteCave_1F_Hiker2_CaveDust:
+	.string "Ho! You! Beware of this Cave Dust!\p"
+	.string "If you step on it, it gets in the air!\p"
+	.string "POKéMON are bothered by it,\n"
+	.string "they even attack you!\p"
+	.string "It's also bad for your lungs!$"
