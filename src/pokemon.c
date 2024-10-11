@@ -1109,7 +1109,6 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     u8 speciesName[POKEMON_NAME_LENGTH + 1];
     u32 personality;
     u32 value;
-    u32 shinyValue;
     u16 checksum;
     u8 i;
     u8 availableIVs[NUM_STATS];
@@ -6965,8 +6964,8 @@ void UpdateDaysPassedSinceFormChange(u16 days)
 
 u8 GetPartyMonCurvedLevel(void)
 {
-    u8 adjustedLevel, currentLevel, monCount, partyMon, badgeModifier, firstMon;
-    u16 i, totalLevel;
+    u8 adjustedLevel, currentLevel, monCount = 0, partyMon, badgeModifier = 0, firstMon = 0;
+    u16 i, totalLevel = 0;
 
     for (i = FLAG_BADGE01_GET; i < FLAG_BADGE01_GET + NUM_BADGES; i++)
     {
@@ -7004,45 +7003,71 @@ u8 GetPartyMonCurvedLevel(void)
 
 u16 HasLevelEvolutionSingle(u16 species, u8 level)
 {
-	if(gEvolutionTable[species][0].param && gEvolutionTable[species][0].param <= level) {
-        return gEvolutionTable[species][0].targetSpecies;
-	}
-	return 0;
+    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
+    if(evolutions == NULL)
+        return SPECIES_NONE;
+    
+    if(evolutions[0].method != EVOLUTIONS_END
+        && evolutions[0].param
+        && evolutions[0].param <= level)
+        return evolutions[0].targetSpecies;
+
+	return SPECIES_NONE;
 }
 
 u16 HasLevelEvolution(u16 species, u8 level, u8 maxStage)
 {
-	if(gEvolutionTable[species][0].param && gEvolutionTable[species][0].param <= level)
-	{
-        u16 lastMon = gEvolutionTable[species][0].targetSpecies;
-        while((species = HasLevelEvolutionSingle(lastMon, level)) != 0 && --maxStage > 0){
-            lastMon = species;
+    int j;
+    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
+    if(evolutions == NULL)
+        return SPECIES_NONE;
+
+    for(j=0; evolutions[j].method != EVOLUTIONS_END; j++){
+        if(evolutions[j].param && evolutions[j].param <= level)
+        {
+            u16 lastMon = evolutions[j].targetSpecies;
+            while((species = HasLevelEvolutionSingle(lastMon, level)) != SPECIES_NONE && --maxStage > 0){
+                lastMon = species;
+            }
+            
+            return lastMon;
         }
-        
-        return lastMon;
-	}
-	return 0;
+    }
+
+	return SPECIES_NONE;
 }
 
 bool8 IsLevelEvolution(u16 species, u32 evo){
-    switch (gEvolutionTable[species][evo].method){
-        case EVO_LEVEL:
-        case EVO_LEVEL_SILCOON:
-        case EVO_LEVEL_NINJASK:
-        case EVO_LEVEL_DARK_TYPE_MON_IN_PARTY:
-        return TRUE;
-        break;
+    int j;
+    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
+    if(evolutions == NULL)
+        return FALSE;
+
+    for(j=0; evolutions[j].method != EVOLUTIONS_END; j++){
+        switch (evolutions[j].method){
+            case EVO_LEVEL:
+            case EVO_LEVEL_SILCOON:
+            case EVO_LEVEL_NINJASK:
+            case EVO_LEVEL_DARK_TYPE_MON_IN_PARTY:
+            return TRUE;
+            break;
+        }
     }
     return FALSE;
 }
 
 u16 HasSpecialEvolution(u16 species) {
-    u32 i;
-    for(i = 0; i < EVOS_PER_MON; i++){
-        if(gEvolutionTable[species][i].method
-            && !IsLevelEvolution(species, i)) {
-            return gEvolutionTable[species][i].targetSpecies;
-        }
+    int j;
+    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
+    
+    if (evolutions == NULL)
+	    return SPECIES_NONE;
+
+    for (j = 0; evolutions[j].method != EVOLUTIONS_END; j++)
+    {
+        if (evolutions[j].method && !IsLevelEvolution(species, j))
+            return evolutions[j].targetSpecies;
     }
-	return 0;
+
+	return SPECIES_NONE;
 }

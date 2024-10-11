@@ -339,22 +339,22 @@
 
 #define ABILITIES_COUNT_GEN9 311
 
-#define ABILITY_DARK_POWER              299
-#define ABILITY_ULTRASONIC              300
-#define ABILITY_DRAGON_SCALE            301
-#define ABILITY_PANIC_ATTACK            302
-#define ABILITY_SINGER                  303
-#define ABILITY_SAND_SONG               304
+#define ABILITY_DARK_POWER              312
+#define ABILITY_ULTRASONIC              313
+#define ABILITY_DRAGON_SCALE            314
+#define ABILITY_PANIC_ATTACK            315
+#define ABILITY_SINGER                  316
+#define ABILITY_SAND_SONG               317
 
-#define ABILITY_JACKPOT                 305
-#define ABILITY_DREAMCATCHER            306
-#define ABILITY_HEAVY_SLEEPER           307
-#define ABILITY_UPBEAT                  308
-#define ABILITY_CRESCENDO               309
-#define ABILITY_RICH_ACOUSTICS          310
-#define ABILITY_RASH_CUSHION            311
+#define ABILITY_JACKPOT                 318
+#define ABILITY_DREAMCATCHER            319
+#define ABILITY_HEAVY_SLEEPER           320
+#define ABILITY_UPBEAT                  321
+#define ABILITY_CRESCENDO               322
+#define ABILITY_RICH_ACOUSTICS          323
+#define ABILITY_RASH_CUSHION            324
 
-#define ABILITIES_COUNT_DREAM_EMERALD   312
+#define ABILITIES_COUNT_DREAM_EMERALD   325
 
 #define ABILITIES_COUNT ABILITIES_COUNT_DREAM_EMERALD
 

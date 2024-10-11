@@ -6460,6 +6460,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
     [SPECIES_ARCEUS_DRAGON]   = ARCEUS_SPECIES_INFO(TYPE_DRAGON,   Dragon,   0),
     [SPECIES_ARCEUS_DARK]     = ARCEUS_SPECIES_INFO(TYPE_DARK,     Dark,     0),
     [SPECIES_ARCEUS_FAIRY]    = ARCEUS_SPECIES_INFO(TYPE_FAIRY,    Fairy,    0),
+    // Dream Emerald
+    [SPECIES_ARCEUS_SOUND]    = ARCEUS_SPECIES_INFO(TYPE_SOUND,    Sound,    0),
 #endif //P_FAMILY_ARCEUS
 
 #ifdef __INTELLISENSE__

@@ -1,5 +1,5 @@
 #ifdef __INTELLISENSE__
-const struct SpeciesInfo gSpeciesInfoGen1[] =
+const struct SpeciesInfo gSpeciesInfoDreamEmerald[] =
 {
 #endif
 
@@ -119,7 +119,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_AMORPHOUS },
         .abilities = {ABILITY_INTIMIDATE, ABILITY_DARK_POWER, ABILITY_TELEPATHY},
         .bodyColor = BODY_COLOR_WHITE,
-        .speciesName = _("Gardevoir D"),
+        .speciesName = _("Gardevoir"),
         .cryId = CRY_GARDEVOIRD,
         .natDexNum = NATIONAL_DEX_GARDEVOIRD,
         .categoryName = _("Renounce"),
@@ -194,8 +194,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .footprint = gMonFootprint_Adokana,
         LEARNSETS(Adokana),
     },
-
-    [SPECIES_ARCEUS_SOUND]    = ARCEUS_SPECIES_INFO(TYPE_SOUND, Sound),
 
 #ifdef __INTELLISENSE__
 };

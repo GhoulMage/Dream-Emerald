@@ -3069,7 +3069,7 @@ static bool8 BothAreItemOrMail(u16 item1, u16 item2){
     return FALSE;
 }
 
-static void SwitchSelectedMonsItems(u8 taskId){
+static void UNUSED SwitchSelectedMonsItems(u8 taskId){
     if (gPartyMenu.slotId2 != gPartyMenu.slotId) {
         u16 item1 = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HELD_ITEM);
         u16 item2 = GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_HELD_ITEM);

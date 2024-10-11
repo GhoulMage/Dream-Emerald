@@ -2445,7 +2445,7 @@ static void Task_HandleReplaceMoveInput(u8 taskId)
 //    //     return FALSE;
 //}
 
-static void ShowCantForgetHMsWindow(u8 taskId)
+static void UNUSED ShowCantForgetHMsWindow(u8 taskId)
 {
     ClearWindowTilemap(PSS_LABEL_WINDOW_MOVES_POWER_ACC);
     ClearWindowTilemap(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM);
@@ -4104,7 +4104,6 @@ static void SetMoveTypeIcons(void)
         }
         else
             SetSpriteInvisibility(i + SPRITE_ARR_ID_TYPE, TRUE);
-        }
     }
 }
 
@@ -4462,6 +4461,7 @@ static void BufferStat(u8 *dst, s8 natureMod, u32 stat, u32 strId, u32 n){
 
 static void BufferIvOrEvStats(){
     u16 hp, hp2, atk, def, spA, spD, spe;
+    hp2 = 0;
     u8 *currHPString = Alloc(20);
     const s8 *natureMod = gNatureStatTable[sMonSummaryScreen->summary.nature];
 
