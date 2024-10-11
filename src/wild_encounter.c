@@ -27,6 +27,8 @@
 extern const u8 EventScript_SprayWoreOff[];
 
 #define MAX_ENCOUNTER_RATE 2880
+#define VERY_RARE_MAX_ENCOUNTER_RATE 1024
+#define VERY_RARE_ENCOUNTER_CHANCE 6
 
 #define NUM_FEEBAS_SPOTS 6
 
@@ -332,7 +334,7 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIn
     u8 range;
     u8 rand;
     u8 curvedLevel;
-    u8 curveAmount;
+    u8 curveAmount = 0;
 
     if (LURE_STEP_COUNT == 0) {
     // Make sure minimum level is less than maximum level
@@ -655,6 +657,13 @@ static bool8 EncounterOddsCheck(u16 encounterRate)
         return FALSE;
 }
 
+static bool8 VeryRareWildEncounterCheck() {
+    if(Random() % VERY_RARE_MAX_ENCOUNTER_RATE < VERY_RARE_ENCOUNTER_CHANCE)
+        return TRUE;
+    
+    return FALSE;
+}
+
 // Returns true if it will try to create a wild encounter.
 static bool8 WildEncounterCheck(u32 encounterRate, bool8 ignoreAbility)
 {
@@ -820,6 +829,95 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
             if (TryStartRoamerEncounter())
             {
                 roamer = &gSaveBlock1Ptr->roamer[gEncounteredRoamerIndex];
+                if (!IsWildLevelAllowedByRepel(roamer->level))
+                    return FALSE;
+
+                BattleSetup_StartRoamerBattle();
+                return TRUE;
+            }
+            else // try a regular surfing encounter
+            {
+                if (TryGenerateWildMon(gWildMonHeaders[headerId].waterMonsInfo, WILD_AREA_WATER, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
+                {
+                    gIsSurfingEncounter = TRUE;
+                    if (TryDoDoubleWildBattle())
+                    {
+                        struct Pokemon mon1 = gEnemyParty[0];
+                        TryGenerateWildMon(gWildMonHeaders[headerId].waterMonsInfo, WILD_AREA_WATER, WILD_CHECK_KEEN_EYE);
+                        gEnemyParty[1] = mon1;
+                        BattleSetup_StartDoubleWildBattle();
+                    }
+                    else
+                    {
+                        BattleSetup_StartWildBattle();
+                    }
+                    return TRUE;
+                }
+
+                return FALSE;
+            }
+        }
+        else if (MetatileBehavior_IsLandVeryRareWildEncounter(curMetatileBehavior) == TRUE)
+        {
+            if (gWildMonHeaders[headerId].landMonsInfo == NULL)
+                return FALSE;
+            else if (prevMetatileBehavior != curMetatileBehavior && !AllowWildCheckOnNewMetatile())
+                return FALSE;
+            else if (VeryRareWildEncounterCheck() != TRUE)
+                return FALSE;
+
+            if (TryStartRoamerEncounter() == TRUE)
+            {
+                roamer = &gSaveBlock1Ptr->roamer;
+                if (!IsWildLevelAllowedByRepel(roamer->level))
+                    return FALSE;
+
+                BattleSetup_StartRoamerBattle();
+                return TRUE;
+            }
+            else
+            {
+                if (DoMassOutbreakEncounterTest() == TRUE && SetUpMassOutbreakEncounter(WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
+                {
+                    BattleSetup_StartWildBattle();
+                    return TRUE;
+                }
+
+                // try a regular wild land encounter
+                if (TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
+                {
+                    if (TryDoDoubleWildBattle())
+                    {
+                        struct Pokemon mon1 = gEnemyParty[0];
+                        TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_KEEN_EYE);
+                        gEnemyParty[1] = mon1;
+                        BattleSetup_StartDoubleWildBattle();
+                    }
+                    else
+                    {
+                        BattleSetup_StartWildBattle();
+                    }
+                    return TRUE;
+                }
+
+                return FALSE;
+            }
+        }
+        else if (MetatileBehavior_IsWaterVeryRareWildEncounter(curMetatileBehavior) == TRUE
+                 || (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING) && MetatileBehavior_IsBridgeOverWater(curMetatileBehavior) == TRUE))
+        {
+            if (AreLegendariesInSootopolisPreventingEncounters() == TRUE)
+                return FALSE;
+            else if (gWildMonHeaders[headerId].waterMonsInfo == NULL)
+                return FALSE;
+            else if (prevMetatileBehavior != curMetatileBehavior && !AllowWildCheckOnNewMetatile())
+                return FALSE;
+            else if (VeryRareWildEncounterCheck() != TRUE)
+                return FALSE;
+
+            if (TryStartRoamerEncounter() == TRUE)
+            {
+                roamer = &gSaveBlock1Ptr->roamer;
                 if (!IsWildLevelAllowedByRepel(roamer->level))
                     return FALSE;
 

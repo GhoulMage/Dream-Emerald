@@ -74,8 +74,8 @@
 #define MB_SLIDE_NORTH 0x46
 #define MB_SLIDE_SOUTH 0x47
 #define MB_TRICK_HOUSE_PUZZLE_8_FLOOR 0x48
-#define MB_UNUSED_49 0x49
-#define MB_UNUSED_4A 0x4A
+#define MB_CAVE_DUST 0x49 // Dream Emerald Cave Dust (Tall Grass Equivalent)
+#define MB_WATER_SPLASHES 0x4A // Dream Emerald Water Splashes (Tall Grass Equivalent)
 #define MB_UNUSED_4B 0x4B
 #define MB_UNUSED_4C 0x4C
 #define MB_UNUSED_4D 0x4D

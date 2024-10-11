@@ -139,6 +139,9 @@ static void GetGroundEffectFlags_Puddle(struct ObjectEvent *, u32 *);
 static void GetGroundEffectFlags_Ripple(struct ObjectEvent *, u32 *);
 static void GetGroundEffectFlags_Seaweed(struct ObjectEvent *, u32 *);
 static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *, u32 *);
+
+static void GetGroundEffectFlags_CaveDustOnBeginStep(struct ObjectEvent *, u32 *);
+
 static u8 ObjectEventGetNearbyReflectionType(struct ObjectEvent *);
 static u8 GetReflectionTypeByMetatileBehavior(u32);
 static void InitObjectPriorityByElevation(struct Sprite *, u8);
@@ -8928,6 +8931,8 @@ static void GetAllGroundEffectFlags_OnBeginStep(struct ObjectEvent *objEvent, u3
     GetGroundEffectFlags_Puddle(objEvent, flags);
     GetGroundEffectFlags_ShortGrass(objEvent, flags);
     GetGroundEffectFlags_HotSprings(objEvent, flags);
+
+    GetGroundEffectFlags_CaveDustOnBeginStep(objEvent, flags);
 }
 
 static void GetAllGroundEffectFlags_OnFinishStep(struct ObjectEvent *objEvent, u32 *flags)
@@ -8969,6 +8974,12 @@ static void GetGroundEffectFlags_Reflection(struct ObjectEvent *objEvent, u32 *f
     {
         objEvent->hasReflection = FALSE;
     }
+}
+
+static void GetGroundEffectFlags_CaveDustOnBeginStep(struct ObjectEvent *objEvent, u32 *flags)
+{
+    if(MetatileBehavior_IsCaveDust(objEvent->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_CAVE_DUST_ON_MOVE;
 }
 
 static void GetGroundEffectFlags_TallGrassOnSpawn(struct ObjectEvent *objEvent, u32 *flags)
@@ -9108,6 +9119,7 @@ static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *objEvent, u32 *
         MetatileBehavior_IsSurfableWaterOrUnderwater,
         MetatileBehavior_IsShallowFlowingWater,
         MetatileBehavior_IsATile,
+        MetatileBehavior_IsCaveDust,
     };
 
     static const u32 jumpLandingFlags[] = {
@@ -9117,6 +9129,7 @@ static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *objEvent, u32 *
         GROUND_EFFECT_FLAG_LAND_IN_DEEP_WATER,
         GROUND_EFFECT_FLAG_LAND_IN_SHALLOW_WATER,
         GROUND_EFFECT_FLAG_LAND_ON_NORMAL_GROUND,
+        GROUND_EFFECT_FLAG_LAND_IN_CAVE_DUST,
     };
 
     if (objEvent->landingJump && !objEvent->disableJumpLandingGroundEffect)
@@ -9336,6 +9349,30 @@ static bool8 AreElevationsCompatible(u8 a, u8 b)
         return FALSE;
 
     return TRUE;
+}
+
+static void DoStepOnCaveDust(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    FieldEffectStart(FLDEFF_CAVE_DUST);
+}
+
+static void DoJumpOnCaveDust(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    FieldEffectStart(FLDEFF_JUMP_CAVE_DUST);
+}
+
+void GroundEffect_StepOnCaveDust(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    DoStepOnCaveDust(objEvent, sprite);
+}
+
+void GroundEffect_JumpOnCaveDust(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    DoJumpOnCaveDust(objEvent, sprite);
 }
 
 void GroundEffect_SpawnOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
@@ -9644,7 +9681,9 @@ static void (*const sGroundEffectFuncs[])(struct ObjectEvent *objEvent, struct S
     GroundEffect_JumpLandingDust,       // GROUND_EFFECT_FLAG_LAND_ON_NORMAL_GROUND
     GroundEffect_ShortGrass,            // GROUND_EFFECT_FLAG_SHORT_GRASS
     GroundEffect_HotSprings,            // GROUND_EFFECT_FLAG_HOT_SPRINGS
-    GroundEffect_Seaweed                // GROUND_EFFECT_FLAG_SEAWEED
+    GroundEffect_Seaweed,               // GROUND_EFFECT_FLAG_SEAWEED
+    GroundEffect_StepOnCaveDust,        // GROUND_EFFECT_FLAG_CAVE_DUST_ON_MOVE
+    GroundEffect_JumpOnCaveDust,        // GROUND_EFFECT_FLAG_LAND_IN_CAVE_DUST
 };
 
 static void DoFlaggedGroundEffects(struct ObjectEvent *objEvent, struct Sprite *sprite, u32 flags)

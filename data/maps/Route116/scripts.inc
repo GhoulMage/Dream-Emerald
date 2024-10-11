@@ -351,6 +351,10 @@ Route116_EventScript_Johnson::
 	msgbox Route116_Text_JohnsonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route116_EventScript_CaveDustSign::
+	msgbox Route116_Text_CaveDustSign, MSGBOX_SIGN
+	end
+
 Route116_Text_ScoundrelMadeOffWithPeeko:
 	.string "Ohhh, what am I to do?\p"
 	.string "We were on our walk, PEEKO and I, when\n"
@@ -471,3 +475,7 @@ Route116_Text_TrainerTipsBagHasPockets:
 	.string "No TRAINER can afford to be without\n"
 	.string "a BAG of their own.$"
 
+Route116_Text_CaveDustSign:
+	.string "Please, avoid stepping on Cave Dust\n"
+	.string "in the Cave.\p"
+	.string "POKéMON will thank you.$"

@@ -80,6 +80,8 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_TracksBug                 @ FLDEFF_TRACKS_BUG
 	.4byte gFieldEffectScript_TracksSpot                @ FLDEFF_TRACKS_SPOT
 	.4byte gFieldEffectScript_UseHeadbutt               @ FLDEFF_USE_HEADBUTT
+	.4byte gFieldEffectScript_CaveDust					@ FLDEFF_CAVE_DUST
+	.4byte gFieldEffectScript_JumpCaveDust              @ FLDEFF_JUMP_CAVE_DUST
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -377,4 +379,12 @@ gFieldEffectScript_TracksSpot::
 
 gFieldEffectScript_TracksSlither::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_TracksSlither
+	field_eff_end
+
+gFieldEffectScript_CaveDust::
+	field_eff_loadfadedpal_callnative gSpritePalette_Ash, FldEff_CaveDust
+	field_eff_end
+
+gFieldEffectScript_JumpCaveDust::
+	field_eff_loadfadedpal_callnative gSpritePalette_Ash, FldEff_JumpCaveDust
 	field_eff_end
