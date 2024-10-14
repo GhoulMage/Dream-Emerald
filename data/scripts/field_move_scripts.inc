@@ -57,69 +57,13 @@ Text_CantCut:
 	.string "This tree looks like it can be\n"
 	.string "CUT down!$"
 
-@ Interact with a tree a Pokémon can use headbutt on
-EventScript_Headbutt::
-	locktarget
-	checkpartymove MOVE_HEADBUTT
-	compare VAR_RESULT, PARTY_SIZE
-	goto_if_eq EventScript_CantHeadbuttTree
-	setfieldeffectargument 0, VAR_RESULT
-	bufferpartymonnick 0, VAR_RESULT
-	buffermovename 1, MOVE_HEADBUTT
-	msgbox Text_WantToHeadbutt, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq EventScript_CancelHeadbutt
-	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
-	closemessage
-	dofieldeffect FLDEFF_USE_HEADBUTT
-	waitstate
-	goto EventScript_HeadbuttTree
-	end
-
-EventScript_CantHeadbuttTree::
-	msgbox Text_CantHeadbuttTree, MSGBOX_DEFAULT
-	releaseall
-	end
-
-EventScript_CancelHeadbutt::
-	closemessage
-	releaseall
-	end
-
-@ Use headbutt from party menu
-EventScript_UseHeadbutt::
-	locktarget
-	dofieldeffect FLDEFF_USE_HEADBUTT
-	waitstate
-EventScript_HeadbuttTree:
-	setvar VAR_0x8004, 1  @ vertical pan
-	setvar VAR_0x8005, 1  @ horizontal pan
-	setvar VAR_0x8006, 8  @ num shakes
-	setvar VAR_0x8007, 5  @ shake delay
-	special ShakeCamera
-	waitstate
-	special HeadbuttWildEncounter
-	compare VAR_RESULT, FALSE
-	goto_if_eq EventScript_EndHeadbutt
-	waitstate
-EventScript_EndHeadbutt:
-	releaseall
-	end
-
-Text_WantToHeadbutt::
-	.string "A Pokémon could be in this tree.\n"
-	.string "Do you want to use HEADBUTT?$"
-
-Text_CantHeadbuttTree:
-	.string "There's a large, formidable tree.\n"
-	.string "A Pokémon could be here.$"
-
 @ Interact with smashable rock
 EventScript_RockSmash::
 	lockall
 	goto_if_unset FLAG_BADGE03_GET, EventScript_CantSmashRock
 	checkpartymove MOVE_ROCK_SMASH
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
+	goto_if_eq VAR_0x8005, TRUE, DoSmashRock
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	buffermovename STR_VAR_2, MOVE_ROCK_SMASH
@@ -127,6 +71,8 @@ EventScript_RockSmash::
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelSmash
 	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
 	closemessage
+DoSmashRock::
+	setvar VAR_0x8005, FALSE
 	dofieldeffect FLDEFF_USE_ROCK_SMASH
 	waitstate
 	goto EventScript_SmashRock
@@ -135,9 +81,8 @@ EventScript_RockSmash::
 @ Use rock smash from party menu
 EventScript_UseRockSmash::
 	lockall
-	dofieldeffect FLDEFF_USE_ROCK_SMASH
-	waitstate
-	goto EventScript_SmashRock
+	special TryDoObjectScriptOneStepInFrontOfPlayer
+	releaseall
 	end
 
 EventScript_SmashRock::
@@ -319,6 +264,117 @@ EventScript_EndSurface::
 	releaseall
 	end
 
+@ Interact with a tree a Pokémon can use headbutt on
+EventScript_Headbutt::
+	locktarget
+	checkpartymove MOVE_HEADBUTT
+	compare VAR_RESULT, PARTY_SIZE
+	goto_if_eq EventScript_CantHeadbuttTree
+	special CheckMapHasHeadbuttEncounters
+	goto_if_eq VAR_RESULT, FALSE, EventScript_NoPokemonToHeadbutt
+	goto_if_eq VAR_0x8005, TRUE, EventScript_SetupAndDoHeadbuttTreeRare
+	setfieldeffectargument 0, VAR_RESULT
+	bufferpartymonnick STR_VAR_1, VAR_RESULT
+	buffermovename STR_VAR_2, MOVE_HEADBUTT
+	msgbox Text_WantToHeadbutt, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq EventScript_CancelHeadbutt
+	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
+	closemessage
+DoHeadbutt::
+	setvar VAR_0x8005, FALSE
+	dofieldeffect FLDEFF_USE_HEADBUTT
+	waitstate
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	special HeadbuttWildEncounter
+	compare VAR_RESULT, FALSE
+	goto_if_eq EventScript_FailedHeadbutt
+	waitstate
+EventScript_EndHeadbutt:
+	releaseall
+	end
+
+EventScript_SetupAndDoHeadbuttTreeRare::
+	checkpartymove MOVE_HEADBUTT
+	setfieldeffectargument 0, VAR_RESULT
+	bufferpartymonnick STR_VAR_1, VAR_RESULT
+	buffermovename STR_VAR_2, MOVE_HEADBUTT
+	setvar VAR_0x8005, FALSE
+	dofieldeffect FLDEFF_USE_HEADBUTT
+	waitstate
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	special HeadbuttRareEncounter
+	waitstate
+	releaseall
+	end
+
+EventScript_NoPokemonToHeadbutt::
+	msgbox Text_NoPokemonToHeadbutt, MSGBOX_DEFAULT
+	releaseall
+	end
+
+EventScript_FailedHeadbutt::
+	msgbox Text_FailedHeadbutt, MSGBOX_DEFAULT
+	releaseall
+	end
+
+EventScript_CantHeadbuttTree::
+	msgbox Text_CantHeadbuttTree, MSGBOX_DEFAULT
+	releaseall
+	end
+
+EventScript_CancelHeadbutt::
+	closemessage
+	releaseall
+	end
+
+@ Use headbutt from party menu
+EventScript_UseHeadbutt::
+	locktarget
+	goto DoHeadbutt
+	releaseall
+	end
+
+@ Interact with smashable rock, forcing the rarest Pokémon encounter from rock_smash_mons
+EventScript_RockSmash_ForceRarePokemon::
+	lockall
+	goto_if_unset FLAG_BADGE03_GET, EventScript_CantSmashRock
+	checkpartymove MOVE_ROCK_SMASH
+	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
+	goto_if_eq VAR_0x8005, TRUE, DoSmashRockRare
+	setfieldeffectargument 0, VAR_RESULT
+	bufferpartymonnick STR_VAR_1, VAR_RESULT
+	buffermovename STR_VAR_2, MOVE_ROCK_SMASH
+	msgbox Text_WantToSmash, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_CancelSmash
+	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
+	closemessage
+DoSmashRockRare::
+	setvar VAR_0x8005, FALSE
+	dofieldeffect FLDEFF_USE_ROCK_SMASH
+	waitstate
+	goto EventScript_SmashRockRare
+	end
+
+EventScript_SmashRockRare::
+	applymovement VAR_LAST_TALKED, Movement_SmashRock
+	waitmovement 0
+	removeobject VAR_LAST_TALKED
+	special RockSmashRareEncounter
+	waitstate
+	releaseall
+	end
+
 Text_CantDive:
 	.string "The sea is deep here. A POKéMON\n"
 	.string "may be able to go underwater.$"
@@ -343,4 +399,19 @@ EventScript_FailSweetScent::
 	end
 
 Text_FailSweetScent:
+	.string "Looks like there's nothing here…$"
+
+Text_NoPokemonToHeadbutt::
+	.string "There doesn't seem to be\n"
+	.string "POKéMON in these trees.$"
+
+Text_WantToHeadbutt::
+	.string "A Pokémon could be in this tree.\n"
+	.string "Do you want to use HEADBUTT?$"
+
+Text_CantHeadbuttTree:
+	.string "There's a large, formidable tree.\n"
+	.string "A Pokémon could be here.$"
+
+Text_FailedHeadbutt:
 	.string "Looks like there's nothing here…$"

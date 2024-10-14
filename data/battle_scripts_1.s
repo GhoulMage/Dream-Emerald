@@ -7403,6 +7403,17 @@ BattleScript_MoveUsedIsInLoveCantAttack::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
+BattleScript_MoveUsedIsTerrorized::
+	printstring STRINGID_PKMNIMMOBILIZEDBYTERROR
+	waitmessage B_WAIT_TIME_LONG
+	status2animation BS_ATTACKER, STATUS2_NIGHTMARE
+	goto BattleScript_MoveEnd
+
+BattleScript_MoveUsedIsTerrorizedCantAttack::
+	printstring STRINGID_PKMNIMMOBILIZEDBYTERROR
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
 BattleScript_NightmareTurnDmg::
 	printstring STRINGID_PKMNLOCKEDINNIGHTMARE
 	waitmessage B_WAIT_TIME_LONG
@@ -7788,6 +7799,14 @@ BattleScript_TryAdrenalineOrb:
 	removeitem BS_TARGET
 BattleScript_TryAdrenalineOrbRet:
 	return
+
+BattleScript_PokemonTerrorizeActivates::
+	showabilitypopup BS_ATTACKER
+	pause B_WAIT_TIME_LONG
+	printstring STRINGID_PKMNTERRORIZESFIELD
+	waitmessage B_WAIT_TIME_LONG
+	destroyabilitypopup
+	end3
 
 BattleScript_IntimidateActivates::
 	showabilitypopup BS_ATTACKER

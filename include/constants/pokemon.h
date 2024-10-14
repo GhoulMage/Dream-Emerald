@@ -303,6 +303,7 @@
 #define EVO_LEVEL_MOVE_TWENTY_TIMES       47     // Pokémon levels up after having used a move for at least 20 times
 #define EVO_LEVEL_RECOIL_DAMAGE_MALE      48     // Pokémon levels up after having suffered specified amount of non-fainting recoil damage as a male
 #define EVO_LEVEL_RECOIL_DAMAGE_FEMALE    49     // Pokémon levels up after having suffered specified amount of non-fainting recoil damage as a female
+#define EVO_LEVEL_FEMALE_LOW_HP           50     // Pokémon reaches the specified level at or while under 50% HP, if female. (Special for Cubone->Bonedea)
 
 // Evolution 'modes,' for GetEvolutionTargetSpecies
 #define EVO_MODE_NORMAL            0
@@ -336,5 +337,15 @@
 #define NUM_ABILITY_PERSONALITY 0xFF
 
 #define LEGENDARY_PERFECT_IV_COUNT 3
+
+// Debug messages for evolving wild Pokémon
+#define WILD_MON_EVO_DEBUG TRUE
+
+// Chances to find various wild Pokémon as their evolved forms instead
+// In the functions CanEvolve and CanEvolveWithGender there's additional chances for certain evolutions to be rarer
+// Value should be between 0 and 100
+#define WILD_MON_EVO_CHANCE_STAGE1 33  // First evolution
+#define WILD_MON_EVO_CHANCE_STAGE2 13  // Second evolution
+#define WILD_MON_EVO_CHANCE_STAGE3 9   // Unorthodox third evolution
 
 #endif // GUARD_CONSTANTS_POKEMON_H

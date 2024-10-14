@@ -555,3 +555,9 @@ gSpecials::
 	def_special Script_GetChosenMonOffensiveIVs
 	def_special Script_GetChosenMonDefensiveIVs
 	def_special HeadbuttWildEncounter
+	def_special CheckMapHasHeadbuttEncounters
+	def_special RockSmashRareEncounter
+	def_special HeadbuttRareEncounter
+	def_special LandRareEncounter
+	def_special WaterRareEncounter
+	def_special TryDoObjectScriptOneStepInFrontOfPlayer
