@@ -79,9 +79,9 @@ const u16 gStandardMenuPalette[] = INCBIN_U16("graphics/interface/std_menu.gbapa
 
 static const u8 sTextSpeedFrameDelays[] =
 {
-    [OPTIONS_TEXT_SPEED_SLOW] = 8,
-    [OPTIONS_TEXT_SPEED_MID]  = 4,
-    [OPTIONS_TEXT_SPEED_FAST] = 1
+    [OPTIONS_TEXT_SPEED_MID] = 3,
+    [OPTIONS_TEXT_SPEED_FAST]  = 2,
+    [OPTIONS_TEXT_SPEED_INSTANT] = 1
 };
 
 static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
@@ -136,7 +136,6 @@ static const struct MenuInfoIcon sMenuInfoIcons[] =
     [TYPE_DRAGON + 1]   = { 32, 12, 0xA0 },
     [TYPE_DARK + 1]     = { 32, 12, 0x8C },
     [TYPE_FAIRY + 1]    = { 32, 12, 0x4  },
-    [TYPE_SOUND + 1]    = { 32, 12, 0x8  },
     [MENU_INFO_ICON_TYPE]      = { 42, 12, 0xA8 },
     [MENU_INFO_ICON_POWER]     = { 42, 12, 0xC0 },
     [MENU_INFO_ICON_ACCURACY]  = { 42, 12, 0xC8 },
@@ -144,6 +143,13 @@ static const struct MenuInfoIcon sMenuInfoIcons[] =
     [MENU_INFO_ICON_EFFECT]    = { 42, 12, 0xE8 }, // Unused
     [MENU_INFO_ICON_BALL_RED]  = {  8,  8, 0xAE }, // For placed decorations in Secret Base
     [MENU_INFO_ICON_BALL_BLUE] = {  8,  8, 0xAF }, // For placed decorations in player's room
+};
+
+// For type Sound onwards.
+static const struct MenuInfoIcon sMenuInfoIcons2[] =
+{   // { width, height, offset }
+    { 12, 12, 0x00 },  // Unused
+    [TYPE_SOUND - TYPE_SOUND + 1] = { 32, 12, 0x4  },
 };
 
 void InitStandardTextBoxWindows(void)
@@ -489,7 +495,7 @@ u32 GetPlayerTextSpeed(void)
 u8 GetPlayerTextSpeedDelay(void)
 {
     u32 speed;
-    if (gSaveBlock2Ptr->optionsTextSpeed > OPTIONS_TEXT_SPEED_FAST)
+    if (gSaveBlock2Ptr->optionsTextSpeed > OPTIONS_TEXT_SPEED_INSTANT)
         gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_MID;
     speed = GetPlayerTextSpeed();
     return sTextSpeedFrameDelays[speed];
@@ -2111,6 +2117,10 @@ void ListMenuLoadStdPalAt(u8 palOffset, u8 palId)
 void BlitMenuInfoIcon(u8 windowId, u8 iconId, u16 x, u16 y)
 {
     BlitBitmapRectToWindow(windowId, &gMenuInfoElements_Gfx[sMenuInfoIcons[iconId].offset * 32], 0, 0, 128, 128, x, y, sMenuInfoIcons[iconId].width, sMenuInfoIcons[iconId].height);
+}
+
+void BlitMenuInfoIcon2(u8 windowId, u8 iconId, u16 x, u16 y, u8 overridePalette){
+    BlitBitmapRectToWindow(windowId, &gMenuInfoElements_Gfx2[sMenuInfoIcons2[iconId].offset * 32], 0, 0, 128, 128, x, y, sMenuInfoIcons2[iconId].width, sMenuInfoIcons2[iconId].height);
 }
 
 void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)

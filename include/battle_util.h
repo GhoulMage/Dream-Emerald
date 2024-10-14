@@ -101,6 +101,7 @@ enum
     CANCELLER_EXPLODING_DAMP,
     CANCELLER_MULTIHIT_MOVES,
     CANCELLER_Z_MOVES,
+    CANCELLER_TERRORIZED,
     CANCELLER_END,
     CANCELLER_PSYCHIC_TERRAIN,
     CANCELLER_END2,
@@ -222,7 +223,8 @@ bool32 CanFling(u32 battler);
 bool32 MoveHasSound(u16 move);
 bool32 MoveIsSonic(u16 move);
 bool32 MoveIsDance(u16 move);
-bool32 DanceHasSecondaryType(u16 move);
+bool32 MoveIsDanceAndHasSecondaryType(u16 move);
+bool32 MoveIsSonicAndHasSecondaryType(u16 move);
 bool32 IsTelekinesisBannedSpecies(u16 species);
 bool32 IsHealBlockPreventingMove(u32 battler, u32 move);
 bool32 IsBelchPreventingMove(u32 battler, u32 move);

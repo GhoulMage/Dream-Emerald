@@ -101,6 +101,7 @@ enum {
     WIN_POCKET_NAME,
     WIN_TMHM_INFO_ICONS,
     WIN_TMHM_INFO,
+    WIN_TMHM_INFO_2,
     WIN_MESSAGE, // Identical to ITEMWIN_MESSAGE. Unused?
 };
 
@@ -458,6 +459,15 @@ static const struct WindowTemplate sDefaultBagWindows[] =
         .baseBlock = 0x16B,
     },
     [WIN_TMHM_INFO] = {
+        .bg = 0,
+        .tilemapLeft = 7,
+        .tilemapTop = 13,
+        .width = 4,
+        .height = 6,
+        .paletteNum = 12,
+        .baseBlock = 0x189,
+    },
+    [WIN_TMHM_INFO_2] = {
         .bg = 0,
         .tilemapLeft = 7,
         .tilemapTop = 13,
@@ -1347,6 +1357,7 @@ static void ReturnToItemList(u8 taskId)
     CreatePocketSwitchArrowPair();
     ClearWindowTilemap(WIN_TMHM_INFO_ICONS);
     ClearWindowTilemap(WIN_TMHM_INFO);
+    ClearWindowTilemap(WIN_TMHM_INFO_2);
     PutWindowTilemap(WIN_DESCRIPTION);
     ScheduleBgCopyTilemapToVram(0);
     gTasks[taskId].func = Task_BagMenu_HandleInput;
@@ -1716,7 +1727,8 @@ static void OpenContextMenu(u8 taskId)
         ClearWindowTilemap(WIN_DESCRIPTION);
         PrintTMHMMoveData(gSpecialVar_ItemId);
         PutWindowTilemap(WIN_TMHM_INFO_ICONS);
-        PutWindowTilemap(WIN_TMHM_INFO);
+        //PutWindowTilemap(WIN_TMHM_INFO);
+        //PutWindowTilemap(WIN_TMHM_INFO_2);
         ScheduleBgCopyTilemapToVram(0);
     }
     else
@@ -2639,6 +2651,7 @@ static void PrintTMHMMoveData(u16 itemId)
     const u8 *text;
 
     FillWindowPixelBuffer(WIN_TMHM_INFO, PIXEL_FILL(0));
+    //FillWindowPixelBuffer(WIN_TMHM_INFO_2, PIXEL_FILL(0));
     if (itemId == ITEM_NONE)
     {
         for (i = 0; i < 4; i++)
@@ -2647,8 +2660,23 @@ static void PrintTMHMMoveData(u16 itemId)
     }
     else
     {
+        u8 windowId = WIN_TMHM_INFO;
+        ClearWindowTilemap(WIN_TMHM_INFO);
+        ClearWindowTilemap(WIN_TMHM_INFO_2);
+        //ClearWindowTilemap(WIN_TMHM_INFO_2);
+
         moveId = ItemIdToBattleMoveId(itemId);
-        BlitMenuInfoIcon(WIN_TMHM_INFO, gMovesInfo[moveId].type + 1, 0, 0);
+        if(gMovesInfo[moveId].type >= TYPE_SOUND){
+            FillWindowPixelBuffer(WIN_TMHM_INFO_2, PIXEL_FILL(0));
+            PutWindowTilemap(WIN_TMHM_INFO_2);
+            LoadPalette(gMenuInfoElements_2_Pal1, 192, PLTT_SIZE_4BPP);
+            windowId = WIN_TMHM_INFO_2;
+            BlitMenuInfoIcon2(windowId, gMovesInfo[moveId].type - TYPE_SOUND + 1, 0, 0, 16);
+        } else {
+            ListMenuLoadStdPalAt(BG_PLTT_ID(12), 1);
+            PutWindowTilemap(WIN_TMHM_INFO);
+            BlitMenuInfoIcon(windowId, gMovesInfo[moveId].type + 1, 0, 0);
+        }
 
         // Print TMHM power
         if (gMovesInfo[moveId].power <= 1)
@@ -2660,7 +2688,7 @@ static void PrintTMHMMoveData(u16 itemId)
             ConvertIntToDecimalStringN(gStringVar1, gMovesInfo[moveId].power, STR_CONV_MODE_RIGHT_ALIGN, 3);
             text = gStringVar1;
         }
-        BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, text, 7, 12, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        BagMenu_Print(windowId, FONT_NORMAL, text, 7, 12, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
 
         // Print TMHM accuracy
         if (gMovesInfo[moveId].accuracy == 0)
@@ -2672,13 +2700,13 @@ static void PrintTMHMMoveData(u16 itemId)
             ConvertIntToDecimalStringN(gStringVar1, gMovesInfo[moveId].accuracy, STR_CONV_MODE_RIGHT_ALIGN, 3);
             text = gStringVar1;
         }
-        BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, text, 7, 24, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        BagMenu_Print(windowId, FONT_NORMAL, text, 7, 24, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
 
         // Print TMHM pp
         ConvertIntToDecimalStringN(gStringVar1, gMovesInfo[moveId].pp, STR_CONV_MODE_RIGHT_ALIGN, 3);
-        BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, gStringVar1, 7, 36, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        BagMenu_Print(windowId, FONT_NORMAL, gStringVar1, 7, 36, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
 
-        CopyWindowToVram(WIN_TMHM_INFO, COPYWIN_GFX);
+        CopyWindowToVram(windowId, COPYWIN_GFX);
     }
 }
 

@@ -1239,9 +1239,11 @@
 #define FLAG_HIDE_DREAM_PETALBURG_TREE_1                            0x4A3
 #define FLAG_HIDE_DREAM_PETALBURG_TREE_2                            0x4A4
 
-#define FLAG_UNUSED_0x4A5                                           0x4A5 // Unused Flag
-#define FLAG_UNUSED_0x4A6                                           0x4A6 // Unused Flag
-#define FLAG_UNUSED_0x4A7                                           0x4A7 // Unused Flag
+#define FLAG_HIDE_ROUTE_111_ROCK_1                                  0x4A5
+#define FLAG_HIDE_ROUTE_111_ROCK_2                                  0x4A6
+
+#define FLAG_HIDE_ROUTE_121_TREE_1                                  0x4A7
+
 #define FLAG_UNUSED_0x4A8                                           0x4A8 // Unused Flag
 #define FLAG_UNUSED_0x4A9                                           0x4A9 // Unused Flag
 #define FLAG_UNUSED_0x4AA                                           0x4AA // Unused Flag

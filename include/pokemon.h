@@ -494,7 +494,8 @@ struct MoveInfo
     u32 pulseMove:1;
     u32 sonicMove:1;
     u32 danceMove:1;
-    u8 danceMoveSecondaryType;
+    u32 danceMoveType;
+    u32 sonicMoveType;
     u32 ballisticMove:1;
     u32 powderMove:1;
     u32 windMove:1;
@@ -884,7 +885,8 @@ const u8 *GetMoveAnimationScript(u16 moveId);
 void UpdateDaysPassedSinceFormChange(u16 days);
 void TrySetDayLimitToFormChange(struct Pokemon *mon);
 u8 GetPartyMonCurvedLevel(void);
-u16 HasLevelEvolution(u16 species, u8 level, u8 maxStage);
+u16 GetPossibleEvolution(u16 species, u8 level, u8 maxStage);
+u16 GetPossibleEvolutionMatchingGender(u16 species, u8 gender, u8 level, u8 maxStage);
 u16 HasSpecialEvolution(u16 species);
 
 #endif // GUARD_POKEMON_H

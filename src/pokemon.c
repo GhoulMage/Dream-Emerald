@@ -4545,6 +4545,15 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 if (evolutions[i].param <= level && GetMonGender(mon) == MON_FEMALE)
                     targetSpecies = evolutions[i].targetSpecies;
                 break;
+            case EVO_LEVEL_FEMALE_LOW_HP:
+                if(evolutions[i].param <= level && GetMonGender(mon) == MON_FEMALE) {
+                    u32 currHP = GetMonData(mon, MON_DATA_HP, 0);
+                    u32 halfMaxHP = GetMonData(mon, MON_DATA_MAX_HP, 0) / 2;
+
+                    if(halfMaxHP >= currHP)
+                        targetSpecies = evolutions[i].targetSpecies;
+                }
+                break;
             case EVO_LEVEL_MALE:
                 if (evolutions[i].param <= level && GetMonGender(mon) == MON_MALE)
                     targetSpecies = evolutions[i].targetSpecies;
@@ -7001,73 +7010,155 @@ u8 GetPartyMonCurvedLevel(void)
     return adjustedLevel;
 }
 
-u16 HasLevelEvolutionSingle(u16 species, u8 level)
-{
-    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
-    if(evolutions == NULL)
-        return SPECIES_NONE;
-    
-    if(evolutions[0].method != EVOLUTIONS_END
-        && evolutions[0].param
-        && evolutions[0].param <= level)
-        return evolutions[0].targetSpecies;
+bool8 CanEvolve(const struct Evolution *evolutions, u16 evolutionIndex, u8 level){
+    u8 randomNumber = (Random() % 0xFF);
+    bool8 coinFlip = randomNumber < 128;
+    bool8 lowRandomChance = randomNumber < 64;
+    bool8 extremeLowChance = randomNumber < 16;
 
-	return SPECIES_NONE;
-}
-
-u16 HasLevelEvolution(u16 species, u8 level, u8 maxStage)
-{
-    int j;
-    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
-    if(evolutions == NULL)
-        return SPECIES_NONE;
-
-    for(j=0; evolutions[j].method != EVOLUTIONS_END; j++){
-        if(evolutions[j].param && evolutions[j].param <= level)
-        {
-            u16 lastMon = evolutions[j].targetSpecies;
-            while((species = HasLevelEvolutionSingle(lastMon, level)) != SPECIES_NONE && --maxStage > 0){
-                lastMon = species;
-            }
-            
-            return lastMon;
-        }
+    switch(evolutions[evolutionIndex].method){
+        case EVO_LEVEL_DAY:
+        return GetTimeOfDay() != TIME_NIGHT || lowRandomChance;
+        case EVO_LEVEL_DUSK:
+        return GetTimeOfDay() == TIME_EVENING || lowRandomChance;
+        case EVO_LEVEL_NIGHT:
+        return GetTimeOfDay() == TIME_NIGHT || lowRandomChance;
+        case EVO_LEVEL_FEMALE:
+        case EVO_LEVEL_MALE:
+        case EVO_LEVEL_FEMALE_LOW_HP:
+        return evolutions[evolutionIndex].param <= level && coinFlip;
+        case EVO_LEVEL_DARK_TYPE_MON_IN_PARTY:
+        case EVO_LEVEL_NINJASK:
+        case EVO_LEVEL_RAIN:
+        case EVO_LEVEL_NATURE_AMPED:
+        case EVO_LEVEL_NATURE_LOW_KEY:
+        case EVO_LEVEL_FOG:
+        return evolutions[evolutionIndex].param <= level && coinFlip;
+        case EVO_LEVEL_SHEDINJA:
+        return evolutions[evolutionIndex].param <= level && lowRandomChance;
+        case EVO_LEVEL_CASCOON:
+        case EVO_LEVEL_SILCOON:
+        case EVO_LEVEL:
+        return evolutions[evolutionIndex].param <= level;
+        default:
+        return evolutions[evolutionIndex].param <= level && extremeLowChance;
     }
-
-	return SPECIES_NONE;
 }
 
-bool8 IsLevelEvolution(u16 species, u32 evo){
-    int j;
-    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
-    if(evolutions == NULL)
-        return FALSE;
+bool8 CanEvolveWithGender(const struct Evolution *evolutions, u16 evolutionIndex, u8 gender, u8 level) {
+    u8 randomNumber = (Random() % 0xFF);
+    bool8 coinFlip = randomNumber < 128;
+    bool8 lowRandomChance = randomNumber < 64;
+    bool8 extremeLowChance = randomNumber < 16;
 
-    for(j=0; evolutions[j].method != EVOLUTIONS_END; j++){
-        switch (evolutions[j].method){
-            case EVO_LEVEL:
-            case EVO_LEVEL_SILCOON:
-            case EVO_LEVEL_NINJASK:
-            case EVO_LEVEL_DARK_TYPE_MON_IN_PARTY:
-            return TRUE;
+    switch(evolutions[evolutionIndex].method){
+        case EVO_LEVEL_DAY:
+        return GetTimeOfDay() != TIME_NIGHT || lowRandomChance;
+        case EVO_LEVEL_DUSK:
+        return GetTimeOfDay() == TIME_EVENING || lowRandomChance;
+        case EVO_LEVEL_NIGHT:
+        return GetTimeOfDay() == TIME_NIGHT || lowRandomChance;
+        case EVO_LEVEL_FEMALE:
+        return evolutions[evolutionIndex].param <= level && gender == MON_FEMALE;
+        case EVO_LEVEL_MALE:
+        return evolutions[evolutionIndex].param <= level && gender == MON_MALE;
+        case EVO_LEVEL_FEMALE_LOW_HP:
+        return evolutions[evolutionIndex].param <= level && gender == MON_FEMALE && coinFlip;
+        case EVO_LEVEL_DARK_TYPE_MON_IN_PARTY:
+        case EVO_LEVEL_NINJASK:
+        case EVO_LEVEL_RAIN:
+        case EVO_LEVEL_NATURE_AMPED:
+        case EVO_LEVEL_NATURE_LOW_KEY:
+        case EVO_LEVEL_FOG:
+        return evolutions[evolutionIndex].param <= level && coinFlip;
+        case EVO_LEVEL_SHEDINJA:
+        return evolutions[evolutionIndex].param <= level && lowRandomChance;
+        case EVO_LEVEL_CASCOON:
+        case EVO_LEVEL_SILCOON:
+        case EVO_LEVEL:
+        return evolutions[evolutionIndex].param <= level;
+        default:
+        return evolutions[evolutionIndex].param <= level && extremeLowChance;
+    }
+}
+
+u16 GetPossibleEvolutionMatchingGender(u16 species, u8 gender, u8 level, u8 maxStage) {
+    int j;
+    u16 resultSpecies = species;
+    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
+
+    while(maxStage > 0){
+        if(evolutions == NULL) {
             break;
         }
+
+        for (j = 0; evolutions[j].method != EVOLUTIONS_END; j++){
+            if(!CanEvolveWithGender(evolutions, j, gender, level))
+                continue;
+            
+            // Since evolutions are in order of less preferable to most preferable, we need to continue until EVOLUTIONS_END
+            resultSpecies = evolutions[j].targetSpecies;
+        }
+
+        // If we get the same species it's still worth a try as long as maxStage is over 0 because some evolutions are really rare
+        evolutions = GetSpeciesEvolutions(resultSpecies);
+        maxStage--;
     }
-    return FALSE;
+
+    return resultSpecies;
 }
 
-u16 HasSpecialEvolution(u16 species) {
+u16 GetPossibleEvolution(u16 species, u8 level, u8 maxStage) {
     int j;
+    u16 resultSpecies = species;
+#if WILD_MON_EVO_DEBUG
+    u16 lastEvoMethod = 0xFFFF;
+    int lastIndex = 0;
+#endif
     const struct Evolution *evolutions = GetSpeciesEvolutions(species);
-    
-    if (evolutions == NULL)
-	    return SPECIES_NONE;
 
-    for (j = 0; evolutions[j].method != EVOLUTIONS_END; j++)
-    {
-        if (evolutions[j].method && !IsLevelEvolution(species, j))
-            return evolutions[j].targetSpecies;
+#if WILD_MON_EVO_DEBUG
+    DebugPrintf("----------------");
+    DebugPrintf("Trying to find %d stages evolutions.", maxStage);
+    DebugPrintf("Pokémon: %d", species);
+#endif
+    while(maxStage > 0){
+        if(evolutions == NULL) {
+#if WILD_MON_EVO_DEBUG
+            if(resultSpecies == species)
+                DebugPrintf("No evolutions found.");
+            else
+                DebugPrintf("No more evolutions found.", resultSpecies);
+#endif
+            break;
+        }
+
+        for (j = 0; evolutions[j].method != EVOLUTIONS_END; j++){
+            if(!CanEvolve(evolutions, j, level))
+                continue;
+            
+            // Since evolutions are in order of less preferable to most preferable, we need to continue until EVOLUTIONS_END
+            resultSpecies = evolutions[j].targetSpecies;
+#if WILD_MON_EVO_DEBUG
+            lastEvoMethod = evolutions[j].method;
+            lastIndex = j;
+#endif
+        }
+
+#if WILD_MON_EVO_DEBUG
+        if(species != resultSpecies) {
+            DebugPrintf("----------------");
+            DebugPrintf("Found evolution: %d", resultSpecies);
+            DebugPrintf("Evolution method: %d", lastEvoMethod);
+            DebugPrintf("Evolution index: %d", lastIndex);
+            species = resultSpecies;
+        }
+#endif
+
+        // If we get the same species it's still worth a try as long as maxStage is over 0 because some evolutions are really rare
+        evolutions = GetSpeciesEvolutions(resultSpecies);
+        maxStage--;
     }
 
-	return SPECIES_NONE;
+    return resultSpecies;
 }

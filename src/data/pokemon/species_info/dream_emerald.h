@@ -165,7 +165,7 @@ const struct SpeciesInfo gSpeciesInfoDreamEmerald[] =
         .friendship = 50,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_DRAGON },
-        .abilities = {ABILITY_INTIMIDATE, ABILITY_SHED_SKIN, ABILITY_CRESCENDO}, //TODO: create ABILITY_TERRORIZE
+        .abilities = {ABILITY_INTIMIDATE, ABILITY_TERRORIZE, ABILITY_CRESCENDO},
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Adokana"),
         .cryId = CRY_ADOKANA,
@@ -193,6 +193,54 @@ const struct SpeciesInfo gSpeciesInfoDreamEmerald[] =
         ICON(Adokana, 2),
         .footprint = gMonFootprint_Adokana,
         LEARNSETS(Adokana),
+    },
+
+    [SPECIES_BONEDEA] =
+    {
+        .baseHP        = 134,
+        .baseDefense   = 54,
+        .baseSpeed     = 34,
+        .baseSpAttack  = 134,
+        .baseSpDefense = 74,
+        .baseAttack    = 54,
+        .types = { TYPE_GHOST, TYPE_GROUND },
+        .catchRate = 10,
+        .expYield = 215,
+        .evYield_Defense    = 2,
+        .evYield_SpDefense  = 2,
+        .genderRatio = MON_FEMALE,
+        .eggCycles = 40,
+        .friendship = 20,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_MONSTER },
+        .abilities = {ABILITY_ROCK_HEAD, ABILITY_LIGHTNING_ROD, ABILITY_BATTLE_ARMOR},
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("Bonedea"),
+        .cryId = CRY_BONEDEA,
+        .natDexNum = NATIONAL_DEX_BONEDEA,
+        .categoryName = _("Mother"),
+        .height = 14,
+        .weight = 550,
+        .description = COMPOUND_STRING(
+            "She was not able to overcomer her injuries\n"
+            "but she came back in perpetual anger.\n"
+            "Her strength seems to be coming from\n"
+            "her own repent."),
+        .pokemonScale = 325,
+        .pokemonOffset = 12,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Bonedea, 64, 64),
+        .frontPicYOffset = 8,
+        .frontAnimFrames = sAnims_Bonedea,
+        .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES,
+        BACK_PIC(Bonedea, 64, 64),
+        .backPicYOffset = 1,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        PALETTES(Bonedea),
+        ICON(Bonedea, 0),
+        .footprint = gMonFootprint_Bonedea,
+        LEARNSETS(Bonedea),
     },
 
 #ifdef __INTELLISENSE__

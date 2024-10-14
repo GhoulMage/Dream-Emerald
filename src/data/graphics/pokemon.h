@@ -2863,6 +2863,13 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 
+    const u32 gMonFrontPic_Bonedea[] = INCBIN_U32("graphics/pokemon/bonedea/anim_front.4bpp.lz");
+    const u32 gMonPalette_Bonedea[] = INCBIN_U32("graphics/pokemon/bonedea/normal.gbapal.lz");
+    const u32 gMonBackPic_Bonedea[] = INCBIN_U32("graphics/pokemon/bonedea/back.4bpp.lz");
+    const u32 gMonShinyPalette_Bonedea[] = INCBIN_U32("graphics/pokemon/bonedea/shiny.gbapal.lz");
+    const u8 gMonIcon_Bonedea[] = INCBIN_U8("graphics/pokemon/bonedea/icon.4bpp");
+    const u8 gMonFootprint_Bonedea[] = INCBIN_U8("graphics/pokemon/bonedea/footprint.1bpp");
+
 #if P_ALOLAN_FORMS
     const u32 gMonFrontPic_MarowakAlolan[] = INCBIN_U32("graphics/pokemon/marowak/alolan/front.4bpp.lz");
     const u32 gMonPalette_MarowakAlolan[] = INCBIN_U32("graphics/pokemon/marowak/alolan/normal.gbapal.lz");

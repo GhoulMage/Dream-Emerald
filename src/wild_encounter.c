@@ -448,14 +448,11 @@ u8 PickWildMonNature(void)
     return Random() % NUM_NATURES;
 }
 
-
-#define MON_CHANCE_TO_FIND_EVOLVED_STAGE1 33  // out of every 100
-#define MON_CHANCE_TO_FIND_EVOLVED_STAGE2 13  // out of every 100
-#define MON_CHANCE_TO_FIND_EVOLVED_STAGE3 9   // out of every 100
-
 static const u16 sBannedMonWildEvos[] =
 {
     0,
+    SPECIES_CRAWDAUNT,
+    SPECIES_POLITOED
 };
 
 static bool8 MonEvolutionIsBanned(u16 species){
@@ -467,57 +464,81 @@ static bool8 MonEvolutionIsBanned(u16 species){
     return FALSE;
 }
 
+static bool8 WildMonEvoCheck(u16 originalSpecies, u16 *species) {
+    if(MonEvolutionIsBanned(*species)){
+#if WILD_MON_EVO_DEBUG
+        DebugPrintf("Wild Mon evolution has been found but is banned: %d", *species);
+#endif
+        *species = originalSpecies;
+
+        return FALSE;
+    }
+    
+    return TRUE;
+}
+
+// If the chance arises, tries to evolve the mon without changing its gender
+static void TryToEvolveWildMonWithGender(u16 *species, u8 gender, u8 level){
+    u8 chance = (Random() % 100);
+    u16 originalSpecies = *species;
+
+    if(chance < WILD_MON_EVO_CHANCE_STAGE3) {
+        *species = GetPossibleEvolutionMatchingGender(*species, gender, level, 3);
+
+        if(WildMonEvoCheck(originalSpecies, species))
+           return; 
+    }
+
+    if(chance < WILD_MON_EVO_CHANCE_STAGE2) {
+        *species = GetPossibleEvolutionMatchingGender(*species, gender, level, 2);
+
+        if(WildMonEvoCheck(originalSpecies, species))
+           return;
+    }
+
+    if(chance < WILD_MON_EVO_CHANCE_STAGE1) {
+        *species = GetPossibleEvolutionMatchingGender(*species, gender, level, 1);
+
+        if(WildMonEvoCheck(originalSpecies, species))
+           return;
+    }
+}
+
+// If the chance arises, tries to evolve the mon without caring for its resulting gender
+static void TryToEvolveWildMon(u16 *species, u8 level){
+    u8 chance = (Random() % 100);
+    u16 originalSpecies = *species;
+
+    if(chance < WILD_MON_EVO_CHANCE_STAGE3) {
+        *species = GetPossibleEvolution(*species, level, 3);
+
+        if(WildMonEvoCheck(originalSpecies, species))
+           return;
+    }
+
+    if(chance < WILD_MON_EVO_CHANCE_STAGE2) {
+        *species = GetPossibleEvolution(*species, level, 2);
+
+        if(WildMonEvoCheck(originalSpecies, species))
+           return;
+    }
+    
+    if(chance < WILD_MON_EVO_CHANCE_STAGE1) {
+        *species = GetPossibleEvolution(*species, level, 1);
+
+        if(WildMonEvoCheck(originalSpecies, species))
+           return;
+    }
+}
+
 static void CreateWildMon(u16 species, u8 level)
 {
     bool32 checkCuteCharm = TRUE;
     u16 newSpecies = 0;
     u8 chance;
+    u8 gender;
 
     ZeroEnemyPartyMons();
-
-    chance = (Random() % 100);
-    
-
-    //Check at the beginning for mons like Shedinja etc
-    if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3 && !MonEvolutionIsBanned(newSpecies = HasSpecialEvolution(species))) {
-        species = newSpecies;
-    } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE2 && !MonEvolutionIsBanned(newSpecies = HasLevelEvolution(species, level, 2))) {
-        species = newSpecies;
-    } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE1 && !MonEvolutionIsBanned(newSpecies = HasLevelEvolution(species, level, 1))) {
-        species = newSpecies;
-    }
-    //Check again just in case base evo didn't have special evolution but stage 1 or 2 does
-    if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3 && !MonEvolutionIsBanned(newSpecies = HasSpecialEvolution(species))) {
-        species = newSpecies;
-    }
-
-    // if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3 && !MonEvolutionIsBanned(newSpecies = HasSpecialEvolution(species))) {
-    //     species = newSpecies;
-    // } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE2 && !MonEvolutionIsBanned(newSpecies = HasLevelEvolution(species, level, 2))) {
-    //     species = newSpecies;
-    // } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE1 && !MonEvolutionIsBanned(newSpecies = HasLevelEvolution(species, level, 1))) {
-    //     species = newSpecies;
-    // }
-    
-    // if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3 && !MonEvolutionIsBanned(newSpecies = HasSpecialEvolution(species))) {
-    //     species = newSpecies;
-    // }
-
-    chance = (Random() % 100);
-    
-
-    //Check at the beginning for mons like Shedinja etc
-    if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3 && !MonEvolutionIsBanned(newSpecies = HasSpecialEvolution(species))) {
-        species = newSpecies;
-    } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE2 && !MonEvolutionIsBanned(newSpecies = HasLevelEvolution(species, level, 2))) {
-        species = newSpecies;
-    } else if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE1 && !MonEvolutionIsBanned(newSpecies = HasLevelEvolution(species, level, 1))) {
-        species = newSpecies;
-    }
-    //Check again just in case base evo didn't have special evolution but stage 1 or 2 does
-    if(chance < MON_CHANCE_TO_FIND_EVOLVED_STAGE3 && !MonEvolutionIsBanned(newSpecies = HasSpecialEvolution(species))) {
-        species = newSpecies;
-    }
 
     switch (gSpeciesInfo[species].genderRatio)
     {
@@ -535,7 +556,7 @@ static void CreateWildMon(u16 species, u8 level)
     {
         u16 leadingMonSpecies = GetMonData(&gPlayerParty[0], MON_DATA_SPECIES);
         u32 leadingMonPersonality = GetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY);
-        u8 gender = GetGenderFromSpeciesAndPersonality(leadingMonSpecies, leadingMonPersonality);
+        gender = GetGenderFromSpeciesAndPersonality(leadingMonSpecies, leadingMonPersonality);
 
         // misses mon is genderless check, although no genderless mon can have cute charm as ability
         if (gender == MON_FEMALE)
@@ -543,9 +564,13 @@ static void CreateWildMon(u16 species, u8 level)
         else
             gender = MON_FEMALE;
 
+        TryToEvolveWildMonWithGender(&species, gender, level);
+
         CreateMonWithGenderNatureLetter(&gEnemyParty[0], species, level, USE_RANDOM_IVS, gender, PickWildMonNature(), 0);
         return;
     }
+
+    TryToEvolveWildMon(&species, level);
 
     CreateMonWithNature(&gEnemyParty[0], species, level, USE_RANDOM_IVS, PickWildMonNature());
 }
@@ -980,6 +1005,20 @@ void RockSmashWildEncounter(void)
     }
 }
 
+void CheckMapHasHeadbuttEncounters(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+    
+    gSpecialVar_Result = FALSE;
+
+    if(headerId != HEADER_NONE){
+        const struct WildPokemonInfo *wildPokemonInfo = gWildMonHeaders[headerId].headbuttMonsInfo;
+        if(wildPokemonInfo != NULL){
+            gSpecialVar_Result = TRUE;
+        }
+    }
+}
+
 void HeadbuttWildEncounter(void)
 {
     u16 headerId = GetCurrentMapWildMonHeaderId();
@@ -1361,4 +1400,201 @@ bool8 StandardWildEncounter_Debug(void)
 
     DoStandardWildBattle_Debug();
     return TRUE;
+}
+
+// For all of these ChooseWildMonRarest
+// The way ENCOUNTER_CHANCE works is weird.
+// As Pokémon get more rare they get closer to ENCOUNTER_CHANCE_LAND_MONS_TOTAL instead of towards 0.
+// And (afaik) the rarest Pokémon with that value (usually 100 for 100%), not {total - chance}
+// So a 1% rarity Pokémon is 100 instead of 99 in any ENCOUNTER_CHANCE_LAND_MONS_SLOT.
+
+// Since only one of them holds the value, we don't need to check them all, only the first that matches.
+// We will check first for the last slot because usually it is the one we want.
+// We won't check for 0 because it's the default
+
+static u8 ChooseWildMonRarest_Land(void){
+    u8 rarestEncounterChance = ENCOUNTER_CHANCE_LAND_MONS_TOTAL;
+    u8 wildMonIndex = 0;
+    
+    if (rarestEncounterChance == ENCOUNTER_CHANCE_LAND_MONS_SLOT_11){
+        wildMonIndex = 11;
+    } else if (rarestEncounterChance > ENCOUNTER_CHANCE_LAND_MONS_SLOT_1){
+        wildMonIndex = 1;
+    } else if (rarestEncounterChance > ENCOUNTER_CHANCE_LAND_MONS_SLOT_2){
+        wildMonIndex = 2;
+    } else if (rarestEncounterChance > ENCOUNTER_CHANCE_LAND_MONS_SLOT_3){
+        wildMonIndex = 3;
+    } else if (rarestEncounterChance > ENCOUNTER_CHANCE_LAND_MONS_SLOT_4){
+        wildMonIndex = 4;
+    } else if (rarestEncounterChance > ENCOUNTER_CHANCE_LAND_MONS_SLOT_5){
+        wildMonIndex = 5;
+    } else if (rarestEncounterChance > ENCOUNTER_CHANCE_LAND_MONS_SLOT_6){
+        wildMonIndex = 6;
+    } else if (rarestEncounterChance > ENCOUNTER_CHANCE_LAND_MONS_SLOT_7){
+        wildMonIndex = 7;
+    } else if (rarestEncounterChance > ENCOUNTER_CHANCE_LAND_MONS_SLOT_8){
+        wildMonIndex = 8;
+    } else if (rarestEncounterChance > ENCOUNTER_CHANCE_LAND_MONS_SLOT_9){
+        wildMonIndex = 9;
+    } else if (rarestEncounterChance > ENCOUNTER_CHANCE_LAND_MONS_SLOT_10){
+        wildMonIndex = 10;
+    }
+
+    return wildMonIndex;
+}
+
+static u8 ChooseWildMonRarest_WaterRock(void){
+    u8 rarestEncounterChance = ENCOUNTER_CHANCE_WATER_MONS_TOTAL;
+    u8 wildMonIndex = 0;
+    
+    if(rarestEncounterChance == ENCOUNTER_CHANCE_WATER_MONS_SLOT_4){
+        wildMonIndex = 4;
+    } else if (rarestEncounterChance == ENCOUNTER_CHANCE_WATER_MONS_SLOT_1){
+        wildMonIndex = 1;
+    } else if (rarestEncounterChance == ENCOUNTER_CHANCE_WATER_MONS_SLOT_2){
+        wildMonIndex = 2;
+    } else if (rarestEncounterChance == ENCOUNTER_CHANCE_WATER_MONS_SLOT_3){
+        wildMonIndex = 3;
+    }
+
+    return wildMonIndex;
+}
+
+static u8 ChooseWildMonRarest_Headbutt(void){
+    u8 rarestEncounterChance = ENCOUNTER_CHANCE_HEADBUTT_MONS_TOTAL;
+    u8 wildMonIndex = 0;
+    
+    if (rarestEncounterChance == ENCOUNTER_CHANCE_HEADBUTT_MONS_SLOT_4){
+        wildMonIndex = 4;
+    } else if (rarestEncounterChance == ENCOUNTER_CHANCE_HEADBUTT_MONS_SLOT_1){
+        wildMonIndex = 1;
+    } else if (rarestEncounterChance == ENCOUNTER_CHANCE_HEADBUTT_MONS_SLOT_2){
+        wildMonIndex = 2;
+    } else if (rarestEncounterChance == ENCOUNTER_CHANCE_HEADBUTT_MONS_SLOT_3){
+        wildMonIndex = 3;
+    }
+
+    return wildMonIndex;
+}
+
+// Generates the rarest mon in the current area.
+// Ignores all abilities, items, etc.
+static bool8 TryGenerateRarestMon(const struct WildPokemonInfo *wildMonInfo, u8 area) {
+    u8 wildMonIndex = 0;
+    u8 level;
+
+    switch(area) {
+    case WILD_AREA_LAND:
+        wildMonIndex = ChooseWildMonRarest_Land();
+        break;
+    case WILD_AREA_WATER:
+    case WILD_AREA_ROCKS:
+        wildMonIndex = ChooseWildMonRarest_WaterRock();
+        break;
+    case WILD_AREA_HEADBUTT:
+        wildMonIndex = ChooseWildMonRarest_Headbutt();
+        break;
+    }
+    
+    level = ChooseWildMonLevel(wildMonInfo->wildPokemon, wildMonIndex, area);
+    
+    CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+    return TRUE;
+}
+
+// Forces the rarest Pokémon in the current map to appear upon using Rock Smash
+void RockSmashRareEncounter(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+
+    if(headerId != HEADER_NONE){
+        const struct WildPokemonInfo *wildPokemonInfo = gWildMonHeaders[headerId].rockSmashMonsInfo;
+
+        if(wildPokemonInfo == NULL){
+            gSpecialVar_Result = FALSE;
+        } else {
+            if(TryGenerateRarestMon(wildPokemonInfo, WILD_AREA_ROCKS) == TRUE){
+                BattleSetup_StartWildBattle();
+                gSpecialVar_Result = TRUE;
+            } else {
+                gSpecialVar_Result = FALSE;
+            }
+        }
+    }
+    else
+    {
+        gSpecialVar_Result = FALSE;
+    }
+}
+
+void HeadbuttRareEncounter(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+
+    if(headerId != HEADER_NONE){
+        const struct WildPokemonInfo *wildPokemonInfo = gWildMonHeaders[headerId].headbuttMonsInfo;
+
+        if(wildPokemonInfo == NULL){
+            gSpecialVar_Result = FALSE;
+        } else {
+            if(TryGenerateRarestMon(wildPokemonInfo, WILD_AREA_HEADBUTT) == TRUE){
+                BattleSetup_StartWildBattle();
+                gSpecialVar_Result = TRUE;
+            } else {
+                gSpecialVar_Result = FALSE;
+            }
+        }
+    }
+    else
+    {
+        gSpecialVar_Result = FALSE;
+    }
+}
+
+void WaterRareEncounter(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+
+    if(headerId != HEADER_NONE){
+        const struct WildPokemonInfo *wildPokemonInfo = gWildMonHeaders[headerId].waterMonsInfo;
+
+        if(wildPokemonInfo == NULL){
+            gSpecialVar_Result = FALSE;
+        } else {
+            if(TryGenerateRarestMon(wildPokemonInfo, WILD_AREA_WATER) == TRUE){
+                BattleSetup_StartWildBattle();
+                gSpecialVar_Result = TRUE;
+            } else {
+                gSpecialVar_Result = FALSE;
+            }
+        }
+    }
+    else
+    {
+        gSpecialVar_Result = FALSE;
+    }
+}
+
+void LandRareEncounter(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+
+    if(headerId != HEADER_NONE){
+        const struct WildPokemonInfo *wildPokemonInfo = gWildMonHeaders[headerId].landMonsInfo;
+
+        if(wildPokemonInfo == NULL){
+            gSpecialVar_Result = FALSE;
+        } else {
+            if(TryGenerateRarestMon(wildPokemonInfo, WILD_AREA_LAND) == TRUE){
+                BattleSetup_StartWildBattle();
+                gSpecialVar_Result = TRUE;
+            } else {
+                gSpecialVar_Result = FALSE;
+            }
+        }
+    }
+    else
+    {
+        gSpecialVar_Result = FALSE;
+    }
 }

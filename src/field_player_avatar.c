@@ -1157,6 +1157,14 @@ static void PlayCollisionSoundIfNotFacingWarp(u8 direction)
     }
 }
 
+void GetXYCoordsOneStepInFrontOfPlayerAndElevation(s16 *x, s16 *y, u8 *elevation)
+{
+    *x = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x;
+    *y = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y;
+    *elevation = gObjectEvents[gPlayerAvatar.objectEventId].currentElevation;
+    MoveCoords(GetPlayerFacingDirection(), x, y);
+}
+
 void GetXYCoordsOneStepInFrontOfPlayer(s16 *x, s16 *y)
 {
     *x = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x;

@@ -4083,27 +4083,39 @@ static void SetMonTypeIcons(void)
 static void SetMoveTypeIcons(void)
 {
     u8 i;
+    u8 typeId;
     struct PokeSummary *summary = &sMonSummaryScreen->summary;
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (summary->moves[i] != MOVE_NONE)
         {
-            if (summary->moves[i] == MOVE_IVY_CUDGEL && ItemId_GetHoldEffect(summary->item) == HOLD_EFFECT_MASK)
-                SetTypeSpritePosAndPal(ItemId_GetSecondaryId(summary->item), 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
-            else if(summary->moves[i] == MOVE_HIDDEN_POWER){
+            typeId = gBattleMoves[summary->moves[i]].type;
+
+            if (summary->moves[i] == MOVE_IVY_CUDGEL && ItemId_GetHoldEffect(summary->item) == HOLD_EFFECT_MASK){
+                typeId = ItemId_GetSecondaryId(summary->item);
+            } else if(summary->moves[i] == MOVE_HIDDEN_POWER){
                 u8 type = GetMonHiddenPowerType(&sMonSummaryScreen->currentMon);
 
-                SetTypeSpritePosAndPal(type & 0x3F, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
-            } else if(gBattleMoves[summary->moves[i]].type == TYPE_SOUND
-                    && gBattleMoves[summary->moves[i]].danceMove
-                    && gBattleMoves[summary->moves[i]].danceMoveSecondaryType != TYPE_NONE
-                    && gBattleMoves[summary->moves[i]].danceMoveSecondaryType != TYPE_SOUND)
-                SetTypeSpritePosAndPal(SOUND_TYPE_VARIATIONS_START + gBattleMoves[summary->moves[i]].danceMoveSecondaryType, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
-            else
-                SetTypeSpritePosAndPal(gMovesInfo[summary->moves[i]].type, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
-        }
-        else
+                typeId = type & 0x3F;
+            } else if(MoveIsSonicAndHasSecondaryType(summary->moves[i])) {
+                if(gMovesInfo[summary->moves[i]].sonicMoveType == TYPE_SOUND)
+                    typeId = SOUND_TYPE_VARIATIONS_START + gMovesInfo[summary->moves[i]].type;
+                else
+                    typeId = SOUND_TYPE_VARIATIONS_START + gMovesInfo[summary->moves[i]].sonicMoveType;
+            } else if (MoveIsDanceAndHasSecondaryType(summary->moves[i])){
+                if(gMovesInfo[summary->moves[i]].danceMoveType == TYPE_SOUND)
+                    typeId = SOUND_TYPE_VARIATIONS_START + gMovesInfo[summary->moves[i]].type;
+                else
+                    typeId = SOUND_TYPE_VARIATIONS_START + gMovesInfo[summary->moves[i]].danceMoveType;
+            } else if(gMovesInfo[summary->moves[i]].effect == EFFECT_TWO_TYPED_MOVE){
+                typeId = gMovesInfo[summary->moves[i]].argument;
+            }
+        } else { 
             SetSpriteInvisibility(i + SPRITE_ARR_ID_TYPE, TRUE);
+            continue;
+        }
+
+        SetTypeSpritePosAndPal(typeId, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
     }
 }
 

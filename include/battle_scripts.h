@@ -522,6 +522,10 @@ extern const u8 BattleScript_ItemDropped[];
 extern const u8 BattleScript_IsInPanic[];
 extern const u8 BattleScript_CalmedDown[];
 
+extern const u8 BattleScript_PokemonTerrorizeActivates[];
+extern const u8 BattleScript_MoveUsedIsTerrorizedCantAttack[];
+extern const u8 BattleScript_MoveUsedIsTerrorized[];
+
 // zmoves
 extern const u8 BattleScript_ZMoveActivateDamaging[];
 extern const u8 BattleScript_ZMoveActivateStatus[];

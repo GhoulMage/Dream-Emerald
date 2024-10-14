@@ -2229,6 +2229,32 @@ void GetObjectEventLocalIdByFlag(void)
     }
 }
 
+void TryDoObjectScriptOneStepInFrontOfPlayer(void)
+{
+    int i;
+    s16 x, y;
+    u8 elevation;
+
+    GetXYCoordsOneStepInFrontOfPlayerAndElevation(&x, &y, &elevation);
+
+    x = x - MAP_OFFSET;
+    y = y - MAP_OFFSET;
+
+    //I thought about calling GetObjectEventIdByXY but it does loop as well through all objects so whatever
+    for(i = 0; i < gMapHeader.events->objectEventCount;i++){
+        if(gMapHeader.events->objectEvents[i].x == x
+        && gMapHeader.events->objectEvents[i].y == y
+        && gMapHeader.events->objectEvents[i].elevation == elevation){
+            if(gMapHeader.events->objectEvents[i].script == NULL)
+                break;
+
+            gSpecialVar_0x8005 = TRUE;
+            ScriptContext_SetupScript(gMapHeader.events->objectEvents[i].script);
+            break;
+        }
+    }
+}
+
 static void ClearRearrangementNonSprites(void)
 {
     u8 i;

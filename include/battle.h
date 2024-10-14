@@ -153,6 +153,7 @@ struct DisableStruct
     u8 weatherAbilityDone:1;
     u8 terrainAbilityDone:1;
     u8 usedProteanLibero:1;
+    u8 terrorized:1;
 };
 
 struct ProtectStruct
@@ -206,6 +207,7 @@ struct ProtectStruct
     u32 specialDmg;
     u8 physicalBattlerId;
     u8 specialBattlerId;
+    u8 terrorized:1;
 };
 
 struct SpecialStatus

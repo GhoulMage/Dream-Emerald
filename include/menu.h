@@ -71,6 +71,7 @@ u8 Menu_GetCursorPos(void);
 s8 Menu_ProcessInput(void);
 s8 Menu_ProcessInputNoWrap(void);
 void BlitMenuInfoIcon(u8 windowId, u8 iconId, u16 x, u16 y);
+void BlitMenuInfoIcon2(u8 windowId, u8 iconId, u16 x, u16 y, u8 overridePalette);
 void ResetTempTileDataBuffers(void);
 void *DecompressAndCopyTileDataToVram(u8 bgId, const void *src, u32 size, u16 offset, u8 mode);
 bool8 FreeTempTileDataBuffersIfPossible(void);
