@@ -1090,7 +1090,8 @@ bool32 WasUnableToUseMove(u32 battler)
         || gProtectStructs[battler].flinchImmobility
         || gProtectStructs[battler].confusionSelfDmg
         || gProtectStructs[battler].powderSelfDmg
-        || gProtectStructs[battler].usedThroatChopPreventedMove)
+        || gProtectStructs[battler].usedThroatChopPreventedMove
+        || gProtectStructs[battler].terrorized)
         return TRUE;
     else
         return FALSE;
@@ -3734,6 +3735,19 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             }
             gBattleStruct->atkCancellerTracker++;
             break;
+        case CANCELLER_TERRORIZED:
+            if (!gBattleStruct->isAtkCancelerForCalledMove && gDisableStructs[gBattlerAttacker].terrorized)
+            {
+                gDisableStructs[gBattlerAttacker].terrorized = FALSE;
+                BattleScriptPush(BattleScript_MoveUsedIsTerrorizedCantAttack);
+                gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
+                gProtectStructs[gBattlerAttacker].terrorized = TRUE;
+                CancelMultiTurnMoves(gBattlerAttacker);
+                gBattlescriptCurrInstr = BattleScript_MoveUsedIsTerrorized;
+                effect = 1;
+            }
+            gBattleStruct->atkCancellerTracker++;
+            break;
         case CANCELLER_END:
             break;
         }
@@ -4772,6 +4786,27 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 gBattleStruct->supersweetSyrup[GetBattlerSide(battler)] |= gBitTable[gBattlerPartyIndexes[battler]];
                 BattleScriptPushCursorAndCallback(BattleScript_SupersweetSyrupActivates);
+                effect++;
+            }
+            break;
+        case ABILITY_TERRORIZE:
+            if(!gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                gBattlerAttacker = battler;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+
+                u32 side = GetBattlerSide(battler);
+
+                for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+                {
+                    if (IsBattlerAlive(i) && side != GetBattlerSide(i))
+                    {
+                        if(GetBattlerAbility(i) != ABILITY_OBLIVIOUS)
+                            gDisableStructs[i].terrorized = TRUE;
+                    }
+                }
+
+                BattleScriptPushCursorAndCallback(BattleScript_PokemonTerrorizeActivates);
                 effect++;
             }
             break;
@@ -9783,7 +9818,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         break;
     case ABILITY_ULTRASONIC:
         if(MoveIsSonic(move)){
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2));
         }
         break;
     }
@@ -10048,8 +10083,13 @@ static inline uq4_12_t GetSameTypeAttackBonusModifier(u32 battlerAtk, u32 moveTy
         return UQ_4_12(1.0);
     else if (gBattleStruct->pledgeMove && IS_BATTLER_OF_TYPE(BATTLE_PARTNER(battlerAtk), moveType))
         return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
-    else if(MoveIsDance(move) && DanceHasSecondaryType(move)) {
-        if (IS_BATTLER_OF_TYPE(battlerAtk, gBattleMoves[move].danceMoveSecondaryType) && move != MOVE_NONE)
+    else if(MoveIsDanceAndHasSecondaryType(move)) {
+        if (IS_BATTLER_OF_TYPE(battlerAtk, gBattleMoves[move].danceMoveType) && move != MOVE_NONE)
+        {
+            return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
+        }
+    } else if(MoveIsSonicAndHasSecondaryType(move)) {
+        if (IS_BATTLER_OF_TYPE(battlerAtk, gBattleMoves[move].sonicMoveType) && move != MOVE_NONE)
         {
             return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
         }
@@ -10219,7 +10259,7 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
         break;
     case ABILITY_ULTRASONIC:
         if(MoveIsSonic(move)){
-            return UQ_4_12(1.5);
+            return UQ_4_12(2);
         }
         break;
     }
@@ -10691,9 +10731,11 @@ uq4_12_t CalcTypeEffectivenessMultiplier(u32 move, u32 moveType, u32 battlerAtk,
     {
         modifier = CalcTypeEffectivenessMultiplierInternal(move, moveType, battlerAtk, battlerDef, recordAbilities, modifier, defAbility);
 
-        //Dance moves can have a secondary type and use an unique flag
-        if(DanceHasSecondaryType(move) && gMovesInfo[move].danceMoveSecondaryType != TYPE_NONE)
+        //Dance and Sonic moves can have a secondary type and use an unique flag
+        if(MoveIsDanceAndHasSecondaryType(move))
             modifier = CalcTypeEffectivenessMultiplierInternal(move, gMovesInfo[move].danceMoveSecondaryType, battlerAtk, battlerDef, recordAbilities, modifier, defAbility);
+        else if(MoveIsSonicAndHasSecondaryType(move))
+            modifier = CalcTypeEffectivenessMultiplierInternal(move, gMovesInfo[move].sonicMoveType, battlerAtk, battlerDef, recordAbilities, modifier, defAbility);
         else if (gMovesInfo[move].effect == EFFECT_TWO_TYPED_MOVE)
             modifier = CalcTypeEffectivenessMultiplierInternal(move, gMovesInfo[move].argument, battlerAtk, battlerDef, recordAbilities, modifier, defAbility);
     }
@@ -11391,8 +11433,19 @@ bool32 MoveIsDance(u16 move){
     return FALSE;
 }
 
-bool32 DanceHasSecondaryType(u16 move){
-    if(gMovesInfo[move].danceMove && gMovesInfo[move].danceMoveSecondaryType != TYPE_NONE)
+bool32 MoveIsSonicAndHasSecondaryType(u16 move){
+    if(gMovesInfo[move].sonicMove
+    && gMovesInfo[move].sonicMoveType != gMovesInfo[move].type
+    && gMovesInfo[move].sonicMoveType != TYPE_NONE)
+        return TRUE;
+
+    return FALSE;
+}
+
+bool32 MoveIsDanceAndHasSecondaryType(u16 move){
+    if(gMovesInfo[move].danceMove
+    && gMovesInfo[move].danceMoveType != gMovesInfo[move].type
+    && gMovesInfo[move].danceMoveType != TYPE_NONE)
         return TRUE;
     return FALSE;
 }

@@ -101,7 +101,7 @@ static void PrintLinkStandbyMsg(void);
 
 static void ReloadMoveNames(u32 battler);
 
-//static void MoveSelectionDisplaySplitIcon(void);
+static void MoveSelectionDisplaySplitIcon(u32, struct ChooseMoveStruct *);
 
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler) =
 {
@@ -1721,14 +1721,21 @@ static void MoveSelectionDisplayPpNumber(u32 battler)
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
 }
 
-bool8 SelectedMoveHasSecondaryType(struct ChooseMoveStruct *moveInfo, u32 battler){
-    if(gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_SOUND
-            && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].danceMove
-            && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].danceMoveSecondaryType != TYPE_NONE)
-        return TRUE;
+u8 TryGetSelectedMoveSecondaryType(struct ChooseMoveStruct *moveInfo, u32 battler){
+    u8 move = moveInfo->moves[gMoveSelectionCursor[battler]];
+
+    if(MoveIsSonicAndHasSecondaryType(move))
+        return gBattleMoves[move].sonicMoveType;
     
-    return FALSE;
+    if (MoveIsDanceAndHasSecondaryType(move))
+        return gBattleMoves[move].danceMoveType;
+
+    if(gBattleMoves[move].effect == 270) // EFFECT_TWO_TYPED_MOVE
+        return gBattleMoves[move].argument;
+    
+    return TYPE_NONE;
 }
+
 u8 GetTimer(struct ChooseMoveStruct *moveInfo) {
     if(++moveInfo->moveTypeTimer >= 60){
         moveInfo->moveTypeTimer = 0;
@@ -1777,8 +1784,11 @@ static void MoveSelectionDisplayMoveType(u32 battler)
     else if(moveInfo->moves[gMoveSelectionCursor[battler]] == MOVE_HIDDEN_POWER)
     {
         type = GetMonHiddenPowerType(&gPlayerParty[gBattlerPartyIndexes[battler]]) & 0x3F;
-    } else if(SelectedMoveHasSecondaryType(moveInfo, battler) && GetTimer(moveInfo) < 30) {
-        type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].danceMoveSecondaryType & 0x3F;
+    } else if((type = TryGetSelectedMoveSecondaryType(moveInfo, battler) != TYPE_NONE)) {
+        if(GetTimer(moveInfo) < 30)
+            type &= 0x3F;
+        else
+            type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
     } else {
         type = gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
     }
@@ -1788,7 +1798,7 @@ static void MoveSelectionDisplayMoveType(u32 battler)
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
 
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
-    //MoveSelectionDisplaySplitIcon();
+    MoveSelectionDisplaySplitIcon(battler, moveInfo);
 }
 
 static void MoveSelectionDisplayMoveDescription(u32 battler)
@@ -2389,16 +2399,14 @@ static void PlayerHandleBattleDebug(u32 battler)
     gBattlerControllerFuncs[battler] = Controller_WaitForDebug;
 }
 
-// static void MoveSelectionDisplaySplitIcon(void){
-// 	static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/interface/split_icons_battle.gbapal");
-// 	static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/interface/split_icons_battle.4bpp");
-// 	struct ChooseMoveStruct *moveInfo;
-// 	int icon;
-// 
-// 	moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
-// 	icon = GetBattleMoveSplit(moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]);
-// 	LoadPalette(sSplitIcons_Pal, 10 * 0x10, 0x20);
-// 	BlitBitmapToWindow(B_WIN_SPLIT_ICON, sSplitIcons_Gfx + 0x80 * icon, 0, 0, 16, 16);
-// 	PutWindowTilemap(B_WIN_SPLIT_ICON);
-// 	CopyWindowToVram(B_WIN_SPLIT_ICON, 3);
-// }
+static void MoveSelectionDisplaySplitIcon(u32 battler, struct ChooseMoveStruct *moveInfo){
+	static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/interface/split_icons_battle.gbapal");
+	static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/interface/split_icons_battle.4bpp");
+	int icon;
+
+	icon = GetBattleMoveSplit(moveInfo->moves[gMoveSelectionCursor[battler]]);
+	LoadPalette(sSplitIcons_Pal, 10 * 0x10, 0x20);
+	BlitBitmapToWindow(B_WIN_SPLIT_ICON, sSplitIcons_Gfx + 0x80 * icon, 0, 0, 16, 16);
+	PutWindowTilemap(B_WIN_SPLIT_ICON);
+	CopyWindowToVram(B_WIN_SPLIT_ICON, 3);
+}

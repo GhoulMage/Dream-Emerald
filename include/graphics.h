@@ -1494,6 +1494,7 @@ extern const u32 gItemIconPalette_DragonTMHM[];
 extern const u32 gItemIconPalette_DarkTMHM[];
 extern const u32 gItemIconPalette_SteelTMHM[];
 extern const u32 gItemIconPalette_FairyTMHM[];
+extern const u32 gItemIconPalette_SoundTMHM[];
 // Charms
 extern const u32 gItemIcon_OvalCharm[];
 extern const u32 gItemIconPalette_OvalCharm[];
@@ -1747,6 +1748,9 @@ extern const u16 gMenuInfoElements1_Pal[16];
 extern const u16 gMenuInfoElements2_Pal[16];
 extern const u16 gMenuInfoElements3_Pal[16];
 extern const u8 gMenuInfoElements_Gfx[];
+
+extern const u16 gMenuInfoElements_2_Pal1[16];
+extern const u8 gMenuInfoElements_Gfx2[];
 
 // item menu graphics
 extern const u32 gBagScreen_Gfx[];

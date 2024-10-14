@@ -1036,6 +1036,11 @@ Cry_Cubone::
 	.align 2
 Cry_Marowak::
 	.incbin "sound/direct_sound_samples/cries/marowak.bin"
+
+	.align 2
+Cry_Bonedea::
+	.incbin "sound/direct_sound_samples/cries/bonedea.bin"
+
 .endif @ P_FAMILY_CUBONE
 
 .if P_FAMILY_HITMONS == TRUE

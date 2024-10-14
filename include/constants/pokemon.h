@@ -307,6 +307,7 @@
 #define EVO_ITEM_COUNT_999                50     // Pokémon levels up after trainer has collected 999 of a specific item
 #define EVO_DEFEAT_THREE_WITH_ITEM        51     // Pokémon levels up after having defeat 3 Pokémon of the same species holding the specified item
 #define EVO_OVERWORLD_STEPS               52     // Pokémon levels up after having taken a specific amount of steps in the overworld (or as the party lead if OW_FOLLOWERS_ENABLED is FALSE) without switching
+#define EVO_LEVEL_FEMALE_LOW_HP           53     // Pokémon reaches the specified level at or while under 50% HP, if female. (Special for Cubone->Bonedea)
 
 // Evolution 'modes,' for GetEvolutionTargetSpecies
 #define EVO_MODE_NORMAL            0
@@ -342,5 +343,15 @@
 #define NUM_ABILITY_PERSONALITY 0xFF
 
 #define LEGENDARY_PERFECT_IV_COUNT 3
+
+// Debug messages for evolving wild Pokémon
+#define WILD_MON_EVO_DEBUG TRUE
+
+// Chances to find various wild Pokémon as their evolved forms instead
+// In the functions CanEvolve and CanEvolveWithGender there's additional chances for certain evolutions to be rarer
+// Value should be between 0 and 100
+#define WILD_MON_EVO_CHANCE_STAGE1 33  // First evolution
+#define WILD_MON_EVO_CHANCE_STAGE2 13  // Second evolution
+#define WILD_MON_EVO_CHANCE_STAGE3 9   // Unorthodox third evolution
 
 #endif // GUARD_CONSTANTS_POKEMON_H

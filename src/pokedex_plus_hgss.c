@@ -221,6 +221,7 @@ static const u8 sText_EVO_LEVEL_NINJASK[] = _("{LV}{UP_ARROW} to {STR_VAR_2}");
 static const u8 sText_EVO_LEVEL_SHEDINJA[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, party<6, 1x POKéBALL");
 static const u8 sText_EVO_BEAUTY[] = _("{LV}{UP_ARROW}, high beauty");
 static const u8 sText_EVO_LEVEL_FEMALE[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, is female");
+static const u8 sText_EVO_LEVEL_FEMALE_LOW_HP[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, is female,\nless than 50% HP.");
 static const u8 sText_EVO_LEVEL_MALE[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, is male");
 static const u8 sText_EVO_LEVEL_NIGHT[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, night");
 static const u8 sText_EVO_LEVEL_DAY[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, day");
@@ -1923,6 +1924,7 @@ static const struct SearchOptionText sDexSearchTypeOptions[] =
     {gText_DexEmptyString, gTypesInfo[TYPE_DRAGON].name},
     {gText_DexEmptyString, gTypesInfo[TYPE_DARK].name},
     {gText_DexEmptyString, gTypesInfo[TYPE_FAIRY].name},
+    {gText_DexEmptyString, gTypesInfo[TYPE_SOUND].name},
     {},
 };
 
@@ -1958,6 +1960,7 @@ static const u8 sDexSearchTypeIds[NUMBER_OF_MON_TYPES] =
     TYPE_DRAGON,
     TYPE_DARK,
     TYPE_FAIRY,
+    TYPE_SOUND,
 };
 
 // Number pairs are the task data for tracking the cursor pos and scroll offset of each option list
@@ -6516,6 +6519,10 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
         case EVO_LEVEL_FEMALE:
             ConvertIntToDecimalStringN(gStringVar2, evolutions[i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level
             StringExpandPlaceholders(gStringVar4, sText_EVO_LEVEL_FEMALE );
+            break;
+        case EVO_LEVEL_FEMALE_LOW_HP:
+            ConvertIntToDecimalStringN(gStringVar2, evolutions[i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level
+            StringExpandPlaceholders(gStringVar4, sText_EVO_LEVEL_FEMALE_LOW_HP);
             break;
         case EVO_LEVEL_MALE:
             ConvertIntToDecimalStringN(gStringVar2, evolutions[i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level

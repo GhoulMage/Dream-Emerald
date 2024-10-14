@@ -1506,6 +1506,17 @@ static const union AnimCmd sAnim_Marowak_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_Bonedea_1[] =
+{
+    ANIMCMD_FRAME(1, 14),
+    ANIMCMD_FRAME(0, 14),
+    ANIMCMD_FRAME(1, 14),
+    ANIMCMD_FRAME(0, 14),
+    ANIMCMD_FRAME(1, 14),
+    ANIMCMD_FRAME(0, 14),
+    ANIMCMD_END,
+};
+
 #if P_ALOLAN_FORMS
 PLACEHOLDER_ANIM_SINGLE_FRAME(MarowakAlolan);
 #endif //P_ALOLAN_FORMS
@@ -10561,6 +10572,7 @@ SINGLE_ANIMATION(ExeggutorAlolan);
 #if P_FAMILY_CUBONE
 SINGLE_ANIMATION(Cubone);
 SINGLE_ANIMATION(Marowak);
+SINGLE_ANIMATION(Bonedea);
 #if P_ALOLAN_FORMS
 SINGLE_ANIMATION(MarowakAlolan);
 #endif //P_ALOLAN_FORMS

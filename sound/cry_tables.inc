@@ -263,6 +263,7 @@ gCryTable::
 .if P_FAMILY_CUBONE == TRUE
 	cry Cry_Cubone
 	cry Cry_Marowak
+	cry Cry_Bonedea
 .endif @ P_FAMILY_CUBONE
 .if P_FAMILY_HITMONS == TRUE
 .if P_GEN_2_CROSS_EVOS == TRUE
@@ -2695,6 +2696,7 @@ gCryTable_Reverse::
 .if P_FAMILY_CUBONE == TRUE
 	cry_reverse Cry_Cubone
 	cry_reverse Cry_Marowak
+	cry_reverse Cry_Bonedea
 .endif @ P_FAMILY_CUBONE
 .if P_FAMILY_HITMONS == TRUE
 .if P_GEN_2_CROSS_EVOS == TRUE
