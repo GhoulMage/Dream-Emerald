@@ -438,7 +438,7 @@ bool32 IsDamageMoveUnusable(u32 move, u32 battlerAtk, u32 battlerDef)
             return TRUE;
         break;
     case ABILITY_SOUNDPROOF:
-        if (MoveHasSound(move))
+        if (MoveIsSonic(move))
             return TRUE;
         break;
     case ABILITY_BULLETPROOF:

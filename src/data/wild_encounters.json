@@ -84,6 +84,21 @@
               9
             ]
           }
+        },
+        {
+          "type": "fishermans_dream_mons",
+          "encounter_rates": [
+            20,
+            15,
+            15,
+            15,
+            15,
+            15,
+            10,
+            10,
+            10,
+            10
+          ]
         }
       ],
       "encounters": [
@@ -11872,6 +11887,61 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_FLETCHLING"
+              }
+            ]
+          },
+          "fishermans_dream_mons": {
+            "encounter_rate": 1,
+            "mons": [
+              {
+                "min_level": 25,
+                "max_level": 45,
+                "species": "SPECIES_WOOPER"
+              },
+              {
+                "min_level": 25,
+                "max_level": 45,
+                "species": "SPECIES_WARTORTLE"
+              },
+              {
+                "min_level": 25,
+                "max_level": 45,
+                "species": "SPECIES_MILOTIC"
+              },
+              {
+                "min_level": 25,
+                "max_level": 45,
+                "species": "SPECIES_QUAXWELL"
+              },
+              {
+                "min_level": 25,
+                "max_level": 45,
+                "species": "SPECIES_PALPITOAD"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_FRILLISH"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_BARBOACH"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_MARSHTOMP"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_FROAKIE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_DEWPIDER"
               }
             ]
           }

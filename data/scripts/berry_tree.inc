@@ -210,6 +210,13 @@ BerryTree_EventScript_BerryPocketFull::
 	release
 	end
 
+BerryTree_EventScript_CancelPickingBerry::
+	message BerryTree_Text_BerryLeftUnpicked
+	waitmessage
+	waitbuttonpress
+	release
+	end
+
 BerryTree_EventScript_ItemUsePlantBerry::
 	locktarget
 	special ObjectEventInteractionGetBerryTreeData
@@ -324,12 +331,21 @@ BerryTree_Text_CareAdverbPoor:
 BerryTree_Text_CareAdverbGood:
 	.string "prettily$"
 
+BerryTree_Text_WantToPick:
+	.string "You found {STR_VAR_2} {STR_VAR_1}!\p"
+	.string "Do you want to pick the\n"
+	.string "{STR_VAR_1}?$"
+
 BerryTree_Text_PickedTheBerry:
 	.string "{PLAYER} picked the {STR_VAR_2} {STR_VAR_1}.$"
 
 BerryTree_Text_BerryPocketFull:
 	.string "The BAG's BERRIES POCKET is full.\p"
 	.string "The {STR_VAR_1} couldn't be taken.$"
+
+BerryTree_Text_BerryLeftUnpicked:
+	.string "{PLAYER} left the {STR_VAR_1}\n"
+	.string "unpicked.$"
 
  BerryTree_Text_WantToWater:
  	.string "Want to water the {STR_VAR_1} with the\n"

@@ -4430,7 +4430,7 @@ BattleScript_EffectFixedDamageArg::
 	typecalc
 	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	setargtobattledamage
-	doubledmgifsound
+	@ doubledmgifsound
 	adjustdamage
 	goto BattleScript_HitFromAtkAnimation
 

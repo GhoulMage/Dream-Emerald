@@ -45,6 +45,7 @@ enum {
     WILD_AREA_ROCKS,
     WILD_AREA_FISHING,
     WILD_AREA_HEADBUTT,
+    WILD_AREA_FISHERMANS_DREAM,
 };
 
 #define WILD_CHECK_REPEL    (1 << 0)
@@ -186,6 +187,42 @@ static u16 FeebasRandom(void)
 static void FeebasSeedRng(u16 seed)
 {
     sFeebasRngValue = seed;
+}
+
+static u8 ChooseWildMonIndex_Fishermans(void)
+{
+    u8 wildMonIndex = 0;
+    bool8 swap = FALSE;
+    u8 rand = Random() % ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_TOTAL;
+
+    if (rand < ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_0)
+        wildMonIndex = 0;
+    else if (rand >= ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_1)
+        wildMonIndex = 1;
+    else if (rand >= ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_1 && rand < ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_2)
+        wildMonIndex = 2;
+    else if (rand >= ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_2 && rand < ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_3)
+        wildMonIndex = 3;
+    else if (rand >= ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_3 && rand < ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_4)
+        wildMonIndex = 4;
+    else if (rand >= ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_4 && rand < ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_5)
+        wildMonIndex = 5;
+    else if (rand >= ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_5 && rand < ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_6)
+        wildMonIndex = 6;
+    else if (rand >= ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_6 && rand < ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_7)
+        wildMonIndex = 7;
+    else if (rand >= ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_7 && rand < ENCOUNTER_CHANCE_FISHERMANS_DREAM_MONS_SLOT_8)
+        wildMonIndex = 8;
+    else
+        wildMonIndex = 9;
+
+    if (LURE_STEP_COUNT != 0 && (Random() % 10 < 2))
+        swap = TRUE;
+
+    if (swap)
+        wildMonIndex = 4 - wildMonIndex;
+
+    return wildMonIndex;
 }
 
 // LAND_WILD_COUNT
@@ -1477,6 +1514,14 @@ static u8 ChooseWildMonRarest_Headbutt(void){
     return wildMonIndex;
 }
 
+static bool8 TryGenerateFishermansMon(const struct WildPokemonInfo *wildMonInfo, u8 area){
+    u8 wildMonIndex = ChooseWildMonIndex_Fishermans();
+    u8 level = ChooseWildMonLevel(wildMonInfo->wildPokemon, wildMonIndex, area);
+    
+    CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+    return TRUE;
+}
+
 // Generates the rarest mon in the current area.
 // Ignores all abilities, items, etc.
 static bool8 TryGenerateRarestMon(const struct WildPokemonInfo *wildMonInfo, u8 area) {
@@ -1514,6 +1559,30 @@ void RockSmashRareEncounter(void)
             gSpecialVar_Result = FALSE;
         } else {
             if(TryGenerateRarestMon(wildPokemonInfo, WILD_AREA_ROCKS) == TRUE){
+                BattleSetup_StartWildBattle();
+                gSpecialVar_Result = TRUE;
+            } else {
+                gSpecialVar_Result = FALSE;
+            }
+        }
+    }
+    else
+    {
+        gSpecialVar_Result = FALSE;
+    }
+}
+
+void FishermansDreamEncounter(void)
+{
+    u16 headerId = GetCurrentMapWildMonHeaderId();
+
+    if(headerId != HEADER_NONE){
+        const struct WildPokemonInfo *wildPokemonInfo = gWildMonHeaders[headerId].fishermansMonsInfo;
+
+        if(wildPokemonInfo == NULL){
+            gSpecialVar_Result = FALSE;
+        } else {
+            if(TryGenerateFishermansMon(wildPokemonInfo, WILD_AREA_FISHERMANS_DREAM) == TRUE){
                 BattleSetup_StartWildBattle();
                 gSpecialVar_Result = TRUE;
             } else {

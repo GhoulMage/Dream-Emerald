@@ -25,6 +25,7 @@ struct WildPokemonHeader
     const struct WildPokemonInfo *rockSmashMonsInfo;
     const struct WildPokemonInfo *headbuttMonsInfo;
     const struct WildPokemonInfo *fishingMonsInfo;
+    const struct WildPokemonInfo *fishermansMonsInfo;
 };
 
 extern const struct WildPokemonHeader gWildMonHeaders[];

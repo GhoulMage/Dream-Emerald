@@ -4793,7 +4793,10 @@ const struct Item gItemsInfo[] =
         .price = 1000,
         .holdEffect = HOLD_EFFECT_PLATE,
         .holdEffectParam = 20,
-        .description = sSonicPlateDesc,
+        .description = COMPOUND_STRING(
+            "A stone tablet that\n"
+            "boosts the power of\n"
+            "Sound-type moves."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -6715,7 +6718,10 @@ const struct Item gItemsInfo[] =
         .name = _("Soundium Z"),
         .price = 0,
         .holdEffect = HOLD_EFFECT_Z_CRYSTAL,
-        .description = sSoundiumZDesc,
+        .description = COMPOUND_STRING(
+            "Upgrade Sound-\n"
+            "type moves into\n"
+            "Z-Moves."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
