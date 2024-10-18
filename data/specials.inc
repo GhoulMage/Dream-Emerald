@@ -561,3 +561,6 @@ gSpecials::
 	def_special LandRareEncounter
 	def_special WaterRareEncounter
 	def_special TryDoObjectScriptOneStepInFrontOfPlayer
+	def_special SetRandomResult
+	def_special GetPlayerYLocation
+	def_special FishermansDreamEncounter

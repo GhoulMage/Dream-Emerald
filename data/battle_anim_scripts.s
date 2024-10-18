@@ -805,7 +805,6 @@ gBattleAnims_Moves::
 	.4byte Move_SANDSEAR_STORM
 	.4byte Move_LUNAR_BLESSING
 	.4byte Move_TAKE_HEART
-	.4byte Move_PSYCHIC_INVERSION
 @@@@@@@@@@@@ GEN 9 @@@@@@@@@@@@
 	.4byte Move_TERA_BLAST
 	.4byte Move_SILK_TRAP
@@ -876,6 +875,7 @@ gBattleAnims_Moves::
 	.4byte Move_PSYCHIC_NOISE
 	.4byte Move_UPPER_HAND
 	.4byte Move_MALIGNANT_CHAIN
+	.4byte Move_PSYCHIC_INVERSION
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -21822,23 +21822,23 @@ Move_PSYCHIC_INVERSION:
 	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
 	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(27, 27, 0), 12, 1, 1
-	createvisualtask AnimTask_ExtrasensoryDistortion, 1, 0
+	createvisualtask AnimTask_ExtrasensoryDistortion, 0x5, 0
 	playsewithpan SE_M_BIND, SOUND_PAN_TARGET
 	waitforvisualfinish
 	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(27, 27, 0), 12, 1, 1
-	createvisualtask AnimTask_ExtrasensoryDistortion, 1, 1
+	createvisualtask AnimTask_ExtrasensoryDistortion, 0x5, 1
 	playsewithpan SE_M_BIND, SOUND_PAN_TARGET
 	waitforvisualfinish
+	delay 2
 	
 	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(27, 27, 0), 12, 1, 1
-	createvisualtask AnimTask_ExtrasensoryDistortion, 1, 0
+	createvisualtask AnimTask_ExtrasensoryDistortion, 0x5, 0
 	playsewithpan SE_M_BIND, SOUND_PAN_TARGET
 	delay 8
 	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(27, 27, 0), 12, 1, 1
-	createvisualtask AnimTask_ExtrasensoryDistortion, 1, 1
+	createvisualtask AnimTask_ExtrasensoryDistortion, 0x5, 1
 	playsewithpan SE_M_BIND, SOUND_PAN_TARGET
-	delay 20
-	waitsound
+	delay 16
 
 	createvisualtask AnimTask_TransparentCloneGrowAndShrink, 5, ANIM_TARGET
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 18, 1

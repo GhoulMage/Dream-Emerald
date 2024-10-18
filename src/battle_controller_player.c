@@ -40,6 +40,7 @@
 #include "constants/trainers.h"
 #include "constants/rgb.h"
 #include "level_caps.h"
+#include "pokemon_summary_screen.h"
 
 static void PlayerBufferExecCompleted(u32 battler);
 static void PlayerHandleLoadMonSprite(u32 battler);
@@ -96,7 +97,7 @@ static void PrintLinkStandbyMsg(void);
 
 static void ReloadMoveNames(u32 battler);
 
-static void MoveSelectionDisplaySplitIcon(u32, struct ChooseMoveStruct *);
+//static void MoveSelectionDisplaySplitIcon(u32, struct ChooseMoveStruct *);
 
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler) =
 {
@@ -1742,13 +1743,13 @@ u8 TryGetSelectedMoveSecondaryType(struct ChooseMoveStruct *moveInfo, u32 battle
     u8 move = moveInfo->moves[gMoveSelectionCursor[battler]];
 
     if(MoveIsSonicAndHasSecondaryType(move))
-        return gBattleMoves[move].sonicMoveType;
+        return gMovesInfo[move].sonicMoveType;
     
     if (MoveIsDanceAndHasSecondaryType(move))
-        return gBattleMoves[move].danceMoveType;
+        return gMovesInfo[move].danceMoveType;
 
-    if(gBattleMoves[move].effect == 270) // EFFECT_TWO_TYPED_MOVE
-        return gBattleMoves[move].argument;
+    if(gMovesInfo[move].effect == 229) // EFFECT_TWO_TYPED_MOVE
+        return gMovesInfo[move].argument;
     
     return TYPE_NONE;
 }
@@ -1792,7 +1793,7 @@ static void MoveSelectionDisplayMoveType(u32 battler)
         if(GetTimer(moveInfo) < 30)
             type &= 0x3F;
         else
-            type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
+            type = gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
     } else {
         type = gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
     }
@@ -1801,7 +1802,7 @@ static void MoveSelectionDisplayMoveType(u32 battler)
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
 
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
-    MoveSelectionDisplaySplitIcon(battler, moveInfo);
+    //MoveSelectionDisplaySplitIcon(battler, moveInfo);
 }
 
 void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
@@ -2365,6 +2366,7 @@ static void PlayerHandleBattleDebug(u32 battler)
     gBattlerControllerFuncs[battler] = Controller_WaitForDebug;
 }
 
+/*
 static void MoveSelectionDisplaySplitIcon(u32 battler, struct ChooseMoveStruct *moveInfo){
 	static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/interface/split_icons_battle.gbapal");
 	static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/interface/split_icons_battle.4bpp");
@@ -2376,3 +2378,4 @@ static void MoveSelectionDisplaySplitIcon(u32 battler, struct ChooseMoveStruct *
 	PutWindowTilemap(B_WIN_SPLIT_ICON);
 	CopyWindowToVram(B_WIN_SPLIT_ICON, 3);
 }
+*/

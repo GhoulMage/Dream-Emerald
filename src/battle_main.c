@@ -692,6 +692,8 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     TRAINER_CLASS(PIKE_QUEEN, "PIKE QUEEN"),
     TRAINER_CLASS(PYRAMID_KING, "PYRAMID KING"),
     TRAINER_CLASS(RS_PROTAG, "{PKMN} TRAINER"),
+    TRAINER_CLASS(SOCIALITE, "SOCIALITE", 22, ITEM_LUXURY_BALL),
+    TRAINER_CLASS(ARTIST, "ARTIST", 4, ITEM_PREMIER_BALL),
 };
 
 static void (* const sTurnActionsFuncsTable[])(void) =
@@ -2236,7 +2238,7 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
 
 u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer, bool32 firstTrainer, u32 battleTypeFlags)
 {
-    u32 personalityValue;
+    u32 personalityValue = 0;
     s32 i;
     u8 monsCount;
     if (battleTypeFlags & BATTLE_TYPE_TRAINER && !(battleTypeFlags & (BATTLE_TYPE_FRONTIER
@@ -6072,7 +6074,7 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
                  || (attackerAbility == ABILITY_REFRIGERATE && (ateType = TYPE_ICE))
                  || (attackerAbility == ABILITY_AERILATE && (ateType = TYPE_FLYING))
                  || (attackerAbility == ABILITY_GALVANIZE && (ateType = TYPE_ELECTRIC))
-                 || (attackerAbility == ABILITY_DARK_POWER && gBattleMoves[move].split == SPLIT_PHYSICAL && (ateType = TYPE_DARK))
+                 || (attackerAbility == ABILITY_DARK_POWER && gMovesInfo[move].category == DAMAGE_CATEGORY_PHYSICAL && (ateType = TYPE_DARK))
                 )
              )
     {

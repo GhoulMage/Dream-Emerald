@@ -1,0 +1,37 @@
+{
+    "RaltsD": {
+        "LevelMoves": [ ],
+        "PreEvoMoves": [],
+        "TMMoves": [ ],
+        "EggMoves": [ ],
+        "TutorMoves": [ ]
+    },
+    "KirliaD": {
+        "LevelMoves": [ ],
+        "PreEvoMoves": [],
+        "TMMoves": [ ],
+        "EggMoves": [ ],
+        "TutorMoves": [ ]
+    },
+    "GardevoirD": {
+        "LevelMoves": [ ],
+        "PreEvoMoves": [],
+        "TMMoves": [ ],
+        "EggMoves": [ ],
+        "TutorMoves": [ ]
+    },
+    "Adokana": {
+        "LevelMoves": [ ],
+        "PreEvoMoves": [],
+        "TMMoves": [ ],
+        "EggMoves": [ ],
+        "TutorMoves": [ ]
+    },
+    "Bonedea": {
+        "LevelMoves": [ ],
+        "PreEvoMoves": [],
+        "TMMoves": [ ],
+        "EggMoves": [ ],
+        "TutorMoves": [ ]
+    }
+}

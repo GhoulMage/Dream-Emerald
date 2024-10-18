@@ -399,7 +399,7 @@ bool32 IsDamageMoveUsable(u32 move, u32 battlerAtk, u32 battlerDef)
             return TRUE;
         break;
     case ABILITY_SOUNDPROOF:
-        if (gMovesInfo[move].soundMove)
+        if (MoveIsSonic(move))
             return TRUE;
         break;
     case ABILITY_BULLETPROOF:
