@@ -9,6 +9,7 @@ bool8 TestPlayerAvatarFlags(u8);
 u8 GetPlayerAvatarSpriteId(void);
 void PlayerGetDestCoords(s16 *, s16 *);
 u8 GetPlayerFacingDirection(void);
+u8 GetPlayerYLocation(void);
 u8 GetPlayerMovementDirection(void);
 u8 PlayerGetCopyableMovement(void);
 void PlayerWalkNormal(u8 direction);

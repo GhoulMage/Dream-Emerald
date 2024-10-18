@@ -1432,7 +1432,7 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
     [EFFECT_SONIC_BOOM] =
     {
         .battleScript = BattleScript_EffectHit,
-        battleTvScore = 0,
+        .battleTvScore = 0,
     },
 
     [EFFECT_PSYCHIC_INVERSION] =

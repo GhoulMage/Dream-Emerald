@@ -1244,8 +1244,9 @@
 
 #define FLAG_HIDE_ROUTE_121_TREE_1                                  0x4A7
 
-#define FLAG_UNUSED_0x4A8                                           0x4A8 // Unused Flag
-#define FLAG_UNUSED_0x4A9                                           0x4A9 // Unused Flag
+#define FLAG_FISHERMANS_DREAM_GRUNT_YELL                            0x4A8
+#define FLAG_FISHERMANS_DREAM_GRUNT_DEFEATED                        0x4A9
+
 #define FLAG_UNUSED_0x4AA                                           0x4AA // Unused Flag
 #define FLAG_UNUSED_0x4AB                                           0x4AB // Unused Flag
 #define FLAG_UNUSED_0x4AC                                           0x4AC // Unused Flag

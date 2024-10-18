@@ -161,7 +161,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_OWN_TEMPO] =
     {
         .name = _("Own Tempo"),
-        .description = COMPOUND_STRING("Prevents confusion."),
+        .description = COMPOUND_STRING("Evades Dance and Confusion, lowers Sonic."),
         .aiRating = 3,
         .breakable = TRUE,
     },
@@ -340,7 +340,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SOUNDPROOF] =
     {
         .name = _("Soundproof"),
-        .description = COMPOUND_STRING("Avoids sound-based moves."),
+        .description = COMPOUND_STRING("Avoids Sonic and lowers Dance."),
         .aiRating = 4,
         .breakable = TRUE,
     },
@@ -2608,4 +2608,104 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
     },
+
+    [ABILITY_DARK_POWER] = 
+    {
+        .name = _("Dark Power"),
+        .description = COMPOUND_STRING("Normal moves become Dark."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_ULTRASONIC] = 
+    {
+        .name = _("Ultrasonic"),
+        .description = COMPOUND_STRING("Sound moves are harsher."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_DRAGON_SCALE] = 
+    {
+        .name = _("Dragon Scale"),
+        .description = COMPOUND_STRING("Ups Sp Def if suffering."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_PANIC_ATTACK] = 
+    {
+        .name = _("Panic Attack"),
+        .description = COMPOUND_STRING("Crits if badly hurt."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_SINGER] = 
+    {
+        .name = _("Singer"),
+        .description = COMPOUND_STRING("Sound moves become Normal."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_SAND_SONG] = 
+    {
+        .name = _("Sand Song"),
+        .description = COMPOUND_STRING("Sound moves become Ground."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_JACKPOT] = 
+    {
+        .name = _("Jackpot"),
+        .description = COMPOUND_STRING("Doubles prize money."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_DREAMCATCHER] = 
+    {
+        .name = _("Dreamcatcher"),
+        .description = COMPOUND_STRING("Restores HP while asleep."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_HEAVY_SLEEPER] = 
+    {
+        .name = _("Heavy Sleeper"),
+        .description = COMPOUND_STRING("Negates Sound while asleep."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_UPBEAT] = 
+    {
+        .name = _("Upbeat"),
+        .description = COMPOUND_STRING("Sound boosts Speed."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_CRESCENDO] = 
+    {
+        .name = _("Crescendo"),
+        .description = COMPOUND_STRING("Ups Sound moves in a pinch."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_RICH_ACOUSTICS] = 
+    {
+        .name = _("Rich Acoustics"),
+        .description = COMPOUND_STRING("Turns Sound into HP."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_RASH_CUSHION] = 
+    {
+        .name = _("Rash Cushion"),
+        .description = COMPOUND_STRING("Lowers recoil, ups damage."),
+        .aiRating = 8,
+    },
+    
+    [ABILITY_TERRORIZE] = 
+    {
+        .name = _("Terrorize"),
+        .description = COMPOUND_STRING("Terrorizes foes once."),
+        .aiRating = 10,
+    },
+    
+
 };

@@ -5692,7 +5692,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_UPBEAT:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
              && gBattleMons[battler].hp != 0
-             && gBattleMoves[move].type == TYPE_SOUND
+             && gMovesInfo[move].type == TYPE_SOUND
              && CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
                 SET_STATCHANGER(STAT_SPEED, 1, FALSE);
@@ -10084,12 +10084,12 @@ static inline uq4_12_t GetSameTypeAttackBonusModifier(u32 battlerAtk, u32 moveTy
     else if (gBattleStruct->pledgeMove && IS_BATTLER_OF_TYPE(BATTLE_PARTNER(battlerAtk), moveType))
         return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
     else if(MoveIsDanceAndHasSecondaryType(move)) {
-        if (IS_BATTLER_OF_TYPE(battlerAtk, gBattleMoves[move].danceMoveType) && move != MOVE_NONE)
+        if (IS_BATTLER_OF_TYPE(battlerAtk, gMovesInfo[move].danceMoveType) && move != MOVE_NONE)
         {
             return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
         }
     } else if(MoveIsSonicAndHasSecondaryType(move)) {
-        if (IS_BATTLER_OF_TYPE(battlerAtk, gBattleMoves[move].sonicMoveType) && move != MOVE_NONE)
+        if (IS_BATTLER_OF_TYPE(battlerAtk, gMovesInfo[move].sonicMoveType) && move != MOVE_NONE)
         {
             return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
         }
@@ -10733,7 +10733,7 @@ uq4_12_t CalcTypeEffectivenessMultiplier(u32 move, u32 moveType, u32 battlerAtk,
 
         //Dance and Sonic moves can have a secondary type and use an unique flag
         if(MoveIsDanceAndHasSecondaryType(move))
-            modifier = CalcTypeEffectivenessMultiplierInternal(move, gMovesInfo[move].danceMoveSecondaryType, battlerAtk, battlerDef, recordAbilities, modifier, defAbility);
+            modifier = CalcTypeEffectivenessMultiplierInternal(move, gMovesInfo[move].danceMoveType, battlerAtk, battlerDef, recordAbilities, modifier, defAbility);
         else if(MoveIsSonicAndHasSecondaryType(move))
             modifier = CalcTypeEffectivenessMultiplierInternal(move, gMovesInfo[move].sonicMoveType, battlerAtk, battlerDef, recordAbilities, modifier, defAbility);
         else if (gMovesInfo[move].effect == EFFECT_TWO_TYPED_MOVE)
@@ -11899,14 +11899,6 @@ bool32 AreBattlersOfOppositeGender(u32 battler1, u32 battler2)
     u8 gender2 = GetBattlerGender(battler2);
 
     return (gender1 != MON_GENDERLESS && gender2 != MON_GENDERLESS && gender1 != gender2);
-}
-
-bool32 AreBattlersOfSameGender(u32 battler1, u32 battler2)
-{
-    u8 gender1 = GetBattlerGender(battler1);
-    u8 gender2 = GetBattlerGender(battler2);
-
-    return (gender1 != MON_GENDERLESS && gender2 != MON_GENDERLESS && gender1 == gender2);
 }
 
 u32 CalcSecondaryEffectChance(u32 battler, u32 battlerAbility, const struct AdditionalEffect *additionalEffect)

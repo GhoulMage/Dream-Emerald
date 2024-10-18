@@ -2897,12 +2897,6 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     RETURN_SCORE_MINUS(10);
                 }
                 break;  // handled in AI_HPAware
-            case ABILITY_RICH_ACOUSTICS:
-                if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
-                {
-                    RETURN_SCORE_MINUS(10);
-                }
-                break;  // handled in AI_HPAware
             case ABILITY_UPBEAT:
                 if (MoveIsSonic(move)
                     && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPEED)

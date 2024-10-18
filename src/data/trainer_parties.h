@@ -12142,6 +12142,57 @@ static const struct TrainerMon sParty_Stacy[] = {
     }
 };
 
+static const struct TrainerMon sParty_FishermanDreamAquaGrunt[] = {
+    {
+    .iv = TRAINER_PARTY_IVS(23, 23, 23, 23, 23, 23),
+    .lvl = 35,
+    .species = SPECIES_WALREIN,
+    .moves = { MOVE_EARTHQUAKE, MOVE_ROCK_SMASH, MOVE_ICE_BEAM, MOVE_RAIN_DANCE },
+    .heldItem = ITEM_WACAN_BERRY,
+    .ability = ABILITY_THICK_FAT,
+    },
+    {
+    .iv = TRAINER_PARTY_IVS(23, 23, 23, 23, 23, 23),
+    .lvl = 35,
+    .species = SPECIES_JELLICENT,
+    .moves = { MOVE_SHADOW_BALL, MOVE_DESTINY_BOND, MOVE_GIGA_DRAIN, MOVE_TRICK_ROOM },
+    .heldItem = ITEM_COLBUR_BERRY,
+    .ability = ABILITY_CURSED_BODY,
+    },
+    {
+    .iv = TRAINER_PARTY_IVS(23, 23, 23, 23, 23, 23),
+    .lvl = 36,
+    .species = SPECIES_CRAWDAUNT,
+    .moves = { MOVE_CRUNCH, MOVE_TAUNT, MOVE_CRABHAMMER, MOVE_DIG },
+    .heldItem = ITEM_FOCUS_BAND,
+    .ability = ABILITY_ADAPTABILITY,
+    },
+    {
+    .iv = TRAINER_PARTY_IVS(23, 23, 23, 23, 23, 23),
+    .lvl = 36,
+    .species = SPECIES_ARAQUANID,
+    .moves = { MOVE_LUNGE, MOVE_LIQUIDATION, MOVE_INFESTATION, MOVE_ICE_BEAM },
+    .heldItem = ITEM_SILVER_POWDER,
+    .ability = ABILITY_GUTS,
+    },
+    {
+    .iv = TRAINER_PARTY_IVS(23, 23, 23, 23, 23, 23),
+    .lvl = 37,
+    .species = SPECIES_ZANGOOSE,
+    .moves = { MOVE_SLASH, MOVE_X_SCISSOR, MOVE_SWORDS_DANCE, MOVE_DOUBLE_HIT },
+    .heldItem = ITEM_CHOPLE_BERRY,
+    .ability = ABILITY_SHARPNESS,
+    },
+    {
+    .iv = TRAINER_PARTY_IVS(23, 23, 23, 23, 23, 23),
+    .lvl = 38,
+    .species = SPECIES_SHARPEDO,
+    .moves = { MOVE_ICE_FANG, MOVE_REST, MOVE_DARK_PULSE, MOVE_SURF },
+    .heldItem = ITEM_CHESTO_BERRY,
+    .ability = ABILITY_SPEED_BOOST,
+    },
+};
+
 static const struct TrainerMon sParty_Stephanie[] = {
     {
     .iv = TRAINER_PARTY_IVS(20, 20, 20, 20, 20, 20),

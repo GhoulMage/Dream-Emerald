@@ -38,6 +38,7 @@
 #include "constants/songs.h"
 #include "constants/region_map_sections.h"
 #include "constants/metatile_labels.h"
+#include "random.h"
 
 #define PLACE_DECORATION_SELECTOR_TAG 0xbe5
 #define PLACE_DECORATION_PLAYER_TAG   0x008
@@ -2227,6 +2228,11 @@ void GetObjectEventLocalIdByFlag(void)
             break;
         }
     }
+}
+
+void SetRandomResult(void)
+{
+    gSpecialVar_Result = (Random() % gSpecialVar_Result);
 }
 
 void TryDoObjectScriptOneStepInFrontOfPlayer(void)

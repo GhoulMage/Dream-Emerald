@@ -1,5 +1,6 @@
 DreamPetalburg_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, DreamPetalburg_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, DreamPetalburg_OnFrameTable
 	.byte 0
 
 DreamPetalburg_OnTransition::
@@ -7,6 +8,55 @@ DreamPetalburg_OnTransition::
 	goto_if_set FLAG_NINJA_BOY1, DreamPetalburg_DoNothing
 	setninjaflags FLAG_NINJA_BOY1
 DreamPetalburg_DoNothing::
+	end
+
+DreamPetalburg_OnFrameTable::
+	map_script_2 VAR_FISHERMANS_DREAM_STATE, 1, DreamPetalburg_BeginFishing
+	map_script_2 VAR_FISHERMANS_DREAM_STATE, 3, DreamPetalburg_KeepFishing
+	.2byte 0
+
+DreamPetalburg_FishermansDreamLoop::
+	goto_if_eq VAR_FISHERMANS_DREAM_STATE, 1, DreamPetalburg_BeginFishing
+	goto_if_eq VAR_FISHERMANS_DREAM_STATE, 3, DreamPetalburg_KeepFishing
+	end
+
+DreamPetalburg_KeepFishing::
+	locktarget
+	switch VAR_FISHERMANS_DREAM_TICKETS
+	case 0, DreamPetalburg_NoMoreTickets
+	msgbox DreamPetalburg_Text_KeepFishing, MSGBOX_YESNO
+	switch VAR_RESULT
+	case YES, DreamPetalburg_FishStartle
+	case NO, DreamPetalburg_EndFishing
+	end
+
+DreamPetalburg_NoMoreTickets::
+	playse SE_DING_DONG
+	msgbox DreamPetalburg_Text_NoMoreTickets, MSGBOX_DEFAULT
+DreamPetalburg_EndFishing::
+	closemessage
+	locktarget
+	setvar VAR_FISHERMANS_DREAM_STATE, 4
+	applymovement OBJ_EVENT_ID_PLAYER, DreamPetalburg_Movement_MoveBack
+	waitmovement OBJ_EVENT_ID_PLAYER
+	warp MAP_DREAM_PETALBURG_FISHERMAN_DREAM, 2
+	end
+
+DreamPetalburg_BeginFishing::
+	locktarget
+	setvar VAR_FISHERMANS_DREAM_STATE, 2
+	applymovement OBJ_EVENT_ID_PLAYER, DreamPetalburg_Movement_MoveToFishing
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox DreamPetalburg_Text_NoFish, MSGBOX_DEFAULT
+DreamPetalburg_FishStartle::
+	applymovement OBJ_EVENT_ID_PLAYER, DreamPetalburg_Movement_Startled
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox DreamPetalburg_Text_Startled, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_FISHERMANS_DREAM_STATE, 3
+	subvar VAR_FISHERMANS_DREAM_TICKETS, 1
+	setvar VAR_FISHERMANS_DREAM_TICKETS, 0
+	special FishermansDreamEncounter
 	end
 
 DreamPetalburg_EventScript_DreamSign1::
@@ -42,6 +92,7 @@ DreamPetalburg_EventScript_Sailor::
 	faceplayer
 	msgbox DreamPetalburg_Text_Sailor, MSGBOX_DEFAULT
 	release
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceRight
 	end
 
 DreamPetalburg_EventScript_CaveLocked::
@@ -100,7 +151,7 @@ DreamPetalburg_EventScript_Stacy::
 	end
 
 DreamPetalburg_EventScript_Stephanie::
-	trainerbattle_single TRAINER_STEPHANIE, DreamPetalburg_Text_StephanieIntro, DreamPetalburg_Text_StephanieDefeated
+	trainerbattle_single TRAINER_STEPHANIE, DreamPetalburg_Text_StephanieIntro, DreamPetalburg_Text_StephanieDefeated, DreamPetalburg_EventScript_Stephanie
 	msgbox DreamPetalburg_Text_StephaniePostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -199,10 +250,40 @@ DreamPetalburg_Text_Sign2:
 
 DreamPetalburg_Text_DreamSign1:
 	.string "DREAM PETALBURG\n"
-	.string "“Wavering nature connects to the beach.”\p"
+	.string "“Wavering nature connects to the beach.”\l"
 	.string "{UP_ARROW} ROUTE 102$"
 
 DreamPetalburg_Text_DreamSign2:
 	.string "DREAM PETALBURG\n"
-	.string "“Wavering nature connects to the beach.”\p"
+	.string "“Wavering nature connects to the beach.”\l"
 	.string "{UP_ARROW} PETALBURG CITY$"
+
+DreamPetalburg_Text_NoMoreTickets::
+	.string "You don't have more tickets,\n"
+	.string "please, go back in.$"
+
+DreamPetalburg_Text_KeepFishing::
+	.string "Do you want to keep fishing?$"
+
+DreamPetalburg_Text_NoFish:
+	.string "You don't see any fish...$"
+
+DreamPetalburg_Text_Startled:
+	.string "You were startled by a rare POKéMON!$"
+
+DreamPetalburg_Movement_Startled:
+	jump_in_place_down
+	delay_8
+	step_end
+
+DreamPetalburg_Movement_MoveToFishing:
+	delay_8
+	walk_left
+	walk_down
+	step_end
+
+DreamPetalburg_Movement_MoveBack:
+	walk_up
+	walk_right
+	walk_up
+	step_end

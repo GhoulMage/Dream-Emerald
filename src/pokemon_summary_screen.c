@@ -321,6 +321,7 @@ static void DestroyMoveSelectorSprites(u8);
 static void SetMainMoveSelectorColor(u8);
 static void KeepMoveSelectorVisible(u8);
 static void SummaryScreen_DestroyAnimDelayTask(void);
+static void BufferIvOrEvStats();
 
 static const struct BgTemplate sBgTemplates[] =
 {
@@ -931,10 +932,10 @@ static const union AnimCmd sSpriteAnim_TypeSound[] = {
 
 #define SPRITE_ANIM(type, paletteIndex)                              \
 {                                                                    \
+    ANIMCMD_PALETTE(PAL_TYPE_SOUND),                                 \
     ANIMCMD_FRAME(TYPE_SOUND * 8, SPRITE_ANIM_FRAMES, FALSE, FALSE), \
     ANIMCMD_PALETTE(paletteIndex),                                   \
     ANIMCMD_FRAME(type * 8, SPRITE_ANIM_FRAMES, FALSE, FALSE),       \
-    ANIMCMD_PALETTE(PAL_TYPE_SOUND),                                 \
     ANIMCMD_JUMP(0)                                                  \
 }
 
@@ -1525,8 +1526,8 @@ static bool8 DecompressGraphics(void)
     case 12:
         LoadCompressedPalette(gMoveTypes_Pal0, OBJ_PLTT_ID(13), 3 * PLTT_SIZE_4BPP);
         LoadCompressedPalette(gMoveTypes_Pal1, 0x1B0, 0x20);
-        LoadCompressedSpriteSheet(&gSpriteSheet_CategoryIcons);
-        LoadSpritePalette(&gSpritePal_CategoryIcons);
+        LoadCompressedSpriteSheet(&sSpriteSheet_CategoryIcons);
+        LoadSpritePalette(&sSpritePal_CategoryIcons);
         sMonSummaryScreen->switchCounter = 0;
         return TRUE;
     }
@@ -3613,6 +3614,84 @@ static void BufferStat(u8 *dst, u8 statIndex, u32 stat, u32 strId, u32 n)
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(strId, dst);
 }
 
+static void BufferIvOrEvStats(){
+    u16 hp, hp2, atk, def, spA, spD, spe;
+    hp2 = 0;
+    u8 *currHPString = Alloc(20);
+    const s8 *natureMod = gNatureStatTable[sMonSummaryScreen->summary.nature];
+
+    switch (sMonSummaryScreen->ivOrEvMode)
+    {
+    case 0: // iv mode
+        hp = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_HP_IV);
+        atk = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_ATK_IV);
+        def = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_DEF_IV);
+
+        spA = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPATK_IV);
+        spD = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPDEF_IV);
+        spe = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPEED_IV);
+        break;
+    case 1: // ev mode
+        hp = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_HP_EV);
+        atk = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_ATK_EV);
+        def = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_DEF_EV);
+
+        spA = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPATK_EV);
+        spD = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPDEF_EV);
+        spe = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPEED_EV);
+        break;
+    case 2: // stats mode
+    default:
+        hp = sMonSummaryScreen->summary.currentHP;
+        hp2 = sMonSummaryScreen->summary.maxHP;
+        atk = sMonSummaryScreen->summary.atk;
+        def = sMonSummaryScreen->summary.def;
+
+        spA = sMonSummaryScreen->summary.spatk;
+        spD = sMonSummaryScreen->summary.spdef;
+        spe = sMonSummaryScreen->summary.speed;
+        break;
+    }
+
+    FillWindowPixelBuffer(sMonSummaryScreen->windowIds[PSS_DATA_WINDOW_SKILLS_STATS_LEFT], 0);
+    FillWindowPixelBuffer(sMonSummaryScreen->windowIds[PSS_DATA_WINDOW_SKILLS_STATS_RIGHT], 0);
+
+    switch (sMonSummaryScreen->ivOrEvMode)
+    {
+    case 0:
+    case 1:
+        BufferStat(gStringVar1, 0, hp, 0, 7);
+        BufferStat(gStringVar2, natureMod[STAT_ATK - 1], atk, 1, 7);
+        BufferStat(gStringVar3, natureMod[STAT_DEF - 1], def, 2, 7);
+        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsLeftColumnLayoutIVEV);
+        PrintLeftColumnStats();
+
+        BufferStat(gStringVar1, natureMod[STAT_SPATK - 1], spA, 0, 3);
+        BufferStat(gStringVar2, natureMod[STAT_SPDEF - 1], spD, 1, 3);
+        BufferStat(gStringVar3, natureMod[STAT_SPEED - 1], spe, 2, 3);
+        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsRightColumnLayout);
+        PrintRightColumnStats();
+        break;
+    case 2:
+    default:
+        BufferStat(currHPString, 0, hp, 0, 3);
+        BufferStat(gStringVar1, 0, hp2, 1, 3);
+        BufferStat(gStringVar2, natureMod[STAT_ATK - 1], atk, 2, 7);
+        BufferStat(gStringVar3, natureMod[STAT_DEF - 1], def, 3, 7);
+        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsLeftColumnLayout);
+        PrintLeftColumnStats();
+
+        BufferStat(gStringVar1, natureMod[STAT_SPATK - 1], spA, 0, 3);
+        BufferStat(gStringVar2, natureMod[STAT_SPDEF - 1], spD, 1, 3);
+        BufferStat(gStringVar3, natureMod[STAT_SPEED - 1], spe, 2, 3);
+        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsRightColumnLayout);
+        PrintRightColumnStats();
+        break;
+    }
+
+    Free(currHPString);
+}
+
 static void BufferLeftColumnStats(void)
 {
     u8 *currentHPString = Alloc(20);
@@ -4089,11 +4168,11 @@ static void SetMoveTypeIcons(void)
     {
         if (summary->moves[i] != MOVE_NONE)
         {
-            typeId = gBattleMoves[summary->moves[i]].type;
+            typeId = gMovesInfo[summary->moves[i]].type;
 
-            if (summary->moves[i] == MOVE_IVY_CUDGEL && ItemId_GetHoldEffect(summary->item) == HOLD_EFFECT_MASK){
+            /*if (summary->moves[i] == MOVE_IVY_CUDGEL && ItemId_GetHoldEffect(summary->item) == HOLD_EFFECT_MASK){
                 typeId = ItemId_GetSecondaryId(summary->item);
-            } else if(summary->moves[i] == MOVE_HIDDEN_POWER){
+            } else*/ if(summary->moves[i] == MOVE_HIDDEN_POWER){
                 u8 type = GetMonHiddenPowerType(&sMonSummaryScreen->currentMon);
 
                 typeId = type & 0x3F;
@@ -4453,98 +4532,4 @@ static void KeepMoveSelectorVisible(u8 firstSpriteId)
         gSprites[spriteIds[i]].data[1] = 0;
         gSprites[spriteIds[i]].invisible = FALSE;
     }
-}
-
-static void BufferStat(u8 *dst, s8 natureMod, u32 stat, u32 strId, u32 n){
-    static const u8 sTextNatureDown[] = _("{COLOR}{08}");
-    static const u8 sTextNatureUp[] = _("{COLOR}{05}");
-    static const u8 sTextNatureNeutral[] = _("{COLOR}{01}");
-    u8 *txtPtr;
-
-    if (natureMod == 0)
-        txtPtr = StringCopy(dst, sTextNatureNeutral);
-    else if (natureMod > 0)
-        txtPtr = StringCopy(dst, sTextNatureUp);
-    else
-        txtPtr = StringCopy(dst, sTextNatureDown);
-    ConvertIntToDecimalStringN(txtPtr, stat, STR_CONV_MODE_RIGHT_ALIGN, n);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(strId, dst);
-}
-
-static void BufferIvOrEvStats(){
-    u16 hp, hp2, atk, def, spA, spD, spe;
-    hp2 = 0;
-    u8 *currHPString = Alloc(20);
-    const s8 *natureMod = gNatureStatTable[sMonSummaryScreen->summary.nature];
-
-    switch (sMonSummaryScreen->ivOrEvMode)
-    {
-    case 0: // iv mode
-        hp = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_HP_IV);
-        atk = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_ATK_IV);
-        def = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_DEF_IV);
-
-        spA = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPATK_IV);
-        spD = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPDEF_IV);
-        spe = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPEED_IV);
-        break;
-    case 1: // ev mode
-        hp = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_HP_EV);
-        atk = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_ATK_EV);
-        def = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_DEF_EV);
-
-        spA = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPATK_EV);
-        spD = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPDEF_EV);
-        spe = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPEED_EV);
-        break;
-    case 2: // stats mode
-    default:
-        hp = sMonSummaryScreen->summary.currentHP;
-        hp2 = sMonSummaryScreen->summary.maxHP;
-        atk = sMonSummaryScreen->summary.atk;
-        def = sMonSummaryScreen->summary.def;
-
-        spA = sMonSummaryScreen->summary.spatk;
-        spD = sMonSummaryScreen->summary.spdef;
-        spe = sMonSummaryScreen->summary.speed;
-        break;
-    }
-
-    FillWindowPixelBuffer(sMonSummaryScreen->windowIds[PSS_DATA_WINDOW_SKILLS_STATS_LEFT], 0);
-    FillWindowPixelBuffer(sMonSummaryScreen->windowIds[PSS_DATA_WINDOW_SKILLS_STATS_RIGHT], 0);
-
-    switch (sMonSummaryScreen->ivOrEvMode)
-    {
-    case 0:
-    case 1:
-        BufferStat(gStringVar1, 0, hp, 0, 7);
-        BufferStat(gStringVar2, natureMod[STAT_ATK - 1], atk, 1, 7);
-        BufferStat(gStringVar3, natureMod[STAT_DEF - 1], def, 2, 7);
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsLeftColumnLayoutIVEV);
-        PrintLeftColumnStats();
-
-        BufferStat(gStringVar1, natureMod[STAT_SPATK - 1], spA, 0, 3);
-        BufferStat(gStringVar2, natureMod[STAT_SPDEF - 1], spD, 1, 3);
-        BufferStat(gStringVar3, natureMod[STAT_SPEED - 1], spe, 2, 3);
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsRightColumnLayout);
-        PrintRightColumnStats();
-        break;
-    case 2:
-    default:
-        BufferStat(currHPString, 0, hp, 0, 3);
-        BufferStat(gStringVar1, 0, hp2, 1, 3);
-        BufferStat(gStringVar2, natureMod[STAT_ATK - 1], atk, 2, 7);
-        BufferStat(gStringVar3, natureMod[STAT_DEF - 1], def, 3, 7);
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsLeftColumnLayout);
-        PrintLeftColumnStats();
-
-        BufferStat(gStringVar1, natureMod[STAT_SPATK - 1], spA, 0, 3);
-        BufferStat(gStringVar2, natureMod[STAT_SPDEF - 1], spD, 1, 3);
-        BufferStat(gStringVar3, natureMod[STAT_SPEED - 1], spe, 2, 3);
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsRightColumnLayout);
-        PrintRightColumnStats();
-        break;
-    }
-
-    Free(currHPString);
 }

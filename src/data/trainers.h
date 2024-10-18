@@ -42336,7 +42336,19 @@ F_TRAINER_FEMALE |
         .trainerName = _("STEPHANIE"),
         .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_HYPER_POTION, ITEM_HYPER_POTION },
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .party = TRAINER_PARTY(sParty_Stephanie),
+    },
+
+    [TRAINER_FISHERMAN_DREAM_AQUA_GRUNT] =
+    {
+        .trainerClass = TRAINER_CLASS_TEAM_AQUA,
+        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_AQUA,
+        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .trainerName = _("GRUNT"),
+        .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_HYPER_POTION, ITEM_HYPER_POTION },
+        .doubleBattle = FALSE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
+        .party = TRAINER_PARTY(sParty_FishermanDreamAquaGrunt),
     },
 };

@@ -1218,6 +1218,11 @@ u8 GetPlayerFacingDirection(void)
     return gObjectEvents[gPlayerAvatar.objectEventId].facingDirection;
 }
 
+u8 GetPlayerYLocation(void)
+{
+    return gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y - MAP_OFFSET;
+}
+
 u8 GetPlayerMovementDirection(void)
 {
     return gObjectEvents[gPlayerAvatar.objectEventId].movementDirection;

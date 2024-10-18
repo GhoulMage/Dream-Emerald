@@ -15912,17 +15912,6 @@ static void Cmd_tryworryseed(void)
     }
 }
 
-static void UNUSED BS_DoubleDMGIfSound(void){
-    NATIVE_ARGS(const u8 *failInstr);
-
-    if(gBattleMons[gBattlerTarget].type1 == TYPE_SOUND || gBattleMons[gBattlerTarget].type2 == TYPE_SOUND){
-        gBattleMoveDamage *= 2;
-        gBattlescriptCurrInstr = cmd->nextInstr;
-    } else {
-        gBattlescriptCurrInstr = cmd->failInstr;
-    }
-}
-
 static void Cmd_callnative(void)
 {
     CMD_ARGS(void (*func)(void));
