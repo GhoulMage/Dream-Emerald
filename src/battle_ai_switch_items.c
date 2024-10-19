@@ -359,7 +359,7 @@ static bool32 FindMonThatAbsorbsOpponentsMove(u32 battler, bool32 emitResult)
     {
         absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_EARTH_EATER;
     }
-    else if (MoveHasSound(gLastLandedMoves[battler]))
+    else if (MoveIsSonic(gLastLandedMoves[battler]))
     {
         absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_RICH_ACOUSTICS;
     }

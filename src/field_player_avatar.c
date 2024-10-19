@@ -29,7 +29,6 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
-#include "field_screen_effect.h"
 
 #define NUM_FORCED_MOVEMENTS 18
 #define NUM_ACRO_BIKE_COLLISIONS 5
@@ -656,10 +655,6 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
             PlayerNotOnBikeCollideWithFarawayIslandMew(direction);
             return;
         }
-        else if (collision == COLLISION_STAIR_WARP)
-        {
-            PlayerFaceDirection(direction);
-        }
         else
         {
             u8 adjustedCollision = collision - COLLISION_STOP_SURFING;
@@ -699,8 +694,6 @@ static u8 CheckForPlayerAvatarCollision(u8 direction)
 
     x = playerObjEvent->currentCoords.x;
     y = playerObjEvent->currentCoords.y;
-    if (IsDirectionalStairWarpMetatileBehavior(MapGridGetMetatileBehaviorAt(x, y), direction))
-        return COLLISION_STAIR_WARP;
     MoveCoords(direction, &x, &y);
     return CheckForObjectEventCollision(playerObjEvent, x, y, direction, MapGridGetMetatileBehaviorAt(x, y));
 }
@@ -1705,7 +1698,10 @@ static void Task_WaitStopSurfing(u8 taskId)
         gPlayerAvatar.preventStep = FALSE;
         UnlockPlayerFieldControls();
         DestroySprite(&gSprites[playerObjEvent->fieldEffectSpriteId]);
+#ifdef BUGFIX
+        // If this is not defined but the player steps into grass from surfing, they will appear over the grass instead of in the grass.
         playerObjEvent->triggerGroundEffectsOnMove = TRUE;
+#endif
         DestroyTask(taskId);
     }
 }
