@@ -484,14 +484,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_CUT] =
     {
-        .name = COMPOUND_STRING("Cut"),
+        .name = COMPOUND_STRING("Bug Cut"),
         .description = COMPOUND_STRING(
             "Cuts the foe with sharp\n"
             "scythes, claws, etc."),
         .effect = EFFECT_HIT,
-        .power = 50,
-        .type = TYPE_NORMAL,
-        .accuracy = 95,
+        .power = 60,
+        .type = TYPE_BUG,
+        .accuracy = 100,
         .pp = 30,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
