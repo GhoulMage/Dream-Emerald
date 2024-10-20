@@ -1,7 +1,3 @@
-MoveTutor_Text_ThisMoveCanOnlyBeLearnedOnce:
-	.string "This move can be learned only\n"
-	.string "once. Is that okay?$"
-
 MoveTutor_Text_SwaggerTeach:
 	.string "Heh! My POKéMON totally rules!\n"
 	.string "It's cooler than any POKéMON!\p"
@@ -11,6 +7,12 @@ MoveTutor_Text_SwaggerTeach:
 	.string "That took the swagger out of my step.\p"
 	.string "If you'd like, I'll teach the move\n"
 	.string "SWAGGER to a POKéMON of yours.$"
+
+MoveTutor_Text_SwaggerTeachAgain:
+	.string "Heh! I'm back on my swagger,\n"
+	.string "y'know? That CHAIRMAN has nothing\l"
+	.string "on me anymore.\p"
+	.string "Do you want to learn SWAGGER again?$"
 
 MoveTutor_Text_SwaggerDeclined:
 	.string "What, no? Can't you get into\n"
@@ -35,6 +37,11 @@ MoveTutor_Text_RolloutTeach:
 	.string "I can teach one the move ROLLOUT\n"
 	.string "if you'd like.$"
 
+MoveTutor_Text_RolloutTeachAgain:
+	.string "Have you rolled anywhere lately?\n"
+	.string "We are rollers, I know it.\p"
+	.string "Do you want to learn ROLLOUT again?$"
+
 MoveTutor_Text_RolloutDeclined:
 	.string "You don't need to be shy about it.\n"
 	.string "Let's roll!$"
@@ -55,6 +62,14 @@ MoveTutor_Text_FuryCutterTeach:
 	.string "It's called FURY CUTTER.\n"
 	.string "Want me to teach it to a POKéMON?$"
 
+MoveTutor_Text_FuryCutterTeachAgain:
+	.string "FURY CUTTER is so cool, I keep\n"
+	.string "using it again and again.\p"
+	.string "I'm sure you're having fun with\n"
+	.string "BUG-type POKéMON.\p"
+	.string "Do you want to learn FURY CUTTER\n"
+	.string "again?$"
+
 MoveTutor_Text_FuryCutterDeclined:
 	.string "We're not on the same wavelength.$"
 
@@ -74,6 +89,12 @@ MoveTutor_MimicTeach:
 	.string "What do you say, young one?\n"
 	.string "Would you agree to it if I were to\l"
 	.string "offer to teach the move MIMIC?$"
+
+MoveTutor_Text_MimicTeachAgain:
+	.string "Young one, you're back.\p"
+	.string "How is MIMIC going?\n"
+	.string "Will you agree for me to\n"
+	.string "teach you MIMIC again?$" 
 
 MoveTutor_MimicDeclined:
 	.string "Oh, boo! I wanted to teach MIMIC\n"
@@ -100,6 +121,13 @@ MoveTutor_Text_MetronomeTeach:
 	.string "Money won't appear, but your POKéMON\n"
 	.string "will waggle a finger. Yes?$"
 
+MoveTutor_Text_MetronomeTeachAgain:
+	.string "I've been waggling my finger for some\n"
+	.string "time now and I think it's working!\l"
+	.string "My pockets are full of money!\p"
+	.string "Do you want mone… I mean,\n"
+	.string "to learn MIMIC again?$"
+
 MoveTutor_Text_MetronomeDeclined:
 	.string "Okay. I'll be here if you change\n"
 	.string "your mind.$"
@@ -122,6 +150,12 @@ MoveTutor_Text_SleepTalkTeach:
 	.string "and SLEEP TALK.\p"
 	.string "I can teach your POKéMON how to\n"
 	.string "SLEEP TALK instead. Interested?$"
+
+MoveTutor_Text_SleepTalkTeachAgain:
+	.string "I've convinced my wife to try SLEEP TALK\n"
+	.string "but she doesn't like it. Humph!\p"
+	.string "I know that you appreciate SLEEP TALK,\n"
+	.string "Do you want to learn it again?$"
 
 MoveTutor_Text_SleepTalkDeclined:
 	.string "Oh, fine, fine. You want to stay awake\n"
@@ -147,6 +181,13 @@ MoveTutor_Text_SubstituteTeach:
 	.string "Giggle…\p"
 	.string "I know! Would you be interested in\n"
 	.string "having a POKéMON learn SUBSTITUTE?$"
+
+MoveTutor_Text_SubstituteTeachAgain:
+	.string "My life is limited but I know\n"
+	.string "POKéMON can enjoy themselves.\p"
+	.string "I am fine with thiis, but does\n"
+	.string "any of your POKéMON want to\l"
+	.string "learn SUBSTITUTE?$"
 
 MoveTutor_Text_SubstituteDeclined:
 	.string "Oh, no?\p"
@@ -176,6 +217,13 @@ MoveTutor_Text_DynamicPunchTeach:
 	.string "Or do you want me to teach your\n"
 	.string "POKéMON DYNAMICPUNCH?$"
 
+MoveTutor_Text_DynamicPunchTeachAgain:
+	.string "MOSSDEEP GYM! Be sure to know that\n"
+	.string "someday FIGHTING-type will surpass\l"
+	.string "PSYCHIC-type TRAINERS!\p"
+	.string "Argh! Did you come back for some more\n"
+	.string "DYNAMICPUNCH?$"
+
 MoveTutor_Text_DynamicPunchDeclined:
 	.string "Darn! You're even making fun of me?\n"
 	.string "Punch! Punch! Punch!$"
@@ -199,6 +247,11 @@ MoveTutor_Text_DoubleEdgeTeach:
 	.string "Please, let me teach your POKéMON\n"
 	.string "the move DOUBLE-EDGE!$"
 
+MoveTutor_Text_DoubleEdgeTeachAgain:
+	.string "Sigh…\p"
+	.string "Something tells me, you want to learn\n"
+	.string "DOUBLE-EDGE again.$"
+
 MoveTutor_Text_DoubleEdgeDeclined:
 	.string "Oh…\n"
 	.string "Even you rejected me…$"
@@ -220,6 +273,13 @@ MoveTutor_Text_ExplosionTeach:
 	.string "a huge EXPLOSION of popularity!\p"
 	.string "If you overheard that, I'll happily\n"
 	.string "teach EXPLOSION to your POKéMON!$"
+
+MoveTutor_Text_ExplosionTeachAgain:
+	.string "The world has to watch out, for\n"
+	.string "when I explode everybody's gonna\l"
+	.string "remember me!\p"
+	.string "Let me make more of your POKéMON\n"
+	.string "explode as well.$"
 
 MoveTutor_Text_ExplosionDeclined:
 	.string "Gaah! You're turning me down because\n"
