@@ -379,7 +379,7 @@ FishermanDream_Text_AquaGrunt_Irritated:
 	.string "You can all have these\n"
 	.string "stupid POKéMON!\p"
 	.string "I guess after so long\n"
-	.string "boss is not gonna care...$"
+	.string "boss is not gonna care…$"
 
 FishermanDream_Text_AquaGruntIntro:
 	.string "What is this? Are you gonna\n"
@@ -404,7 +404,7 @@ FishermanDream_Text_AquaGruntYell2:
 	.string "Can I go, pretty please?$"
 
 FishermanDream_Text_AquaGruntYell3:
-	.string "You all... worse than\n"
+	.string "You all… worse than\n"
 	.string "A MAGIKARP!!$"
 
 FishermanDream_Text_AquaGruntYell4:
@@ -414,10 +414,10 @@ FishermanDream_Text_AquaGruntYell4:
 FishermanDream_Text_AquaGruntYell5:
 	.string "“Ocean man, take me\n"
 	.string "by the hand to the land,\l"
-	.string "...that you understand...”$"
+	.string "…that you understand…”$"
 
 FishermanDream_Text_Sign2:
-	.string "Some text is scratched...\p"
+	.string "Some text is scratched…\p"
 	.string "“Catch all the fish you want,\n"
 	.string "until the time runs out!”\p"
 	.string "There's some new text below.\p"
@@ -429,10 +429,10 @@ FishermanDream_Text_Sign1:
 	.string "until the time runs out!”$"
 
 FishermanDream_Text_Owner_Rattled:
-	.string "This has never happened...\p"
+	.string "This has never happened…\p"
 	.string "This usual client was catching\n"
 	.string "the likes of hundreds of POKéMON\l"
-	.string "every time she came...\p"
+	.string "every time she came…\p"
 	.string "So I finally changed the rules,\n"
 	.string "and warned her about it.\p"
 	.string "But she caught 250 POKéMON and\n"
@@ -440,41 +440,41 @@ FishermanDream_Text_Owner_Rattled:
 
 FishermanDream_Text_Owner_Rude:
 	.string "Would you help us..?\p"
-	.string "Nevermind, you don't seem strong...\n"
-	.string "I wish someone came to help...$"
+	.string "Nevermind, you don't seem strong…\n"
+	.string "I wish someone came to help…$"
 
 FishermanDream_Text_Owner_Help:
 	.string "Would you help us..?$"
 
 FishermanDream_Text_Owner_Pleading:
-	.string "Please... it's been two weeks...$"
+	.string "Please… it's been two weeks…$"
 
 FishermanDream_Text_Owner_Grateful:
 	.string "Oh, thank you!\n"
 	.string "I think you will need to\l"
-	.string "battle her though...$"
+	.string "battle her though…$"
 
 FishermanDream_Text_Owner_ThankYou:
 	.string "Thank you so much for helping!\n"
 	.string "We've been stuck like this for\l"
-	.string "a long time...\p"
+	.string "a long time…\p"
 	.string "As a reward, you can come here\n"
 	.string "and fish for free!\p"
-	.string "...the first eight times.$"
+	.string "…the first eight times.$"
 
 FishermanDream_Text_ReceivedFreeTickets:
 	.string "{PLAYER} received 8 tickets!$"
 
 FishermanDream_Text_Owner_Ready:
-	.string "Here goes nothing...\n"
+	.string "Here goes nothing…\n"
 	.string "Are you ready?$"
 
 FishermanDream_Text_Owner_BeQuick:
 	.string "Please, help us quickly.\n"
-	.string "We can't take much more...$"
+	.string "We can't take much more…$"
 
 FishermanDream_Text_Owner_Busy:
-	.string "He looks tired and busy...\n"
+	.string "He looks tired and busy…\n"
 	.string "Let's leave him alone.$"
 
 FishermanDream_Text_Owner:
@@ -488,10 +488,10 @@ FishermanDream_Text_Employee1_Rattled:
 	.string "you leave those 200 POKéMON.$"
 
 FishermanDream_Text_Employee2_Rattled:
-	.string "Oh man...$"
+	.string "Oh man…$"
 
 FishermanDream_Text_Employee3_Rattled:
-	.string "Ma'am please, calm down...$"
+	.string "Ma'am please, calm down…$"
 
 FishermanDream_Text_Employee1_AfterBattle:
 	.string "I was ready to battle but boss\n"
@@ -501,7 +501,7 @@ FishermanDream_Text_Employee1_AfterBattle:
 FishermanDream_Text_Employee2_AfterBattle:
 	.string "Maybe if this work wasn't so\n"
 	.string "shady it wouldn't attract these\l"
-	.string "kinds of individuals...$"
+	.string "kinds of individuals…$"
 
 FishermanDream_Text_Employee3_AfterBattle:
 	.string "Thank you kid.$"
@@ -514,7 +514,7 @@ FishermanDream_Text_Employee1:
 FishermanDream_Text_Employee2:
 	.string "I don't know how ethical is to\n"
 	.string "have so many POKéMON waiting to be\l"
-	.string "fished for business...$"
+	.string "fished for business…$"
 
 FishermanDream_Text_Employee3_NoTickets:
 	.string "Welcome back to Fisherman's Dream!\n"

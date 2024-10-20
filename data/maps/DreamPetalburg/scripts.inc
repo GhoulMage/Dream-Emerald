@@ -266,7 +266,7 @@ DreamPetalburg_Text_KeepFishing::
 	.string "Do you want to keep fishing?$"
 
 DreamPetalburg_Text_NoFish:
-	.string "You don't see any fish...$"
+	.string "You don't see any fish…$"
 
 DreamPetalburg_Text_Startled:
 	.string "You were startled by a rare POKéMON!$"

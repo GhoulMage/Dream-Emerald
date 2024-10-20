@@ -79,7 +79,7 @@ Route111_OldLadysRestStop_Text_DontNeedToBeShy:
 	.string "You don't need to be shy about it.$"
 
 Route111_OldLadysRestStop_Text_CanBattleMeNow:
-	.string "Oh dear, dear...\n"
+	.string "Oh dear, dear…\n"
 	.string "If your POKéMON are so rested…$"
 
 Route111_OldLadysRestStop_Text_OldLady_Intro:
