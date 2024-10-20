@@ -5820,7 +5820,7 @@ bool32 TrySetAteType(u32 move, u32 battlerAtk, u32 attackerAbility)
         ateType = TYPE_ELECTRIC;
         break;
     case ABILITY_DARK_POWER:
-        if(gBattleMoves[move].category == DAMAGE_CATEGORY_PHYSICAL)
+        if(gMovesInfo[move].category == DAMAGE_CATEGORY_PHYSICAL)
             ateType = TYPE_DARK;
     default:
         ateType = TYPE_NONE;
@@ -5840,6 +5840,7 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
 {
     u32 moveType, attackerAbility;
     u16 holdEffect = GetBattlerHoldEffect(battlerAtk, TRUE);
+    u8 ateType;
 
     if (move == MOVE_STRUGGLE)
         return;
