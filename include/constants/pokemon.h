@@ -309,6 +309,8 @@
 #define EVO_OVERWORLD_STEPS               52     // Pokémon levels up after having taken a specific amount of steps in the overworld (or as the party lead if OW_FOLLOWERS_ENABLED is FALSE) without switching
 #define EVO_LEVEL_FEMALE_LOW_HP           53     // Pokémon reaches the specified level at or while under 50% HP, if female. (Special for Cubone->Bonedea)
 
+#define EVO_METHOD_COUNT                  51
+
 // Evolution 'modes,' for GetEvolutionTargetSpecies
 #define EVO_MODE_NORMAL            0
 #define EVO_MODE_CANT_STOP         1

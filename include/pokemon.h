@@ -886,7 +886,7 @@ void UpdateDaysPassedSinceFormChange(u16 days);
 void TrySetDayLimitToFormChange(struct Pokemon *mon);
 u8 GetPartyMonCurvedLevel(void);
 u16 GetPossibleEvolution(u16 species, u8 level, u8 maxStage);
-u16 GetPossibleEvolutionMatchingGender(u16 species, u8 gender, u8 level, u8 maxStage);
+u16 GetPossibleGenderEvolution(u16 species, u8 gender, u8 level, u8 maxStage);
 u16 HasSpecialEvolution(u16 species);
 
 #endif // GUARD_POKEMON_H
