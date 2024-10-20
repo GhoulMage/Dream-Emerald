@@ -304,7 +304,7 @@ Route101_Text_ThereIsSomethingWrongHere:
 
 Route101_Text_CookingMushrooms:
 	.string "I really like to cook mushrooms.\p"
-	.string "...\n"
+	.string "…\n"
 	.string "Please don't tell anybody.$"
 
 Route101_Text_TakeTiredPokemonToPokeCenter:

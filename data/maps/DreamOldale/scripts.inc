@@ -86,7 +86,7 @@ DreamOldale_Text_DevonEmployeeFinished:
 
 DreamOldale_Text_DevonEmployeeHas:
 	.string "Did you know? At Devon we\n"
-	.string "created a device to...\l"
+	.string "created a device to…\l"
 	.string "Oh you have it!$"
 
 DreamOldale_Text_LittleGirl:
