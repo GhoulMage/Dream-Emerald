@@ -254,7 +254,7 @@
 
 // Evolution types
 #define EVOLUTIONS_END                    0xFFFF // Not an actual evolution, used to mark the end of an evolution array.
-#define EVO_NONE                          0xFFFE // Not an actual evolution, used to generate offspring that can't evolve into the specified species, like regional forms.
+#define EVO_NONE                          0      // Not an actual evolution, used to generate offspring that can't evolve into the specified species, like regional forms.
 #define EVO_FRIENDSHIP                    1      // Pokémon levels up with friendship ≥ 220
 #define EVO_FRIENDSHIP_DAY                2      // Pokémon levels up during the day with friendship ≥ 220
 #define EVO_FRIENDSHIP_NIGHT              3      // Pokémon levels up at night with friendship ≥ 220
@@ -308,6 +308,8 @@
 #define EVO_DEFEAT_THREE_WITH_ITEM        51     // Pokémon levels up after having defeat 3 Pokémon of the same species holding the specified item
 #define EVO_OVERWORLD_STEPS               52     // Pokémon levels up after having taken a specific amount of steps in the overworld (or as the party lead if OW_FOLLOWERS_ENABLED is FALSE) without switching
 #define EVO_LEVEL_FEMALE_LOW_HP           53     // Pokémon reaches the specified level at or while under 50% HP, if female. (Special for Cubone->Bonedea)
+
+#define EVO_METHOD_COUNT                  51
 
 // Evolution 'modes,' for GetEvolutionTargetSpecies
 #define EVO_MODE_NORMAL            0
