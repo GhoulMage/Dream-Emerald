@@ -321,7 +321,7 @@ static void DestroyMoveSelectorSprites(u8);
 static void SetMainMoveSelectorColor(u8);
 static void KeepMoveSelectorVisible(u8);
 static void SummaryScreen_DestroyAnimDelayTask(void);
-static void BufferIvOrEvStats();
+//static void BufferIvOrEvStats();
 
 static const struct BgTemplate sBgTemplates[] =
 {
@@ -1526,8 +1526,8 @@ static bool8 DecompressGraphics(void)
     case 12:
         LoadCompressedPalette(gMoveTypes_Pal0, OBJ_PLTT_ID(13), 3 * PLTT_SIZE_4BPP);
         LoadCompressedPalette(gMoveTypes_Pal1, 0x1B0, 0x20);
-        LoadCompressedSpriteSheet(&sSpriteSheet_CategoryIcons);
-        LoadSpritePalette(&sSpritePal_CategoryIcons);
+        LoadCompressedSpriteSheet(&gSpriteSheet_CategoryIcons);
+        LoadSpritePalette(&gSpritePal_CategoryIcons);
         sMonSummaryScreen->switchCounter = 0;
         return TRUE;
     }
@@ -1719,12 +1719,6 @@ static void Task_HandleInput(u8 taskId)
                     PlaySE(SE_SELECT);
                     SwitchToMoveSelection(taskId);
                 }
-            }else{
-                BufferIvOrEvStats();
-                if(++sMonSummaryScreen->ivOrEvMode > 2){
-                    sMonSummaryScreen->ivOrEvMode = 0;
-                }
-                PlaySE(SE_WIN_OPEN);
             }
         }
         else if (JOY_NEW(B_BUTTON))
@@ -3614,6 +3608,7 @@ static void BufferStat(u8 *dst, u8 statIndex, u32 stat, u32 strId, u32 n)
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(strId, dst);
 }
 
+/*
 static void BufferIvOrEvStats(){
     u16 hp, hp2, atk, def, spA, spD, spe;
     hp2 = 0;
@@ -3690,7 +3685,7 @@ static void BufferIvOrEvStats(){
     }
 
     Free(currHPString);
-}
+}*/
 
 static void BufferLeftColumnStats(void)
 {

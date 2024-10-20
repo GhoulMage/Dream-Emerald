@@ -11159,6 +11159,9 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gMonPalette_ArceusFairy[] = INCBIN_U32("graphics/pokemon/arceus/fairy/normal.gbapal.lz");
     const u32 gMonShinyPalette_ArceusFairy[] = INCBIN_U32("graphics/pokemon/arceus/fairy/shiny.gbapal.lz");
 
+    const u32 gMonPalette_ArceusSound[] = INCBIN_U32("graphics/pokemon/arceus/sound/normal.gbapal.lz");
+    const u32 gMonShinyPalette_ArceusSound[] = INCBIN_U32("graphics/pokemon/arceus/sound/shiny.gbapal.lz");
+
 #if P_ARCEUS_UNIQUE_FORM_ICONS >= GEN_9
     const u8 gMonIcon_ArceusFighting[] = INCBIN_U8("graphics/pokemon/arceus/fighting/icon.4bpp");
     const u8 gMonIcon_ArceusFlying[] = INCBIN_U8("graphics/pokemon/arceus/flying/icon.4bpp");
@@ -11218,6 +11221,7 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gOverworldPalette_ArceusDragon[] = INCBIN_U32("graphics/pokemon/arceus/dragon/overworld_normal.gbapal.lz");
     const u32 gOverworldPalette_ArceusDark[] = INCBIN_U32("graphics/pokemon/arceus/dark/overworld_normal.gbapal.lz");
     const u32 gOverworldPalette_ArceusFairy[] = INCBIN_U32("graphics/pokemon/arceus/fairy/overworld_normal.gbapal.lz");
+    const u32 gOverworldPalette_ArceusSound[] = INCBIN_U32("graphics/pokemon/arceus/sound/overworld_normal.gbapal.lz");
     const u32 gShinyOverworldPalette_ArceusNormal[] = INCBIN_U32("graphics/pokemon/arceus/overworld_shiny.gbapal.lz");
     const u32 gShinyOverworldPalette_ArceusFighting[] = INCBIN_U32("graphics/pokemon/arceus/fighting/overworld_shiny.gbapal.lz");
     const u32 gShinyOverworldPalette_ArceusFlying[] = INCBIN_U32("graphics/pokemon/arceus/flying/overworld_shiny.gbapal.lz");
