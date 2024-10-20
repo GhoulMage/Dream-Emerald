@@ -165,9 +165,7 @@
 // Gen2 hold effect
 #define HOLD_EFFECT_BERSERK_GENE        184
 
-#define HOLD_EFFECT_SOUND_POWER         181
-
-#define HOLD_EFFECT_SOUND_POWER         181
+#define HOLD_EFFECT_SOUND_POWER         185
 
 #define HOLD_EFFECT_CHOICE(holdEffect)((holdEffect == HOLD_EFFECT_CHOICE_BAND || holdEffect == HOLD_EFFECT_CHOICE_SCARF || holdEffect == HOLD_EFFECT_CHOICE_SPECS))
 
