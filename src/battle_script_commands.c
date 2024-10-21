@@ -17361,7 +17361,7 @@ void BS_JumpIfBlockedBySoundproof(void)
 {
     NATIVE_ARGS(u8 battler, const u8 *jumpInstr);
     u32 battler = GetBattlerForBattleScript(cmd->battler);
-    if (gMovesInfo[gCurrentMove].soundMove && GetBattlerAbility(battler) == ABILITY_SOUNDPROOF)
+    if (MoveIsSonic(gCurrentMove) && GetBattlerAbility(battler) == ABILITY_SOUNDPROOF)
     {
         gLastUsedAbility = ABILITY_SOUNDPROOF;
         gBattlescriptCurrInstr = cmd->jumpInstr;
