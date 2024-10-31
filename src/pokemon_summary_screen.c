@@ -926,16 +926,17 @@ static const union AnimCmd sSpriteAnim_TypeSound[] = {
 #define PAL_TYPE_DRAGON       15
 #define PAL_TYPE_DARK         13
 #define PAL_TYPE_FAIRY        14
+#define PAL_TYPE_STELLAR      15
 #define PAL_TYPE_SOUND        11
 
 #define SPRITE_ANIM_FRAMES 40
 
 #define SPRITE_ANIM(type, paletteIndex)                              \
 {                                                                    \
-    ANIMCMD_PALETTE(PAL_TYPE_SOUND),                                 \
     ANIMCMD_FRAME(TYPE_SOUND * 8, SPRITE_ANIM_FRAMES, FALSE, FALSE), \
     ANIMCMD_PALETTE(paletteIndex),                                   \
     ANIMCMD_FRAME(type * 8, SPRITE_ANIM_FRAMES, FALSE, FALSE),       \
+    ANIMCMD_PALETTE(PAL_TYPE_SOUND),                                 \
     ANIMCMD_JUMP(0)                                                  \
 }
 
@@ -958,6 +959,7 @@ static const union AnimCmd sSpriteAnim_TypeSoundIce[]       = SPRITE_ANIM(TYPE_I
 static const union AnimCmd sSpriteAnim_TypeSoundDragon[]    = SPRITE_ANIM(TYPE_DRAGON    ,   PAL_TYPE_DRAGON);
 static const union AnimCmd sSpriteAnim_TypeSoundDark[]      = SPRITE_ANIM(TYPE_DARK      ,   PAL_TYPE_DARK);
 static const union AnimCmd sSpriteAnim_TypeSoundFairy[]     = SPRITE_ANIM(TYPE_FAIRY     ,   PAL_TYPE_FAIRY);
+static const union AnimCmd sSpriteAnim_TypeSoundStellar[]   = SPRITE_ANIM(TYPE_STELLAR   ,   PAL_TYPE_STELLAR);
 
 static const union AnimCmd sSpriteAnim_CategoryCool[] = {
     ANIMCMD_FRAME((CONTEST_CATEGORY_COOL + NUMBER_OF_MON_TYPES) * 8, 0, FALSE, FALSE),
@@ -1026,6 +1028,7 @@ static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES
     sSpriteAnim_TypeSoundDragon,
     sSpriteAnim_TypeSoundDark,
     sSpriteAnim_TypeSoundFairy,
+    sSpriteAnim_TypeSoundStellar,
 };
 
 const struct CompressedSpriteSheet gSpriteSheet_MoveTypes =
@@ -4116,10 +4119,14 @@ void SetTypeSpritePosAndPal(u8 typeId, u8 x, u8 y, u8 spriteArrayId)
 {
     struct Sprite *sprite = &gSprites[sMonSummaryScreen->spriteIds[spriteArrayId]];
     StartSpriteAnim(sprite, typeId);
-    if (typeId < NUMBER_OF_MON_TYPES)
+
+    if(typeId >= SOUND_TYPE_VARIATIONS_START) {
+        sprite->oam.paletteNum = 11;
+    } else if(typeId < NUMBER_OF_MON_TYPES){
         sprite->oam.paletteNum = gTypesInfo[typeId].palette;
-    else
+    } else
         sprite->oam.paletteNum = sContestCategoryToOamPaletteNum[typeId - NUMBER_OF_MON_TYPES];
+    
     sprite->x = x + 16;
     sprite->y = y + 8;
     SetSpriteInvisibility(spriteArrayId, FALSE);
