@@ -2049,6 +2049,8 @@ static u16 GetOverworldCastformSpecies(void)
         return SPECIES_CASTFORM_RAINY;
     case WEATHER_SNOW:
         return SPECIES_CASTFORM_SNOWY;
+    case WEATHER_TOXIC:
+        return SPECIES_CASTFORM_RAINY;
     }
     return SPECIES_CASTFORM_NORMAL;
 }

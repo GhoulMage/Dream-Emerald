@@ -211,8 +211,11 @@ const u32 gTrainerPalette_Twins[] = INCBIN_U32("graphics/trainers/front_pics/twi
 const u32 gTrainerFrontPic_Sailor[] = INCBIN_U32("graphics/trainers/front_pics/sailor.4bpp.lz");
 const u32 gTrainerPalette_Sailor[] = INCBIN_U32("graphics/trainers/front_pics/sailor.gbapal.lz");
 
-const u32 gTrainerFrontPic_MagmaAdmin[] = INCBIN_U32("graphics/trainers/front_pics/magma_admin.4bpp.lz");
-const u32 gTrainerPalette_MagmaAdmin[] = INCBIN_U32("graphics/trainers/front_pics/magma_admin.gbapal.lz");
+const u32 gTrainerFrontPic_MagmaAdmin_M[] = INCBIN_U32("graphics/trainers/front_pics/magma_admin_m.4bpp.lz");
+const u32 gTrainerPalette_MagmaAdmin_M[] = INCBIN_U32("graphics/trainers/front_pics/magma_admin_m.gbapal.lz");
+
+const u32 gTrainerFrontPic_MagmaAdmin_F[] = INCBIN_U32("graphics/trainers/front_pics/magma_admin_f.4bpp.lz");
+const u32 gTrainerPalette_MagmaAdmin_F[] = INCBIN_U32("graphics/trainers/front_pics/magma_admin_f.gbapal.lz");
 
 const u32 gTrainerFrontPic_Wally[] = INCBIN_U32("graphics/trainers/front_pics/wally.4bpp.lz");
 const u32 gTrainerPalette_Wally[] = INCBIN_U32("graphics/trainers/palettes/wally.gbapal.lz");
@@ -383,7 +386,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(SWIMMER_F, SwimmerF),
     TRAINER_SPRITE(TWINS, Twins),
     TRAINER_SPRITE(SAILOR, Sailor),
-    TRAINER_SPRITE(MAGMA_ADMIN, MagmaAdmin),
+    TRAINER_SPRITE(MAGMA_ADMIN_M, MagmaAdmin_M),
+    TRAINER_SPRITE(MAGMA_ADMIN_F, MagmaAdmin_F),
     TRAINER_SPRITE(WALLY, Wally),
     TRAINER_SPRITE(BRENDAN, Brendan),
     TRAINER_SPRITE(MAY, May),

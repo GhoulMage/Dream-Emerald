@@ -5163,6 +5163,7 @@ static void PlayAnimation(u32 battler, u8 animId, const u16 *argPtr, const u8 *n
     else if (animId == B_ANIM_RAIN_CONTINUES
           || animId == B_ANIM_SUN_CONTINUES
           || animId == B_ANIM_SANDSTORM_CONTINUES
+          || animId == B_ANIM_TOXIC_CONTINUES
           || animId == B_ANIM_HAIL_CONTINUES
           || animId == B_ANIM_SNOW_CONTINUES
           || animId == B_ANIM_FOG_CONTINUES)
@@ -8625,6 +8626,8 @@ static void RemoveAllWeather(void)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_SNOW;
     else if(gBattleWeather & B_WEATHER_FOG)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_FOG;
+    else if(gBattleWeather & B_WEATHER_TOXIC)
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_TOXIC;
     else
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_COUNT;  // failsafe
 
@@ -9956,6 +9959,13 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS();
         gBattleMoveDamage = gMovesInfo[gCurrentMove].argument;
+        
+        if(MoveHasAdditionalEffect(gCurrentMove, MOVE_EFFECT_FIXED_SUPER_EFFECTIVE_TO_ARG)
+            && IS_BATTLER_OF_TYPE(gBattlerTarget, GetMoveAdditionalEffectArg(gCurrentMove, MOVE_EFFECT_FIXED_SUPER_EFFECTIVE_TO_ARG)))
+        {
+            gBattleMoveDamage *= 2;
+            gMoveResultFlags |= MOVE_RESULT_SUPER_EFFECTIVE;
+        }
         break;
     }
     case VARIOUS_TRY_HIT_SWITCH_TARGET:
@@ -10866,6 +10876,12 @@ static void Cmd_various(void)
         gProtectStructs[battler].beakBlastCharge = TRUE;
         break;
     }
+    case VARIOUS_SET_CLAG_ABSORBED:
+    {
+        VARIOUS_ARGS();
+        gProtectStructs[battler].clagAbsorbed = TRUE;
+        break;
+    }
     case VARIOUS_SWAP_SIDE_STATUSES:
     {
         VARIOUS_ARGS();
@@ -11325,6 +11341,9 @@ static void Cmd_setfieldweather(void)
         break;
     case ENUM_WEATHER_SNOW:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_SNOW;
+        break;
+    case ENUM_WEATHER_TOXIC:
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_TOXIC;
         break;
     }
 

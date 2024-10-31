@@ -7815,6 +7815,26 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_PLUSLE
 
+const u32 gMonFrontPic_Pludentee[] = INCBIN_U32("graphics/pokemon/pludentee/anim_front.4bpp.lz");
+const u32 gMonPalette_Pludentee[] = INCBIN_U32("graphics/pokemon/pludentee/normal.gbapal.lz");
+const u32 gMonBackPic_Pludentee[] = INCBIN_U32("graphics/pokemon/pludentee/back.4bpp.lz");
+const u32 gMonShinyPalette_Pludentee[] = INCBIN_U32("graphics/pokemon/pludentee/shiny.gbapal.lz");
+const u8 gMonIcon_Pludentee[] = INCBIN_U8("graphics/pokemon/pludentee/icon.4bpp");
+const u8 gMonFootprint_Pludentee[] = INCBIN_U8("graphics/pokemon/pludentee/footprint.1bpp");
+const u32 gObjectEventPic_Pludentee[] = INCBIN_COMP("graphics/pokemon/pludentee/overworld.4bpp");
+const u32 gOverworldPalette_Pludentee[] = INCBIN_U32("graphics/pokemon/pludentee/overworld_normal.gbapal.lz");
+const u32 gShinyOverworldPalette_Pludentee[] = INCBIN_U32("graphics/pokemon/pludentee/overworld_shiny.gbapal.lz");
+
+const u32 gMonFrontPic_Midentee[] = INCBIN_U32("graphics/pokemon/midentee/anim_front.4bpp.lz");
+const u32 gMonPalette_Midentee[] = INCBIN_U32("graphics/pokemon/midentee/normal.gbapal.lz");
+const u32 gMonBackPic_Midentee[] = INCBIN_U32("graphics/pokemon/midentee/back.4bpp.lz");
+const u32 gMonShinyPalette_Midentee[] = INCBIN_U32("graphics/pokemon/midentee/shiny.gbapal.lz");
+const u8 gMonIcon_Midentee[] = INCBIN_U8("graphics/pokemon/midentee/icon.4bpp");
+const u8 gMonFootprint_Midentee[] = INCBIN_U8("graphics/pokemon/midentee/footprint.1bpp");
+const u32 gObjectEventPic_Midentee[] = INCBIN_COMP("graphics/pokemon/midentee/overworld.4bpp");
+const u32 gOverworldPalette_Midentee[] = INCBIN_U32("graphics/pokemon/midentee/overworld_normal.gbapal.lz");
+const u32 gShinyOverworldPalette_Midentee[] = INCBIN_U32("graphics/pokemon/midentee/overworld_shiny.gbapal.lz");
+
 #if P_FAMILY_MINUN
     const u32 gMonFrontPic_Minun[] = INCBIN_U32("graphics/pokemon/minun/anim_front.4bpp.lz");
     const u32 gMonPalette_Minun[] = INCBIN_U32("graphics/pokemon/minun/normal.gbapal.lz");

@@ -201,7 +201,7 @@ EWRAM_DATA u8 gBattleCommunication[BATTLE_COMMUNICATION_ENTRIES_COUNT] = {0};
 EWRAM_DATA u8 gBattleOutcome = 0;
 EWRAM_DATA struct ProtectStruct gProtectStructs[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA struct SpecialStatus gSpecialStatuses[MAX_BATTLERS_COUNT] = {0};
-EWRAM_DATA u16 gBattleWeather = 0;
+EWRAM_DATA u32 gBattleWeather = 0;
 EWRAM_DATA struct WishFutureKnock gWishFutureKnock = {0};
 EWRAM_DATA u16 gIntroSlideFlags = 0;
 EWRAM_DATA u8 gSentPokesToOpponent[2] = {0};
@@ -362,7 +362,8 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     TRAINER_CLASS(TWINS, "TWINS", 3),
     TRAINER_CLASS(SAILOR, "SAILOR", 8),
     TRAINER_CLASS(COOLTRAINER_2, "COOLTRAINER", 5, ITEM_ULTRA_BALL),
-    TRAINER_CLASS(MAGMA_ADMIN, "MAGMA ADMIN", 10),
+    TRAINER_CLASS(MAGMA_ADMIN_M, "MAGMA ADMIN", 10),
+    TRAINER_CLASS(MAGMA_ADMIN_F, "MAGMA ADMIN", 10),
     TRAINER_CLASS(RIVAL, "{PKMN} TRAINER", 15),
     TRAINER_CLASS(BUG_CATCHER, "BUG CATCHER", 4),
     TRAINER_CLASS(PKMN_RANGER, "{PKMN} RANGER", 12),
@@ -4773,6 +4774,8 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
     {
         if (ability == ABILITY_SWIFT_SWIM       && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA && gBattleWeather & B_WEATHER_RAIN)
             speed *= 2;
+        else if (gBattleWeather & B_WEATHER_SNOW && IS_BATTLER_OF_TYPE(battler, TYPE_ICE))
+            speed *= 1.5;
         else if (ability == ABILITY_CHLOROPHYLL && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA && gBattleWeather & B_WEATHER_SUN)
             speed *= 2;
         else if (ability == ABILITY_SAND_RUSH   && gBattleWeather & B_WEATHER_SANDSTORM)
@@ -4870,6 +4873,14 @@ s8 GetMovePriority(u32 battler, u16 move)
         && gMovesInfo[move].type == TYPE_FLYING)
     {
         priority++;
+    }
+    else if (gBattleWeather & B_WEATHER_TOXIC
+        && (move == MOVE_POISON_GAS
+        || move == MOVE_POISON_POWDER
+        || move == MOVE_SMOG
+        || move == MOVE_CLAG_ABSORB))
+    {
+        priority += 2;
     }
     else if (ability == ABILITY_PRANKSTER && IS_MOVE_STATUS(move))
     {
@@ -5445,7 +5456,8 @@ static void HandleEndTurn_BattleWon(void)
         case TRAINER_CLASS_TEAM_MAGMA:
         case TRAINER_CLASS_AQUA_ADMIN:
         case TRAINER_CLASS_AQUA_LEADER:
-        case TRAINER_CLASS_MAGMA_ADMIN:
+        case TRAINER_CLASS_MAGMA_ADMIN_M:
+        case TRAINER_CLASS_MAGMA_ADMIN_F:
         case TRAINER_CLASS_MAGMA_LEADER:
             PlayBGM(MUS_VICTORY_AQUA_MAGMA);
             break;
@@ -5857,6 +5869,8 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
                 gBattleStruct->dynamicMoveType = TYPE_WATER | F_DYNAMIC_TYPE_SET;
             else if (gBattleWeather & B_WEATHER_SANDSTORM)
                 gBattleStruct->dynamicMoveType = TYPE_ROCK | F_DYNAMIC_TYPE_SET;
+            else if (gBattleWeather & B_WEATHER_TOXIC)
+                gBattleStruct->dynamicMoveType = TYPE_POISON | F_DYNAMIC_TYPE_SET;
             else if (gBattleWeather & B_WEATHER_SUN && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
                 gBattleStruct->dynamicMoveType = TYPE_FIRE | F_DYNAMIC_TYPE_SET;
             else if (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW))
@@ -5959,6 +5973,16 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
     {
         gBattleStruct->dynamicMoveType = TYPE_NORMAL | F_DYNAMIC_TYPE_SET;
         if (GetActiveGimmick(battlerAtk) != GIMMICK_DYNAMAX)
+            gBattleStruct->ateBoost[battlerAtk] = 1;
+    }
+    else if (gMovesInfo[move].type != TYPE_POISON
+        && gMovesInfo[move].effect != EFFECT_HIDDEN_POWER
+        && gMovesInfo[move].effect != EFFECT_WEATHER_BALL
+        && attackerAbility == ABILITY_TOUGH_VENOM
+        && GetActiveGimmick(battlerAtk) != GIMMICK_Z_MOVE)
+    {
+        gBattleStruct->dynamicMoveType = TYPE_POISON | F_DYNAMIC_TYPE_SET;
+        if(GetActiveGimmick(battlerAtk) != GIMMICK_DYNAMAX)
             gBattleStruct->ateBoost[battlerAtk] = 1;
     }
     else if (MoveIsSonic(move) && ((attackerAbility == ABILITY_SINGER && (ateType = TYPE_NORMAL))

@@ -671,6 +671,10 @@ static void OpponentHandleChoosePokemon(u32 battler)
                 if (IsValidForBattle(&gEnemyParty[chosenMonId])
                     && chosenMonId != gBattlerPartyIndexes[battler1]
                     && chosenMonId != gBattlerPartyIndexes[battler2]
+                    && (!(AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_DOUBLE_ACE_POKEMON)
+                        || chosenMonId != CalculateEnemyPartyCount() - 1
+                        || chosenMonId != CalculateEnemyPartyCount() - 2
+                        || CountAIAliveNonEggMonsExcept(PARTY_SIZE) == pokemonInBattle)
                     && (!(AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_ACE_POKEMON)
                         || chosenMonId != CalculateEnemyPartyCount() - 1
                         || CountAIAliveNonEggMonsExcept(PARTY_SIZE) == pokemonInBattle))

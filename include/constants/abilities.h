@@ -354,8 +354,14 @@
 #define ABILITY_RICH_ACOUSTICS          323
 #define ABILITY_RASH_CUSHION            324
 #define ABILITY_TERRORIZE               325
+#define ABILITY_SMOG_REVEL              326
+#define ABILITY_NOXIOUS                 327
+#define ABILITY_TOUGH_VENOM             328
+#define ABILITY_IMMENSE_FANGS           329
+#define ABILITY_POSITIVE                330
+#define ABILITY_NEGATIVE                331
 
-#define ABILITIES_COUNT_DREAM_EMERALD   326
+#define ABILITIES_COUNT_DREAM_EMERALD   332
 
 #define ABILITIES_COUNT ABILITIES_COUNT_DREAM_EMERALD
 

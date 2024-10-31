@@ -27,6 +27,7 @@ enum {
     PTS_RAIN,
     PTS_SUN,
     PTS_SANDSTORM,
+    PTS_TOXIC,
     PTS_HAIL,
     PTS_ELECTRIC,
     PTS_STATUS_DMG,
@@ -164,6 +165,13 @@ static const u16 sPoints_SandstormMoves[] =
     MOVE_SOLAR_BEAM, -3,
     TABLE_END, 0
 };
+static const u16 sPoints_ToxicMoves[] =
+{
+    MOVE_WEATHER_BALL, 3,
+    MOVE_SMOG, 3,
+    MOVE_POISON_GAS, 3,
+    MOVE_POISON_POWDER, 3
+};
 static const u16 sPoints_HailMoves[] =
 {
     MOVE_WEATHER_BALL, 3,
@@ -282,6 +290,7 @@ static const u16 *const sPointsArray[] =
     [PTS_RAIN]                   = sPoints_RainMoves,
     [PTS_SUN]                    = sPoints_SunMoves,
     [PTS_SANDSTORM]              = sPoints_SandstormMoves,
+    [PTS_TOXIC]                  = sPoints_ToxicMoves,
     [PTS_HAIL]                   = sPoints_HailMoves,
     [PTS_ELECTRIC]               = sPoints_ElectricMoves,
     [PTS_STATUS_DMG]             = sPoints_StatusDmg,
@@ -971,6 +980,7 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
     case PTS_RAIN:
     case PTS_SUN:
     case PTS_SANDSTORM:
+    case PTS_TOXIC:
     case PTS_HAIL:
     case PTS_ELECTRIC:
         i = 0;
@@ -1391,4 +1401,6 @@ static void AddPointsBasedOnWeather(u16 weatherFlags, u16 moveId, u8 moveSlot)
         AddMovePoints(PTS_SANDSTORM, moveId, moveSlot, 0);
     else if (weatherFlags & (B_WEATHER_HAIL | B_WEATHER_SNOW))
         AddMovePoints(PTS_HAIL, moveId, moveSlot, 0);
+    else if (weatherFlags & B_WEATHER_TOXIC)
+        AddMovePoints(PTS_TOXIC, moveId, moveSlot, 0);
 }

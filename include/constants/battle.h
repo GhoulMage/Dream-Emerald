@@ -308,6 +308,9 @@
 #define B_WEATHER_FOG_TEMPORARY       (1 << 14)
 #define B_WEATHER_FOG_PERMANENT       (1 << 15)
 #define B_WEATHER_FOG                 (B_WEATHER_FOG_TEMPORARY | B_WEATHER_FOG_PERMANENT)
+#define B_WEATHER_TOXIC_TEMPORARY     (1 << 16)
+#define B_WEATHER_TOXIC_PERMANENT     (1 << 17)
+#define B_WEATHER_TOXIC               (B_WEATHER_TOXIC_TEMPORARY | B_WEATHER_TOXIC_PERMANENT)
 
 // Battle Weather as enum
 #define ENUM_WEATHER_NONE                 0
@@ -320,6 +323,7 @@
 #define ENUM_WEATHER_STRONG_WINDS         7
 #define ENUM_WEATHER_SNOW                 8
 #define ENUM_WEATHER_FOG                  9
+#define ENUM_WEATHER_TOXIC                10
 
 // Move Effects
 #define MOVE_EFFECT_SLEEP               1

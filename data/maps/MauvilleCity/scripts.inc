@@ -13,6 +13,7 @@ MauvilleCity_OnTransition:
 	setflag FLAG_SYS_TV_START
 	clearflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
 	setvar VAR_MAUVILLE_GYM_STATE, 0
+	call_if_eq VAR_NEW_MAUVILLE_STATE, 10, MauvilleCity_EventScript_MoveWattsonBackToGym
 	call_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_MoveWattsonBackToGym
 	end
 
@@ -419,9 +420,9 @@ MauvilleCity_EventScript_Wattson::
 	lock
 	faceplayer
 	goto_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_ReceivedThunderbolt
-	goto_if_eq VAR_NEW_MAUVILLE_STATE, 2, MauvilleCity_EventScript_CompletedNewMauville
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 9, MauvilleCity_EventScript_CompletedNewMauville
 	goto_if_set FLAG_GOT_BASEMENT_KEY_FROM_WATTSON, MauvilleCity_EventScript_BegunNewMauville
-	msgbox MauvilleCity_Text_WattsonNeedFavorTakeKey, MSGBOX_DEFAULT
+	msgbox MauvilleCity_Text_WattsonNeedTrainer, MSGBOX_DEFAULT
 	giveitem ITEM_BASEMENT_KEY
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_GOT_BASEMENT_KEY_FROM_WATTSON
@@ -577,6 +578,27 @@ MauvilleCity_Text_ScottYouDidntHoldBack:
 	.string "… … … … … …\n"
 	.string "I'll be cheering for you!$"
 
+MauvilleCity_Text_WattsonNeedTrainer:
+	.string "WATTSON: Oh, are you a Trainer\n"
+	.string "by any chance?\p"
+	.string "Of course you are, those badges!\n"
+	.string "That's a good thing, wahahahaha!\p"
+	.string "What is your name? {PLAYER}?\p"
+	.string "Fine! I've decided!\n"
+	.string "I need a favor, {PLAYER}{KUN}!\p"
+	.string "MAUVILLE CITY has an underground\n"
+	.string "sector called NEW MAUVILLE.\p"
+	.string "{PLAYER}{KUN}, I'd like you to go there and\n"
+	.string "switch off the GENERATOR.\p"
+	.string "The GENERATOR has been running a bit\n"
+	.string "haywire. It's getting unsafe.\p"
+	.string "Here, this is the KEY to get into\n"
+	.string "NEW MAUVILLE.\p"
+	.string "Why you? Well, I can't sleep in\n"
+	.string "peace until that gets fixed!\p"
+	.string "Nor can the GYM, so if you want\n"
+	.string "to challenge me, you will have to!$"
+
 MauvilleCity_Text_WattsonNeedFavorTakeKey:
 	.string "WATTSON: Oh, {PLAYER}{KUN}!\n"
 	.string "You look like you have a lot of zip!\l"
@@ -606,7 +628,9 @@ MauvilleCity_Text_WattsonThanksTakeTM:
 	.string "the right choice asking you!\p"
 	.string "This is my thanks--a TM containing\n"
 	.string "THUNDERBOLT!\p"
-	.string "Go on, you've earned it!$"
+	.string "Go on, you've earned it!\n"
+	.string "I'll wait for you in the GYM.\l"
+	.string "Wahahahaha!$"
 
 MauvilleCity_Text_WattsonYoungTakeCharge:
 	.string "WATTSON: Wahahahaha!\p"

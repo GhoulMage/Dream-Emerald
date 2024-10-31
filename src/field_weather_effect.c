@@ -1336,9 +1336,102 @@ static const struct SpriteTemplate sFogHorizontalSpriteTemplate =
     .callback = FogHorizontalSpriteCallback,
 };
 
+static const struct SpriteTemplate sToxicFogHorizontalSpriteTemplate =
+{
+    .tileTag = GFXTAG_TOXIC_FOG,
+    .paletteTag = PALTAG_WEATHER_TOXIC,
+    .oam = &sOamData_FogH,
+    .anims = sAnims_FogH,
+    .images = NULL,
+    .affineAnims = sAffineAnims_FogH,
+    .callback = FogHorizontalSpriteCallback,
+};
+
 void FogHorizontal_Main(void);
 static void CreateFogHorizontalSprites(void);
 static void DestroyFogHorizontalSprites(void);
+
+void Toxic_Main(void);
+static void CreateToxicFogHorizontalSprites(void);
+
+void Toxic_InitVars(void)
+{
+    FogHorizontal_InitVars();
+}
+
+void Toxic_InitAll(void)
+{
+    Toxic_InitVars();
+    while (gWeatherPtr->weatherGfxLoaded == FALSE)
+        Toxic_Main();
+}
+
+void Toxic_Main(void)
+{
+    gWeatherPtr->fogHScrollPosX = (gSpriteCoordOffsetX - gWeatherPtr->fogHScrollOffset) & 0xFF;
+    if (++gWeatherPtr->fogHScrollCounter > 3)
+    {
+        gWeatherPtr->fogHScrollCounter = 0;
+        gWeatherPtr->fogHScrollOffset++;
+    }
+    switch (gWeatherPtr->initStep)
+    {
+    case 0:
+        CreateToxicFogHorizontalSprites();
+        Weather_SetTargetBlendCoeffs(8, 4, 1);
+        gWeatherPtr->initStep++;
+        break;
+    case 1:
+        if (Weather_UpdateBlend())
+        {
+            gWeatherPtr->weatherGfxLoaded = TRUE;
+            gWeatherPtr->initStep++;
+        }
+        break;
+    }
+}
+
+#define tSpriteColumn data[0]
+
+static void CreateToxicFogHorizontalSprites(void)
+{
+    u16 i;
+    u8 spriteId;
+    struct Sprite *sprite;
+
+    if (!gWeatherPtr->fogHSpritesCreated)
+    {
+        struct SpriteSheet fogHorizontalSpriteSheet = {
+            .data = gWeatherFogHorizontalTiles,
+            .size = sizeof(gWeatherFogHorizontalTiles),
+            .tag = GFXTAG_TOXIC_FOG,
+        };
+        LoadSpriteSheet(&fogHorizontalSpriteSheet);
+        for (i = 0; i < NUM_FOG_HORIZONTAL_SPRITES; i++)
+        {
+            spriteId = CreateSpriteAtEnd(&sToxicFogHorizontalSpriteTemplate, 0, 0, 0xFF);
+            if (spriteId != MAX_SPRITES)
+            {
+                sprite = &gSprites[spriteId];
+                sprite->tSpriteColumn = i % 5;
+                sprite->x = (i % 5) * 64 + 32;
+                sprite->y = (i / 5) * 64 + 32;
+                gWeatherPtr->sprites.s2.fogHSprites[i] = sprite;
+            }
+            else
+            {
+                gWeatherPtr->sprites.s2.fogHSprites[i] = NULL;
+            }
+        }
+
+        gWeatherPtr->fogHSpritesCreated = TRUE;
+    }
+}
+
+bool8 Toxic_Finish(void)
+{
+    return FogHorizontal_Finish();
+}
 
 void FogHorizontal_InitVars(void)
 {
@@ -1418,8 +1511,6 @@ bool8 FogHorizontal_Finish(void)
     }
     return TRUE;
 }
-
-#define tSpriteColumn data[0]
 
 static void FogHorizontalSpriteCallback(struct Sprite *sprite)
 {
@@ -2579,6 +2670,7 @@ static u8 TranslateWeatherNum(u8 weather)
     case WEATHER_FOG_HORIZONTAL:     return WEATHER_FOG_HORIZONTAL;
     case WEATHER_VOLCANIC_ASH:       return WEATHER_VOLCANIC_ASH;
     case WEATHER_SANDSTORM:          return WEATHER_SANDSTORM;
+    case WEATHER_TOXIC:              return WEATHER_TOXIC;
     case WEATHER_FOG_DIAGONAL:       return WEATHER_FOG_DIAGONAL;
     case WEATHER_UNDERWATER:         return WEATHER_UNDERWATER;
     case WEATHER_SHADE:              return WEATHER_SHADE;

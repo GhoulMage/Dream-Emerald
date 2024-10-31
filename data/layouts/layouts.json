@@ -2417,7 +2417,7 @@
       "width": 58,
       "height": 26,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "0",
+      "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/UnusedOutdoorArea/border.bin",
       "blockdata_filepath": "data/layouts/UnusedOutdoorArea/map.bin"
     },
@@ -4450,6 +4450,16 @@
       "secondary_tileset": "gTileset_Shop",
       "border_filepath": "data/layouts/DreamPetalburg_FishermanDream/border.bin",
       "blockdata_filepath": "data/layouts/DreamPetalburg_FishermanDream/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_MAUVILLE_LOWER_FLOOR1",
+      "name": "NewMauville_LowerFloor1_Layout",
+      "width": 64,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BikeShop",
+      "border_filepath": "data/layouts/NewMauville_LowerFloor1/border.bin",
+      "blockdata_filepath": "data/layouts/NewMauville_LowerFloor1/map.bin"
     }
   ]
 }

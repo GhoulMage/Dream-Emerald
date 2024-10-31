@@ -2173,6 +2173,13 @@ static const struct SpriteFrameImage sPicTable_Plusle[] = {
 };
 #endif //P_FAMILY_PLUSLE
 
+static const struct SpriteFrameImage sPicTable_Pludentee[] = {
+    overworld_ascending_frames(gObjectEventPic_Pludentee, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Midentee[] = {
+    overworld_ascending_frames(gObjectEventPic_Midentee, 4, 4),
+};
+
 #if P_FAMILY_MINUN
 static const struct SpriteFrameImage sPicTable_Minun[] = {
     overworld_ascending_frames(gObjectEventPic_Minun, 4, 4),

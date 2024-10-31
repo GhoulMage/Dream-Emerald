@@ -13,10 +13,12 @@ enum {
     GFXTAG_SANDSTORM,
     GFXTAG_BUBBLE,
     GFXTAG_RAIN,
+    GFXTAG_TOXIC_FOG,
 };
 enum {
     PALTAG_WEATHER = TAG_WEATHER_START,
-    PALTAG_WEATHER_2
+    PALTAG_WEATHER_2,
+    PALTAG_WEATHER_TOXIC
 };
 
 #define NUM_WEATHER_COLOR_MAPS 19
@@ -140,6 +142,7 @@ struct Weather
 extern struct Weather gWeather;
 extern struct Weather *const gWeatherPtr;
 extern const u16 gFogPalette[];
+extern const u16 gToxicFogPalette[];
 
 // field_weather_effect.c
 extern const u8 gWeatherFogHorizontalTiles[];
@@ -205,6 +208,10 @@ void Sandstorm_InitVars(void);
 void Sandstorm_Main(void);
 void Sandstorm_InitAll(void);
 bool8 Sandstorm_Finish(void);
+void Toxic_InitVars(void);
+void Toxic_Main(void);
+void Toxic_InitAll(void);
+bool8 Toxic_Finish(void);
 void FogDiagonal_InitVars(void);
 void FogDiagonal_Main(void);
 void FogDiagonal_InitAll(void);

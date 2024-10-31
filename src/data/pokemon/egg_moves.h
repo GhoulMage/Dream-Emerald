@@ -2783,6 +2783,30 @@ static const u16 sPlusleEggMoveLearnset[] = {
 };
 #endif //P_FAMILY_PLUSLE
 
+
+static const u16 sPludenteeEggMoveLearnset[] = {
+    MOVE_WISH,
+    MOVE_SING,
+    MOVE_SWEET_KISS,
+    MOVE_DISCHARGE,
+    MOVE_LUCKY_CHANT,
+    MOVE_CHARM,
+    MOVE_FAKE_TEARS,
+    MOVE_TEARFUL_LOOK,
+    MOVE_UNAVAILABLE,
+};
+static const u16 sMidenteeEggMoveLearnset[] = {
+    MOVE_WISH,
+    MOVE_SING,
+    MOVE_SWEET_KISS,
+    MOVE_DISCHARGE,
+    MOVE_LUCKY_CHANT,
+    MOVE_CHARM,
+    MOVE_FAKE_TEARS,
+    MOVE_TEARFUL_LOOK,
+    MOVE_UNAVAILABLE,
+};
+
 #if P_FAMILY_MINUN
 static const u16 sMinunEggMoveLearnset[] = {
     MOVE_WISH,

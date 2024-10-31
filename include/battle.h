@@ -208,6 +208,7 @@ struct ProtectStruct
     u8 physicalBattlerId;
     u8 specialBattlerId;
     u8 terrorized:1;
+    u8 clagAbsorbed:1;
 };
 
 struct SpecialStatus
@@ -360,7 +361,7 @@ struct AiLogicData
     u16 abilities[MAX_BATTLERS_COUNT];
     u16 items[MAX_BATTLERS_COUNT];
     u16 holdEffects[MAX_BATTLERS_COUNT];
-    u8 holdEffectParams[MAX_BATTLERS_COUNT];
+    u16 holdEffectParams[MAX_BATTLERS_COUNT];
     u16 predictedMoves[MAX_BATTLERS_COUNT];
     u8 hpPercents[MAX_BATTLERS_COUNT];
     u16 partnerMove;
@@ -1094,7 +1095,7 @@ extern u8 gBattleCommunication[BATTLE_COMMUNICATION_ENTRIES_COUNT];
 extern u8 gBattleOutcome;
 extern struct ProtectStruct gProtectStructs[MAX_BATTLERS_COUNT];
 extern struct SpecialStatus gSpecialStatuses[MAX_BATTLERS_COUNT];
-extern u16 gBattleWeather;
+extern u32 gBattleWeather;
 extern struct WishFutureKnock gWishFutureKnock;
 extern u16 gIntroSlideFlags;
 extern u8 gSentPokesToOpponent[2];

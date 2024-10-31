@@ -268,6 +268,132 @@ const struct SpeciesInfo gSpeciesInfoDreamEmerald[] =
         .teachableLearnset = sBonedeaTeachableLearnset,
     },
 
+    [SPECIES_PLUDENTEE] =
+    {
+        .baseHP        = 80,
+        .baseAttack    = 60,
+        .baseDefense   = 50,
+        .baseSpeed     = 105,
+        .baseSpAttack  = 105,
+        .baseSpDefense = 80,
+        .types = MON_TYPES(TYPE_ELECTRIC),
+        .catchRate = 10,
+        .expYield = 210,
+        .evYield_Speed = 2,
+        .evYield_SpAttack = 2,
+        .itemRare = ITEM_CELL_BATTERY,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY),
+        .abilities = { ABILITY_PLUS, ABILITY_POSITIVE, ABILITY_LIGHTNING_ROD },
+        .bodyColor = BODY_COLOR_YELLOW,
+        .speciesName = _("Pludentee"),
+        .cryId = CRY_PLUSLE,
+        .natDexNum = NATIONAL_DEX_PLUDENTEE,
+        .categoryName = _("Uplifting"),
+        .height = 12,
+        .weight = 123,
+        .description = COMPOUND_STRING(
+            "Its static energy gives energy to those\n"
+            "around. Often times Pludentee are dispatched\n"
+            "in towns after catastrophes to help them\n"
+            "recover from the tragedy."),
+        .pokemonScale = 480,
+        .pokemonOffset = 0,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Pludentee,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_Pludentee,
+        .frontAnimId = ANIM_V_JUMPS_H_JUMPS,
+        .backPic = gMonBackPic_Pludentee,
+        .backPicSize = MON_COORDS_SIZE(56, 64),
+        .backPicYOffset = 3,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
+        .palette = gMonPalette_Pludentee,
+        .shinyPalette = gMonShinyPalette_Pludentee,
+        .iconSprite = gMonIcon_Pludentee,
+        .iconPalIndex = 0,
+        FOOTPRINT(Pludentee)
+        OVERWORLD(
+            sPicTable_Pludentee,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Pludentee,
+            gShinyOverworldPalette_Pludentee
+        )
+        .levelUpLearnset = sPludenteeLevelUpLearnset,
+        .teachableLearnset = sPludenteeTeachableLearnset,
+        .eggMoveLearnset = sPludenteeEggMoveLearnset,
+    },
+
+    [SPECIES_MIDENTEE] =
+    {
+        .baseHP        = 80,
+        .baseAttack    = 105,
+        .baseDefense   = 80,
+        .baseSpeed     = 105,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 50,
+        .types = MON_TYPES(TYPE_ELECTRIC),
+        .catchRate = 10,
+        .expYield = 210,
+        .evYield_Speed = 2,
+        .evYield_Attack = 2,
+        .itemRare = ITEM_CELL_BATTERY,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY),
+        .abilities = { ABILITY_MINUS, ABILITY_NEGATIVE, ABILITY_VOLT_ABSORB },
+        .bodyColor = BODY_COLOR_YELLOW,
+        .speciesName = _("Midentee"),
+        .cryId = CRY_MINUN,
+        .natDexNum = NATIONAL_DEX_MIDENTEE,
+        .categoryName = _("Uplifting"),
+        .height = 12,
+        .weight = 123,
+        .description = COMPOUND_STRING(
+            "It is well known that trainers that have\n"
+            "both Pludentee and Midentee experience\n"
+            "sudden bursts of energy, allowing them to\n"
+            "perform better during Battles and Contests."),
+        .pokemonScale = 410,
+        .pokemonOffset = 0,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Midentee,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_Midentee,
+        .frontAnimId = ANIM_V_JUMPS_H_JUMPS,
+        .backPic = gMonBackPic_Midentee,
+        .backPicSize = MON_COORDS_SIZE(48, 64),
+        .backPicYOffset = 4,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
+        .palette = gMonPalette_Midentee,
+        .shinyPalette = gMonShinyPalette_Midentee,
+        .iconSprite = gMonIcon_Midentee,
+        .iconPalIndex = 0,
+        FOOTPRINT(Midentee)
+        OVERWORLD(
+            sPicTable_Midentee,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Midentee,
+            gShinyOverworldPalette_Midentee
+        )
+        .levelUpLearnset = sMidenteeLevelUpLearnset,
+        .teachableLearnset = sMidenteeTeachableLearnset,
+        .eggMoveLearnset = sMidenteeEggMoveLearnset,
+    },
+
 #ifdef __INTELLISENSE__
 };
 #endif

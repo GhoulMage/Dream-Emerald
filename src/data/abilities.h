@@ -2620,7 +2620,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Ultrasonic"),
         .description = COMPOUND_STRING("Sound moves are harsher."),
-        .aiRating = 8,
+        .aiRating = 7,
     },
     
     [ABILITY_DRAGON_SCALE] = 
@@ -2634,7 +2634,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Panic Attack"),
         .description = COMPOUND_STRING("Crits if badly hurt."),
-        .aiRating = 8,
+        .aiRating = 3,
     },
     
     [ABILITY_SINGER] = 
@@ -2655,35 +2655,35 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Jackpot"),
         .description = COMPOUND_STRING("Doubles prize money."),
-        .aiRating = 8,
+        .aiRating = 1,
     },
     
     [ABILITY_DREAMCATCHER] = 
     {
         .name = _("Dreamcatcher"),
         .description = COMPOUND_STRING("Restores HP while asleep."),
-        .aiRating = 8,
+        .aiRating = 7,
     },
     
     [ABILITY_HEAVY_SLEEPER] = 
     {
         .name = _("Heavy Sleeper"),
         .description = COMPOUND_STRING("Negates Sound while asleep."),
-        .aiRating = 8,
+        .aiRating = 4,
     },
     
     [ABILITY_UPBEAT] = 
     {
         .name = _("Upbeat"),
         .description = COMPOUND_STRING("Sound boosts Speed."),
-        .aiRating = 8,
+        .aiRating = 6,
     },
     
     [ABILITY_CRESCENDO] = 
     {
         .name = _("Crescendo"),
         .description = COMPOUND_STRING("Ups Sound moves in a pinch."),
-        .aiRating = 8,
+        .aiRating = 7,
     },
     
     [ABILITY_RICH_ACOUSTICS] = 
@@ -2706,6 +2706,47 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Terrorizes foes once."),
         .aiRating = 10,
     },
-    
 
+    [ABILITY_SMOG_REVEL] =
+    {
+        .name = _("Smog Revel"),
+        .description = COMPOUND_STRING("Heals in Toxic Weather."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_NOXIOUS] =
+    {
+        .name = _("Noxious"),
+        .description = COMPOUND_STRING("Exudes toxic fumes."),
+        .aiRating = 9,
+    },
+
+    [ABILITY_TOUGH_VENOM] =
+    {
+        .name = _("Tough Venom"),
+        .description = COMPOUND_STRING("Moves become Poison-type."),
+        .aiRating = -1,
+    },
+
+    [ABILITY_IMMENSE_FANGS] =
+    {
+        .name = _("Immense Fangs"),
+        .description = COMPOUND_STRING("Fang moves are powerful."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_POSITIVE] =
+    {
+        .name = _("Positive"),
+        .description = COMPOUND_STRING("Protects user and Negative."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_NEGATIVE] =
+    {
+        .name = _("Negative"),
+        .description = COMPOUND_STRING("Protects user and Positive."),
+        .aiRating = 7,
+    },
+    
 };

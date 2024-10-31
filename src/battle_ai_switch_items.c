@@ -39,6 +39,10 @@ static void InitializeSwitchinCandidate(struct Pokemon *mon)
 
 static bool32 IsAceMon(u32 battler, u32 monPartyId)
 {
+    if( AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_DOUBLE_ACE_POKEMON
+        && !(gBattleStruct->forcedSwitch & gBitTable[battler])
+        && (monPartyId == CalculateEnemyPartyCount() - 1 || monPartyId == CalculateEnemyPartyCount() - 2))
+        return TRUE;
     if (AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_ACE_POKEMON
             && !(gBattleStruct->forcedSwitch & gBitTable[battler])
             && monPartyId == CalculateEnemyPartyCount()-1)
@@ -1609,7 +1613,7 @@ static u32 GetSwitchinHitsToKO(s32 damageTaken, u32 battler)
     u32 statusDamage = GetSwitchinStatusDamage(battler);
     u32 hitsToKO = 0, singleUseItemHeal = 0;
     u16 maxHP = AI_DATA->switchinCandidate.battleMon.maxHP, item = AI_DATA->switchinCandidate.battleMon.item, heldItemEffect = ItemId_GetHoldEffect(item);
-    u8 weatherDuration = gWishFutureKnock.weatherDuration, holdEffectParam = ItemId_GetHoldEffectParam(item);
+    u16 weatherDuration = gWishFutureKnock.weatherDuration, holdEffectParam = ItemId_GetHoldEffectParam(item);
     u32 opposingBattler = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(battler)));
     u32 opposingAbility = gBattleMons[opposingBattler].ability;
     bool32 usedSingleUseHealingItem = FALSE;

@@ -31,7 +31,7 @@ Route110_EventScript_BeginCylcingRoadChallenge::
 	special Special_BeginCyclingRoadChallenge
 	setvar VAR_CYCLING_CHALLENGE_STATE, 2
 	return
-
+	
 Route110_EventScript_AquaGrunt1::
 	lock
 	faceplayer

@@ -877,12 +877,28 @@
 #define TRAINER_STACY                       869
 #define TRAINER_STEPHANIE                   870
 #define TRAINER_FISHERMAN_DREAM_AQUA_GRUNT  871
+#define TRAINER_SOFIA                       872
+#define TRAINER_AGUSTIN                     873
+#define TRAINER_VIVIAN2                     874
+#define TRAINER_JACK2                       875
+#define TRAINER_OMELIA                      876
+#define TRAINER_WARREN2                     877
+#define TRAINER_GRUNT_NEW_MAUVILLE_1        878
+#define TRAINER_GRUNT_NEW_MAUVILLE_2        879
+#define TRAINER_GRUNT_NEW_MAUVILLE_3        880
+#define TRAINER_GRUNT_NEW_MAUVILLE_4        881
+#define TRAINER_GRUNT_NEW_MAUVILLE_5        882
+#define TRAINER_GRUNT_NEW_MAUVILLE_6        883
+#define TRAINER_GRUNTS_NEW_MAUVILLE_1       884
+#define TRAINER_GRUNTS_NEW_MAUVILLE_2       885
+#define TRAINER_COURTNEY_NEW_MAUVILLE       886
+#define TRAINER_ANA_MARY                    887
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 102 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      872
+#define TRAINERS_COUNT                      888
 #define MAX_TRAINERS_COUNT                  0x3C0 //960
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 

@@ -937,5 +937,7 @@ extern const u8 Move_G_MAX_DEPLETION[];
 extern const u8 Move_G_MAX_ONE_BLOW[];
 extern const u8 Move_G_MAX_RAPID_FLOW[];
 extern const u8 Move_PSYCHIC_INVERSION[];
+extern const u8 Move_TOXIC_SPREAD[];
+extern const u8 Move_CLAG_ABSORB[];
 
 #endif // GUARD_BATTLE_ANIM_SCRIPTS_H

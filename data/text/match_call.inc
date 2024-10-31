@@ -2014,6 +2014,12 @@ MatchCall_BattlePyramidText14::
 	.string "You're an inspiration!\n"
 	.string "See you again!$"
 
+MatchCall_Text_CrazyScientist1::
+	.string "I really don't know what to say\n"
+	.string "right now…\p"
+	.string "Babadooladoo!!\l"
+	.string "Woo poppy poppy!$"
+
 MatchCall_Text_Mom1::
 	.string "MOM: Your father and you…\n"
 	.string "Everyone is captivated by POKéMON.\p"

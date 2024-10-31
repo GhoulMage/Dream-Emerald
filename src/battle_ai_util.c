@@ -1526,6 +1526,8 @@ bool32 IsMoveEncouragedToHit(u32 battlerAtk, u32 battlerDef, u32 move)
     // increased accuracy but don't always hit
     if ((weather & B_WEATHER_RAIN) && gMovesInfo[move].effect == EFFECT_THUNDER)
         return TRUE;
+    if ((weather & B_WEATHER_TOXIC) && gMovesInfo[move].type == TYPE_POISON)
+        return TRUE;
     if ((weather & (B_WEATHER_HAIL | B_WEATHER_SNOW)) && gMovesInfo[move].effect == EFFECT_BLIZZARD)
         return TRUE;
     if (B_MINIMIZE_DMG_ACC >= GEN_6 && (gStatuses3[battlerDef] & STATUS3_MINIMIZED) && gMovesInfo[move].minimizeDoubleDamage)
@@ -1564,6 +1566,30 @@ bool32 ShouldTryOHKO(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbil
             odds -= 10;
         if (Random() % 100 + 1 < odds && gBattleMons[battlerAtk].level >= gBattleMons[battlerDef].level)
             return TRUE;
+    }
+    return FALSE;
+}
+
+bool32 ShouldSetToxic(u32 battler, u32 ability)
+{
+    u32 weather = AI_GetWeather(AI_DATA);
+    if (weather & B_WEATHER_TOXIC)
+        return FALSE;
+
+    if (ability == ABILITY_SMOG_REVEL
+      || ability == ABILITY_OVERCOAT
+      || ability == ABILITY_MAGIC_GUARD
+      || IS_BATTLER_OF_TYPE(battler, TYPE_POISON)
+      || IS_BATTLER_OF_TYPE(battler, TYPE_ELECTRIC)
+      || IS_BATTLER_OF_TYPE(battler, TYPE_SOUND)
+      || IS_BATTLER_OF_TYPE(battler, TYPE_BUG)
+      || HasMove(battler, MOVE_POISON_POWDER)
+      || HasMove(battler, MOVE_POISON_GAS)
+      || HasMove(battler, MOVE_SMOG)
+      || HasMove(battler, MOVE_CLAG_ABSORB)
+      || HasMoveEffect(battler, EFFECT_WEATHER_BALL))
+    {
+        return TRUE;
     }
     return FALSE;
 }
@@ -2237,6 +2263,7 @@ bool32 IsStatRaisingEffect(u32 effect)
     case EFFECT_ATTACK_UP_2:
     case EFFECT_DEFENSE_UP:
     case EFFECT_DEFENSE_UP_2:
+    case EFFECT_LIP_BITE:
     case EFFECT_DEFENSE_UP_3:
     case EFFECT_SPEED_UP:
     case EFFECT_SPEED_UP_2:
@@ -2472,6 +2499,18 @@ static bool32 BattlerAffectedBySandstorm(u32 battlerId, u32 ability)
     return FALSE;
 }
 
+static bool32 BattlerAffectedByToxicWeather(u32 battlerId, u32 ability)
+{
+    if (!IS_BATTLER_OF_TYPE(battlerId, TYPE_POISON)
+      && !IS_BATTLER_OF_TYPE(battlerId, TYPE_ELECTRIC)
+      && !IS_BATTLER_OF_TYPE(battlerId, TYPE_SOUND)
+      && !IS_BATTLER_OF_TYPE(battlerId, TYPE_BUG)
+      && ability != ABILITY_SMOG_REVEL
+      && ability != ABILITY_OVERCOAT)
+        return TRUE;
+    return FALSE;
+}
+
 static bool32 BattlerAffectedByHail(u32 battlerId, u32 ability)
 {
     if (!IS_BATTLER_OF_TYPE(battlerId, TYPE_ICE)
@@ -2498,6 +2537,16 @@ static u32 GetWeatherDamage(u32 battlerId)
           && holdEffect != HOLD_EFFECT_SAFETY_GOGGLES)
         {
             damage = GetNonDynamaxMaxHP(battlerId) / 16;
+            if (damage == 0)
+                damage = 1;
+        }
+    }
+    if (weather & B_WEATHER_TOXIC)
+    {
+        if (BattlerAffectedByToxicWeather(battlerId, ability)
+            && !(gStatuses3[battlerId] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER)))
+        {
+            damage = GetNonDynamaxMaxHP(battlerId) / 8;
             if (damage == 0)
                 damage = 1;
         }
@@ -2537,6 +2586,9 @@ bool32 BattlerWillFaintFromWeather(u32 battler, u32 ability)
 {
     if ((BattlerAffectedBySandstorm(battler, ability) || BattlerAffectedByHail(battler, ability))
       && gBattleMons[battler].hp <= max(1, gBattleMons[battler].maxHP / 16))
+        return TRUE;
+    if (BattlerAffectedByToxicWeather(battler, ability)
+        && gBattleMons[battler].hp <= max(1, gBattleMons[battler].maxHP / 8))
         return TRUE;
 
     return FALSE;
@@ -3288,7 +3340,8 @@ bool32 IsMoveEffectWeather(u32 move)
       || gMovesInfo[move].effect == EFFECT_RAIN_DANCE
       || gMovesInfo[move].effect == EFFECT_SANDSTORM
       || gMovesInfo[move].effect == EFFECT_HAIL
-      || gMovesInfo[move].effect == EFFECT_SNOWSCAPE))
+      || gMovesInfo[move].effect == EFFECT_SNOWSCAPE
+      || gMovesInfo[move].effect == EFFECT_TOXIC_SPREAD))
         return TRUE;
     return FALSE;
 }
@@ -4001,6 +4054,7 @@ bool32 AI_ShouldSpicyExtract(u32 battlerAtk, u32 battlerAtkPartner, u32 move, st
     {
     case EFFECT_DEFENSE_UP:
     case EFFECT_DEFENSE_UP_2:
+    case EFFECT_LIP_BITE:
     case EFFECT_DEFENSE_UP_3:
     case EFFECT_BULK_UP:
     case EFFECT_STOCKPILE:

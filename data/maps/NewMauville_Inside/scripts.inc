@@ -1,3 +1,5 @@
+.set LOCALID_CRAZYSCIENTIST, 9
+
 NewMauville_Inside_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, NewMauville_Inside_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, NewMauville_Inside_OnTransition
@@ -19,10 +21,24 @@ NewMauville_Inside_EventScript_TryRemoveVoltorb::
 NewMauville_Inside_OnTransition:
 	setvar VAR_TEMP_1, 0
 	setvar VAR_TEMP_2, 0
+	call_if_eq VAR_NEW_MAUVILLE_STATE, 6, NewMauville_Inside_EventScript_MoveScientist
+	call_if_eq VAR_NEW_MAUVILLE_STATE, 9, NewMauville_Inside_EventScript_MoveScientist2
+	call_if_eq VAR_NEW_MAUVILLE_STATE, 10, NewMauville_Inside_EventScript_MoveScientist2
+	call_if_eq VAR_NEW_MAUVILLE_STATE, 11, NewMauville_Inside_EventScript_MoveScientist2
 	call_if_unset FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE, NewMauville_Inside_EventScript_ShowVoltorb1
 	call_if_unset FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE, NewMauville_Inside_EventScript_ShowVoltorb2
 	call_if_unset FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE, NewMauville_Inside_EventScript_ShowVoltorb3
 	end
+
+NewMauville_Inside_EventScript_MoveScientist::
+	setobjectxyperm LOCALID_CRAZYSCIENTIST, 33, 9
+	setobjectmovementtype LOCALID_CRAZYSCIENTIST, MOVEMENT_TYPE_LOOK_AROUND
+	return
+
+NewMauville_Inside_EventScript_MoveScientist2::
+	setobjectxyperm LOCALID_CRAZYSCIENTIST, 5, 20
+	setobjectmovementtype LOCALID_CRAZYSCIENTIST, MOVEMENT_TYPE_LOOK_AROUND
+	return
 
 NewMauville_Inside_EventScript_ShowVoltorb1::
 	clearflag FLAG_HIDE_NEW_MAUVILLE_VOLTORB_1
@@ -37,7 +53,10 @@ NewMauville_Inside_EventScript_ShowVoltorb3::
 	return
 
 NewMauville_Inside_OnLoad:
-	call_if_eq VAR_NEW_MAUVILLE_STATE, 2, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
+	call_if_eq VAR_NEW_MAUVILLE_STATE, 8, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
+	call_if_eq VAR_NEW_MAUVILLE_STATE, 9, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
+	call_if_eq VAR_NEW_MAUVILLE_STATE, 10, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
+	call_if_eq VAR_NEW_MAUVILLE_STATE, 11, NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
 	end
 
 NewMauville_Inside_EventScript_BlueButton::
@@ -98,6 +117,7 @@ NewMauville_Inside_EventScript_SetBarrierStateBlueButton::
 	setmetatile 17, 10, METATILE_BikeShop_Button_Green, FALSE
 	setmetatile 25, 18, METATILE_BikeShop_Button_Green, FALSE
 	setmetatile 18, 36, METATILE_BikeShop_Button_Green, FALSE
+	setmetatile 26, 7, METATILE_BikeShop_Button_Green, FALSE
 	return
 
 NewMauville_Inside_EventScript_SetBarrierStateGreenButton::
@@ -133,6 +153,7 @@ NewMauville_Inside_EventScript_SetBarrierStateGreenButton::
 	setmetatile 17, 10, METATILE_BikeShop_Button_Pressed, FALSE
 	setmetatile 25, 18, METATILE_BikeShop_Button_Pressed, FALSE
 	setmetatile 18, 36, METATILE_BikeShop_Button_Pressed, FALSE
+	setmetatile 26, 7, METATILE_BikeShop_Button_Pressed, FALSE
 	setmetatile 6, 11, METATILE_BikeShop_Button_Blue, FALSE
 	setmetatile 13, 10, METATILE_BikeShop_Button_Blue, FALSE
 	setmetatile 16, 22, METATILE_BikeShop_Button_Blue, FALSE
@@ -140,11 +161,276 @@ NewMauville_Inside_EventScript_SetBarrierStateGreenButton::
 	setmetatile 30, 38, METATILE_BikeShop_Button_Blue, FALSE
 	return
 
+NewMauville_Inside_EventScript_CrazyScientist::
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 6, NewMauville_Inside_EventScript_CrazyScientist2
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 7, NewMauville_Inside_EventScript_CrazyScientist3
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 8, NewMauville_Inside_EventScript_CrazyScientist4
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 9, NewMauville_Inside_EventScript_CrazyScientist5
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 10, NewMauville_Inside_EventScript_CrazyScientist6
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 11, NewMauville_Inside_EventScript_CrazyScientist7
+	locktarget
+	faceplayer
+	msgbox Crazy_Text_Text1, MSGBOX_DEFAULT
+	applymovement LOCALID_CRAZYSCIENTIST, Common_Movement_FaceUp
+	waitmovement LOCALID_CRAZYSCIENTIST
+	release
+	end
+
+NewMauville_Inside_EventScript_CrazyScientist2::
+	locktarget
+	faceplayer
+	msgbox Crazy_Text_NewNews, MSGBOX_DEFAULT
+	msgbox Crazy_Gave_Parts, MSGBOX_DEFAULT
+	playfanfare MUS_OBTAIN_ITEM
+	waitfanfare
+	delay 30
+	closemessage
+	switch VAR_FACING
+	case DIR_SOUTH, MovePlayerAway
+	applymovement OBJ_EVENT_ID_PLAYER, MoveUpTwice
+ContinueScientist2::
+	applymovement LOCALID_CRAZYSCIENTIST, GoGen
+	waitmovement LOCALID_CRAZYSCIENTIST
+	playse SE_PIN
+	delay 90
+	applymovement LOCALID_CRAZYSCIENTIST, Common_Movement_FaceDown
+	msgbox Crazy_Honours, MSGBOX_DEFAULT
+	setvar VAR_NEW_MAUVILLE_STATE, 7
+	closemessage
+	release
+	end
+
+MovePlayerAway::
+	applymovement OBJ_EVENT_ID_PLAYER, MoveAway
+	goto ContinueScientist2
+
+MoveAway::
+	walk_left
+	walk_in_place_right
+	walk_in_place_up
+	step_end
+
+MoveUpTwice::
+	walk_up
+	walk_up
+	step_end
+
+NewMauville_Inside_EventScript_CrazyScientist3::
+	locktarget
+	faceplayer
+	msgbox Crazy_Text_GoAhead, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_CRAZYSCIENTIST, Common_Movement_FaceDown
+	release
+	end
+
+NewMauville_Inside_EventScript_CrazyScientist4::
+	locktarget
+	faceplayer
+	msgbox Crazy_Amazing, MSGBOX_DEFAULT
+	giveitem ITEM_WACAN_BERRY, 3
+	giveitem ITEM_CHERI_BERRY, 3
+	msgbox Crazy_Text_WattsonTips, MSGBOX_DEFAULT
+	setvar VAR_NEW_MAUVILLE_STATE, 9
+	release
+	end
+
+NewMauville_Inside_EventScript_CrazyScientist5::
+	locktarget
+	faceplayer
+	msgbox Crazy_Text_ScientistComeBack, MSGBOX_DEFAULT
+	release
+	end
+
+NewMauville_Inside_EventScript_CrazyScientist6::
+	locktarget
+	faceplayer
+	msgbox Crazy_Text_ScientistCongratulations, MSGBOX_DEFAULT
+	giveitem ITEM_TOXIC_PLATE, 2
+	giveitem ITEM_ZAP_PLATE, 2
+	setvar VAR_NEW_MAUVILLE_STATE, 11
+	release
+	end
+
+NewMauville_Inside_EventScript_CrazyScientist7::
+	locktarget
+	faceplayer
+	msgbox Crazy_Text_ScientistMe, MSGBOX_DEFAULT
+	release
+	end
+
+Crazy_Amazing:
+	.string "Finally! It's done!\p"
+	.string "Thank you so much, I'm glad\n"
+	.string "Wattson sent you! Hoolunga!\p"
+	.string "Oh? You're gonna fight him now?\n"
+	.string "Then, as a thanks, I know what\l"
+	.string "to reward you.$"
+
+Crazy_Text_WattsonTips:
+	.string "Wattson hits hard, so these\n"
+	.string "will help your Pokémon survive\p"
+Crazy_Text_ScientistComeBack:
+	.string "I understand you might not\n"
+	.string "want to, but after defeating\l"
+	.string "Wattson come down here!\p"
+	.string "I hid something in the boxes\n"
+	.string "below that might be useful to\l"
+	.string "you. Goolo!$"
+
+Crazy_Text_ScientistCongratulations:
+	.string "{PLAYER}! That GYM Badge looks\n"
+	.string "good on you! Very shiny!\p"
+	.string "Congratulations for defeating\n"
+	.string "Wattson, I also found what I\l"
+	.string "told you before!$"
+
+Crazy_Text_ScientistPlates:
+	.string "Plates will boost one attack\n"
+	.string "type, making them hit harder\l"
+	.string "than before! Wahalahaa!$"
+
+Crazy_Text_ScientistMe:
+	.string "Me? I'm just gonna stay here.\p"
+	.string "I have to gather lots of data\n"
+	.string "that were left in the boxes when\l"
+	.string "everybody left.$"
+
+Crazy_Honours:
+	.string "You can do the honors.$"
+
+Crazy_Text_GoAhead:
+	.string "Go ahead!$"
+
+GoGen:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+NewMauville_Inside_EventScript_CrazyScientistNotices::
+	lockall
+	applymovement LOCALID_CRAZYSCIENTIST, Common_Movement_FacePlayer
+	waitmovement LOCALID_CRAZYSCIENTIST
+	applymovement LOCALID_CRAZYSCIENTIST, Common_Movement_ExclamationMark
+	waitmovement LOCALID_CRAZYSCIENTIST
+	delay 50
+	specialvar VAR_RESULT, GetPlayerYLocation
+	switch VAR_RESULT
+	case 4, Crazy_Approaches_Straight
+	case 5, Crazy_Approaches_StraightDown
+Crazy_TalkFirst::
+	msgbox Crazy_Text_Introduction, MSGBOX_DEFAULT
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox Crazy_Text_Registered, MSGBOX_DEFAULT
+	waitfanfare
+	delay 15
+	setflag FLAG_ENABLE_CRAZYSCIENTIST_MATCH_CALL
+	msgbox Crazy_Text_FollowUp, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_NEW_MAUVILLE_STATE, 2
+	switch VAR_RESULT
+	case 4, Crazy_GoesBack_Straight
+	case 5, Crazy_GoesBack_StraightUp
+
+Crazy_Text_Introduction:
+	.string "Finally! I've been here waiting\n"
+	.string "for a while now! Where have you been?\p"
+	.string "Oh sorry, did Wattson not tell you?\p"
+	.string "I am here to guide you into this\n"
+	.string "facility. I cannot battle as well as\l"
+	.string "someone who defeated a GYM leader.\p"
+	.string "You'll understand when you go down…\n"
+	.string "Here, let's connect through PokéNav.$"
+
+Crazy_Text_Registered:
+	.string "Registered CRAZY SCIENTIST\n"
+	.string "in the POKéNAV…$"
+
+Crazy_Text_FollowUp:
+	.string "Make sure your team is ready,\n"
+	.string "the floor below us is something else.$"
+
+Crazy_Text_Text1:
+	.string "I'd buy ANTIDOTEs and PARALIZE HEALs\n"
+	.string "before going down there.\l"
+	.string "And POTIONs, lots of POTIONs.$"
+
+Crazy_Text_NewNews:
+	.string "Oomalunga! Wattson will like these\n"
+	.string "new news!$"
+
+Crazy_Gave_Parts:
+	.string "{PLAYER} gave the Generator Part\n"
+	.string "to the scientist.$"
+
+Crazy_GoesBack_Straight::
+	applymovement LOCALID_CRAZYSCIENTIST, Crazy_GoBack_Straight
+	waitmovement LOCALID_CRAZYSCIENTIST
+	release
+	end
+
+Crazy_GoesBack_StraightUp::
+	applymovement LOCALID_CRAZYSCIENTIST, Crazy_GoBack_StraightUp
+	waitmovement LOCALID_CRAZYSCIENTIST
+	release
+	end
+
+Crazy_GoBack_Straight:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_up
+	delay_16
+	step_end
+
+Crazy_GoBack_StraightUp:
+	walk_right
+	walk_right
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_up
+	delay_16
+	step_end
+
+Crazy_Approaches_Straight::
+	applymovement LOCALID_CRAZYSCIENTIST, Crazy_GotoPlayer_Straight
+	waitmovement LOCALID_CRAZYSCIENTIST
+	goto Crazy_TalkFirst
+
+Crazy_Approaches_StraightDown::
+	applymovement LOCALID_CRAZYSCIENTIST, Crazy_GotoPlayer_StraightDown
+	waitmovement LOCALID_CRAZYSCIENTIST
+	goto Crazy_TalkFirst
+
+Crazy_GotoPlayer_Straight:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+Crazy_GotoPlayer_StraightDown:
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
 NewMauville_Inside_EventScript_RedButton::
 	lockall
 	msgbox NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped, MSGBOX_DEFAULT
 	call NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
-	setvar VAR_NEW_MAUVILLE_STATE, 2
+	setvar VAR_NEW_MAUVILLE_STATE, 8
 	releaseall
 	end
 
@@ -163,7 +449,11 @@ NewMauville_Inside_EventScript_SetGeneratorOffMetatiles::
 
 NewMauville_Inside_EventScript_Generator::
 	lockall
-	goto_if_eq VAR_NEW_MAUVILLE_STATE, 2, NewMauville_Inside_EventScript_GeneratorOff
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 7, NewMauville_Inside_EventScript_GeneratorOff
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 8, NewMauville_Inside_EventScript_GeneratorOff
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 9, NewMauville_Inside_EventScript_GeneratorOff
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 10, NewMauville_Inside_EventScript_GeneratorOff
+	goto_if_eq VAR_NEW_MAUVILLE_STATE, 11, NewMauville_Inside_EventScript_GeneratorOff
 	msgbox NewMauville_Inside_Text_GeneratorRadiatingHeat, MSGBOX_DEFAULT
 	releaseall
 	end

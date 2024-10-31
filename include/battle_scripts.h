@@ -146,6 +146,7 @@ extern const u8 BattleScript_TargetPRLZHeal[];
 extern const u8 BattleScript_TargetWokeUp[];
 extern const u8 BattleScript_TargetBurnHeal[];
 extern const u8 BattleScript_TargetPoisonHealed[];
+extern const u8 BattleScript_PoisonAbsorbed[];
 extern const u8 BattleScript_MoveEffectSleep[];
 extern const u8 BattleScript_YawnMakesAsleep[];
 extern const u8 BattleScript_MoveEffectPoison[];
@@ -169,6 +170,7 @@ extern const u8 BattleScript_SpeedBoostActivates[];
 extern const u8 BattleScript_TraceActivates[];
 extern const u8 BattleScript_RainDishActivates[];
 extern const u8 BattleScript_SandstreamActivates[];
+extern const u8 BattleScript_NoxiousActivates[];
 extern const u8 BattleScript_ShedSkinActivates[];
 extern const u8 BattleScript_IntimidateActivates[];
 extern const u8 BattleScript_DroughtActivates[];
@@ -717,6 +719,7 @@ extern const u8 BattleScript_EffectTickle[];
 extern const u8 BattleScript_EffectCosmicPower[];
 extern const u8 BattleScript_EffectSkyUppercut[];
 extern const u8 BattleScript_EffectBulkUp[];
+extern const u8 BattleScript_EffectLipBite[];
 extern const u8 BattleScript_EffectPlaceholder[];
 extern const u8 BattleScript_EffectWaterSport[];
 extern const u8 BattleScript_EffectCalmMind[];
@@ -855,5 +858,8 @@ extern const u8 BattleScript_EffectSpicyExtract[];
 extern const u8 BattleScript_DamageToQuarterTargetHP[];
 extern const u8 BattleScript_EffectFickleBeam[];
 extern const u8 BattleScript_FickleBeamDoubled[];
+
+extern const u8 BattleScript_EffectToxicSpread[];
+extern const u8 BattleScript_EffectClagAbsorb[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

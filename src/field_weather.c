@@ -94,6 +94,7 @@ static const struct WeatherCallbacks sWeatherFuncs[] =
     [WEATHER_FOG_HORIZONTAL]     = {FogHorizontal_InitVars, FogHorizontal_Main, FogHorizontal_InitAll, FogHorizontal_Finish},
     [WEATHER_VOLCANIC_ASH]       = {Ash_InitVars,           Ash_Main,           Ash_InitAll,           Ash_Finish},
     [WEATHER_SANDSTORM]          = {Sandstorm_InitVars,     Sandstorm_Main,     Sandstorm_InitAll,     Sandstorm_Finish},
+    [WEATHER_TOXIC]              = {Toxic_InitVars,         Toxic_Main,         Toxic_InitAll,         Toxic_Finish},
     [WEATHER_FOG_DIAGONAL]       = {FogDiagonal_InitVars,   FogDiagonal_Main,   FogDiagonal_InitAll,   FogDiagonal_Finish},
     [WEATHER_UNDERWATER]         = {FogHorizontal_InitVars, FogHorizontal_Main, FogHorizontal_InitAll, FogHorizontal_Finish},
     [WEATHER_SHADE]              = {Shade_InitVars,         Shade_Main,         Shade_InitAll,         Shade_Finish},
@@ -151,11 +152,30 @@ static const u8 ALIGNED(2) sBasePaletteColorMapTypes[32] =
 };
 
 const u16 ALIGNED(4) gFogPalette[] = INCBIN_U16("graphics/weather/fog.gbapal");
+const u16 ALIGNED(4) gToxicFogPalette[] = INCBIN_U16("graphics/weather/toxicFumes.gbapal");
+
+void SetupToxicWeather(void)
+{
+    u8 index = AllocSpritePalette(PALTAG_WEATHER_TOXIC);
+    CpuCopy32(gToxicFogPalette, &gPlttBufferUnfaded[OBJ_PLTT_ID(index)], PLTT_SIZE_4BPP);
+    gWeatherPtr->weatherPicSpritePalIndex = index;
+    UpdateSpritePaletteWithWeather(index);
+    gWeatherPtr->contrastColorMapSpritePalIndex = index;
+}
+
+void SetupGenericWeather(void)
+{
+    u8 index = AllocSpritePalette(PALTAG_WEATHER);
+    CpuCopy32(gFogPalette, &gPlttBufferUnfaded[OBJ_PLTT_ID(index)], PLTT_SIZE_4BPP);
+    BuildColorMaps();
+    gWeatherPtr->contrastColorMapSpritePalIndex = index;
+    gWeatherPtr->weatherPicSpritePalIndex = AllocSpritePalette(PALTAG_WEATHER_2);
+}
 
 void StartWeather(void)
 {
     if (!FuncIsActiveTask(Task_WeatherMain))
-    {
+    {        
         u8 index = AllocSpritePalette(PALTAG_WEATHER);
         CpuCopy32(gFogPalette, &gPlttBufferUnfaded[OBJ_PLTT_ID(index)], PLTT_SIZE_4BPP);
         BuildColorMaps();
@@ -190,6 +210,11 @@ void SetNextWeather(u8 weather)
 
     if (gWeatherPtr->nextWeather != weather && gWeatherPtr->currWeather == weather)
     {
+        if(weather == WEATHER_TOXIC)
+            SetupToxicWeather();
+        // else
+        //     SetupGenericWeather();
+        
         sWeatherFuncs[weather].initVars();
     }
 
@@ -221,6 +246,10 @@ static void Task_WeatherInit(u8 taskId)
     if (gWeatherPtr->readyForInit)
     {
         UpdateCameraPanning();
+        if(gWeatherPtr->currWeather == WEATHER_TOXIC)
+            SetupToxicWeather();
+        // else
+        //     SetupGenericWeather();
         sWeatherFuncs[gWeatherPtr->currWeather].initAll();
         gTasks[taskId].func = Task_WeatherMain;
     }
@@ -233,6 +262,10 @@ static void Task_WeatherMain(u8 taskId)
         if (!sWeatherFuncs[gWeatherPtr->currWeather].finish()
             && gWeatherPtr->palProcessingState != WEATHER_PAL_STATE_SCREEN_FADING_OUT)
         {
+            if(gWeatherPtr->nextWeather == WEATHER_TOXIC)
+                SetupToxicWeather();
+            // else
+            //     SetupGenericWeather();
             // Finished cleaning up previous weather. Now transition to next weather.
             sWeatherFuncs[gWeatherPtr->nextWeather].initVars();
             gWeatherPtr->colorMapStepCounter = 0;
@@ -392,6 +425,7 @@ static void FadeInScreenWithWeather(void)
             gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
         }
         break;
+    case WEATHER_TOXIC:
     case WEATHER_FOG_HORIZONTAL:
         if (FadeInScreen_FogHorizontal() == FALSE)
         {
@@ -771,6 +805,7 @@ void FadeScreen(u8 mode, s8 delay)
     case WEATHER_RAIN_THUNDERSTORM:
     case WEATHER_DOWNPOUR:
     case WEATHER_FOG_HORIZONTAL:
+    case WEATHER_TOXIC:
     case WEATHER_SHADE:
     case WEATHER_DROUGHT:
         useWeatherPal = TRUE;
@@ -1025,6 +1060,9 @@ static void UNUSED SetFieldWeather(u8 weather)
     case COORD_EVENT_WEATHER_SANDSTORM:
         SetWeather(WEATHER_SANDSTORM);
         break;
+    case COORD_EVENT_WEATHER_TOXIC:
+        SetWeather(WEATHER_TOXIC);
+        break;
     case COORD_EVENT_WEATHER_SHADE:
         SetWeather(WEATHER_SHADE);
         break;
@@ -1109,6 +1147,7 @@ void ResetPreservedPalettesInWeather(void)
 bool32 IsWeatherAlphaBlend(void)
 {
     return (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL
+         || gWeatherPtr->currWeather == WEATHER_TOXIC
          || gWeatherPtr->currWeather == WEATHER_FOG_DIAGONAL
          || gWeatherPtr->currWeather == WEATHER_UNDERWATER_BUBBLES
          || gWeatherPtr->currWeather == WEATHER_UNDERWATER);

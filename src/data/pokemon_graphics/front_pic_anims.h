@@ -4206,10 +4206,28 @@ static const union AnimCmd sAnim_Plusle_1[] =
     ANIMCMD_FRAME(0, 10),
     ANIMCMD_END,
 };
+static const union AnimCmd sAnim_Pludentee_1[] =
+{
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END,
+};
 #endif //P_FAMILY_PLUSLE
 
 #if P_FAMILY_MINUN
 static const union AnimCmd sAnim_Minun_1[] =
+{
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 10),
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_END,
+};
+static const union AnimCmd sAnim_Midentee_1[] =
 {
     ANIMCMD_FRAME(0, 10),
     ANIMCMD_FRAME(1, 10),
@@ -11217,9 +11235,11 @@ SINGLE_ANIMATION(ManectricMega);
 #endif //P_FAMILY_ELECTRIKE
 #if P_FAMILY_PLUSLE
 SINGLE_ANIMATION(Plusle);
+SINGLE_ANIMATION(Pludentee);
 #endif //P_FAMILY_PLUSLE
 #if P_FAMILY_MINUN
 SINGLE_ANIMATION(Minun);
+SINGLE_ANIMATION(Midentee);
 #endif //P_FAMILY_MINUN
 #if P_FAMILY_VOLBEAT_ILLUMISE
 SINGLE_ANIMATION(Volbeat);

@@ -17,7 +17,7 @@ struct Item
     u8 name[ITEM_NAME_LENGTH];
     u8 pluralName[ITEM_NAME_PLURAL_LENGTH];
     u8 holdEffect;
-    u8 holdEffectParam;
+    u16 holdEffectParam;
     u8 importance;
     u8 pocket;
     u8 type;

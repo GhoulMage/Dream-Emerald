@@ -221,7 +221,7 @@ static const match_call_text_data_t sMomTextScripts[] = {
     { MatchCall_Text_Mom1, 0xFFFF,                      0xFFFF },
     { MatchCall_Text_Mom2, FLAG_DEFEATED_PETALBURG_GYM, 0xFFFF },
     { MatchCall_Text_Mom3, FLAG_SYS_GAME_CLEAR,         0xFFFF },
-    { NULL,                0xFFFF,                      0xFFFF }
+    { NULL,                0xFFFF,                      0xFFFF },
 };
 
 static const struct MatchCallStructNPC sMomMatchCallHeader =
@@ -282,6 +282,21 @@ static const struct MatchCallRival sMayMatchCallHeader =
     .desc = gText_MayBrendanMatchCallDesc,
     .name = gText_ExpandedPlaceholder_May,
     .textData = sMayTextScripts
+};
+
+static const match_call_text_data_t sCrazyScientistTextScripts[] = {
+    { MatchCall_Text_CrazyScientist1, 0xFFFF,                      0xFFFF },
+    { NULL,                0xFFFF,                      0xFFFF }
+};
+
+static const struct MatchCallStructNPC sCrazyScientistCallHeader =
+{
+    .type = MC_TYPE_NPC,
+    .mapSec = MAPSEC_MAUVILLE_CITY,
+    .flag = FLAG_ENABLE_CRAZYSCIENTIST_MATCH_CALL,
+    .desc = gText_CrazyScientistCallDesc,
+    .name = gText_CrazyScientistCallName,
+    .textData = sCrazyScientistTextScripts
 };
 
 static const match_call_text_data_t sBrendanTextScripts[] = {
@@ -587,6 +602,7 @@ static const match_call_t sMatchCallHeaders[] = {
     [MC_HEADER_MOM]        = {.npc    = &sMomMatchCallHeader},
     [MC_HEADER_STEVEN]     = {.npc    = &sStevenMatchCallHeader},
     [MC_HEADER_SCOTT]      = {.npc    = &sScottMatchCallHeader},
+    [MC_HEADER_CRAZY_S]    = {.npc    = &sCrazyScientistCallHeader},
     [MC_HEADER_ROXANNE]    = {.leader = &sRoxanneMatchCallHeader},
     [MC_HEADER_BRAWLY]     = {.leader = &sBrawlyMatchCallHeader},
     [MC_HEADER_WATTSON]    = {.leader = &sWattsonMatchCallHeader},
@@ -598,7 +614,7 @@ static const match_call_t sMatchCallHeaders[] = {
     [MC_HEADER_PHOEBE]     = {.leader = &sPhoebeMatchCallHeader},
     [MC_HEADER_GLACIA]     = {.leader = &sGlaciaMatchCallHeader},
     [MC_HEADER_DRAKE]      = {.leader = &sDrakeMatchCallHeader},
-    [MC_HEADER_WALLACE]    = {.leader = &sWallaceMatchCallHeader}
+    [MC_HEADER_WALLACE]    = {.leader = &sWallaceMatchCallHeader},
 };
 
 static bool32 (*const sMatchCallGetEnabledFuncs[])(match_call_t) = {

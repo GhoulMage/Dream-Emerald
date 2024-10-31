@@ -85,6 +85,7 @@ MauvilleCity_Gym_EventScript_Wattson::
 
 MauvilleCity_Gym_EventScript_WattsonDefeated::
 	message MauvilleCity_Gym_Text_ReceivedDynamoBadge
+	setvar VAR_NEW_MAUVILLE_STATE, 10
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
 	msgbox MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis, MSGBOX_DEFAULT

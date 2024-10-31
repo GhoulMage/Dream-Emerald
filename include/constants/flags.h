@@ -43,7 +43,7 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
+#define FLAG_NEW_MAUVILLE_MAGMA    0x20 // Dream Emerald
 #define FLAG_UNUSED_0x021    0x21 // Unused Flag
 #define FLAG_UNUSED_0x022    0x22 // Unused Flag
 #define FLAG_UNUSED_0x023    0x23 // Unused Flag
@@ -171,7 +171,7 @@
 #define FLAG_MR_BRINEY_SAILING_INTRO         0x93
 #define FLAG_DOCK_REJECTED_DEVON_GOODS       0x94
 #define FLAG_DELIVERED_DEVON_GOODS           0x95
-#define FLAG_NINJA_BOY4                      0x96 // Unused, leftover from R/S
+#define FLAG_NINJA_BOY4                      0x96 // Dream Emerald
 #define FLAG_RECEIVED_CASTFORM               0x97
 #define FLAG_RECEIVED_SUPER_ROD              0x98
 #define FLAG_RUSTBORO_NPC_TRADE_COMPLETED    0x99
@@ -512,7 +512,7 @@
 #define FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL 0x1D8
 #define FLAG_ENABLE_JUAN_MATCH_CALL          0x1D9
 
-#define FLAG_UNUSED_0x1DA                    0x1DA // Unused Flag
+#define FLAG_ENABLE_CRAZYSCIENTIST_MATCH_CALL 0x1DA // Dream Emerald
 
 #define FLAG_SHOWN_MYSTIC_TICKET             0x1DB
 #define FLAG_DEFEATED_HO_OH                  0x1DC
@@ -667,10 +667,10 @@
 #define FLAG_HIDDEN_ITEM_DREAM_PETALBURG_ANTIDOTE            (FLAG_HIDDEN_ITEMS_START + 0x76)
 #define FLAG_HIDDEN_ITEM_DREAM_PETALBURG_INSECT_PLATE        (FLAG_HIDDEN_ITEMS_START + 0x77)
 #define FLAG_HIDDEN_ITEM_DREAM_PETALBURG_TM60                (FLAG_HIDDEN_ITEMS_START + 0x78)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x79                         (FLAG_HIDDEN_ITEMS_START + 0x79)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x7A                         (FLAG_HIDDEN_ITEMS_START + 0x7A)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x7B                         (FLAG_HIDDEN_ITEMS_START + 0x7B)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x7C                         (FLAG_HIDDEN_ITEMS_START + 0x7C)
+#define FLAG_HIDDEN_ITEM_NEW_MAUVILLE_TM52                   (FLAG_HIDDEN_ITEMS_START + 0x79)
+#define FLAG_HIDDEN_ITEM_NEW_MAUVILLE_MAX_REPEL              (FLAG_HIDDEN_ITEMS_START + 0x7A)
+#define FLAG_HIDDEN_ITEM_NEW_MAUVILLE_TOXIC_PLATE            (FLAG_HIDDEN_ITEMS_START + 0x7B)
+#define FLAG_HIDDEN_ITEM_NEW_MAUVILLE_ZAP_PLATE              (FLAG_HIDDEN_ITEMS_START + 0x7C)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x7D                         (FLAG_HIDDEN_ITEMS_START + 0x7D)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x7E                         (FLAG_HIDDEN_ITEMS_START + 0x7E)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x7F                         (FLAG_HIDDEN_ITEMS_START + 0x7F)
@@ -1191,12 +1191,12 @@
 #define FLAG_ITEM_MT_PYRE_4F_SEA_INCENSE                            0x46A
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_WEST_MAX_REVIVE                 0x46B
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_NUGGET                           0x46C
-#define FLAG_ITEM_MOSSDEEP_STEVENS_HOUSE_HM08                       0x46D // Unused Flag, leftover from R/S. HM08 is given to the player directly in Emerald
+#define FLAG_ITEM_NEW_MAUVILLE_HYPER_POTION                         0x46D // Dream Emerald
 #define FLAG_ITEM_ROUTE_119_NUGGET                                  0x46E
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
-#define FLAG_UNUSED_0x470                                           0x470 // Unused Flag
+#define FLAG_ITEM_NEW_MAUVILLE_NUGGET                               0x470 // Dream Emerald
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
-#define FLAG_UNUSED_0x472                                           0x472 // Unused Flag
+#define FLAG_ITEM_NEW_MAUVILLE_ULTRA_BALL2                          0x472 // Unused Flag
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473
 #define FLAG_ITEM_ROUTE_109_POTION                                  0x474
 #define FLAG_ITEM_ROUTE_110_ELIXIR                                  0x475

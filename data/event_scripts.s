@@ -1088,3 +1088,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DreamPetalburg_House1/scripts.inc"
 
 	.include "data/maps/DreamPetalburg_FishermanDream/scripts.inc"
+
+	.include "data/maps/NewMauville_LowerFloor1/scripts.inc"

@@ -1080,6 +1080,31 @@ static void AnimSwirlingFogAnim(struct Sprite *sprite)
     }
 }
 
+void AnimTask_ScrollingToxicFog(u8 taskId)
+{
+    struct BattleAnimBgData animBg;
+
+    SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_ALL);
+    SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(0, 16));
+    SetAnimBgAttribute(1, BG_ANIM_PRIORITY, 1);
+    SetAnimBgAttribute(1, BG_ANIM_SCREEN_SIZE, 0);
+
+    if (!IsContest())
+        SetAnimBgAttribute(1, BG_ANIM_CHAR_BASE_BLOCK, 1);
+
+    gBattle_BG1_X = 0;
+    gBattle_BG1_Y = 0;
+    SetGpuReg(REG_OFFSET_BG1HOFS, gBattle_BG1_X);
+    SetGpuReg(REG_OFFSET_BG1VOFS, gBattle_BG1_Y);
+
+    GetBattleAnimBg1Data(&animBg);
+    LoadBgTiles(animBg.bgId, gWeatherFogHorizontalTiles, 0x800, animBg.tilesOffset);
+    AnimLoadCompressedBgTilemapHandleContest(&animBg, gBattleAnimFogTilemap, FALSE);
+    LoadPalette(&gToxicFogPalette, BG_PLTT_ID(animBg.paletteId), PLTT_SIZE_4BPP);
+
+    gTasks[taskId].func = AnimTask_HazeScrollingFog_Step;
+}
+
 // Adds moving foggy overlay. Used by Haze.
 void AnimTask_HazeScrollingFog(u8 taskId)
 {
